@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: admin
+  title: article1
+  description: 这是大陆第一家专业追女泡妞培训班
+  content: 这是大陆第一家专业追女泡妞培训班,如果来不了现场,可以选择我们的光盘教程《专业泡妞培训教程》
+  views: 4
+  category: A1
+
+two:
+  user: admin
+  title: article2
+  description: 这是大陆第一家专业追女泡妞培训班
+  content: 这是大陆第一家专业追女泡妞培训班,如果来不了现场,可以选择我们的光盘教程《专业泡妞培训教程》
+  views: 4 
+  category: A1  
+  
+

@@ -1,0 +1,46 @@
+<% content_for :title,"泡妞话术惯例库,追女孩子的技巧,追女孩子的短信都在这里" %>
+<% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
+<% content_for :description,"你还在不知道怎么和女孩说话吗?你还在寻找追女孩子的技巧吗?也许你还在收集追女孩子的短信,一切都在这里.包括追女生技巧.追女秘籍,追女孩子的甜言蜜语." %>
+
+<% unless is_member? %>
+	<div id="header_guanggao">
+		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	</div>
+<% end %>
+
+
+<div class="box">
+	<div id="content">
+			<div class="topic_user_photo">
+				<%= image_tag @note.user.photo.url(:thumb) %>
+			</div>
+			<div class="topic_title">阶段:<%= link_to @note.category.name, @note.category %></div>
+			<br /><br />
+			<div class="topic_meta">发布:<%= link_to @note.user.nick_name, @note.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @note.created_at.to_date.to_s %>
+			</div>
+
+			<div class="topic_content"><%= simple_format @note.content %></div>
+			<div class="topic_edit_bar">
+				<%= link_to '编辑', edit_note_path(@note) %>
+				<%= link_to '删除', @note, :data => { :confirm => '确定删除' }, method: :delete %>
+			</div>
+			<hr />
+					
+				
+			<h2>所有评论</h2>
+			<div id="comments">
+				<% @comments.each do |comment| %>
+					<%= render comment %>
+				<% end %>
+
+				<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Note", :commable_id => @note.id } %>
+			</div>
+
+	</div>
+
+	<div id="sidebar">
+		<%= link_to "返回", :back %>
+	</div>
+	
+</div>
+

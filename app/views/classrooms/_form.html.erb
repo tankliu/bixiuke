@@ -1,0 +1,36 @@
+<%= form_for(@classroom) do |f| %>
+  <% if @classroom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@classroom.errors.count, "error") %> prohibited this classroom from being saved:</h2>
+
+      <ul>
+      <% @classroom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+	<div class="field">
+    <%= f.label :image, "教室图片(必填)" %><br />
+    <%= f.file_field :image  %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :name, "教室名(1到100字)" %><br />
+    <%= f.text_field :name, :size => 113 %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :description, "教室描述(1到10万字)" %><br />
+    <%= f.text_area :description, :size => "82x18" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

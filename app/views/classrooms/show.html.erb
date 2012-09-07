@@ -1,0 +1,61 @@
+<script type="text/javascript">
+	$(function () {
+        $('textarea.limited').maxlength({
+            'feedback' : '.charsLeft', 'useInput' : true
+        });
+    });
+</script>
+
+<div class="box">
+	<div id="sidebar">
+		<div id="classroom_photo">
+			<%= image_tag @classroom.image.url(:thumb) %>
+		</div>
+		<div id="classroom_meta">
+			<p>
+			  <b>小组名:</b>
+			  <%= @classroom.name %>
+			</p>
+			<p>
+			  <b>创建者:</b>
+			  <%= @classroom.user.nick_name %>
+			</p>
+			<p>
+			  <b>创建时间:</b>
+			  <%= @classroom.created_at.to_date.to_s %>
+			</p>
+			<% if can_delete?(@classroom) %>
+				<%= link_to '编辑', edit_classroom_path(@classroom) %> 
+			<% end %>
+		</div>
+		<div id="classroom_des">
+			<p>
+			  <b>描述:</b>
+			  <%= simple_format @classroom.description %>
+			</p>
+		</div>
+		<div id="classroom_users">
+			<p><b>聊天室用户(按活跃度排名):</b></p>
+			
+			<% @users.each do |user| %>
+			<div class="user_photo_thumb">				
+				<%= image_tag user.photo.url(:thumb) %>
+			</div>
+			<% end %>
+			<%= paginate @users %>
+		</div>
+	</div>
+	
+	<div id="content">
+		<p id="notice"><%= notice %></p>
+		<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	
+		<%= subscribe_to "/discussions/new" %>
+		  <h2>聊天记录:</h2>
+			<div id="discussions">
+					<%= render @discussions %>
+			</div>
+			<%= paginate @discussions %>		
+	</div>
+	
+</div>
+

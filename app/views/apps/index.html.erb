@@ -1,0 +1,109 @@
+<% unless is_member? %>
+	<div id="header_guanggao">
+		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	</div>
+<% end %>
+
+<div class="box">
+	<h2>你有成为把妹达人的天赋吗?</h2>
+	<div class="note_notice">(1分钟答完)</div>
+	<div id="apps_notice"><%= flash[:notice] || flash.now[:notice] %></div>	
+
+	<%= form_tag :test do |f| %>
+ 	 	<div id="test">
+			<div id="question1">
+				<h4>第1题 – “请我喝一杯吧。”</h4>
+				<p>你在酒吧和一个9分辣妹搭上了，她说：“我渴了，不如请我喝一杯吧。”……….你该怎么回应？？</p>
+				<p>请选择:</p>
+				<div class="field">
+				 <%= radio_button_tag "question1","A", false %>		
+				  <%= label_tag "question1", "A：“没问题。你想喝什么呢？”" %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "question1","B", false %>		
+				  <%= label_tag "question1", "B：“我不是慈善机构，我从来不请女孩子喝酒。”" %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "question1","C", false %>		
+				  <%= label_tag "question1", "C：“没问题。但你需要给我一个理由 – 为什么我该请你喝一杯？”" %><br />
+				</div>
+				<div class="field">
+					<%= button_tag(:type => 'button', :class => "next2") do %>
+					  <%= content_tag(:strong, '继续') %>
+					<% end %>
+				</div>
+			</div>
+			
+			<div id="question2">
+				<h4>第2题 – “我只喜欢高个/成熟的男生。”</h4>
+				<p>你和她刚认识半小时，她跟你说：“我只喜欢高个/成熟的男生。”</p>
+				<p>请选择:</p>
+				<div class="field">
+				 <%= radio_button_tag "question2","A", false %>		
+				  <%= label_tag "question2", "A：“其实我虽然不算太高，但我觉得我也不算太矮/太小孩子气。上一次，我……（然后说一个你如何优秀的故事去证明你并不矮或者小孩子气）”" %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "question2","B", false %>		
+				  <%= label_tag "question2", "B：“我看你反转了吧，你比我还矮”" %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "question2","C", false %>		
+				  <%= label_tag "question2", "C：“我看你就像我那个4岁的表妹。非常可爱，但总是喜欢引人注意。下次我给你买一个那种带小风扇的帽子，那一定非常适合你！”" %><br />
+				</div>
+				<div class="field">
+					<%= button_tag(:type => 'button', :class => "next3") do %>
+					  <%= content_tag(:strong, '继续') %>
+					<% end %>
+				</div>
+			</div>
+			
+			
+			
+			<div id="question3">
+				<h4>第3题 – “你是不是喜欢我？”</h4>
+				<p>你在聊天一段时间后，终于，这个女生看着你的眼睛，问你：“你是不是喜欢我？”</p>
+				<p>请选择:</p>
+				<div class="field">
+				 <%= radio_button_tag "question3","A", false %>		
+				  <%= label_tag "question3", "A：“我只是享受和你聊天而已！”" %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "question3","B", false %>		
+				  <%= label_tag "question3", "B：“你还是别抱太多的希望了，我没那么容易的。”" %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "question3","C", false %>		
+				  <%= label_tag "question3", "C：“为什么你会这样想呢？”" %><br />
+				</div>
+				<div class="field">
+			    <%= submit_tag "提交" %>
+			  </div>
+			</div>
+
+		</div> <!-- end test -->
+	<% end %>
+
+
+
+
+
+<script>
+	$(document).ready(function() {
+		$('#question2').hide();
+		$('#question3').hide();
+		$('button.next2').click(function() {
+			$('#question1').slideUp();
+			$('#question2').slideDown();
+		});
+		$('button.next3').click(function() {
+			$('#question2').slideUp();
+			$('#question3').slideDown();
+		});
+
+	});
+</script>
+	
+	
+<h2>更多的测试开发中,请等待...</h2>
+</div>
+

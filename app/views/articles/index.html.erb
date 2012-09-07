@@ -1,0 +1,53 @@
+<% content_for :title,"阅读泡妞秘籍和观看泡妞视频,泡妞电影,向泡妞专家学习如何泡妞" %>
+<% content_for :keywords,"泡妞秘籍,泡妞视频,泡妞电影,泡妞专家,泡妞技巧,怎么泡妞,泡妞高手,泡妞图片,泡妞大全,泡妞书籍,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法" %>
+<% content_for :description,"泡妞文章和泡妞视频栏目,文章里面包含了泡妞秘籍,专题里面有泡妞视频,以及泡妞电影的下载地址, 看看泡妞高手和电影明星是如何泡妞,如何搭讪的.学习搭讪的技巧和约会技巧." %>
+
+<% unless is_member? %>
+	<div id="header_guanggao">
+		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	</div>
+<% end %>
+
+<div class="box">
+	
+	<div id="content">		
+				<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>	
+				<h2>分享文章,功能还在开发中(+3积分)</h2> 
+			
+				<% if is_admin? %>
+					<%= render :partial => 'form' %>
+				<% end %>
+				<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>
+				<h2>最近分享文章</h2>
+				
+				<% @articles.each do |article| %>
+					<div class="topic_user_photo">
+						<%= image_tag article.user.photo.url(:thumb) %>
+					</div>
+					<div class="topic_title"><%= link_to truncate(article.title,:length => 35), article %></div>
+					<br /><br />
+					<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.user.nick_name, article.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
+					</div>
+					<br />
+					<div class="article_image"><%= image_tag article.attachment.url %></div>
+					<div class="topic_content"><%= simple_format article.description %></div>
+					<div class="topic_edit_bar">
+						<%= link_to "评论(#{article.comments.size})", article  %>
+					</div>
+					<hr />
+				<% end %>
+				<%= paginate @articles %>		
+			
+	</div>
+	<div id="categories" class=<%=is_member? ? "article_categories_for_member" : "article_categories" %>>	
+		<ul>
+			<li <%="class='selected'" if @category_id == 0  %>><%= link_to "所有文章", articles_path %></li>
+			<% @categories.each do |category| %>
+			<li <%="class='selected'" if @category_id == category.id  %>><%= link_to category.name, category_articles_path(category) %></li>
+			<% end %>
+		</ul>
+	</div>
+	
+</div>  <!-- end of box -->
+
+

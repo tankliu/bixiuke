@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyTextMytest
+  user: admin
+  category: A5
+
+two:
+  content: MyTextMytest
+  user: xueyuan
+  category: A5
+
+

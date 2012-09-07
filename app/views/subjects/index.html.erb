@@ -1,0 +1,27 @@
+<h2>所有目标</h2>
+
+<table>
+  <tr>
+    <th>目标名</th>
+    <th>排序列表</th>
+		<th>鼓励</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+<% @subjects.each do |subject| %>
+  <tr>
+    <td><%= subject.title %></td>
+    <td><%= subject.order_number %></td>
+    <td><%= subject.cheers %></td>
+
+    <td><%= link_to '编辑', edit_subject_path(subject) %></td>
+    <td><%= link_to '删除', subject, :data => { :confirm => '确定删除' }, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '创建目标', new_subject_path(:type => "Article") %>

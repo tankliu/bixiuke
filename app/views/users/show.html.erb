@@ -1,0 +1,125 @@
+<div class="box">
+	<div id="sidebar">
+		<div id="user_photo">
+			<%= image_tag @user.photo.url(:medium) %>
+		</div>
+		<div id="user_meta">
+
+			<p>
+			  <b>昵称:</b>
+			  <%= @user.nick_name %>
+			</p>
+			<p>
+			  <b>城市:</b>
+			  <%= @user.city %>
+			</p>
+
+			<p>
+			  <b>角色:</b>
+			  <%= @user.role %>
+			</p>
+			
+			<p>
+			  <b>积分:</b>
+			  <%= @user.score %>
+			</p>
+			
+			<p>
+			  <b>等级:</b>
+			  <%= @user.rank %>
+			</p>
+			
+			<p>
+			<% if session[:user_id] == @user.id %>
+			<%= link_to '更换头像等资料', edit_user_path(@user) %>
+			<% end %>
+			</p>
+			
+			<p>
+			  <b>积分规则:</b><br>
+			  把妹新手:0-100<br>把妹学徒:101-2000<br>把妹出师:2001-5000<br>把妹高手:5001-10000<br>把妹大师:10001-30000<br>把妹达人:30001-100000
+			</p>
+			
+			
+	
+			<p id="notice"><%= notice %></p>
+
+		</div>
+	</div>
+
+	<% if session[:user_id] and !is_member? %>
+		<p id="notice">本网站专为学员打造,你还不是正式学员<br>不能加入聊天室聊天<br>不能在小组提问<br>也不能查看高级惯例<br>不能下载资料<br>不能玩测试<br>不能分享和收藏<br>请去这里学完光盘和书籍后加入<%= link_to "成为学员",:join %><br>有问题联系客服QQ:1341548835
+		</p>
+	<% end %>
+	<div id="content">
+		<h2>最近在聊天室的讨论</h2>
+	  <% @latest_discussions.each do |discussion| %>
+			<div class="discussion_meta">
+				<%= discussion.user.nick_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= discussion.created_at.to_date.to_s %>
+				<% if is_admin? %>
+						<%= link_to 'X', discussion, :data => { :confirm => '确定删除?' }, method: :delete %>
+				<% end %>
+			</div>
+			<div class="discussion_content">					
+				<%= simple_format discussion.content %>	
+			</div>
+			<br/>
+		<% end %>
+		
+		<h2>最近在小组发表的帖子</h2>
+		<% @latest_topics.each do |topic| %>
+			<div class="topic_user_photo">
+				<%= image_tag topic.user.photo.url(:thumb) %>
+			</div>
+			<div class="topic_title"><%= link_to truncate(topic.title,:length => 35), topic %></div>
+			<br /><br />
+			<div class="topic_meta">发布:<%= link_to topic.user.nick_name, topic.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
+			</div>
+			
+			<div class="topic_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
+			<div class="topic_edit_bar">
+				<%= link_to "回复(#{topic.comments.size})", topic  %>
+			</div>
+			<hr />
+		<% end %>
+		
+		<h2>最近发表的惯例</h2>
+		
+		<% @latest_notes.each do |note| %>
+			<div class="topic_user_photo">
+				<%= image_tag note.user.photo.url(:thumb) %>
+			</div>
+			<div class="topic_title">阶段:<%= link_to note.category.name, category_notes_path(note.category) %></div>
+			<br /><br />
+			<div class="topic_meta">发布:<%= link_to note.user.nick_name, note.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
+			</div>
+
+			<div class="topic_content"><%= simple_format note.content %></div>
+			<div class="topic_edit_bar">
+				<%= link_to "评论(#{note.comments.size})", note %>
+			</div>
+			<hr />
+		<% end %>
+
+		<h2>最近共享的资源</h2>
+		<% @latest_resources.each do |resource| %>
+			<div class="topic_user_photo">
+				<%= image_tag resource.user.photo.url(:thumb) %>
+			</div>
+			<div class="topic_title"><%= link_to truncate(resource.title,:length => 35), resource %></div>
+			<br /><br />
+			<div class="topic_meta">类别:<%= link_to resource.category.name, category_resources_path(resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to resource.user.nick_name, resource.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
+			</div>
+
+			<div class="topic_edit_bar">
+				<%= link_to "去下载或评论(#{resource.comments.size})", resource  %>
+			</div>
+			<hr />
+		<% end %>
+
+
+
+		<h2>收藏等更多功能开发中...</h2>
+	</div>
+	
+</div>

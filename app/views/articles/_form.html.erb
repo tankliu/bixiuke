@@ -1,0 +1,45 @@
+<%= form_for @article, :html => { :multipart => true } do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "错误") %> :</h2>
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category_id, "选择类别" %><br />
+    <%= f.select :category_id, collect_article_categories_for_select %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title, "标题(1到100字)" %><br />
+    <%= f.text_field :title, :size => 114 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, "内容(1到10万字)" %><br />
+    <%= f.text_area :content, :size => "82x15"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, "描述(1到10万字)" %><br />
+    <%= f.text_area :description, :size => "82x5" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :attachment, "图片(添加一张图片)" %><br />
+    <%= f.file_field :attachment  %>
+  </div>
+
+  <!-- TODO:当你点击选择附件时，回调记录content里面的焦点。当完成选择的时候，自动在那个焦点地方生成<picture> -->
+
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+
+<% end %>
+

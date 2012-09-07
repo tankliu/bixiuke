@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= yield(:title) %></title>
+	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+  <meta name = "description" content = "<%= yield(:description) %>" /> 
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+<% if Rails.env == "production" %>
+	<% if controller.class == PagesController or controller.class == CoursesController %>
+  	<!--禁止firefox右键-->
+	    <script type="text/javascript">
+		   	 document.oncontextmenu=function(e){return false;}
+	    </script>
+	<% end %>
+<% end %>
+</head>
+<!-- 产品模式下拒绝右键和复制 -->
+<% if Rails.env == "production" %>
+	<% if controller.class == PagesController or controller.class == CoursesController %>
+		<body oncontextmenu="self.event.returnValue=false"  onselectstart="return false" oncopy="event.returnValue=false">
+	<% else %>
+		<body>
+	<% end %>
+<% else %>
+		<body>
+<% end %>
+
+	<div id="paoniuxue_top">    
+    <div id="haoqi">
+    	<div class="text">
+    		泡妞学网,专为学员打造<img src="/assets/phone.gif" alt="泡妞联系电话" />客服QQ：1341548835；手机：15818131421
+				
+				<% unless session[:user_id].nil? %>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
+				<% end %>                
+    		<ul class="public_nav">
+					<li <%="class='selected'" if controller.class == CoursesController %> >
+						<a href="/courses" target="_top">培训</a>
+					</li>
+					<li <%="class='selected'" if controller.class == PagesController and action_name == 'guangpan' %> >
+						<a href="/guangpan" target="_top">秘籍</a>
+					</li>
+					<li <%="class='selected'" if controller.class == PagesController and action_name == 'zhinanzhen' %> >
+						<a href="/zhinanzhen" target="_top">指男针</a>
+					</li>
+					<li <%="class='selected'" if controller.class == PagesController and action_name == 'qq' %> >
+						<a href="/qq" target="_top">咨询</a>
+					</li>
+					<li <%="class='selected'" if controller.class == PagesController and action_name == 'baodao'%> >
+						<a href="/baodao" target="_top">媒体</a>
+					</li>
+					<li <%="class='selected'" if controller.class == PagesController and action_name == 'faq'%> >
+    				<a href="/faq" target="_top">问题</a>      
+    			</li>
+    			<li <%="class='selected'" if controller.class == PagesController and action_name == 'hezuo'%> >
+    				<a href="/hezuo" target="_top">合作</a>
+    			</li>
+					<li <%="class='selected'" if controller.class == PagesController and action_name == 'baike'%> >
+    				<a href="/baike" target="_top">百科</a>
+    			</li>
+
+					<li <%="class='selected'" if controller.class == ArticlesController %> >
+						<a href="/articles" target="_top">文章</a>
+					</li>
+					<li <%="class='selected'" if controller.class == PagesController and action_name == 'join'%> >
+						<a href="/join" target="_top">加入</a>
+					</li>						
+
+    		</ul>
+           
+      </div>                                                                                                           
+ 		</div>
+		<div id="nav">
+		  <div id="logo">
+				<!-- <img src="/assets/logo.png" alt="泡妞学网" /> -->
+				<img src ="/assets/logo.png" alt = "搭讪约会学" />
+			</div>
+			<ul>
+				<li <%="class='selected'" if controller.class == HomeController %> >
+					<a href="/" target="_top">首页<br /><span>最近动态更新</span></a>
+				</li>
+				
+				<li <%="class='selected'" if controller.class == UsersController and action_name == "index" %> >
+					<a href="/users" target="_top">所有学员<br /><span>最近,排行版</span></a>
+				</li>
+				<li <%="class='selected'" if controller.class == UsersController and action_name == "show" and params[:id].to_i == session[:user_id] %> >
+					<% if session[:user_id] %>
+						<%= link_to User.find(session[:user_id]) do %>
+							我的主页<br /><span>记录,收藏</span>
+						<% end %> 
+					<% else %>
+						<%= link_to :login do %>
+						我的主页<br /><span>记录,收藏</span>
+						<% end %>
+					<% end %>
+				</li>
+				
+				<li <%="class='selected'" if controller.class == ClassroomsController %> >
+  				<a href="/classrooms/1" target="_top">聊天室<br /><span>讨论,每晚9点</span></a>
+  			</li>
+
+				<li <%="class='selected'" if controller.class == GroupsController %> >
+  				<a href="/classes/1" target="_top">小组<br /><span>问答,分享案例</a>
+  			</li>
+
+				<li <%="class='selected'" if controller.class == NotesController %> >
+					<a href="/notes" target="_top">惯例库<br /><span>追女孩子的话</span></a>
+				</li>
+				
+  			<li <%="class='selected'" if controller.class == ResourcesController %> >
+  				<a href="/resources" target="_top">资源下载<br /><span>国内最全</span></a>
+  			</li>    		    			
+
+				<li <%="class='selected'" if controller.class == AppsController %> >
+					<a href="/apps" target="_top">测试<br /><span>缘分,魅力指数</span></a>
+				</li>
+				<% unless session[:user_id] %>
+					<li <%="class='selected'" if controller.class == UsersController and action_name == "new"%> >
+						<a href="/users/new" target="_top">注册<br /><span>学完光盘注册</span></a>
+					</li>
+					<li <%="class='selected'" if controller.class == SessionsController and action_name == "new"%> >
+						<a href="/login" target="_top">登录<br /><span>已有账号登录</span></a>
+					</li>
+				<% end %>
+				
+			</ul> 		
+		</div>		
+		<div id="guanggao">
+			2012最新培训：深圳9月22，23号
+			<img src ="/assets/car.gif" alt = "搭讪约会学" /> <a href="/courses">赶紧报名参加</a>
+		</div>
+	</div>
+	
+	<div id="main_container">
+		<%= yield %>
+	</div>
+	<hr />
+	<div id="footer">
+		<p>	
+			Copyright(C)2007-2012 <a href="http://www.paoniuxue.com/" target="_top">泡妞学网</a>| 
+			<a href="http://paoniuxue.taobao.com" target="_top" title="专业约会指导店铺">专业约会指导店铺</a>
+			<a href="http://399906796.qzone.qq.com" title="泡妞学网QQ空间">泡妞学网QQ空间</a>
+			<a href="http://xiaohualang.blog.hexun.com/" title="泡妞学网和讯站">泡妞学网和讯站</a>
+			<a href="http://site.douban.com/119876/" title="专业搭讪约会培训的小站">专业搭讪约会培训的小站</a>
+			<a href="http://blog.sina.com.cn/paoshop" title="专业泡妞培训_新浪博客">泡妞学网新浪站</a>
+			<a href="http://paoxun.blog.sohu.com/" title="泡妞学网搜狐站">泡妞学网搜狐站</a>
+			<a href="http://hi.baidu.com/paoniupx/home" title="泡妞学网百度站">泡妞学网百度站</a>
+			<a href="http://xiaohualang.blog.hexun.com/" title="泡妞学网和讯站">泡妞学网和讯站</a>				
+		</p>
+		<p>
+			版权所有 备案号：<a href="http://www.miibeian.gov.cn/" target="_top">粤ICP备08028333号</a><br />
+		</p>
+		<p>培训城市:深圳&nbsp;广州&nbsp;上海&nbsp;北京   全国统一服务QQ：1341548835</p>
+		
+	</div><!-- end of footer -->
+	
+	<% if Rails.env == "production" %>
+		<script type="text/javascript">
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd23a7abb99279fee20249f938c04b70e' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	<% end %>
+
+</body>
+</html>

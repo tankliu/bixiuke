@@ -1,0 +1,44 @@
+<% content_for :title, @article.title %>
+<% content_for :keywords,"泡妞秘籍,搭讪理论,搭讪实践,泡妞视频,泡妞电影,泡妞高手,如何泡妞,泡妞教程,泡妞书籍,泡妞话术,泡妞惯例库,QQ泡妞,短信泡妞,读懂女人,泡妞心态,泡妞实战案例.泡妞技巧,泡妞理论,泡妞实战,酒吧泡妞,泡妞活动" %>
+<% content_for :description, @article.description %>
+
+<% unless is_member? %>
+	<div id="header_guanggao">
+		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	</div>
+<% end %>
+
+<div class="box">
+	<div id="content">
+				 
+		<div class="topic_user_photo">
+			<%= image_tag @article.user.photo.url(:thumb) %>
+		</div>
+		<div class="topic_title"><%= simple_format truncate(@article.title,:length => 35) %></div>
+		<br /><br />
+		<div class="topic_meta">类别:<%= link_to @article.category.name, category_articles_path(@article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to @article.user.nick_name, @article.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= @article.views %>
+		</div>
+		
+		<div class="topic_content"><%= simple_format @article.content %></div>
+		
+		<div class="topic_edit_bar">
+			<% if can_delete?(@article) %>
+				<%= link_to '编辑', edit_article_path(@article) %>
+				<%= link_to '删除', @article, :data => { :confirm => '确定删除' }, method: :delete %>
+			<% end %>
+		</div>
+		<hr />
+		
+		<div id="comments">
+			<% @comments.each do |comment| %>
+				<%= render comment %>
+			<% end %>
+			
+			<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Article", :commable_id => @article.id } %>
+		</div>
+			
+	</div>
+	<div id="sidebar">
+		<%= link_to "返回", :back %>
+	</div>
+</div>

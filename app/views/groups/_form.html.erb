@@ -1,0 +1,34 @@
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+	<div class="field">
+    <%= f.label :image, "小组图片(必填)" %><br />
+    <%= f.file_field :image  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, "小组名(1到100字)" %><br />
+    <%= f.text_field :name, :size => 113 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, "小组描述(1到10万字)" %><br />
+    <%= f.text_area :description, :size => "82x18" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

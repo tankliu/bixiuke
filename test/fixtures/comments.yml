@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  user: admin 
+  commable: one (Note)
+two:
+  content: MyText
+  user: xueyuan
+  commable: two (Note)

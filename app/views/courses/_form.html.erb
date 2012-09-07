@@ -1,0 +1,76 @@
+
+
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "错误") %> :</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "课名(2到20字)" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category, "类型(2到20字)" %><br />
+    <%= f.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date, "选择开始日期" %><br />
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date, "选择结束日期" %><br />
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :holiday, "假期(0到10字)" %><br />
+    <%= f.text_field :holiday %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city, "城市(2到4字)" %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :teacher, "讲师(1到20字)" %><br />
+    <%= f.text_field :teacher %>
+  </div>
+
+  <div class="field">
+    <%= f.label :top_number, "限制人数(数字,1到10000,可不填)" %><br />
+    <%= f.number_field :top_number %>
+  </div>
+  <div class="field">
+    <%= f.label :now_number, "已报名人数(数字,0到10000,可不填)" %><br />
+    <%= f.number_field :now_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cost, "学费(数字,0到100000,可不填)" %><br />
+    <%= f.number_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :discount, "可优惠(数字,0到100000,可不填)" %><br />
+    <%= f.number_field :discount %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_requirement, "优惠条件(0到50字,可不填)" %><br />
+    <%= f.text_area :discount_requirement, :size => "29x5"%>
+  </div>
+  <div class="field">
+    <%= f.label :deposite, "定金(数字,0到100000,可不填)" %><br />
+    <%= f.number_field :deposite %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>

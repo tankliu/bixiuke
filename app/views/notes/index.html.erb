@@ -1,0 +1,59 @@
+<% content_for :title,"泡妞话术惯例库,追女孩子的技巧,追女孩子的短信都在这里" %>
+<% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
+<% content_for :description,"你还在不知道怎么和女孩说话吗?你还在寻找追女孩子的技巧吗?也许你还在收集追女孩子的短信,一切都在这里.包括追女生技巧.追女秘籍,追女孩子的甜言蜜语." %>
+<% unless is_member? %>
+	<div id="header_guanggao">
+		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	</div>
+<% end %>
+<div class="box">
+
+	<div id="content">
+		<div class="note_form">
+			<p id="notice"><%= flash[:notice] || flash.now[:notice] %></p>
+
+			<h2>创建惯例(+3积分)</h2>
+			<div class="note_notice">换行后,添加@标记,后面可以写适合场合等(请看下面已创建的惯例).</div>
+
+			<%= render 'form'  %>
+		</div>
+		
+		<h2>最近惯例</h2>
+		
+		<div class="note_notice">惯例可以利用,不要依赖,最终通过学习惯例,形成自己风格.</div>
+		<br />
+		<br />
+		<% @notes.each do |note| %>
+			<div class="topic_user_photo">
+				<%= image_tag note.user.photo.url(:thumb) %>
+			</div>
+			<div class="topic_title">阶段:<%= link_to note.category.name, category_notes_path(note.category) %></div>
+			<br /><br />
+			<div class="topic_meta">发布:<%= link_to note.user.nick_name, note.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
+			</div>
+
+			<div class="topic_content"><%= simple_format note.content %></div>
+			<div class="topic_edit_bar">
+				<%= link_to "评论(#{note.comments.size})", note %>
+			</div>
+			<hr />
+		<% end %>
+		<%= paginate @notes %>		
+	</div>
+	
+	<div id="categories">
+		<ul>
+			<li <%="class='selected'" if @category_id == 0  %>><%= link_to "所有阶段", notes_path %></li>
+			<% @categories.each do |category| %>
+			<li class="arrow"></li>			
+			<li <%="class='selected'" if @category_id == category.id  %>><%= link_to category.name, category_notes_path(category) %></li>
+			<% end %>
+		</ul>
+
+	</div>
+	
+
+	
+
+</div>
+

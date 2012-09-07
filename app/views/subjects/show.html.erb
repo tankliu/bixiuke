@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>目标:</b>
+  <%= @subject.title %>
+</p>
+
+<p>
+  <b>鼓励:</b>
+  <%= @subject.cheers %>
+</p>
+
+
+<p>
+  <b>发布:</b>
+  <%= @subject.user.nick_name %>
+</p>
+
+<p>
+  <b>添加时间:</b>
+  <%= @subject.created_at.to_date.to_s %>
+</p>
+
+
+<p>
+  <b>所有笔记:</b>
+  <% @subject.notes.each do |note| %>
+
+		<%= image_tag note.photo.url(:thumb) unless note.photo.url == "/images/original/missing.png"%>
+		<%= note.content %><br />
+		<%= note.user.nick_name %><br />
+		<%= note.created_at.to_date.to_s %><br />
+		<hr />
+	<% end %>
+</p>
+
+
+<%= link_to "添加笔记", new_note_path(:subject_id => @subject) %>
+
+<%= link_to '编辑', edit_subject_path(@subject) %> |
+<%= link_to '所有目标', subjects_path %>

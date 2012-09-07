@@ -1,0 +1,32 @@
+<% content_for :title,"问答" %>
+<% content_for :keywords,"问答" %>
+<% content_for :description,"问答" %>
+
+
+
+<div class="box">
+	<div id="content">
+				 
+		<% @topics.each do |topic| %>
+			<p class="topic_meta">发布:<%= link_to topic.user.nick_name, topic.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %></p>
+			<p><%= simple_format truncate(topic.content, :length => 300) %></p>
+			<%= link_to "回复", topic  %>
+			<% if can_delete?(topic) %>
+				<%= link_to '编辑', edit_topic_path(topic) %>
+				<%= link_to '删除', topic, :data => { :confirm => '确定删除' }, method: :delete %>
+			<% end %>
+			<hr />
+		<% end %>
+		<%= paginate @topics %>		
+	</div>
+
+	<div id="ask_topic">
+		<% if is_member? %>
+			<div class="note_form">
+				<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>
+				<%= render 'form'  %>
+			</div>
+		<% end %>
+	</div>
+	
+</div>

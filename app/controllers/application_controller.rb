@@ -1,0 +1,81 @@
+# -*- encoding : utf-8 -*-
+class ApplicationController < ActionController::Base
+  #TODO: rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
+  protect_from_forgery
+  before_filter :is_login?
+  
+  #一个诡异的问题. 对于用路由方法截获路由错误传入到这里执行render_not_found时,会自动到login页面. 
+  skip_before_filter :is_login?, :only => [:render_not_found, :render_error]
+  
+  
+  def self.rescue_errors
+      rescue_from Exception,                            :with => :render_error
+      rescue_from RuntimeError,                         :with => :render_error
+      rescue_from ActiveRecord::RecordNotFound,         :with => :render_not_found
+      rescue_from ActionController::RoutingError,       :with => :render_not_found
+      rescue_from ActionController::UnknownController,  :with => :render_not_found
+      rescue_from AbstractController::ActionNotFound,   :with => :render_not_found
+  end
+  #开发模式和测试模式还是要直接输出错误便于调试, 只有产品模式下运行
+  rescue_errors unless Rails.env.development? or Rails.env.test?
+  
+  
+  def render_not_found(exception = nil)
+    render :template => "error/404", :status => 404, :layout => 'application'
+  end
+  
+  def render_error(exception = nil)
+    render :template => "error/500", :status => 500, :layout => 'application'
+  end
+  
+ 
+    
+	private
+  # TODO, 如果一个用户已经登录了,但是你在后台把他删除了. 那么会抛出ActiveRecord::RecordNotFound, 怎么处理?
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]    
+  end
+  
+  def is_login?
+   if session[:user_id]
+     return true
+   else
+     redirect_to :login
+   end
+  end
+  
+  def is_admin?
+    if session[:user_id]
+      user = User.find(session[:user_id])
+      user.role == "老师" and user.id == 4
+    else
+      false
+    end
+  end
+  def is_teacher?
+    User.find(session[:user_id]).role == "老师" if session[:user_id]
+  end
+  def is_assistant
+    User.find(session[:user_id]).role == "助教" if session[:user_id]
+  end
+  def is_member?
+     User.find(session[:user_id]).role != "非学员" if session[:user_id]    
+  end
+  
+  def only_admin_can_do
+    unless is_admin?
+      flash[:notice] = "你没有权限进行操作"
+      redirect_to :root
+    end
+  end
+
+  
+  def only_member_can_do
+    unless is_member?
+      redirect_to :join
+    end
+  end
+  
+  helper_method :current_user, :is_admin?, :is_member?
+  
+end

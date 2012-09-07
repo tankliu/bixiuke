@@ -1,0 +1,39 @@
+<% content_for :title,"一个问答" %>
+<% content_for :keywords,"一个问答" %>
+<% content_for :description,"一个问答" %>
+
+
+
+<div class="box ">
+	<div id="content">
+				 
+		<div class="topic_user_photo">
+			<%= image_tag @topic.user.photo.url(:thumb) %>
+		</div>
+		<div class="topic_title"><%= simple_format truncate(@topic.title,:length => 35) %></div>
+		<br /><br />
+		<div class="topic_meta">发布:<%= link_to @topic.user.nick_name, @topic.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @topic.created_at.to_date.to_s %>
+		</div>
+		
+		<div class="topic_content"><%= simple_format truncate(@topic.content, :length => 300) %></div>
+		<div class="topic_edit_bar">
+			<% if can_delete?(@topic) %>
+				<%= link_to '编辑', edit_topic_path(@topic) %>
+				<%= link_to '删除', @topic, :data => { :confirm => '确定删除' }, method: :delete %>
+			<% end %>
+		</div>
+		<hr />
+		<h2>所有回复(回复:+2积分)</h2>
+		<div id="comments">
+			<% @comments.each do |comment| %>
+				<%= render comment %>
+			<% end %>
+			
+			<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Topic", :commable_id => @topic.id } %>
+		</div>
+			
+	</div>
+	<div id="sidebar">
+		<%= link_to "返回帖子", @topic %>
+	</div>
+</div>

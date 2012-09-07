@@ -1,0 +1,53 @@
+<% content_for :title, @resource.title %>
+<% content_for :keywords,"国外泡妞书籍,台湾泡妞书籍,大陆泡妞书籍,泡妞案例,泡妞电影,泡妞图片,追女孩子的短信,搭讪技术,冷读术,接吻技巧,接吻的视频教程,泡妞小说大全,相亲" %>
+<% content_for :description, @resource.title %>
+
+<% unless is_member? %>
+	<div id="header_guanggao">
+		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	</div>
+<% end %>
+
+
+<div class="box ">
+	<div id="content">
+		<div class="topic_user_photo">
+			<%= image_tag @resource.user.photo.url(:thumb) %>
+		</div>
+		<div class="topic_title"><%= simple_format truncate(@resource.title,:length => 35) %></div>
+		<br /><br />
+		<div class="topic_meta">发布:<%= link_to @resource.category.name, category_resources_path(@resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to @resource.user.nick_name, @resource.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @resource.created_at.to_date.to_s %>
+		</div>
+				
+		<div class="download_link_area">
+			<p>下载链接:</p>
+			<% if is_member? %>
+					<%= word_wrap(@resource.download_link) %></p>
+			<% else %>
+				只有学员才可以下载, <%= link_to "成为学员", :join %>, 是学员的请<%= link_to "登录", :login  %>
+			<% end %>
+		</div>
+		
+		<div class="topic_edit_bar">
+			<% if can_delete?(@resource) %>
+				<%= link_to '编辑', edit_resource_path(@resource) %>
+				<%= link_to '删除', @resource, :data => { :confirm => '确定删除' }, method: :delete %>
+			<% end %>
+		</div>
+		<hr />
+		
+		
+		
+		<div id="comments">
+			<% @comments.each do |comment| %>
+				<%= render comment %>
+			<% end %>
+			
+			<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Resource", :commable_id => @resource.id } %>
+		</div>
+			
+	</div>
+	<div id="sidebar">
+		<%= link_to "返回", :back %>
+	</div>
+</div>

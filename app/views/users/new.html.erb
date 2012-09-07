@@ -1,0 +1,12 @@
+<div class="box">
+	<h2>创建账户</h2>
+	<p>如果已有账号,请到这里<%= link_to "登录", :login %></p>
+	<% if session[:user_id] and !is_admin? %>
+		<p id="notice">你已经注册,请回到<%= link_to "个人主页", User.find(session[:user_id]) %></p>
+	<% else  %>
+		<%= render 'form' %>
+	<% end %>
+
+	<%= link_to '取消', users_path %>
+	
+</div>

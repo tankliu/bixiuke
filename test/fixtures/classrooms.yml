@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: classroom1
+  description: MyText
+  user: admin
+
+two:
+  name: classroom2
+  description: MyText
+  user: admin

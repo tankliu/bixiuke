@@ -1,0 +1,86 @@
+<h2>所有分类</h2>
+<h4>文章分类</h4>
+
+<table>
+  <tr>
+    <th>名称</th>
+    <th>排序列表</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+<% @article_categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= category.order_number %></td>
+
+    <td><%= link_to '编辑', edit_category_path(category) %></td>
+    <td><%= link_to '删除', category, :data => { :confirm => '确定删除' }, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '创建文章类别', new_category_path(:typeable => "Article") %>
+
+<hr />
+<h4>资源分类</h4>
+
+<table>
+<% @resource_categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= category.order_number %></td>
+
+    <td><%= link_to '编辑', edit_category_path(category) %></td>
+    <td><%= link_to '删除', category, :data => { :confirm => '确定删除' }, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '创建资源类别', new_category_path(:typeable => "Resource") %>
+
+
+<hr />
+<h4>惯例分类</h4>
+
+<table>
+<% @note_categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= category.order_number %></td>
+
+    <td><%= link_to '编辑', edit_category_path(category) %></td>
+    <td><%= link_to '删除', category, :data => { :confirm => '确定删除' }, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '创建名言类别', new_category_path(:typeable => "Note") %>
+
+<hr />
+
+<h4>问题分类</h4>
+
+<table>
+<% @topic_categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= category.order_number %></td>
+
+    <td><%= link_to '编辑', edit_category_path(category) %></td>
+    <td><%= link_to '删除', category, :data => { :confirm => '确定删除' }, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '创建问题类别', new_category_path(:typeable => "Topic") %>
+

@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  download_link: MyString
+  description: MyText
+  user: admin
+  category: A3
+two:
+  title: MyString
+  download_link: MyString
+  description: MyText
+  user: xueyuan
+  category: A3
+  
+  

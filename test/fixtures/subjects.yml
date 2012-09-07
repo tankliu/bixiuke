@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  cheers: 100
+  order_number: 1
+  user: admin
+
+two:
+  title: MyString
+  cheers: 100
+  order_number: 2
+  user: xueyuan

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyTextMyText
+  content: <%= "MyTextMyText"*100 %>
+  user: admin
+
+two:
+  title: MyTextMyText
+  content: <%= "MyTextMyText"*100 %>
+  user: xueyuan
+ 
+ 
+ 
+ 
