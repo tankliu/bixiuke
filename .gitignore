@@ -1,0 +1,7 @@
+*.[oa]
+*~
+log/
+vendor/
+tmp/
+public/assets/
+v8.esproj/
