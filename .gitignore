@@ -5,3 +5,4 @@ vendor/
 tmp/
 public/assets/
 v8.esproj/
+v8.tmproj/
