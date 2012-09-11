@@ -48,7 +48,8 @@
 	
 	<div id="content">
 		<p id="notice"><%= notice %></p>
-		<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	
+		<div id="<%= 'discussion_form_'+session[:user_id].to_s if session[:user_id] %>">
+		<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	</div>
 		<%= subscribe_to "/discussions/new" %>
 		<h2>聊天记录:</h2>
 		<div id="discussions">

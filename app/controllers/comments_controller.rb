@@ -22,11 +22,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         #对于帮忙解决别人问题的可以加2分
-        if @comment.commable.is_a?(Topic)
-          @comment.user.update_column(:score,@comment.user.score+2)
-        else
-          @comment.user.update_column(:score,@comment.user.score+1)
-        end
+        @comment.user.update_column(:score,@comment.user.score+1)
         format.html { redirect_to @comment.commable, notice: '评论成功' }
         format.json { render json: @comment, status: :created, location: @comment }
       else

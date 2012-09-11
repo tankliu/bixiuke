@@ -23,7 +23,7 @@
 			<% end %>
 		</div>
 		<hr />
-		<h2>所有回复(回复:+2积分)</h2>
+		<h2>所有回复(回复:+1积分)</h2>
 		<div id="comments">
 			<% @comments.each do |comment| %>
 				<%= render comment %>
@@ -34,6 +34,6 @@
 			
 	</div>
 	<div id="sidebar">
-		<%= link_to "返回帖子", @topic %>
+		<%= link_to "返回小组", @topic %>
 	</div>
 </div>

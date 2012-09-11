@@ -47,7 +47,7 @@
 	<div id="content">
 		<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>
 		<h2>发帖</h2>
-		<div class="note_notice">(发帖对积分无影响,回贴:+2积分)</div>
+		<div class="note_notice">(发帖+2积分,回贴:+1积分)</div>
 		
 		<%= render :partial => 'topics/form', :locals => {:group_id => @group.id}  %>
 		<h2>最近帖子</h2>

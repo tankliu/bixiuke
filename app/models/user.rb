@@ -34,8 +34,8 @@ class User < ActiveRecord::Base
           :hash_secret => "secretisnosecret"
       
    # filetype
-  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/bmp','image/pjepg', 'image/x-png'], :message => "图片格式只能为jpg,png,gif,bmp", :unless => "photo.original_filename.blank?"
-  
+  # validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/bmp','image/pjepg', 'image/x-png'], :message => "图片格式只能为jpg,png,gif,bmp", :unless => "photo.original_filename.blank?"
+  #  
   # and size
   validates_attachment_size :photo, :less_than => 500.kilobytes, :message => "图片大小不能超过500kb", :unless => "photo.original_filename.blank?"
   # width, height

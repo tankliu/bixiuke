@@ -39,6 +39,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
+        @topic.user.update_column(:score,@topic.user.score+2)
         format.html { redirect_to @topic.group, notice: '创建成功' }
         format.json { render json: @topic, status: :created, location: @topic }
       else
