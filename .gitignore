@@ -5,4 +5,5 @@ vendor/
 tmp/
 public/assets/
 v8.esproj/
-v8.tmproj/
+v8.tmproj
+*.DS_Store

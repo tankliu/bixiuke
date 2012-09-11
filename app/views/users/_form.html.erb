@@ -11,15 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-	  <%= f.label :email, "邮箱(2到20字符)" %><br />
-	  <%= f.text_field :email %>
-  </div>
+	<% if @user.new_record? %>
+		<div class="field">
+		  <%= f.label :email, "邮箱(2到20字符)" %><br />
+		  <%= f.text_field :email %>
+	  </div>
+	<% end %>
+	
   <div class="field">
 	  <% if @user.new_record? %>
 	    <%= f.label :password, "密码(6到16字符)" %><br />
 		<% else %>
-    	<%= f.label :password, "修改密码(6到16字符,如果不修改请不要填写.)" %><br />
+    	<%= f.label :password, "修改密码(6到16字符,请及时修改密码,如果不需要修改请不要填写)" %><br />
 		<% end %>
     <%= f.password_field :password %>
   </div>
@@ -75,7 +78,7 @@
 	    <%= f.select :sex, ApplicationHelper::Sex, :include_blank => true %>
 	  </div>
 	  <div class="field">
-	    <%= f.label :photo, "头像(添加一张图片)" %><br />
+	    <%= f.label :photo, "修改头像(添加一张图片)" %><br />
 	    <%= f.file_field :photo  %>
 	  </div>
 	

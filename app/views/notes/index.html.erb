@@ -34,6 +34,10 @@
 
 			<div class="topic_content"><%= simple_format note.content %></div>
 			<div class="topic_edit_bar">
+				<% if is_admin? %>
+						<%= link_to 'X', note, :data => { :confirm => '确定删除?' }, method: :delete %>
+				<% end %>
+				
 				<%= link_to "评论(#{note.comments.size})", note %>
 			</div>
 			<hr />

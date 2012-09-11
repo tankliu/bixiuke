@@ -50,11 +50,12 @@
 		<p id="notice"><%= notice %></p>
 		<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	
 		<%= subscribe_to "/discussions/new" %>
-		  <h2>聊天记录:</h2>
-			<div id="discussions">
-					<%= render @discussions %>
-			</div>
-			<%= paginate @discussions %>		
+		<h2>聊天记录:</h2>
+		<div id="discussions">
+		<%= render @discussions %>
+		</div>
+		<%= paginate @discussions %>
+		
 	</div>
 	
 </div>

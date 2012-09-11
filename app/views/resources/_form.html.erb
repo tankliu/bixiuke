@@ -1,9 +1,9 @@
-<%= form_for(resource) do |f| %>
-  <% if resource.errors.any? %>
+<%= form_for(@resource) do |f| %>
+  <% if @resource.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(resource.errors.count, "错误") %> :</h2>
+      <h2><%= pluralize(@resource.errors.count, "错误") %> :</h2>
       <ul>
-      <% resource.errors.full_messages.each do |msg| %>
+      <% @resource.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -21,9 +21,10 @@
   </div>
   
   <div class="field">
-    <%= f.label :download_link, "下载链接" %>(先上传到这些站再复制下载网址.<a href="http://www.dbank.com">数据银行</a>, <a href="www.115.com">115</a>,<a href="http://ishare.iask.sina.com.cn/">sina共享</a>,<a href="http://wenku.baidu.com/">百度文库</a>或网盘)<br />
+    <%= f.label :download_link, "下载链接" %>(先上传到这些站再复制下载网址.<a href="http://www.dbank.com">数据银行</a>,<a href="http://ishare.iask.sina.com.cn/">sina共享</a>,<a href="http://wenku.baidu.com/">百度文库</a>或<a href="http://yun.baidu.com">百度网盘</a>)<br />
     <%= f.text_area :download_link, :size => "82x3" %>
   </div>
 
 
-  <div class="actions"> <%= f.submit "写好了,提交" %> </div> <% end %>
+  <div class="actions"> <%= f.submit "写好了,提交" %> </div> 
+<% end %>

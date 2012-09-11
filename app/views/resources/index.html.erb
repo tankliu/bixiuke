@@ -17,11 +17,10 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 					
 				<h2>分享资源(+3积分)</h2>
 				<% if is_member? %>
-					<%= render :partial => 'form', :locals => {:resource => @resource}  %>
+					<%= render :partial => 'form'  %>
 				<% else %>
 					<div class="note_notice">只有学员才可以创建资源分享, <%= link_to "成为学员", :join %>, 是学员的请<%= link_to "登录", :login  %></div>
 				<% end %>
-				<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>
 				<h2>最近资源分享</h2>
 				<% unless is_member? %>
 					<div class="note_notice">只有学员才可以下载</div>
@@ -38,6 +37,10 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 					</div>
 
 					<div class="topic_edit_bar">
+						<% if is_admin? %>
+								<%= link_to 'X', resource, :data => { :confirm => '确定删除?' }, method: :delete %>
+						<% end %>
+						
 						<%= link_to "去下载或评论(#{resource.comments.size})", resource  %>
 					</div>
 					<hr />
