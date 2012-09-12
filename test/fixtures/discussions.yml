@@ -2,10 +2,10 @@
 
 one:
   content: MyText
-  user: admin
+  person: admin
   classroom: one
 
 two:
   content: MyText
-  user: xueyuan
+  person: xueyuan
   classroom: two

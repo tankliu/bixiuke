@@ -7,7 +7,7 @@ class ResourcesControllerTest < ActionController::TestCase
     @resource = resources(:one)
   end
 
-  test "should not create and update and destroy if user is not log in" do
+  test "should not create and update and destroy if person is not log in" do
     get :edit, {:id => @resource}
     assert_redirected_to login_url
     post :create, {:resource => @resource.attributes}
@@ -19,22 +19,22 @@ class ResourcesControllerTest < ActionController::TestCase
     
   end
   
-  test "should not create and update and destroy if user is not member " do
-    get :edit, {:id => @resource}, {:user_id => users(:youke).id}
+  test "should not create and update and destroy if person is not member " do
+    get :edit, {:id => @resource}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
-    post :create, {:resource => @resource.attributes}, {:user_id => users(:youke).id}
+    post :create, {:resource => @resource.attributes}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
-    put :update, {:id => @resource, :resource => @resource.attributes}, {:user_id => users(:youke).id}
+    put :update, {:id => @resource, :resource => @resource.attributes}, {:person_id => people(:youke).id}
     assert_redirected_to join_path    
-    delete :destroy, {:id => @resource}, {:user_id => users(:youke).id}
+    delete :destroy, {:id => @resource}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
     
   end
   
-  test "should not update and destroy if resource is not belong to user" do
-    assert_raise(ActiveRecord::RecordNotFound) {get :edit, {:id => @resource}, {:user_id => users(:xueyuan).id}}
-    assert_raise(ActiveRecord::RecordNotFound) {put :update, {:id => @resource, :resource => @resource.attributes}, {:user_id => users(:xueyuan).id}}
-    assert_raise(ActiveRecord::RecordNotFound) {delete :destroy, {:id => @resource}, {:user_id => users(:xueyuan).id}}
+  test "should not update and destroy if resource is not belong to person" do
+    assert_raise(ActiveRecord::RecordNotFound) {get :edit, {:id => @resource}, {:person_id => people(:xueyuan).id}}
+    assert_raise(ActiveRecord::RecordNotFound) {put :update, {:id => @resource, :resource => @resource.attributes}, {:person_id => people(:xueyuan).id}}
+    assert_raise(ActiveRecord::RecordNotFound) {delete :destroy, {:id => @resource}, {:person_id => people(:xueyuan).id}}
   end
   
   test "should get index" do
@@ -53,24 +53,24 @@ class ResourcesControllerTest < ActionController::TestCase
 
   test "should create resource" do
     assert_difference('Resource.count', 1) do
-      post :create, {resource: resources(:two).attributes}, {:user_id => users(:xueyuan)}
+      post :create, {resource: resources(:two).attributes}, {:person_id => people(:xueyuan)}
     end
     assert_redirected_to resources_path
   end
 
   test "should get edit" do
-    get :edit, {id: resources(:two)}, {:user_id => users(:xueyuan)}
+    get :edit, {id: resources(:two)}, {:person_id => people(:xueyuan)}
     assert_response :success
   end
 
   test "should update resource" do
-    put :update, {id: resources(:two), resource: @resource.attributes}, {:user_id => users(:xueyuan)}
+    put :update, {id: resources(:two), resource: @resource.attributes}, {:person_id => people(:xueyuan)}
     assert_redirected_to resources_path
   end
 
   test "should destroy resource" do
     assert_difference('Resource.count', -1) do
-      delete :destroy, {id: resources(:two)}, {:user_id => users(:xueyuan)}
+      delete :destroy, {id: resources(:two)}, {:person_id => people(:xueyuan)}
     end
     assert_redirected_to resources_path
   end

@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Subject < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :person
   has_many :notes
   has_many :topics
   

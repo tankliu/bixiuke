@@ -1,12 +1,12 @@
 <div class="box">
 	<h2>请输入email账号和密码登录</h2>
-	<p>如果没有账号请先注册,然后学完光盘和书籍,成为正式学员.点击<%= link_to "注册", new_user_path %></p>
+	<p>如果没有账号请先注册,然后学完光盘和书籍,成为正式学员.点击<%= link_to "注册", new_person_path %></p>
 
-	<% unless @user.nil? %>
+	<% unless @person.nil? %>
 		    <div id="error_explanation">
-		      <h2><%= pluralize(@user.errors.count, "错误") %> :</h2>
+		      <h2><%= pluralize(@person.errors.count, "错误") %> :</h2>
 		      <ul>
-		      <% @user.errors.full_messages.each do |msg| %>
+		      <% @person.errors.full_messages.each do |msg| %>
 		        <li><%= msg %></li>
 		      <% end %>
 		      </ul>

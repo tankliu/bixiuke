@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
   has_many :segments_articles
   has_many :segments, :through => :segments_articles
   has_many :comments, :as => :commable
-  belongs_to :user
+  belongs_to :person
   belongs_to :category
   paginates_per 10
 

@@ -14,12 +14,12 @@
 	<h1>所有小组</h1>
 	<div id="groups">		
 		<% @groups.each do |group| %>
-			<%= link_to image_tag(group.image.url(:thumb), :class => "image_class"), group %>					
+			<%= link_to image_tag(group.avatar.url(:medium), :class => "image_class"), group %>					
 			
 			<h2 class= "index_organization_title"><%= link_to group.name, group %></h2>
 			<div class="index_organization_description"><%= truncate(group.description, :length => 55) %></div><br />
 			创建时间:<%= group.created_at.to_date.to_s %>
-			<span class="meta_space">创建者:<%= link_to group.user.nick_name, :root %></span>
+			<span class="meta_space">创建者:<%= link_to group.person.nick_name, :root %></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<% if is_admin? %>
 				<%= link_to '编辑', edit_group_path(group) %>

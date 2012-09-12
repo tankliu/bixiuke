@@ -8,17 +8,17 @@ class SessionsControllerTest < ActionController::TestCase
   end
   
   test "should not login" do
-    post :create, {:name => users(:xueyuan).name, :password => "111111"}
+    post :create, {:name => people(:xueyuan).name, :password => "111111"}
     assert_template 'new'
   end
   
   test "should login" do
-    post :create, {:name => users(:xueyuan).name, :password => "123456"}
-    assert_redirected_to user_path(assigns(:user))
+    post :create, {:name => people(:xueyuan).name, :password => "123456"}
+    assert_redirected_to person_path(assigns(:person))
   end
   
   test "should log out" do
-    get :destroy, nil, {:user_id => @user}
+    get :destroy, nil, {:person_id => @person}
     assert_redirected_to login_url
   end
 

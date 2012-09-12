@@ -33,7 +33,7 @@
     	<div class="text">
     		泡妞学网,专为学员打造<img src="/assets/phone.gif" alt="泡妞联系电话" />客服QQ：1341548835；手机：15818131421
 				
-				<% unless session[:user_id].nil? %>
+				<% unless session[:person_id].nil? %>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
 				<% end %>                
@@ -84,12 +84,12 @@
 					<a href="/" target="_top">首页<br /><span>最近动态更新</span></a>
 				</li>
 				
-				<li <%="class='selected'" if controller.class == UsersController and action_name == "index" %> >
-					<a href="/users" target="_top">所有学员<br /><span>最近,排行版</span></a>
+				<li <%="class='selected'" if controller.class == PeopleController and action_name == "index" %> >
+					<a href="/people" target="_top">所有学员<br /><span>最近,排行版</span></a>
 				</li>
-				<li <%="class='selected'" if controller.class == UsersController and action_name == "show" and params[:id].to_i == session[:user_id] %> >
-					<% if session[:user_id] %>
-						<%= link_to User.find(session[:user_id]) do %>
+				<li <%="class='selected'" if controller.class == PeopleController and action_name == "show" and params[:id].to_i == session[:person_id] %> >
+					<% if session[:person_id] %>
+						<%= link_to Person.find(session[:person_id]) do %>
 							我的主页<br /><span>记录,收藏</span>
 						<% end %> 
 					<% else %>
@@ -118,9 +118,9 @@
 				<li <%="class='selected'" if controller.class == AppsController %> >
 					<a href="/apps" target="_top">测试<br /><span>缘分,魅力指数</span></a>
 				</li>
-				<% unless session[:user_id] %>
-					<li <%="class='selected'" if controller.class == UsersController and action_name == "new"%> >
-						<a href="/users/new" target="_top">注册<br /><span>学完光盘注册</span></a>
+				<% unless session[:person_id] %>
+					<li <%="class='selected'" if controller.class == PeopleController and action_name == "new"%> >
+						<a href="/people/new" target="_top">注册<br /><span>学完光盘注册</span></a>
 					</li>
 					<li <%="class='selected'" if controller.class == SessionsController and action_name == "new"%> >
 						<a href="/login" target="_top">登录<br /><span>已有账号登录</span></a>

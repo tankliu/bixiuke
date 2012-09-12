@@ -6,7 +6,7 @@ class SubjectsControllerTest < ActionController::TestCase
     @subject = subjects(:one)
   end
 
-  test "should not create and update and destroy if user is not log in" do
+  test "should not create and update and destroy if person is not log in" do
     get :edit, {:id => @subject}
     assert_redirected_to login_url
     post :create, {:subject => @subject.attributes}
@@ -18,22 +18,22 @@ class SubjectsControllerTest < ActionController::TestCase
     
   end
   
-  test "should not create and update and destroy if user is not member " do
-    get :edit, {:id => @subject}, {:user_id => users(:youke).id}
+  test "should not create and update and destroy if person is not member " do
+    get :edit, {:id => @subject}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
-    post :create, {:subject => @subject.attributes}, {:user_id => users(:youke).id}
+    post :create, {:subject => @subject.attributes}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
-    put :update, {:id => @subject, :subject => @subject.attributes}, {:user_id => users(:youke).id}
+    put :update, {:id => @subject, :subject => @subject.attributes}, {:person_id => people(:youke).id}
     assert_redirected_to join_path    
-    delete :destroy, {:id => @subject}, {:user_id => users(:youke).id}
+    delete :destroy, {:id => @subject}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
     
   end
   
-  test "should not update and destroy if one subject is not belong to user" do
-    assert_raise(ActiveRecord::RecordNotFound) {get :edit, {:id => @subject}, {:user_id => users(:xueyuan).id}}
-    assert_raise(ActiveRecord::RecordNotFound) {put :update, {:id => @subject, :subject => @subject.attributes}, {:user_id => users(:xueyuan).id}}
-    assert_raise(ActiveRecord::RecordNotFound) {delete :destroy, {:id => @subject}, {:user_id => users(:xueyuan).id}}
+  test "should not update and destroy if one subject is not belong to person" do
+    assert_raise(ActiveRecord::RecordNotFound) {get :edit, {:id => @subject}, {:person_id => people(:xueyuan).id}}
+    assert_raise(ActiveRecord::RecordNotFound) {put :update, {:id => @subject, :subject => @subject.attributes}, {:person_id => people(:xueyuan).id}}
+    assert_raise(ActiveRecord::RecordNotFound) {delete :destroy, {:id => @subject}, {:person_id => people(:xueyuan).id}}
   end
   
   test "should get index" do
@@ -45,24 +45,24 @@ class SubjectsControllerTest < ActionController::TestCase
   
   test "should create subject" do
     assert_difference('Subject.count', 1) do
-      post :create, {subject: @subject.attributes}, {:user_id => users(:xueyuan)}
+      post :create, {subject: @subject.attributes}, {:person_id => people(:xueyuan)}
     end
-    assert_redirected_to assigns(:subject).user
+    assert_redirected_to assigns(:subject).person
   end
 
   test "should get edit" do
-    get :edit, {id: subjects(:two)}, {:user_id => users(:xueyuan)}
+    get :edit, {id: subjects(:two)}, {:person_id => people(:xueyuan)}
     assert_response :success
   end
 
   test "should update subject" do
-    put :update, {id: subjects(:two), subject: @subject.attributes}, {:user_id => users(:xueyuan)}
+    put :update, {id: subjects(:two), subject: @subject.attributes}, {:person_id => people(:xueyuan)}
     assert_redirected_to subjects_path
   end
 
   test "should destroy subject" do
     assert_difference('Subject.count', -1) do
-      delete :destroy, {id: subjects(:two)}, {:user_id => users(:xueyuan)}
+      delete :destroy, {id: subjects(:two)}, {:person_id => people(:xueyuan)}
     end
     assert_redirected_to subjects_path
   end

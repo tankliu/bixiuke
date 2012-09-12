@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
   end
   
   def create
-    @user = User.find_by_email(params[:email])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to @user, :notice => "登录成功。"  
+    @person = Person.find_by_email(params[:email])
+    if @person && @person.authenticate(params[:password])
+      session[:person_id] = @person.id
+      redirect_to @person, :notice => "登录成功。"  
     else
       flash.now.notice = "用户名或者密码不正确。"
       render "new"
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy    
-    session[:user_id] = nil
+    session[:person_id] = nil
     flash[:notice] = "已退出"
     redirect_to action: "new"
   end

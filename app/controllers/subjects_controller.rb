@@ -7,7 +7,7 @@ class SubjectsController < ApplicationController
 
   def index
     @subject = Subject.new
-	  @subjects = Subject.includes(:user).order("order_number")
+	  @subjects = Subject.includes(:person).order("order_number")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,21 +27,21 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
-    @subject = current_user.subjects.find(params[:id])
+    @subject = current_person.subjects.find(params[:id])
   end
 
   # POST /subjects
   # POST /subjects.json
   def create
-    @subject = current_user.subjects.build(params[:subject])
+    @subject = current_person.subjects.build(params[:subject])
     @subject.cheers = 0
 
     respond_to do |format|
       if @subject.save
-        format.html { redirect_to @subject.user, notice: '创建成功' }
+        format.html { redirect_to @subject.person, notice: '创建成功' }
         format.json { render json: @subject, status: :created, location: @subject }
       else
-        format.html { redirect_to @subject.user, notice: '创建失败' }
+        format.html { redirect_to @subject.person, notice: '创建失败' }
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
     end
@@ -50,7 +50,7 @@ class SubjectsController < ApplicationController
   # PUT /subjects/1
   # PUT /subjects/1.json
   def update
-    @subject = current_user.subjects.find(params[:id])
+    @subject = current_person.subjects.find(params[:id])
 
     respond_to do |format|
       if @subject.update_attributes(params[:subject])
@@ -66,7 +66,7 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
-    @subject = current_user.subjects.find(params[:id])
+    @subject = current_person.subjects.find(params[:id])
     @subject.destroy
 
     respond_to do |format|

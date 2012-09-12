@@ -6,7 +6,7 @@ class ClassroomsControllerTest < ActionController::TestCase
       @classroom = classrooms(:one)
     end
 
-    test "should not get and post if user is not log in" do
+    test "should not get and post if person is not log in" do
       get :new
       assert_redirected_to login_url
 
@@ -24,27 +24,27 @@ class ClassroomsControllerTest < ActionController::TestCase
     end
 
 
-    test "should not get or post if user is not admin " do
+    test "should not get or post if person is not admin " do
 
-      get :new, nil, {:user_id => users(:xueyuan).id}
+      get :new, nil, {:person_id => people(:xueyuan).id}
       assert_redirected_to :root
 
-      get :edit, {:id => @classroom}, {:user_id => users(:xueyuan).id}
+      get :edit, {:id => @classroom}, {:person_id => people(:xueyuan).id}
       assert_redirected_to :root
 
-      post :create, {:classroom => @classroom.attributes}, {:user_id => users(:xueyuan).id}
+      post :create, {:classroom => @classroom.attributes}, {:person_id => people(:xueyuan).id}
       assert_redirected_to :root
 
-      put :update, {:id => @classroom, :classroom => @classroom.attributes}, {:user_id => users(:xueyuan).id}
+      put :update, {:id => @classroom, :classroom => @classroom.attributes}, {:person_id => people(:xueyuan).id}
       assert_redirected_to :root    
 
-      delete :destroy, {:id => @classroom}, {:user_id => users(:xueyuan).id}
+      delete :destroy, {:id => @classroom}, {:person_id => people(:xueyuan).id}
       assert_redirected_to :root
 
     end
 
 
-  # if user is admin
+  # if person is admin
 
     test "should get index" do
       get :index
@@ -60,34 +60,34 @@ class ClassroomsControllerTest < ActionController::TestCase
     end
     
     test "get new" do
-      get :new, nil, {:user_id => users(:admin)}
+      get :new, nil, {:person_id => people(:admin)}
       assert_response :success
     end
 
 
-    test "should create classroom if user is admin" do
+    test "should create classroom if person is admin" do
       assert_difference('Classroom.count', 1) do
-        post :create, {:classroom => @classroom.attributes}, {:user_id => users(:admin)}
+        post :create, {:classroom => @classroom.attributes}, {:person_id => people(:admin)}
       end
       assert_redirected_to assigns(:classroom)
     end
 
 
     test "should get edit" do  
-      get :edit, {:id => @classroom}, {:user_id => users(:admin)}
+      get :edit, {:id => @classroom}, {:person_id => people(:admin)}
       assert_response :success
     end
 
 
-    test "should update classroom if user is admin" do
-      put :update, {:id => @classroom, :classroom => classrooms(:two).attributes },{:user_id => users(:admin)}
+    test "should update classroom if person is admin" do
+      put :update, {:id => @classroom, :classroom => classrooms(:two).attributes },{:person_id => people(:admin)}
       assert_redirected_to @classroom
     end
 
 
     test "should destroy classroom" do
       assert_difference('Classroom.count', -1) do
-        delete :destroy, {:id => @classroom}, {:user_id => users(:admin)}
+        delete :destroy, {:id => @classroom}, {:person_id => people(:admin)}
       end
       assert_redirected_to classrooms_path
     end

@@ -14,12 +14,12 @@
 	<h1>所有小组</h1>
 	<div id="classrooms">		
 		<% @classrooms.each do |classroom| %>
-			<%= link_to image_tag(classroom.image.url(:thumb), :class => "image_class"), classroom %>					
+			<%= link_to image_tag(classroom.avatar.url(:medium), :class => "image_class"), classroom %>					
 			
 			<h2 class= "index_organization_title"><%= link_to classroom.name, classroom %></h2>
 			<div class="index_organization_description"><%= truncate(classroom.description, :length => 55) %></div><br />
 			创建时间:<%= classroom.created_at.to_date.to_s %>
-			<span class="meta_space">创建者:<%= link_to classroom.user.nick_name, :root %></span>
+			<span class="meta_space">创建者:<%= link_to classroom.person.nick_name, :root %></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<% if is_admin? %>
 				<%= link_to '编辑', edit_classroom_path(classroom) %>

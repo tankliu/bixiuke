@@ -7,12 +7,12 @@
 <div class="box ">
 	<div id="content">
 				 
-		<div class="topic_user_photo">
-			<%= image_tag @topic.user.photo.url(:thumb) %>
+		<div class="topic_person_photo">
+			<%= image_tag @topic.person.avatar.url(:thumb) %>
 		</div>
 		<div class="topic_title"><%= simple_format truncate(@topic.title,:length => 35) %></div>
 		<br /><br />
-		<div class="topic_meta">发布:<%= link_to @topic.user.nick_name, @topic.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @topic.created_at.to_date.to_s %>
+		<div class="topic_meta">发布:<%= link_to @topic.person.nick_name, @topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @topic.created_at.to_date.to_s %>
 		</div>
 		
 		<div class="topic_content"><%= simple_format truncate(@topic.content, :length => 300) %></div>
@@ -34,6 +34,6 @@
 			
 	</div>
 	<div id="sidebar">
-		<%= link_to "返回小组", @topic %>
+		<%= link_to "返回小组", @topic.group %>
 	</div>
 </div>

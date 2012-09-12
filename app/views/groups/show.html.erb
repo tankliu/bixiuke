@@ -1,7 +1,7 @@
 <div class="box">
 	<div id="sidebar">
 		<div id="group_photo">
-			<%= image_tag @group.image.url(:thumb) %>
+			<%= image_tag @group.avatar.url(:medium) %>
 		</div>
 		<div id="group_meta">
 			<p>
@@ -12,7 +12,7 @@
 		
 			<p>
 			  <b>创建者:</b>
-			  <%= @group.user.nick_name %>
+			  <%= @group.person.nick_name %>
 			</p>
 
 			<p>
@@ -31,15 +31,15 @@
 				</p>
 		</div>
 		
-		<div id="group_users">
+		<div id="group_people">
 				<p><b>小组内用户(按活跃度排名):</b></p>
 
-				<% @users.each do |user| %>
-				<div class="user_photo_thumb">				
-					<%= image_tag user.photo.url(:thumb) %>
+				<% @people.each do |person| %>
+				<div class="person_photo_thumb">				
+					<%= image_tag person.avatar.url(:thumb) %>
 				</div>
 				<% end %>
-				<%= paginate @users %>
+				<%= paginate @people %>
 			</div>
 	</div>
 		
@@ -52,12 +52,12 @@
 		<%= render :partial => 'topics/form', :locals => {:group_id => @group.id}  %>
 		<h2>最近帖子</h2>
 		<% @topics.each do |topic| %>
-			<div class="topic_user_photo">
-				<%= image_tag topic.user.photo.url(:thumb) %>
+			<div class="topic_person_photo">
+				<%= image_tag topic.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title"><%= link_to truncate(topic.title,:length => 35), topic %></div>
+			<div class="topic_title"><%= link_to truncate(topic.title,:length => 35), class_topic_path(@group,topic) %></div>
 			<br /><br />
-			<div class="topic_meta">发布:<%= link_to topic.user.nick_name, topic.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
+			<div class="topic_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
 			</div>
 			
 			<div class="topic_content"><%= simple_format truncate(topic.content, :length => 200) %></div>

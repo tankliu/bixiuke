@@ -21,12 +21,12 @@
 				<h2>最近分享文章</h2>
 				
 				<% @articles.each do |article| %>
-					<div class="topic_user_photo">
-						<%= image_tag article.user.photo.url(:thumb) %>
+					<div class="topic_person_photo">
+						<%= image_tag article.person.avatar.url(:thumb) %>
 					</div>
 					<div class="topic_title"><%= link_to truncate(article.title,:length => 35), article %></div>
 					<br /><br />
-					<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.user.nick_name, article.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
+					<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
 					</div>
 					<br />
 					<div class="article_image"><%= image_tag article.attachment.url %></div>

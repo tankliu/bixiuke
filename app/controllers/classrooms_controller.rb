@@ -6,18 +6,18 @@ class ClassroomsController < ApplicationController
    # GET /classrooms/1
    # GET /classrooms/1.json
    # def index  
-   #  @classrooms = Classroom.includes(:user).order("created_at desc")
-   #   respond_to do |format|
-   #   format.html # index.html.erb
-   #   format.json { render json: @classrooms }
-   #  end
-   # end
+   #    @classrooms = Classroom.includes(:person).order("created_at desc")
+   #     respond_to do |format|
+   #     format.html # index.html.erb
+   #     format.json { render json: @classrooms }
+   #    end
+   #   end
    
    def show
      @classroom = Classroom.find(params[:id])
      @discussions = @classroom.discussions.order("created_at desc").page(params[:page])
      @discussion = Discussion.new
-     @users = User.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
+     @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
      respond_to do |format|
        format.html # show.html.erb
        format.json { render json: @classroom }
@@ -34,13 +34,13 @@ class ClassroomsController < ApplicationController
 
    # GET /classrooms/1/edit
    def edit
-     @classroom = current_user.classrooms.find(params[:id])
+     @classroom = current_person.classrooms.find(params[:id])
    end
 
    # POST /classrooms
    # POST /classrooms.json
    def create
-     @classroom = current_user.classrooms.build(params[:classroom])
+     @classroom = current_person.classrooms.build(params[:classroom])
 
      respond_to do |format|
        if @classroom.save
@@ -56,7 +56,7 @@ class ClassroomsController < ApplicationController
    # PUT /classrooms/1
    # PUT /classrooms/1.json
    def update
-     @classroom = current_user.classrooms.find(params[:id])
+     @classroom = current_person.classrooms.find(params[:id])
 
      respond_to do |format|
        if @classroom.update_attributes(params[:classroom])
@@ -72,7 +72,7 @@ class ClassroomsController < ApplicationController
    # DELETE /classrooms/1
    # DELETE /classrooms/1.json
    def destroy
-     @classroom = current_user.classrooms.find(params[:id])
+     @classroom = current_person.classrooms.find(params[:id])
      @classroom.destroy
 
      respond_to do |format|

@@ -25,7 +25,7 @@
 		<a name="latest_discussions" id="latest_discussions"></a><h1>最近聊天记录:</h1>
 	  <% @discussions.each do |discussion| %>
 			<div class="discussion_meta">
-				<%= discussion.user.nick_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= discussion.created_at.to_date.to_s %>
+				<%= discussion.person.nick_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= discussion.created_at.to_date.to_s %>
 				<% if is_admin? %>
 						<%= link_to 'X', discussion, :data => { :confirm => '确定删除?' }, method: :delete %>
 				<% end %>
@@ -41,12 +41,12 @@
 <div class="box">
 		<a name="latest_topics" id="latest_topics"></a><h1>最近帖子</h1>
 		<% @topics.each do |topic| %>
-			<div class="topic_user_photo">
-				<%= image_tag topic.user.photo.url(:thumb) %>
+			<div class="topic_person_photo">
+				<%= image_tag topic.person.avatar.url(:thumb) %>
 			</div>
 			<div class="topic_title"><%= link_to truncate(topic.title,:length => 35), topic %></div>
 			<br /><br />
-			<div class="topic_meta">发布:<%= link_to topic.user.nick_name, topic.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
+			<div class="topic_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
 			</div>
 			
 			<div class="topic_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
@@ -61,12 +61,12 @@
 <div class="box">
 		<a name="latest_notes" id="latest_notes"></a><h1>最近惯例</h1>
 		<% @notes.each do |note| %>
-			<div class="topic_user_photo">
-				<%= image_tag note.user.photo.url(:thumb) %>
+			<div class="topic_person_photo">
+				<%= image_tag note.person.avatar.url(:thumb) %>
 			</div>
 			<div class="topic_title">阶段:<%= link_to note.category.name, category_notes_path(note.category) %></div>
 			<br /><br />
-			<div class="topic_meta">发布:<%= link_to note.user.nick_name, note.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
+			<div class="topic_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
 			</div>
 
 			<div class="topic_content"><%= simple_format note.content %></div>
@@ -81,12 +81,12 @@
 <div class="box">
 		<a name="latest_resources" id="latest_resources"></a><h1>最近资源分享</h1>
 		<% @resources.each do |resource| %>
-			<div class="topic_user_photo">
-				<%= image_tag resource.user.photo.url(:thumb) %>
+			<div class="topic_person_photo">
+				<%= image_tag resource.person.avatar.url(:thumb) %>
 			</div>
 			<div class="topic_title"><%= link_to truncate(resource.title,:length => 35), resource %></div>
 			<br /><br />
-			<div class="topic_meta">类别:<%= link_to resource.category.name, category_resources_path(resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to resource.user.nick_name, resource.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
+			<div class="topic_meta">类别:<%= link_to resource.category.name, category_resources_path(resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
 			</div>
 
 			<div class="topic_edit_bar">
@@ -169,12 +169,12 @@
 		<a name="latest_articles" id="latest_articles"></a><h1>最近分享文章</h1>
 		
 		<% @articles.each do |article| %>
-			<div class="topic_user_photo">
-				<%= image_tag article.user.photo.url(:thumb) %>
+			<div class="topic_person_photo">
+				<%= image_tag article.person.avatar.url(:thumb) %>
 			</div>
 			<div class="topic_title"><%= link_to truncate(article.title,:length => 35), article %></div>
 			<br /><br />
-			<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.user.nick_name, article.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
+			<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
 			</div>
 			<br />
 			<div class="article_image"><%= image_tag article.attachment.url %></div>

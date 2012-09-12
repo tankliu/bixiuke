@@ -6,7 +6,7 @@ class ArticlesControllerTest < ActionController::TestCase
     @article = articles(:one)
   end
   
-  test "should not get new and edit if user is not log in" do
+  test "should not get new and edit if person is not log in" do
     get :new
     assert_redirected_to login_url
     get :edit, {:id => @article}
@@ -20,16 +20,16 @@ class ArticlesControllerTest < ActionController::TestCase
   end
   
   
-  test "should not create and update and destroy if user is not admin " do
-    get :new, nil, {:user_id => users(:xueyuan).id}
+  test "should not create and update and destroy if person is not admin " do
+    get :new, nil, {:person_id => people(:xueyuan).id}
     assert_redirected_to :root
-    get :edit, {:id => @article}, {:user_id => users(:xueyuan).id}
+    get :edit, {:id => @article}, {:person_id => people(:xueyuan).id}
     assert_redirected_to :root
-    post :create, {:article => @article.attributes}, {:user_id => users(:xueyuan).id}
+    post :create, {:article => @article.attributes}, {:person_id => people(:xueyuan).id}
     assert_redirected_to :root
-    put :update, {:id => @article, :article => @article.attributes}, {:user_id => users(:xueyuan).id}
+    put :update, {:id => @article, :article => @article.attributes}, {:person_id => people(:xueyuan).id}
     assert_redirected_to :root    
-    delete :destroy, {:id => @article}, {:user_id => users(:xueyuan).id}
+    delete :destroy, {:id => @article}, {:person_id => people(:xueyuan).id}
     assert_redirected_to :root
     
   end
@@ -48,61 +48,61 @@ class ArticlesControllerTest < ActionController::TestCase
 
 
   test "get new" do
-    get :new, nil, {:user_id => users(:admin).id}
+    get :new, nil, {:person_id => people(:admin).id}
     assert_response :success
     
-    get :new, nil, {:user_id => users(:xueyuan).id}
+    get :new, nil, {:person_id => people(:xueyuan).id}
     assert_response :redirect
     
   end
 
-  test "should not create article if user is not admin" do
+  test "should not create article if person is not admin" do
     assert_no_difference('Article.count') do
-      post :create, {:article => @article.attributes}, {:user_id => users(:xueyuan).id}
+      post :create, {:article => @article.attributes}, {:person_id => people(:xueyuan).id}
     end
     assert_redirected_to :root
   end
   
-  test "should create article if user is admin" do
+  test "should create article if person is admin" do
     assert_difference('Article.count', 1) do
-      post :create, {:article => @article.attributes}, {:user_id => users(:admin).id}
+      post :create, {:article => @article.attributes}, {:person_id => people(:admin).id}
     end
     assert_redirected_to article_path(assigns(:article))
   end
 
 
-  test "should not get edit is user is not admin" do
-    get :edit, {:id => @article}, {:user_id => users(:xueyuan).id}
+  test "should not get edit is person is not admin" do
+    get :edit, {:id => @article}, {:person_id => people(:xueyuan).id}
     assert_redirected_to :root
   end
   
 
   test "should get edit" do  
-    get :edit, {:id => @article}, {:user_id => users(:admin).id}
+    get :edit, {:id => @article}, {:person_id => people(:admin).id}
     assert_response :success
   end
   
 
-  test "should not update article is user is not admin" do
-    put :update, {:id => @article, :article => @article.attributes},{:user_id => users(:xueyuan).id}
+  test "should not update article is person is not admin" do
+    put :update, {:id => @article, :article => @article.attributes},{:person_id => people(:xueyuan).id}
     assert_redirected_to :root
   end
   
-  test "should update article if user is admin" do
-    put :update, {:id => @article, :article => @article.attributes},{:user_id => users(:admin).id}
+  test "should update article if person is admin" do
+    put :update, {:id => @article, :article => @article.attributes},{:person_id => people(:admin).id}
     assert_redirected_to article_path(assigns(:article))
   end
 
-  test "should not destroy article if user is not admin" do
+  test "should not destroy article if person is not admin" do
     assert_no_difference('Article.count') do
-      delete :destroy, {:id => @article}, {:user_id => users(:xueyuan).id}
+      delete :destroy, {:id => @article}, {:person_id => people(:xueyuan).id}
     end
     assert_redirected_to :root
   end
   
   test "should destroy article" do
     assert_difference('Article.count', -1) do
-      delete :destroy, {:id => @article}, {:user_id => users(:admin).id}
+      delete :destroy, {:id => @article}, {:person_id => people(:admin).id}
     end
     assert_redirected_to articles_path
   end

@@ -11,20 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905122109) do
+ActiveRecord::Schema.define(:version => 20120912073409) do
 
   create_table "apps", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "apps", ["user_id"], :name => "index_apps_on_user_id"
+  add_index "apps", ["person_id"], :name => "index_apps_on_user_id"
 
   create_table "articles", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.string   "title"
     t.text     "description"
     t.text     "content"
@@ -38,16 +38,6 @@ ActiveRecord::Schema.define(:version => 20120905122109) do
     t.integer  "category_id"
   end
 
-  create_table "baikes", :force => true do |t|
-    t.string   "title"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.text     "content"
-  end
-
-  add_index "baikes", ["user_id"], :name => "index_baikes_on_user_id"
-
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.integer  "order_number"
@@ -59,27 +49,27 @@ ActiveRecord::Schema.define(:version => 20120905122109) do
   create_table "classrooms", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.integer  "person_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
-  add_index "classrooms", ["user_id"], :name => "index_groups_on_user_id"
+  add_index "classrooms", ["person_id"], :name => "index_groups_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.text     "content"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.string   "commable_type"
     t.integer  "commable_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+  add_index "comments", ["person_id"], :name => "index_comments_on_user_id"
 
   create_table "courses", :force => true do |t|
     t.string   "name"
@@ -94,17 +84,17 @@ ActiveRecord::Schema.define(:version => 20120905122109) do
     t.integer  "discount"
     t.string   "discount_requirement"
     t.integer  "deposite"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.string   "category"
   end
 
-  add_index "courses", ["user_id"], :name => "index_courses_on_user_id"
+  add_index "courses", ["person_id"], :name => "index_courses_on_user_id"
 
   create_table "discussions", :force => true do |t|
     t.text     "content"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.integer  "classroom_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
@@ -112,145 +102,78 @@ ActiveRecord::Schema.define(:version => 20120905122109) do
   end
 
   add_index "discussions", ["classroom_id"], :name => "index_topics_on_group_id"
-  add_index "discussions", ["user_id"], :name => "index_topics_on_user_id"
-
-  create_table "girls", :force => true do |t|
-    t.string   "nick_name"
-    t.integer  "height"
-    t.string   "shape"
-    t.integer  "score"
-    t.string   "job"
-    t.integer  "age"
-    t.string   "education"
-    t.integer  "salary"
-    t.string   "marriage"
-    t.string   "distance"
-    t.string   "meet"
-    t.string   "intercourse_length"
-    t.string   "motive"
-    t.text     "story"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "kino"
-    t.integer  "category_id"
-  end
-
-  add_index "girls", ["user_id"], :name => "index_girls_on_user_id"
+  add_index "discussions", ["person_id"], :name => "index_topics_on_user_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.integer  "person_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
-  add_index "groups", ["user_id"], :name => "index_groups_on_user_id"
+  add_index "groups", ["person_id"], :name => "index_groups_on_user_id"
 
   create_table "notes", :force => true do |t|
     t.text     "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.integer  "category_id"
   end
 
-  create_table "organizations", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "user_id"
-    t.integer  "views"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+  create_table "people", :force => true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "nick_name"
+    t.string   "city"
+    t.string   "role"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "job"
+    t.integer  "age"
+    t.string   "education"
+    t.integer  "salary"
+    t.string   "marriage"
+    t.integer  "score"
+    t.string   "sex"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "resources", :force => true do |t|
     t.string   "title"
     t.string   "download_link"
     t.integer  "category_id"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-  end
-
-  create_table "segments", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "order_number"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.integer  "organization_id"
-  end
-
-  create_table "segments_articles", :force => true do |t|
-    t.integer  "segment_id"
-    t.integer  "article_id"
-    t.integer  "order_number"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
   end
 
   create_table "subjects", :force => true do |t|
     t.string   "title"
     t.integer  "order_number"
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "cheers"
   end
 
-  add_index "subjects", ["user_id"], :name => "index_things_on_user_id"
-
-  create_table "tagables_tags", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "tagable_id"
-    t.string   "type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "tagable_type"
-  end
+  add_index "subjects", ["person_id"], :name => "index_things_on_user_id"
 
   create_table "topics", :force => true do |t|
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.string   "title"
     t.integer  "group_id"
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "nick_name"
-    t.string   "city"
-    t.string   "role"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "job"
-    t.integer  "age"
-    t.string   "education"
-    t.integer  "salary"
-    t.string   "marriage"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.integer  "score"
-    t.string   "sex"
   end
 
 end

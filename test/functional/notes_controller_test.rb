@@ -6,7 +6,7 @@ class NotesControllerTest < ActionController::TestCase
     @note = notes(:one)
   end
 
-  test "should not create and update and destroy if user is not log in" do
+  test "should not create and update and destroy if person is not log in" do
     get :edit, {:id => @note}
     assert_redirected_to login_url
     post :create, {:note => @note.attributes}
@@ -18,22 +18,22 @@ class NotesControllerTest < ActionController::TestCase
     
   end
   
-  test "should not create and update and destroy if user is not member " do
-    get :edit, {:id => @note}, {:user_id => users(:youke).id}
+  test "should not create and update and destroy if person is not member " do
+    get :edit, {:id => @note}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
-    post :create, {:note => @note.attributes}, {:user_id => users(:youke).id}
+    post :create, {:note => @note.attributes}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
-    put :update, {:id => @note, :note => @note.attributes}, {:user_id => users(:youke).id}
+    put :update, {:id => @note, :note => @note.attributes}, {:person_id => people(:youke).id}
     assert_redirected_to join_path    
-    delete :destroy, {:id => @note}, {:user_id => users(:youke).id}
+    delete :destroy, {:id => @note}, {:person_id => people(:youke).id}
     assert_redirected_to join_path
     
   end
   
-  test "should not update and destroy if note is not belong to user" do
-    assert_raise(ActiveRecord::RecordNotFound) {get :edit, {:id => @note}, {:user_id => users(:xueyuan).id}}
-    assert_raise(ActiveRecord::RecordNotFound) {put :update, {:id => @note, :note => @note.attributes}, {:user_id => users(:xueyuan).id}}
-    assert_raise(ActiveRecord::RecordNotFound) {delete :destroy, {:id => @note}, {:user_id => users(:xueyuan).id}}
+  test "should not update and destroy if note is not belong to person" do
+    assert_raise(ActiveRecord::RecordNotFound) {get :edit, {:id => @note}, {:person_id => people(:xueyuan).id}}
+    assert_raise(ActiveRecord::RecordNotFound) {put :update, {:id => @note, :note => @note.attributes}, {:person_id => people(:xueyuan).id}}
+    assert_raise(ActiveRecord::RecordNotFound) {delete :destroy, {:id => @note}, {:person_id => people(:xueyuan).id}}
   end
   
   test "should get index" do
@@ -52,24 +52,24 @@ class NotesControllerTest < ActionController::TestCase
 
   test "should create note" do
     assert_difference('Note.count', 1) do
-      post :create, {note: @note.attributes}, {:user_id => users(:xueyuan)}
+      post :create, {note: @note.attributes}, {:person_id => people(:xueyuan)}
     end
     assert_redirected_to notes_path
   end
 
   test "should get edit" do
-    get :edit, {id: notes(:two)}, {:user_id => users(:xueyuan)}
+    get :edit, {id: notes(:two)}, {:person_id => people(:xueyuan)}
     assert_response :success
   end
 
   test "should update note" do
-    put :update, {id: notes(:two), note: @note.attributes}, {:user_id => users(:xueyuan)}
+    put :update, {id: notes(:two), note: @note.attributes}, {:person_id => people(:xueyuan)}
     assert_redirected_to notes_path
   end
 
   test "should destroy note" do
     assert_difference('Note.count', -1) do
-      delete :destroy, {id: notes(:two)}, {:user_id => users(:xueyuan)}
+      delete :destroy, {id: notes(:two)}, {:person_id => people(:xueyuan)}
     end
     assert_redirected_to notes_path
   end

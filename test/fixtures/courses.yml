@@ -14,7 +14,7 @@ one:
   discount: 300
   discount_requirement: 加入群的学员
   deposite: 300
-  user: admin
+  person: admin
   
    
 two:
@@ -31,5 +31,5 @@ two:
   discount: 300
   discount_requirement: 加入群的学员
   deposite: 300
-  user: admin
+  person: admin
 

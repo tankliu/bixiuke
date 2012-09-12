@@ -32,12 +32,12 @@ class ApplicationController < ActionController::Base
     
 	private
   # TODO, 如果一个用户已经登录了,但是你在后台把他删除了. 那么会抛出ActiveRecord::RecordNotFound, 怎么处理?
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]    
+  def current_person
+    @current_person ||= Person.find(session[:person_id]) if session[:person_id]    
   end
   
   def is_login?
-   if session[:user_id]
+   if session[:person_id]
      return true
    else
      redirect_to :login
@@ -45,21 +45,21 @@ class ApplicationController < ActionController::Base
   end
   
   def is_admin?
-    if session[:user_id]
-      user = User.find(session[:user_id])
-      user.role == "老师" and user.id == 4
+    if session[:person_id]
+      person = Person.find(session[:person_id])
+      person.role == "老师" and person.id == 4
     else
       false
     end
   end
   def is_teacher?
-    User.find(session[:user_id]).role == "老师" if session[:user_id]
+    Person.find(session[:person_id]).role == "老师" if session[:person_id]
   end
   def is_assistant
-    User.find(session[:user_id]).role == "助教" if session[:user_id]
+    Person.find(session[:person_id]).role == "助教" if session[:person_id]
   end
   def is_member?
-     User.find(session[:user_id]).role != "非学员" if session[:user_id]    
+     Person.find(session[:person_id]).role != "非学员" if session[:person_id]    
   end
   
   def only_admin_can_do
@@ -76,6 +76,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  helper_method :current_user, :is_admin?, :is_member?
+  helper_method :current_person, :is_admin?, :is_member?
   
 end

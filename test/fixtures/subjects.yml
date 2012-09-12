@@ -4,10 +4,10 @@ one:
   title: MyString
   cheers: 100
   order_number: 1
-  user: admin
+  person: admin
 
 two:
   title: MyString
   cheers: 100
   order_number: 2
-  user: xueyuan
+  person: xueyuan

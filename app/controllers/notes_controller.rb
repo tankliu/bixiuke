@@ -7,25 +7,25 @@ class NotesController < ApplicationController
 
   def index
     @note = Note.new
-    @category_id = params[:category_id].to_i
+    @order_number = params[:order_number].to_i
     @categories = Category.where(:typeable => "Note").order("order_number")
     if is_member? 
-      if params[:category_id]
-        @notes = Category.find(params[:category_id]).notes.includes(:user).order("created_at desc").page(params[:page])      
+      if params[:order_number]
+        @notes = Category.where("typeable=? and order_number=?","Note",params[:order_number])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
       else
-  	    @notes = Note.includes(:user).order("created_at desc").page(params[:page])      
+  	    @notes = Note.includes(:person).order("created_at desc").page(params[:page])      
       end
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @notes }
       end
     else
-      if params[:category_id]
-        case params[:category_id].to_i
-        when 35..37          
+      if params[:order_number]
+        case params[:order_number].to_i
+        when 7..9          
           redirect_to :join, notice:"高级惯例只有学员才可以浏览" and return
         else
-          @notes = Category.find(params[:category_id]).notes.includes(:user).order("created_at desc").page(params[:page])      
+          @notes = Category.where("typeable=? and order_number=?","Note",params[:order_number])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
         end
       else
         categories_range = 29..34
@@ -61,17 +61,17 @@ class NotesController < ApplicationController
   end
   # GET /notes/1/edit
   def edit
-    @note = current_user.notes.find(params[:id])
+    @note = current_person.notes.find(params[:id])
   end
 
   # POST /notes
   # POST /notes.json
   def create
-    @note = current_user.notes.build(params[:note])
+    @note = current_person.notes.build(params[:note])
 
     respond_to do |format|
       if @note.save
-        @note.user.update_column(:score,@note.user.score+3)
+        @note.person.update_column(:score,@note.person.score+3)
         format.html { redirect_to notes_path, notice: '创建成功' }
         format.json { render json: @note, status: :created, location: @note }
       else
@@ -84,7 +84,7 @@ class NotesController < ApplicationController
   # PUT /notes/1
   # PUT /notes/1.json
   def update
-    @note = current_user.notes.find(params[:id])
+    @note = current_person.notes.find(params[:id])
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
@@ -100,7 +100,7 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
-    @note = current_user.notes.find(params[:id])
+    @note = current_person.notes.find(params[:id])
     @note.destroy
 
     respond_to do |format|

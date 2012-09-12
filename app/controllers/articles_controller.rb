@@ -11,9 +11,9 @@ class ArticlesController < ApplicationController
     @article = Article.new
     @categories = Category.where(:typeable => "Article").order("order_number")
     if params[:category_id]
-      @articles = Category.find(params[:category_id]).articles.includes(:user).order("created_at desc").page(params[:page])      
+      @articles = Category.find(params[:category_id]).articles.includes(:person).order("created_at desc").page(params[:page])      
     else
-      @articles = Article.includes(:user).order("created_at desc").page(params[:page])      
+      @articles = Article.includes(:person).order("created_at desc").page(params[:page])      
     end
     
     respond_to do |format|
@@ -47,14 +47,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = current_user.articles.find(params[:id])
+    @article = current_person.articles.find(params[:id])
   end
 
   # POST /articles
   # POST /articles.json
   def create  
     
-    @article = current_user.articles.build(params[:article])
+    @article = current_person.articles.build(params[:article])
     @article.views = 0
     if has_attachment_but_no_mark?
         flash.now[:notice] = "内容里忘记写站位符了。"
@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
     
     respond_to do |format|
       if @article.save
-        @article.user.update_column(:score,@article.user.score+2)
+        @article.person.update_column(:score,@article.person.score+2)
         format.html { redirect_to @article, notice: '创建成功' }
         format.json { render json: @article, status: :created, location: @article }
       else
@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
   # PUT /articles/1
   # PUT /articles/1.json
   def update
-    @article = current_user.articles.find(params[:id])
+    @article = current_person.articles.find(params[:id])
     @article.attributes  = params[:article]
     if has_attachment_but_no_mark?
         flash.now[:notice] = "内容里忘记写站位符了。"
@@ -100,7 +100,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    @article = current_user.articles.find(params[:id])
+    @article = current_person.articles.find(params[:id])
     @article.destroy
     
     respond_to do |format|

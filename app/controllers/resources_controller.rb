@@ -6,13 +6,13 @@ class ResourcesController < ApplicationController
   before_filter :only_member_can_do, :except => [:index, :show]
 
   def index
-    @category_id = params[:category_id].to_i
+    @order_number = params[:order_number].to_i
     @resource = Resource.new
     @categories = Category.where(:typeable => "Resource").order("order_number")
-    if params[:category_id] 
-      @resources = Category.find(params[:category_id]).resources.includes(:user).order("created_at desc").page(params[:page])      
+    if params[:order_number] 
+      @resources = Category.where("typeable = ? and order_number=?", "Resource", params[:order_number])[0].resources.includes(:person).order("created_at desc").page(params[:page])      
     else
-	    @resources = Resource.includes(:user).order("created_at desc").page(params[:page])     
+	    @resources = Resource.includes(:person).order("created_at desc").page(params[:page])     
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -38,17 +38,17 @@ class ResourcesController < ApplicationController
 
   # GET /resources/1/edit
   def edit
-    @resource = current_user.resources.find(params[:id])
+    @resource = current_person.resources.find(params[:id])
   end
 
   # POST /resources
   # POST /resources.json
   def create
-    @resource = current_user.resources.build(params[:resource])
+    @resource = current_person.resources.build(params[:resource])
 
     respond_to do |format|
       if @resource.save
-        @resource.user.update_column(:score,@resource.user.score+3)
+        @resource.person.update_column(:score,@resource.person.score+3)
         format.html { redirect_to resources_path, notice: '创建成功' }
         format.json { render json: @resource, status: :created, location: @resource }
       else
@@ -61,7 +61,7 @@ class ResourcesController < ApplicationController
   # PUT /resources/1
   # PUT /resources/1.json
   def update
-    @resource = current_user.resources.find(params[:id])
+    @resource = current_person.resources.find(params[:id])
 
     respond_to do |format|
       if @resource.update_attributes(params[:resource])
@@ -77,7 +77,7 @@ class ResourcesController < ApplicationController
   # DELETE /resources/1
   # DELETE /resources/1.json
   def destroy
-    @resource = current_user.resources.find(params[:id])
+    @resource = current_person.resources.find(params[:id])
     @resource.destroy
 
     respond_to do |format|

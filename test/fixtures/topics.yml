@@ -3,12 +3,12 @@
 one:
   title: MyTextMyText
   content: <%= "MyTextMyText"*100 %>
-  user: admin
+  person: admin
 
 two:
   title: MyTextMyText
   content: <%= "MyTextMyText"*100 %>
-  user: xueyuan
+  person: xueyuan
  
  
  

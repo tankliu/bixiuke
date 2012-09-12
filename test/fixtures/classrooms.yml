@@ -3,9 +3,9 @@
 one:
   name: classroom1
   description: MyText
-  user: admin
+  person: admin
 
 two:
   name: classroom2
   description: MyText
-  user: admin
+  person: admin

@@ -1,7 +1,7 @@
-<div class="topic_user_photo">
-	<%= image_tag comment.user.photo.url(:thumb) %>
+<div class="topic_person_photo">
+	<%= image_tag comment.person.avatar.url(:thumb) %>
 </div>
-<div class="topic_meta">发布:<%= link_to comment.user.nick_name, comment.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= comment.created_at.to_date.to_s %>
+<div class="topic_meta">发布:<%= link_to comment.person.nick_name, comment.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= comment.created_at.to_date.to_s %>
 </div>
 <br />
 <div class="comment_content">

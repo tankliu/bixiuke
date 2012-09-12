@@ -2,12 +2,12 @@
 
 one:
   content: MyTextMytest
-  user: admin
+  person: admin
   category: A5
 
 two:
   content: MyTextMytest
-  user: xueyuan
+  person: xueyuan
   category: A5
 
 

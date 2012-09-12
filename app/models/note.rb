@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Note < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :person
   belongs_to :category
   has_many :comments, :as => :commable
   paginates_per 10

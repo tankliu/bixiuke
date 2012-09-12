@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Discussion < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :person
   belongs_to :classroom
   # has_many :comments, :as => :commable
   #自关联

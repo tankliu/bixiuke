@@ -3,7 +3,7 @@ class Course < ActiveRecord::Base
   # 增加两栏栏离开课还有多少天! 显得更加紧急
 
   attr_accessor  :remain_days  
-  belongs_to :user
+  belongs_to :person
   paginates_per 10
   #还剩下多少天开始培训, 如果培训了, 不显示天, 而是显示状态
   def remain_days

@@ -2,9 +2,9 @@
 
 one:
   content: MyText
-  user: admin 
+  person: admin 
   commable: one (Note)
 two:
   content: MyText
-  user: xueyuan
+  person: xueyuan
   commable: two (Note)

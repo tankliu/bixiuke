@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create    
-    @course = current_user.courses.build(params[:course])
+    @course = current_person.courses.build(params[:course])
 
     respond_to do |format|
       if @course.save
@@ -49,7 +49,7 @@ class CoursesController < ApplicationController
   # PUT /courses/1
   # PUT /courses/1.json
   def update
-    @course = current_user.courses.find(params[:id])
+    @course = current_person.courses.find(params[:id])
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
@@ -65,7 +65,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course = current_user.courses.find(params[:id])
+    @course = current_person.courses.find(params[:id])
     @course.destroy
 
     respond_to do |format|

@@ -9,7 +9,7 @@
 <div class="box">
 	<div id="sidebar">
 		<div id="classroom_photo">
-			<%= image_tag @classroom.image.url(:thumb) %>
+			<%= image_tag @classroom.avatar.url(:medium) %>
 		</div>
 		<div id="classroom_meta">
 			<p>
@@ -18,7 +18,7 @@
 			</p>
 			<p>
 			  <b>创建者:</b>
-			  <%= @classroom.user.nick_name %>
+			  <%= @classroom.person.nick_name %>
 			</p>
 			<p>
 			  <b>创建时间:</b>
@@ -34,21 +34,21 @@
 			  <%= simple_format @classroom.description %>
 			</p>
 		</div>
-		<div id="classroom_users">
+		<div id="classroom_people">
 			<p><b>聊天室用户(按活跃度排名):</b></p>
 			
-			<% @users.each do |user| %>
-			<div class="user_photo_thumb">				
-				<%= image_tag user.photo.url(:thumb) %>
+			<% @people.each do |person| %>
+			<div class="person_photo_thumb">				
+				<%= image_tag person.avatar.url(:thumb) %>
 			</div>
 			<% end %>
-			<%= paginate @users %>
+			<%= paginate @people %>
 		</div>
 	</div>
 	
 	<div id="content">
 		<p id="notice"><%= notice %></p>
-		<div id="<%= 'discussion_form_'+session[:user_id].to_s if session[:user_id] %>">
+		<div id="<%= 'discussion_form_'+session[:person_id].to_s if session[:person_id] %>">
 		<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	</div>
 		<%= subscribe_to "/discussions/new" %>
 		<h2>聊天记录:</h2>

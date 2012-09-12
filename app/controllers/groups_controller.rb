@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   # def index  
-  #  @groups = Group.includes(:user).order("created_at desc")
+  #  @groups = Group.includes(:person).order("created_at desc")
   #   respond_to do |format|
   #   format.html # index.html.erb
   #   format.json { render json: @groups }
@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @topics = @group.topics.order("created_at desc").page(params[:page])      
     @topic = Topic.new
-    @users = User.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
+    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -35,13 +35,13 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @group = current_user.groups.find(params[:id])
+    @group = current_person.groups.find(params[:id])
   end
 
   # POST /groups
   # POST /groups.json
   def create
-    @group = current_user.groups.build(params[:group])
+    @group = current_person.groups.build(params[:group])
 
     respond_to do |format|
       if @group.save
@@ -57,7 +57,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.json
   def update
-    @group = current_user.groups.find(params[:id])
+    @group = current_person.groups.find(params[:id])
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
@@ -73,7 +73,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group = current_user.groups.find(params[:id])
+    @group = current_person.groups.find(params[:id])
     @group.destroy
 
     respond_to do |format|

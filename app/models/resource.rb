@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 
 class Resource < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :person
   belongs_to :category
   has_many :comments, :as => :commable
   paginates_per 20

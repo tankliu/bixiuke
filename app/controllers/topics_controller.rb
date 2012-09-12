@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
 
   def index
     @topic = Topic.new
-	  @topics = Topic.includes(:user).order("created_at desc").page(params[:page])      
+	  @topics = Topic.includes(:person).order("created_at desc").page(params[:page])      
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,18 +28,18 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/edit
   def edit
-    @topic = current_user.topics.find(params[:id])
+    @topic = current_person.topics.find(params[:id])
   end
 
 
   # POST /topics
   # POST /topics.json
   def create
-    @topic = current_user.topics.build(params[:topic])
+    @topic = current_person.topics.build(params[:topic])
 
     respond_to do |format|
       if @topic.save
-        @topic.user.update_column(:score,@topic.user.score+2)
+        @topic.person.update_column(:score,@topic.person.score+2)
         format.html { redirect_to @topic.group, notice: '创建成功' }
         format.json { render json: @topic, status: :created, location: @topic }
       else
@@ -52,7 +52,7 @@ class TopicsController < ApplicationController
   # PUT /topics/1
   # PUT /topics/1.json
   def update
-    @topic = current_user.topics.find(params[:id])
+    @topic = current_person.topics.find(params[:id])
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
@@ -68,7 +68,7 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.json
   def destroy
-    @topic = current_user.topics.find(params[:id])
+    @topic = current_person.topics.find(params[:id])
     @topic.destroy
 
     respond_to do |format|

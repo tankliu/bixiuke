@@ -17,13 +17,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = current_user.comments.build(params[:comment])
+    @comment = current_person.comments.build(params[:comment])
 
     respond_to do |format|
       if @comment.save
         #对于帮忙解决别人问题的可以加2分
-        @comment.user.update_column(:score,@comment.user.score+1)
-        format.html { redirect_to @comment.commable, notice: '评论成功' }
+        @comment.person.update_column(:score,@comment.person.score+1)
+        if @comment.commable.is_a?(Topic)
+          format.html { redirect_to class_topic_path(@comment.commable.group,@comment.commable), notice: '评论成功' }
+        else
+          format.html { redirect_to @comment.commable, notice: '评论成功' }
+        end
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new", notice: '创建失败' }
@@ -39,7 +43,7 @@ class CommentsController < ApplicationController
     if is_admin?
       @comment = Comment.find(params[:id])
     else
-      @comment = current_user.comments.find(params[:id])
+      @comment = current_person.comments.find(params[:id])
     end
     @commable = @comment.commable
     @comment.destroy

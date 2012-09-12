@@ -4,13 +4,13 @@ one:
   title: MyString
   download_link: MyString
   description: MyText
-  user: admin
+  person: admin
   category: A3
 two:
   title: MyString
   download_link: MyString
   description: MyText
-  user: xueyuan
+  person: xueyuan
   category: A3
   
   

@@ -16,7 +16,7 @@ module ApplicationHelper
 
   
   def can_delete?(obj)
-    obj.user.id == session[:user_id] or is_admin? 
+    obj.person.id == session[:person_id] or is_admin? 
   end
   
   def commend_star(score)

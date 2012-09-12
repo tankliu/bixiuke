@@ -11,10 +11,10 @@ class DiscussionsController < ApplicationController
   # POST /discussions
   # POST /discussions.json
   def create
-    @discussion = current_user.discussions.build(params[:discussion])
+    @discussion = current_person.discussions.build(params[:discussion])
     respond_to do |format|
       if @discussion.save        
-        @discussion.user.update_column(:score,@discussion.user.score+1)
+        @discussion.person.update_column(:score,@discussion.person.score+1)
         format.html { redirect_to @discussion.classroom, notice: '创建成功' }
         format.json { render json: @discussion, status: :created, location: @discussion }
         format.js {}
@@ -33,7 +33,7 @@ class DiscussionsController < ApplicationController
     if is_admin?
       @discussion = Discussion.find(params[:id])
     else
-      @discussion = current_user.discussions.find(params[:id])
+      @discussion = current_person.discussions.find(params[:id])
     end
     @discussion.destroy
     respond_to do |format|

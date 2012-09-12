@@ -11,12 +11,12 @@
 
 <div class="box ">
 	<div id="content">
-		<div class="topic_user_photo">
-			<%= image_tag @resource.user.photo.url(:thumb) %>
+		<div class="topic_person_photo">
+			<%= image_tag @resource.person.avatar.url(:thumb) %>
 		</div>
 		<div class="topic_title"><%= simple_format truncate(@resource.title,:length => 35) %></div>
 		<br /><br />
-		<div class="topic_meta">发布:<%= link_to @resource.category.name, category_resources_path(@resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to @resource.user.nick_name, @resource.user %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @resource.created_at.to_date.to_s %>
+		<div class="topic_meta">发布:<%= link_to @resource.category.name, category_resources_path(@resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to @resource.person.nick_name, @resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @resource.created_at.to_date.to_s %>
 		</div>
 				
 		<div class="download_link_area">

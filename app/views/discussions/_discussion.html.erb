@@ -1,5 +1,5 @@
 <div class="discussion_meta">
-	<%= link_to discussion.user.nick_name, discussion.user %>(<%= discussion.user.city %>)&nbsp;&nbsp;&nbsp;&nbsp;<%= discussion.created_at.to_date.to_s %>
+	<%= link_to discussion.person.nick_name, discussion.person %>(<%= discussion.person.city %>)&nbsp;&nbsp;&nbsp;&nbsp;<%= discussion.created_at.to_date.to_s %>
 	<% if is_admin? %>
 			<%= link_to 'X', discussion, :data => { :confirm => '确定删除?' }, method: :delete %>
 	<% end %>

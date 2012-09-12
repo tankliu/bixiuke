@@ -508,7 +508,7 @@ h4 {
 
 
 
-#notes_content .user_name, #notes_content .category, #notes_content .date{
+#notes_content .person_name, #notes_content .category, #notes_content .date{
 	font-size:14px;
 	color:#0cf;
 }
@@ -517,7 +517,7 @@ h4 {
 	float:right;
 }
 
-#notes_content .user_name{
+#notes_content .person_name{
 	margin-left:200px;
 }
 
@@ -706,21 +706,21 @@ h4 {
 	border: 1px dashed #f09;
 }
 
-/*user*/
+/*person*/
 
-#user_photo, #classroom_photo, #group_photo{
+#person_photo, #classroom_photo, #group_photo{
 	width:110px;
 	float:left;
 }
 
-#user_photo img, #classroom_photo img, #group_photo img{
+#person_photo img, #classroom_photo img, #group_photo img{
 	margin-top:5px;
 }
-#user_meta, #classroom_meta, #group_meta{
+#person_meta, #classroom_meta, #group_meta{
 	width:190px;
 	float:left;
 }
-.user_info_index{
+.person_info_index{
 	background:#f5f5f5;
 	width:33.2%;
 	height:150px;
@@ -728,14 +728,14 @@ h4 {
 	border-right: 1px dotted #f09;
 	
 }
-.user_photo_index{
+.person_photo_index{
 	width:50%;
 	float:left;
 }
-.user_photo_index img{
+.person_photo_index img{
 	margin-left:20px;
 }
-.user_info_text_index{
+.person_info_text_index{
 	width:50%;
 	height:132px;
 	float:left;
@@ -755,17 +755,17 @@ h4 {
 	float:left;
 }
 
-#classroom_users, #group_users{
+#classroom_people, #group_people{
 	float:left;
 	width:300px;
 	margin-top:20px;
 }
-.user_photo_thumb{
+.person_photo_thumb{
 	width:60px;
 	height:80px;
 	float:left;
 }
-.user_photo_thumb img{
+.person_photo_thumb img{
 	margin:0px;
 }
 
@@ -805,12 +805,12 @@ h4 {
 	color:#f00;
 }
 /*topic*/
-.topic_user_photo{
+.topic_person_photo{
 	float:left;
 	width:60px;
 	height:50px;
 }
-.topic_user_photo img{
+.topic_person_photo img{
 	margin:0;
 }
 .topic_title{
