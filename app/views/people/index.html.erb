@@ -1,0 +1,59 @@
+<div class="box">
+	<h2>泡妞学网学员和老师,助教(非学员不显示)</h2>
+ 	<p id="notice"><%= notice %></p>
+	<div class="order_way">
+		<ul class="public_nav">
+			<li <%="class='selected'" if @order_way == "score" %> >
+				<%= link_to "积分排行", people_path(:order_way => "score") %>
+			</li>
+			
+			<li <%="class='selected'" if @order_way == "join_time" %> >
+				<%= link_to "最新加入", people_path(:order_way => "join_time") %>
+			</li>
+			
+			<li <%="class='selected'" if @order_way == "city" %> >
+				<%= link_to "按城市排序", people_path(:order_way => "city") %>
+			</li>
+		</ul>
+	</div>
+	<br><br><br>
+	<% @people.each do |person| %>
+		<div class="person_info_index">
+			<div class="person_photo_index">
+				<%= link_to image_tag(person.avatar.url(:medium)), person %>
+			</div>
+			<div class="person_info_text_index">
+	
+				<p>
+				  <b>昵称:</b>
+				  <%= link_to person.nick_name, person %>
+				</p>
+				<p>
+				  <b>城市:</b>
+				  <%= person.city %>
+				</p>
+
+				<p>
+				  <b>角色:</b>
+				  <%= person.role %>
+				</p>
+				<p>
+				  <b>积分:</b>
+				  <%= person.score %>
+				</p>
+				<p>
+				  <b>等级:</b>
+				  <%= person.rank %>
+				</p>
+				<% if session[:person_id] == person.id or is_admin? %>
+				<%= link_to '编辑', edit_person_path(person) %>
+				<% end %>
+
+			</div>
+		</div>		
+	<% end %>
+	<hr />
+	<% if is_admin? %>
+		<%= link_to '创建学员', new_person_path %>
+	<% end %>
+</div>

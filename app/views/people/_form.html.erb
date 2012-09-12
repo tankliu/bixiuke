@@ -1,0 +1,92 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "错误") %> :</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<% if @person.new_record? %>
+		<div class="field">
+		  <%= f.label :email, "邮箱(2到20字符)" %><br />
+		  <%= f.text_field :email %>
+	  </div>
+	<% end %>
+	
+  <div class="field">
+	  <% if @person.new_record? %>
+	    <%= f.label :password, "密码(6到16字符)" %><br />
+		<% else %>
+    	<%= f.label :password, "修改密码(6到16字符,请及时修改密码,如果不需要修改请不要填写)" %><br />
+		<% end %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+  	<%= f.label :password_confirmation, "重新输入密码" %> <br />
+		<%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :nick_name, "昵称(2到10字,保护隐私,不要用真名)" %><br />
+    <%= f.text_field :nick_name %>
+  </div>
+  <div class="field">
+    <%= f.label :city, "城市(2到4字,前面不要写省,后面不要写市,比如:深圳,不需要写广东省深圳市)" %><br />
+    <%= f.text_field :city %>
+  </div>
+	
+	<% if is_admin? and @person.id != session[:person_id]%>
+	  <div class="field">
+	    <%= label_tag :role, "角色" %><br />
+	    <%= select_tag :role, options_for_select(Person::Roles.collect {|role| [role,role]}, @person.new_record? ? "非会员" : @person.role) %>
+	  </div>
+  <% end %>
+  
+
+
+<!-- 再次编辑自己的资料 -->  
+  <% unless @person.new_record? %>
+	 <!-- 管理员可以编辑  -->
+
+	  <div class="field">
+	    <%= f.label :age, "年龄(数字,16到60)" %><br />
+	    <%= f.number_field :age %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :marriage, "选择婚姻状态" %><br />
+	    <%= f.select :marriage, ApplicationHelper::Marriage, :include_blank => true %>
+	  </div>
+	
+	  <div class="field">
+	    <%= f.label :education, "选择教育程度" %><br />
+	    <%= f.select :education, ApplicationHelper::Education, :include_blank => true %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :job, "职业(2到10字)" %><br />
+	    <%= f.text_field :job %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :salary, "月薪(数字,1000到10000000)" %><br />
+	    <%= f.number_field :salary %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :sex, "选择性别" %><br />
+	    <%= f.select :sex, ApplicationHelper::Sex, :include_blank => true %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :avatar, "修改头像(添加一张图片)" %><br />
+	    <%= f.file_field :avatar  %>
+	  </div>
+	
+
+  <% end %>
+
+	
+  <div class="actions">
+    <%= f.submit "提交" %>
+  </div>
+<% end %>
