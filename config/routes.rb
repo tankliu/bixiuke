@@ -70,21 +70,21 @@ V8::Application.routes.draw do
   match '/classes'  => "groups#index"
   match '/classes/:group_id/topics/:id' => 'topics#show', :as => :class_topic
   
-  match 'resources/category/:order_number' => "resources#index", :as => :category_resources
-  match 'notes/category/:order_number' => "notes#index", :as => :category_notes
-  
+  match 'resources/category/:path' => "resources#index", :as => :category_resources
+  match 'notes/category/:path' => "notes#index", :as => :category_notes
+  match 'articles/category/:path' => "articles#index", :as => :category_articles
   
   
   match '/courses/page(/:page)' => 'courses#index'
   
   match '/notes/page(/:page)' => 'notes#index'
-  match '/notes/category/:order_number/page(/:page)' => 'notes#index'
+  match '/notes/category/:path/page(/:page)' => 'notes#index'
   
   match '/articles/page(/:page)' => 'articles#index'
-  match '/categories(/:category_id)/articles/page(/:page)' => 'articles#index'
+  match '/articles/category/:path/page(/:page)' => 'articles#index'
   
   match '/resources/page(/:page)' => 'resources#index'
-  match '/resources/category/:order_number/page(/:page)' => 'resources#index'
+  match '/resources/category/:path/page(/:page)' => 'resources#index'
   
   
   # match '/notes/categories(/:category_id)' , :controller=>"notes",:action=>"index"

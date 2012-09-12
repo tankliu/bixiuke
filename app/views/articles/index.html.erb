@@ -26,7 +26,7 @@
 					</div>
 					<div class="topic_title"><%= link_to truncate(article.title,:length => 35), article %></div>
 					<br /><br />
-					<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
+					<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(:path => article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
 					</div>
 					<br />
 					<div class="article_image"><%= image_tag article.attachment.url %></div>
@@ -41,9 +41,9 @@
 	</div>
 	<div id="categories" class=<%=is_member? ? "article_categories_for_member" : "article_categories" %>>	
 		<ul>
-			<li <%="class='selected'" if @category_id == 0  %>><%= link_to "所有文章", articles_path %></li>
+			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有文章", articles_path %></li>
 			<% @categories.each do |category| %>
-			<li <%="class='selected'" if @category_id == category.id  %>><%= link_to category.name, category_articles_path(category) %></li>
+			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_articles_path(:path => category.path) %></li>
 			<% end %>
 		</ul>
 	</div>

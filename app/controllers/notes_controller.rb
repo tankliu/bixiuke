@@ -7,11 +7,11 @@ class NotesController < ApplicationController
 
   def index
     @note = Note.new
-    @order_number = params[:order_number].to_i
+    @path = params[:path]
     @categories = Category.where(:typeable => "Note").order("order_number")
     if is_member? 
-      if params[:order_number]
-        @notes = Category.where("typeable=? and order_number=?","Note",params[:order_number])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
+      if params[:path]
+        @notes = Category.where("typeable=? and path=?","Note",params[:path])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
       else
   	    @notes = Note.includes(:person).order("created_at desc").page(params[:page])      
       end
@@ -20,12 +20,12 @@ class NotesController < ApplicationController
         format.json { render json: @notes }
       end
     else
-      if params[:order_number]
-        case params[:order_number].to_i
-        when 7..9          
+      if params[:path]
+        case 
+        when ["qianxi","asd","sex"].include?(params[:path])
           redirect_to :join, notice:"高级惯例只有学员才可以浏览" and return
         else
-          @notes = Category.where("typeable=? and order_number=?","Note",params[:order_number])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
+          @notes = Category.where("typeable=? and path=?","Note",params[:path])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
         end
       else
         categories_range = 29..34

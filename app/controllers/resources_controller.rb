@@ -6,11 +6,11 @@ class ResourcesController < ApplicationController
   before_filter :only_member_can_do, :except => [:index, :show]
 
   def index
-    @order_number = params[:order_number].to_i
+    @path = params[:path]
     @resource = Resource.new
     @categories = Category.where(:typeable => "Resource").order("order_number")
-    if params[:order_number] 
-      @resources = Category.where("typeable = ? and order_number=?", "Resource", params[:order_number])[0].resources.includes(:person).order("created_at desc").page(params[:page])      
+    if params[:path] 
+      @resources = Category.where("typeable = ? and path=?", "Resource", params[:path])[0].resources.includes(:person).order("created_at desc").page(params[:page])      
     else
 	    @resources = Resource.includes(:person).order("created_at desc").page(params[:page])     
     end

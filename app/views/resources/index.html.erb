@@ -33,7 +33,7 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 					</div>
 					<div class="topic_title"><%= link_to truncate(resource.title,:length => 35), resource %></div>
 					<br /><br />
-					<div class="topic_meta">类别:<%= link_to resource.category.name, category_resources_path(:order_number => resource.category.order_number) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
+					<div class="topic_meta">类别:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
 					</div>
 
 					<div class="topic_edit_bar">
@@ -50,9 +50,9 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 	</div>
 	<div id="categories">	
 		<ul>
-			<li <%="class='selected'" if @category_id == 0  %>><%= link_to "所有资源", resources_path %></li>
+			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有资源", resources_path %></li>
 			<% @categories.each do |category| %>
-			<li <%="class='selected'" if @category_id == category.id  %>><%= link_to category.name, category_resources_path(:order_number => category.order_number) %></li>
+			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_resources_path(:path => category.path) %></li>
 			<% end %>
 		</ul>
 	</div>

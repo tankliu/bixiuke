@@ -27,7 +27,7 @@
 			<div class="topic_person_photo">
 				<%= image_tag note.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title">阶段:<%= link_to note.category.name, category_notes_path(:order_number => note.category.order_number) %></div>
+			<div class="topic_title">阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %></div>
 			<br /><br />
 			<div class="topic_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
 			</div>
@@ -47,10 +47,10 @@
 	
 	<div id="categories">
 		<ul>
-			<li <%="class='selected'" if @category_id == 0  %>><%= link_to "所有阶段", notes_path %></li>
+			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有阶段", notes_path %></li>
 			<% @categories.each do |category| %>
 			<li class="arrow"></li>			
-			<li <%="class='selected'" if @category_id == category.id  %>><%= link_to category.name, category_notes_path(:order_number => category.order_number) %></li>
+			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_notes_path(:path => category.path) %></li>
 			<% end %>
 		</ul>
 
