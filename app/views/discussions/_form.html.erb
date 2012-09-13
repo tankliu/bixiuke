@@ -1,5 +1,5 @@
 <%= form_for(discussion, :remote => true) do |f| %>
-  <% if discussion.errors.any? %>
+  <%if discussion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(discussion.errors.count, "错误") %> :</h2>
 
@@ -13,7 +13,7 @@
 	<% unless is_member? %>
 		<div class="note_notice">(非学员不可以聊天)</div>
 	<% end %>
-	<p>可以输入 <span class="charsLeft">140</span> 个字符(+1积分)</p>
+	<p>按Enter键直接发送,可以输入 <span class="charsLeft">140</span> 个字符(+1积分)</p>
   <div class="field">
     <%= f.text_area :content, :size => "70x4", :class => "limited" %>
   </div>
@@ -26,7 +26,7 @@
 
 
   <div class="actions">
-    <%= f.submit "写好了,说吧!" %>
+    <%= f.submit "写好了,说吧!", :id => "discussion_submit" %>
   </div>
 
 <% end %>

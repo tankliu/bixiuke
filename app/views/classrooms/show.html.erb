@@ -1,9 +1,17 @@
 <script type="text/javascript">
-	$(function () {
+		$(function () {
         $('textarea.limited').maxlength({
             'feedback' : '.charsLeft', 'useInput' : true
         });
     });
+
+
+		$('#discussion_content').live('keydown', function(e) {
+		  if (e.keyCode === 13) {
+		    $('#discussion_submit').trigger('submit');
+		  }
+		});
+		
 </script>
 
 <div class="box">

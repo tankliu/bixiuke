@@ -38,7 +38,11 @@ class ResourcesController < ApplicationController
 
   # GET /resources/1/edit
   def edit
-    @resource = current_person.resources.find(params[:id])
+    if is_admin?
+      @resource = Resource.find(params[:id])
+    else
+      @resource = current_person.resources.find(params[:id])
+    end
   end
 
   # POST /resources
@@ -61,8 +65,12 @@ class ResourcesController < ApplicationController
   # PUT /resources/1
   # PUT /resources/1.json
   def update
-    @resource = current_person.resources.find(params[:id])
-
+    if is_admin?
+      @resource = Resource.find(params[:id])
+    else
+      @resource = current_person.resources.find(params[:id])
+    end
+      
     respond_to do |format|
       if @resource.update_attributes(params[:resource])
         format.html { redirect_to resources_path, notice: '更新成功' }
