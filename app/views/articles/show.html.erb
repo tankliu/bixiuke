@@ -16,7 +16,7 @@
 		</div>
 		<div class="topic_title"><%= simple_format truncate(@article.title,:length => 35) %></div>
 		<br /><br />
-		<div class="topic_meta">类别:<%= link_to @article.category.name, category_articles_path(@article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to @article.person.nick_name, @article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= @article.views %>
+		<div class="topic_meta">类别:<%= link_to @article.category.name, category_articles_path(:path => @article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to @article.person.nick_name, @article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= @article.views %>
 		</div>
 		
 		<div class="topic_content"><%= simple_format @article.content %></div>

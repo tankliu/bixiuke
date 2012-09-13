@@ -14,7 +14,7 @@
 			<div class="topic_person_photo">
 				<%= image_tag @note.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title">阶段:<%= link_to @note.category.name, @note.category %></div>
+			<div class="topic_title">阶段:<%= link_to @note.category.name, category_notes_path(:path => @note.category.path) %></div>
 			<br /><br />
 			<div class="topic_meta">发布:<%= link_to @note.person.nick_name, @note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @note.created_at.to_date.to_s %>
 			</div>
