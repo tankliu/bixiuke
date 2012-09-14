@@ -5,12 +5,39 @@
         });
     });
 
-
+		// $('#discussion_content').live('keydown', function(e) {
+		//   if (e.keyCode === 13) {
+		//     $('#discussion_submit').trigger('submit');
+		// 		var d = new Date();
+		// 		var s = d.getYear()+1900+"-"+(d.getMonth()+1)+"-"+(d.getDay()+9)+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+		// 		$("#discussions").prepend("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ s+"</div><div class='discussion_content'><p>"+$("#discussion_content").attr("value") +"</p></div><br/>");
+		// 		$("#discussion_content").attr({value: ''});
+		//   }
+		// });
+		// 
+		// $('#discussion_submit').live('click', function(e) {
+		// 		var d = new Date();
+		// 		var s = d.getYear()+1900+"-"+(d.getMonth()+1)+"-"+(d.getDay()+9)+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+		// 		$("#discussions").prepend("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ s+"</div><div class='discussion_content'><p>"+$("#discussion_content").attr("value") +"</p></div><br/>");
+		// 		$('form#new_discussion').live('submit', function(e) {
+		// 			$("#discussion_content").attr({value: ''});
+		// 		});
+		// });
+		
+		
 		$('#discussion_content').live('keydown', function(e) {
-		  if (e.keyCode === 13) {
-		    $('#discussion_submit').trigger('submit');
-		  }
-		});
+			  if (e.keyCode === 13) {
+			    $('#discussion_submit').trigger('submit');
+			  }
+			});
+			
+			$('form#new_discussion').live('submit', function(e) {
+					var d = new Date();
+					var s = d.getYear()+1900+"-"+(d.getMonth()+1)+"-"+(d.getDay()+9)+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+					$("#discussions").prepend("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ s+"</div><div class='discussion_content'><p>"+$("#discussion_content").attr("value") +"</p></div><br/>");
+					$("#discussion_content").attr({value: ''});
+			});
+		
 		
 </script>
 
@@ -56,12 +83,18 @@
 	
 	<div id="content">
 		<p id="notice"><%= notice %></p>
+		<div id="person_info" style="display:none;">
+			<div id="person_id"><%= session[:person_id] if session[:person_id]%></div>
+			<div id="person_nick_name"><%= current_person.nick_name if session[:person_id]%></div>
+			<div id="person_city"><%= current_person.city if session[:person_id] %></div>
+		</div>
+		
 		<div id="<%= 'discussion_form_'+session[:person_id].to_s if session[:person_id] %>">
 		<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	</div>
 		<%= subscribe_to "/discussions/new" %>
 		<h2>聊天记录:</h2>
-		<div id="discussions">
-		<%= render @discussions %>
+		<div id="discussions" class="<%= 'discussions_'+session[:person_id].to_s if session[:person_id] %>">
+				<%= render @discussions %>
 		</div>
 		<%= paginate @discussions %>
 		
