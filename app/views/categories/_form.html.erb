@@ -11,10 +11,16 @@
     </div>
   <% end %>
 
+	<div class="field">
+    <%= f.label :avatar, "分类图片(必填)" %><br />
+    <%= f.file_field :avatar  %>
+  </div>
+
   <div class="field">
     <%= f.label :name, "名称(1到20字)" %><br />
     <%= f.text_field :name %>
   </div>
+
 
   <div class="field">
     <%= f.label :path, "名称(1到20字)" %><br />

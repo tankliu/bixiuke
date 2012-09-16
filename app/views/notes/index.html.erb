@@ -7,7 +7,18 @@
 	</div>
 <% end %>
 <div class="box">
+	<div id="categories">
+		<ul>
+			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有阶段", notes_path %></li>
+			<% @categories.each do |category| %>
+			<li class="arrow"></li>			
+			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_notes_path(:path => category.path) %></li>
+			<% end %>
+		</ul>
 
+	</div>
+	
+	
 	<div id="content">
 		<div class="note_form">
 			<p id="notice"><%= flash[:notice] || flash.now[:notice] %></p>
@@ -45,16 +56,7 @@
 		<%= paginate @notes %>		
 	</div>
 	
-	<div id="categories">
-		<ul>
-			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有阶段", notes_path %></li>
-			<% @categories.each do |category| %>
-			<li class="arrow"></li>			
-			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_notes_path(:path => category.path) %></li>
-			<% end %>
-		</ul>
 
-	</div>
 	
 
 	

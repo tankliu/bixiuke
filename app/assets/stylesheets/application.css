@@ -452,7 +452,8 @@ h4 {
 
 #categories{
 	width:205px;
-	float:right;
+	margin-right:40px;
+	float:left;
 }
 
 #categories ul {
@@ -462,6 +463,11 @@ h4 {
 
 #categories ul li{
 	margin-left: -40px;
+}
+
+#categories ul li img{
+	margin:6px 0 0 6px;
+	float:left;
 }
 
 #categories ul li a {
@@ -576,17 +582,6 @@ h4 {
 	margin:0;
 }
 
-.article_categories_for_member{
-	position:absolute;
-	top:180px;
-	left:960px;
-}
-
-.article_categories{
-	position:absolute;
-	top:392px;
-	left:960px;
-}
 .read_full{
 	clear:both;
 }
@@ -819,6 +814,7 @@ h4 {
 }
 .topic_title{
 	float:left;
+	width:530px;
 	font-weight:bold;
 }
 .topic_content{

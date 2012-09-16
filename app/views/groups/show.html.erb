@@ -55,7 +55,7 @@
 			<div class="topic_person_photo">
 				<%= image_tag topic.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title"><%= link_to truncate(topic.title,:length => 35), class_topic_path(@group,topic) %></div>
+			<div class="topic_title"><%= link_to topic.title, class_topic_path(@group,topic) %></div>
 			<br /><br />
 			<div class="topic_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
 			</div>

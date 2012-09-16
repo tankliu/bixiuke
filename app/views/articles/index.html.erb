@@ -9,6 +9,14 @@
 <% end %>
 
 <div class="box">
+	<div id="categories">
+		<ul>
+			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有文章", articles_path %></li>
+			<% @categories.each do |category| %>
+			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_articles_path(:path => category.path) %></li>
+			<% end %>
+		</ul>
+	</div>
 	
 	<div id="content">		
 				<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>	
@@ -39,14 +47,7 @@
 				<%= paginate @articles %>		
 			
 	</div>
-	<div id="categories" class=<%=is_member? ? "article_categories_for_member" : "article_categories" %>>	
-		<ul>
-			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有文章", articles_path %></li>
-			<% @categories.each do |category| %>
-			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_articles_path(:path => category.path) %></li>
-			<% end %>
-		</ul>
-	</div>
+
 	
 </div>  <!-- end of box -->
 
