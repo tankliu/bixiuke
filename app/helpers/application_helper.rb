@@ -33,4 +33,10 @@ module ApplicationHelper
   Marriage = %w(未婚 已婚)
   Education = %w(没上学 小学 初中 高中 专科 本科 硕士 博士 博士后 留学)
   Sex = %w(男 女)   
+  
+  def broadcast(channel, &block)
+      message = {:channel => channel, :data => capture(&block)}
+      uri = URI.parse("http://localhost:9292/faye")
+      Net::HTTP.post_form(uri, :message => message.to_json)
+  end
 end

@@ -1,15 +1,15 @@
 # -*- encoding : utf-8 -*-
 class ClassroomsController < ApplicationController
-   skip_before_filter :is_login?, :only => [:show]
-   before_filter :only_admin_can_do, :except => [:show]
+   skip_before_filter :is_login?, :only => [:show, :index]
+   before_filter :only_admin_can_do, :except => [:show, :index]
 
-   def index  
-     @classrooms = Classroom.includes(:person).order("created_at desc")
-     respond_to do |format|
-       format.html # index.html.erb
-       format.json { render json: @classrooms }
-     end
-   end
+   # def index  
+   #     @classrooms = Classroom.includes(:person).order("created_at desc")
+   #     respond_to do |format|
+   #       format.html # index.html.erb
+   #       format.json { render json: @classrooms }
+   #     end
+   #   end
    
    def show
      @classroom = Classroom.find(params[:id])
