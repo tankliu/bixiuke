@@ -39,9 +39,9 @@ class ClientEvent
   def build_hash(name, action)
     message_hash = {}
     if action == 'subscribe'
-      message_hash['message'] = { 'content' => "#{name} 进入聊天室", 'people_list' => connected_clients.values.uniq}      
+      message_hash['message'] = { 'content' => "#{name} 进入聊天室", 'people_list' => connected_clients.values}      
     elsif action == 'disconnect'
-      message_hash['message'] = { 'content' => "#{name} 离开聊天室", 'people_list' => connected_clients.values.uniq }
+      message_hash['message'] = { 'content' => "#{name} 离开聊天室", 'people_list' => connected_clients.values}
     end
     message_hash
   end

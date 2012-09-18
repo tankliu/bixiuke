@@ -1,4 +1,12 @@
 <% broadcast "/discussions/new" do %>
-$("#discussions").prepend('<%= j (render :partial => "discussion", :locals => {:discussion => @discussion}) %>');
+	if ($("#discussions")[0].className != "discussions_<%=@discussion.person.id%>")
+	{
+	   	$("#discussions").prepend('<%= j (render :partial => "discussion", :locals => {:discussion => @discussion}) %>');
+	}
 <% end %>
-$("#new_message")[0].reset();
+$("#new_discussion")[0].reset();
+
+
+
+
+   
