@@ -32,9 +32,11 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'private_pub'
+# gem 'private_pub'
 #faye需要thin服务器
+gem 'faye'
 gem 'thin'
+gem 'hashie'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

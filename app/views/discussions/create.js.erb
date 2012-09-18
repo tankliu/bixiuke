@@ -1,7 +1,4 @@
-<% publish_to "/discussions/new" do %>
-	if ($("#discussions")[0].className != "discussions_<%=@discussion.person.id%>")
-	{
-		$("#discussions").prepend('<%= j (render :partial => "discussion", :locals => {:discussion => @discussion}) %>');
-	}
-	$("#discussion_form_"+<%=session[:person_id].to_s%>+" "+"#discussion_content").attr({value: ''});
+<% broadcast "/discussions/new" do %>
+$("#discussions").prepend('<%= j (render :partial => "discussion", :locals => {:discussion => @discussion}) %>');
 <% end %>
+$("#new_message")[0].reset();

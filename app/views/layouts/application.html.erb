@@ -6,7 +6,9 @@
 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
   <meta name = "description" content = "<%= yield(:description) %>" /> 
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application"%>
+  <%= javascript_include_tag "http://localhost:9292/faye.js"%>
+
   <%= csrf_meta_tags %>
 <% if Rails.env == "production" %>
 	<% if controller.class == PagesController or controller.class == CoursesController %>
@@ -100,7 +102,7 @@
 				</li>
 				
 				<li <%="class='selected'" if controller.class == ClassroomsController %> >
-  				<a href="/classrooms" target="_top">聊天室<br /><span>讨论,每晚9点</span></a>
+  				<a href="/classrooms/1" target="_top">聊天室<br /><span>讨论,每晚9点</span></a>
   			</li>
 
 				<li <%="class='selected'" if controller.class == GroupsController %> >

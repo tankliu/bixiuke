@@ -65,6 +65,7 @@ GEM
       yajl-ruby (>= 1.0.0)
     faye-websocket (0.4.6)
       eventmachine (>= 0.12.0)
+    hashie (1.2.0)
     hike (1.2.1)
     http_parser.rb (0.5.3)
     i18n (0.6.0)
@@ -97,8 +98,6 @@ GEM
       rack
       rake (>= 0.8.1)
     polyglot (0.3.3)
-    private_pub (1.0.3)
-      faye
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -158,12 +157,13 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
   execjs
+  faye
+  hashie
   jquery-rails
   kaminari
   mysql2
   paperclip (~> 3.0)
   passenger
-  private_pub
   rails (= 3.2.7)
   sass-rails (~> 3.2.3)
   sqlite3
