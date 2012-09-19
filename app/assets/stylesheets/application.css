@@ -749,12 +749,23 @@ h4 {
 	width:300px;
 	float:left;
 }
-
-#classroom_people, #group_people{
+#classroom_people{
+	position:absolute;
+	top:200px;
+	left:40px;
+	width:150px;
+	background-color:#eee;
+	border: 2px solid #ccc;
+	border-right:0;
+	padding:20px;
+	
+}
+#group_people{
 	float:left;
 	width:300px;
 	margin-top:20px;
 }
+
 .person_photo_thumb{
 	width:60px;
 	height:80px;

@@ -3,7 +3,6 @@ class ClientEvent
   MONITORED_CHANNELS = [ '/meta/subscribe', '/meta/disconnect' ]
 
   def incoming(message, callback)
-    puts message.inspect
     
     return callback.call(message) unless MONITORED_CHANNELS.include? message['channel']
 

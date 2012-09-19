@@ -21,7 +21,7 @@
 	});
 	// add extension to send user name, and update discussion or user list message
 	$(function() {
-	 	 var faye = new Faye.Client('http://localhost:9292/faye');
+	 	 var faye = new Faye.Client('http://www.paoniuxue.com:9292/faye');
 			faye.addExtension({
 			  outgoing: function(message, callback) {
 			    if (message.channel === '/meta/subscribe') {
@@ -81,7 +81,7 @@
 			</p>
 		</div>
 		<div id="classroom_people">
-			<h4>在线用户:</h4>
+			<p><b>聊天室在线用户:</b></p><br/>
 			<div id="people_list">
 			</div>
 		</div>
