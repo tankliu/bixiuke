@@ -718,18 +718,20 @@ h4 {
 
 /*person*/
 
-#person_photo, #classroom_photo, #group_photo{
+#person_photo, #group_photo{
 	width:110px;
 	float:left;
 }
 
-#person_photo img, #classroom_photo img, #group_photo img{
+
+#person_photo img, #group_photo img{
 	margin-top:5px;
 }
-#person_meta, #classroom_meta, #group_meta{
+#person_meta, #group_meta{
 	width:190px;
 	float:left;
 }
+
 .person_info_index{
 	background:#f5f5f5;
 	width:33.2%;
@@ -759,21 +761,41 @@ h4 {
 }
 
 /*classroom*/
+.classroom_index{
+	background: url(/assets/classroom_bg.png) no-repeat 10px 0px;
+}
+#classroom_top{
+	width:920px;
+	height:60px;
+	padding:0 10px 10px 10px;
+}
+#classroom_photo{
+	width: 60px;
+	float: left;
+}
 
-#classroom_des, #group_des{
-	width:300px;
-	float:left;
+#classroom_photo img{
+	margin: -3px 0 0 -4px;
+}
+
+#classroom_des{
+	width: 838px;
+	float: left;
+	margin-left: 20px;
+}
+#classroom_left{
+	margin-left:1px;
+	width:739px;
+	height:466px;
+	float: left;
 }
 #classroom_people{
-	position:relative;
-	top:40px;
-	left:-840px;
-	width:150px;
-	background-color:#eee;
-	border: 2px solid #ccc;
-	border-right:0;
-	padding:20px;
-	
+	padding:3px 3px 3px 8px;
+	width:187px;
+	float:right;
+	height:460px;
+	overflow:auto;
+	overflow-x:hidden;
 }
 #group_people{
 	float:left;
@@ -798,10 +820,27 @@ h4 {
 /*discussion*/
 #discussions{
 	padding:10px;
-	width:100%;
+	width:720px;
+	height:300px;
+	overflow:auto;
+	overflow-x:hidden;
 	float:left;
-	background-color: #ffc;
-	background: #ffc url(/assets/discussions_bg.png) repeat-y scroll right bottom;
+}
+#discussions_history{
+	width:720px;
+	height:16px;
+	float:left;
+	padding:5px 10px;
+}
+#new_discussion{
+	margin: 0;
+	width: 740px;
+	height: 120px;
+	float: left;
+}
+#discussion_content{
+	width:730px;
+	height:79px;
 }
 #speak{
 	position:fixed;
@@ -823,12 +862,16 @@ h4 {
 }
 #discussion_submit{
 	float:right;
-	margin-right:40px;
 }
 .charsLeft{
 	font-size:1.5em;
 	color:#f00;
 }
+#group_des{
+	width:300px;
+	float:left;
+}
+
 /*topic*/
 .topic_person_photo{
 	float:left;

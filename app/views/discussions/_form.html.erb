@@ -10,18 +10,7 @@
       </ul>
     </div>
   <% end %>
-	<% unless is_member? %>
-		<div class="note_notice">(非学员不可以聊天)</div>
-	<% end %>
-	<p>按Enter键直接发送,可以输入 <span class="charsLeft">140</span> 个字符(+1积分)
-		<input type="button" value="红" class="red" onclick="setColor('red');" />
-		<input type="button" value="粉" class="pink" onclick="setColor('pink');" />
-		<input type="button" value="绿" class="green" onclick="setColor('green');" />
-		<input type="button" value="蓝" class="blue" onclick="setColor('blue');" />
-		<input type="button" value="综" class="brown" onclick="setColor('brown');" />
-		<input type="button" value="大" onclick="setColor('big_text');" />
-		
-	</p>
+
   <div class="field">
     <%= f.text_area :content, :size => "75x5", :class => "limited" %>
   </div>
@@ -34,7 +23,8 @@
 
 
   <div class="actions">
-    <%= f.submit "写好了,说吧!", :id => "discussion_submit" %>
+		可输入 <span class="charsLeft">140</span> 个字符(+1积分),按Enter键直接发送
+    <%= f.submit "发送", :id => "discussion_submit" %>
   </div>
 
 <% end %>

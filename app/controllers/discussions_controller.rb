@@ -7,8 +7,6 @@ class DiscussionsController < ApplicationController
   before_filter :only_member_can_do, :except => [:index]
   before_filter :only_admin_can_do, :only => [:destroy]
   
-  # POST /discussions
-  # POST /discussions.json
   def create
     @discussion = current_person.discussions.build(params[:discussion])
     respond_to do |format|
@@ -24,6 +22,9 @@ class DiscussionsController < ApplicationController
       end
     end
   end
+
+
+
 
 
 

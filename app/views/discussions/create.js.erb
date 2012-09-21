@@ -1,12 +1,9 @@
 <% broadcast "/discussions/new" do %>
 	if ($("#discussions")[0].className != "discussions_<%=@discussion.person.id%>")
 	{
-	   	$("#discussions").prepend('<%= j (render :partial => "discussion", :locals => {:discussion => @discussion}) %>');
+	   	$("#discussions").append('<%= j (render :partial => "discussion", :locals => {:discussion => @discussion}) %>');
 	}
+	$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;
 <% end %>
 $("#new_discussion")[0].reset();
 
-
-
-
-   
