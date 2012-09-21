@@ -12,7 +12,7 @@ class Classroom < ActiveRecord::Base
   #TODO:,图片如何加水印
   
   has_attached_file :avatar,   
-          :styles => {:medium => '100x100'},
+          :styles => {:medium => '50x50'},
           :path => ":rails_root/public/system/:class/:attachment/#{Date.today.to_s[0,7]}/:style/:hash.:extension",
           :url => "/system/:class/:attachment/:avatar_date/:style/:hash.:extension",
           :hash_data  =>  ":id/:style/:updated_at",

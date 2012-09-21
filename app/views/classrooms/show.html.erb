@@ -5,7 +5,7 @@
 	          'feedback' : '.charsLeft', 'useInput' : true
 	      });
 	});
-	// enter to send discussion
+		// enter to send discussion
 	$('#discussion_content').live('keydown', function(e) {
 	  if (e.keyCode === 13) {
 	    $('#discussion_submit').trigger('submit');
@@ -15,10 +15,13 @@
   // send fast
 	$('form#new_discussion').live('submit', function(e) {
 		var d = new Date();
-		var s = d.getYear()+1900+"-"+(d.getMonth()+1)+"-"+(d.getDay()+9)+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-		$("#discussions").prepend("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ s+"</div><div class='discussion_content'><p>"+$("#discussion_content").attr("value") +"</p></div><br/>");
+		var s = d.getYear()+1900+"-"+(d.getMonth()+1)+"-"+(d.getDay()+16)+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+		$("#discussions").append("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ s+"</div><div class='discussion_content'><p class='"+$("#discussion_content").attr("class")+"'>"+$("#discussion_content").attr("value") +"</p></div><br/>");
 		$("#discussion_content").attr({value: ''});
+		$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;
 	});
+
+	window.onload = function() { $("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight; }
 	// add extension to send user name, and update discussion or user list message
 	$(function() {
 	 	 var faye = new Faye.Client('http://www.paoniuxue.com:9292/faye');
@@ -38,72 +41,56 @@
 		    // eval(data);
 		
 				if (data.message != null) {
-							$("#discussions").prepend("<div class='discussion_content'><li>" + data.message.content + "</li></div><br/>");
+							$("#discussions").append("<div class='discussion_content'><li>" + data.message.content + "</li></div><br/>");
+							$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;
 							var list = '';
 							$.each(data.message.people_list, function(entryIndex,entry) {
 								list += "<li>" + entry + "</li>";
 							});
 				      $("#people_list").html(list);
+							
 				} else {
 					eval(data);
 				}
 		  });
 	});
+
 		
 </script>
 
-<div class="box">
-	<div id="sidebar">
+<div class="box classroom_index">
+	<div id="classroom_top">
 		<div id="classroom_photo">
 			<%= image_tag @classroom.avatar.url(:medium) %>
 		</div>
-		<div id="classroom_meta">
-			<p>
-			  <b>小组名:</b>
-			  <%= @classroom.name %>
-			</p>
-			<p>
-			  <b>创建者:</b>
-			  <%= @classroom.person.nick_name %>
-			</p>
-			<p>
-			  <b>创建时间:</b>
-			  <%= @classroom.created_at.to_date.to_s %>
-			</p>
+		<div id="classroom_des">
+		  <%= simple_format truncate(@classroom.description, :length => 140) %>
 			<% if can_delete?(@classroom) %>
 				<%= link_to '编辑', edit_classroom_path(@classroom) %> 
 			<% end %>
-		</div>
-		<div id="classroom_des">
-			<p>
-			  <b>描述:</b>
-			  <%= simple_format @classroom.description %>
-			</p>
-		</div>
-		<div id="classroom_people">
-			<p><b>聊天室在线用户:</b></p><br/>
-			<div id="people_list">
-			</div>
+			<p id="notice"><%= notice %></p>
 		</div>
 	</div>
+	<div id="classroom_left">
+		<div id="discussions" class="<%= 'discussions_'+session[:person_id].to_s if session[:person_id] %>">
+				<%= render @discussions.reverse %>
+		</div>
+		<div id="discussions_history">
+			<%= paginate @discussions %>
+		</div>
+		<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	
+	</div>
 	
-	<div id="content">
-		<p id="notice"><%= notice %></p>
+	<div id="classroom_people">
 		<div id="person_info" style="display:none;">
 			<div id="person_id"><%= session[:person_id] if session[:person_id]%></div>
 			<div id="person_nick_name"><%= current_person.nick_name if session[:person_id]%></div>
 			<div id="person_city"><%= current_person.city if session[:person_id] %></div>
 		</div>
-		
-		<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	
-		
-		<h2>聊天记录:</h2>
-		<div id="discussions" class="<%= 'discussions_'+session[:person_id].to_s if session[:person_id] %>">
-				<%= render @discussions %>
+		<p>聊天室在线用户:</p>
+		<div id="people_list">
 		</div>
-		<%= paginate @discussions %>
-		
-	</div>
+	</div>	
 	
 </div>
 
