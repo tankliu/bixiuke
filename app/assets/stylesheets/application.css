@@ -794,8 +794,16 @@ h4 {
 	width:187px;
 	float:right;
 	height:460px;
+}
+#online_people_list,#people_list{
+	width:100%;
+	height:208px;
+	float:left;
 	overflow:auto;
 	overflow-x:hidden;
+}
+#online_people_list{
+	color:#f00;
 }
 #group_people{
 	float:left;
@@ -860,8 +868,14 @@ h4 {
 	float:left;
 	margin-bottom:10px;
 }
+#limit_chars{
+	float:left;
+}
 #discussion_submit{
+	width:50px;
 	float:right;
+	margin-right:10px;
+	margin-bottom:10px;
 }
 .charsLeft{
 	font-size:1.5em;

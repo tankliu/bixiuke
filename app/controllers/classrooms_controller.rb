@@ -14,7 +14,7 @@ class ClassroomsController < ApplicationController
    def show
      @classroom = Classroom.find(params[:id])
      @discussions = @classroom.discussions.order("created_at desc").page(params[:page])
-
+     @nick_names = Person.all.collect{|x| x.nick_name}
      @discussion = Discussion.new
      @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
      respond_to do |format|
