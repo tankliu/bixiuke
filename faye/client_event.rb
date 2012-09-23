@@ -9,9 +9,9 @@ class ClientEvent
     faye_msg = Hashie::Mash.new(message)
     faye_action = faye_msg.channel.split('/').last
     name = if faye_action == "subscribe"
-      push_client(faye_msg.clientId,faye_msg.person_nick_name)
+      push_client(faye_msg.person_id,faye_msg.person_nick_name)
     elsif faye_action == "disconnect"
-      pop_client(faye_msg.clientId)
+      pop_client(faye_msg.person_id)
     end
     if name 
       faye_client.publish('/discussions/new', build_hash(name, faye_action))
@@ -24,7 +24,11 @@ class ClientEvent
   end
 
   def push_client(client_id,person_nick_name)
-    connected_clients[client_id] = person_nick_name
+    if connected_clients.has_key?(client_id)
+      return person_nick_name
+    else
+      connected_clients[client_id] = person_nick_name
+    end
   end
 
   def pop_client(client_id)
@@ -38,9 +42,9 @@ class ClientEvent
   def build_hash(name, action)
     message_hash = {}
     if action == 'subscribe'
-      message_hash['message'] = { 'content' => "#{name} 进入聊天室", 'people_list' => connected_clients.values}      
+      message_hash['message'] = { 'content' => "#{name} 进入聊天室", 'people_list' => connected_clients.values, 'list_size' => connected_clients.values.size}      
     elsif action == 'disconnect'
-      message_hash['message'] = { 'content' => "#{name} 离开聊天室", 'people_list' => connected_clients.values}
+      message_hash['message'] = { 'content' => "#{name} 离开聊天室", 'people_list' => connected_clients.values, 'list_size' => connected_clients.values.size}
     end
     message_hash
   end

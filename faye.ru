@@ -15,7 +15,7 @@ load 'faye/client_event.rb'
 # run faye_server
 
 
-faye_server = Faye::RackAdapter.new(:mount => '/faye', :timeout => 45)
+faye_server = Faye::RackAdapter.new(:mount => '/faye', :timeout => 25)
 # faye_server.listen(9292)
 Faye::WebSocket.load_adapter 'thin'
 faye_server.add_extension(ClientEvent.new)
