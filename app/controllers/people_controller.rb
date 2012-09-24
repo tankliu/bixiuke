@@ -8,9 +8,9 @@ class PeopleController < ApplicationController
   
   def index
     @order_way = params[:order_way] || "score"
-    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("created_at desc") if @order_way == "join_time"
-    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc") if @order_way == "score"
-    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("city") if @order_way == "city"
+    @people = Person.where(["role = ? or role = ? or role =?", "学员", "老师", "助教"]).order("score desc").page(params[:page]) if @order_way == "score"
+    @people = Person.where(["role = ? or role = ? or role =?", "学员", "老师", "助教"]).page(params[:page]).order("created_at desc") if @order_way == "join_time"
+    @people = Person.where(["role = ? or role = ? or role =?", "学员", "老师", "助教"]).order("city").page(params[:page]) if @order_way == "city"
     
     respond_to do |format|
       format.html # index.html.erb

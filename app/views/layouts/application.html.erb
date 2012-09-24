@@ -8,7 +8,6 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application"%>
   <%= javascript_include_tag "http://localhost:9292/faye.js"%>
-
   <%= csrf_meta_tags %>
 <% if Rails.env == "production" %>
 	<% if controller.class == PagesController or controller.class == CoursesController %>
@@ -30,56 +29,60 @@
 		<body>
 <% end %>
 
-	<div id="paoniuxue_top">    
-    <div id="haoqi">
-    	<div class="text">
-    		泡妞学网,专为学员打造<img src="/assets/phone.gif" alt="泡妞联系电话" />客服QQ：1341548835；手机：15818131421
-				
-				<% unless session[:person_id].nil? %>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
-				<% end %>                
-    		<ul class="public_nav">
-					<li <%="class='selected'" if controller.class == CoursesController %> >
-						<a href="/courses" target="_top">培训</a>
-					</li>
-					<li <%="class='selected'" if controller.class == PagesController and action_name == 'guangpan' %> >
-						<a href="/guangpan" target="_top">秘籍</a>
-					</li>
-					<li <%="class='selected'" if controller.class == PagesController and action_name == 'zhinanzhen' %> >
-						<a href="/zhinanzhen" target="_top">指男针</a>
-					</li>
-					<li <%="class='selected'" if controller.class == PagesController and action_name == 'qq' %> >
-						<a href="/qq" target="_top">咨询</a>
-					</li>
-					<li <%="class='selected'" if controller.class == PagesController and action_name == 'baodao'%> >
-						<a href="/baodao" target="_top">媒体</a>
-					</li>
-					<li <%="class='selected'" if controller.class == PagesController and action_name == 'faq'%> >
-    				<a href="/faq" target="_top">问题</a>      
-    			</li>
-    			<li <%="class='selected'" if controller.class == PagesController and action_name == 'hezuo'%> >
-    				<a href="/hezuo" target="_top">合作</a>
-    			</li>
-					<li <%="class='selected'" if controller.class == PagesController and action_name == 'baike'%> >
-    				<a href="/baike" target="_top">百科</a>
-    			</li>
+	<!-- <div id="paoniuxue_top">     -->
+	<div id="main_container">
+    <ul class="page_nav">
+    	<li <%="class='selected'" if controller.class == PagesController and action_name == 'guangpan' %> >
+  				<a href="/guangpan" target="_top">泡妞秘籍</a>
+  		</li>
+			<li <%="class='selected'" if controller.class == CoursesController %> >
+ 					<a href="/courses" target="_top">泡妞培训</a>
+			</li>
+			<li <%="class='selected'" if controller.class == PagesController and action_name == 'zhinanzhen' %> >
+				<a href="/zhinanzhen" target="_top">指男针</a>
+			</li>
+	
+			<li <%="class='selected'" if controller.class == ArticlesController %> >
+				<a href="/articles" target="_top">泡妞文章</a>
+			</li>
+			<li <%="class='selected'" if controller.class == PagesController and action_name == 'hezuo'%> >
+ 				<a href="/hezuo" target="_top">合作推广</a>
+ 			</li>
+			<li <%="class='selected'" if controller.class == PagesController and action_name == 'qun' %> >
+				<a href="/qun" target="_top">泡妞咨询</a>
+			</li>				
+			<li <%="class='selected'" if controller.class == PagesController and action_name == 'baodao'%> >
+				<a href="/baodao" target="_top">媒体报道</a>
+			</li>
+			<li <%="class='selected'" if controller.class == PagesController and action_name == 'faq'%> >
+  				<a href="/faq" target="_top">购买问题</a>      
+  			</li>
+  	
 
-					<li <%="class='selected'" if controller.class == ArticlesController %> >
-						<a href="/articles" target="_top">文章</a>
-					</li>
-					<li <%="class='selected'" if controller.class == PagesController and action_name == 'join'%> >
-						<a href="/join" target="_top">加入</a>
-					</li>						
-
-    		</ul>
+		
+			<li <%="class='selected'" if controller.class == PagesController and action_name == 'xueyuan'%> >
+				<a href="/xueyuan" target="_top">成为学员</a>
+			</li>						
+			<li class="li_space">|</li>
+			<% unless session[:person_id] %>
+			<li <%="class='selected'" if controller.class == PeopleController and action_name == "new"%> >
+				<a href="/people/new" target="_top">注册</a>
+			</li>
+			<li <%="class='selected'" if controller.class == SessionsController and action_name == "new"%> >
+				<a href="/login" target="_top">登录</a>
+			</li>
+			<% end %>
+			<% unless session[:person_id].nil? %>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
+			<% end %>
+	 	  
+  	</ul>
            
-      </div>                                                                                                           
- 		</div>
 		<div id="nav">
 		  <div id="logo">
 				<!-- <img src="/assets/logo.png" alt="泡妞学网" /> -->
-				<img src ="/assets/logo.png" alt = "搭讪约会学" />
+				<img src ="/assets/logo.png" alt = "泡妞学" />
 			</div>
 			<ul>
 				<li <%="class='selected'" if controller.class == HomeController %> >
@@ -106,7 +109,7 @@
   			</li>
 
 				<li <%="class='selected'" if controller.class == GroupsController %> >
-  				<a href="/classes/1" target="_top">小组<br /><span>问答,分享案例</a>
+  				<a href="/classes/1" target="_top">小组<br /><span>问答和案例</a>
   			</li>
 
 				<li <%="class='selected'" if controller.class == NotesController %> >
@@ -118,26 +121,14 @@
   			</li>    		    			
 
 				<li <%="class='selected'" if controller.class == AppsController %> >
-					<a href="/apps" target="_top">测试<br /><span>缘分,魅力指数</span></a>
+					<a href="/apps" target="_top">测试<br /><span>魅力指数</span></a>
 				</li>
-				<% unless session[:person_id] %>
-					<li <%="class='selected'" if controller.class == PeopleController and action_name == "new"%> >
-						<a href="/people/new" target="_top">注册<br /><span>学完光盘注册</span></a>
-					</li>
-					<li <%="class='selected'" if controller.class == SessionsController and action_name == "new"%> >
-						<a href="/login" target="_top">登录<br /><span>已有账号登录</span></a>
-					</li>
-				<% end %>
-				
 			</ul> 		
 		</div>		
 		<div id="guanggao">
-			2012最新培训：深圳9月22，23号
-			<img src ="/assets/car.gif" alt = "搭讪约会学" /> <a href="/courses">赶紧报名参加</a>
+				泡妞学网,专为学员打造,客服QQ：1341548835；手机：15818131421,最新培训：深圳9月22，23号<a href="/courses">赶紧报名参加</a>
 		</div>
-	</div>
 	
-	<div id="main_container">
 		<%= yield %>
 	</div>
 	<hr />

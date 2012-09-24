@@ -12,8 +12,8 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get join" do
-    get :join
+  test "should get xueyuan" do
+    get :xueyuan
     assert_response :success
   end
   

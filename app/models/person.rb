@@ -2,7 +2,7 @@
 class Person < ActiveRecord::Base
   has_secure_password  #TODO: this method alse validates confirmation and can not be overrided
   # attr_protected :role, :score
-  paginates_per 40
+  paginates_per 30
   
   #考虑下, 删除用户不一定非得删除用户的数据.可以这样:删除等于注销用户, 不允许用户登录而已．但是用户的资源仍然在， 除非用户自己一个一个删除．类似豆瓣
   has_many :courses

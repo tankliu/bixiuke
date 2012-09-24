@@ -1,6 +1,6 @@
 <div class="box">
 	<h2>请输入email账号和密码登录</h2>
-	<p>如果没有账号请先注册,然后学完光盘和书籍,成为正式学员.点击<%= link_to "注册", new_person_path %></p>
+	<p>如果没有账号,请先学完<a href="/guangpan">光盘</a>和<a href="/zhinanzhen">书籍</a>,然后注册开通学员.点击<%= link_to "注册", new_person_path %></p>
 
 	<% unless @person.nil? %>
 		    <div id="error_explanation">

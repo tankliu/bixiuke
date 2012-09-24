@@ -5,12 +5,11 @@ V8::Application.routes.draw do
 
   match 'guangpan' => 'pages#guangpan'
   match 'baodao' => 'pages#baodao'
-  match 'join' => 'pages#join'
+  match 'xueyuan' => 'pages#xueyuan'
   match 'zhinanzhen' => 'pages#zhinanzhen'
-  match 'baike' => 'pages#baike'
   match 'faq' => 'pages#faq'
   match 'hezuo' => 'pages#hezuo'
-  match 'qq'  => "pages#qq"
+  match 'qun'  => "pages#qun"
 
   #这不是注册页面, 而是说服用户去购买的页面.
   

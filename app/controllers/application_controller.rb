@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
   
   def only_member_can_do
     unless is_member?
-      redirect_to :join
+      redirect_to :xueyuan
     end
   end
   
