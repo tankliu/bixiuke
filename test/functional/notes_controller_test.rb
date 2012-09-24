@@ -20,13 +20,13 @@ class NotesControllerTest < ActionController::TestCase
   
   test "should not create and update and destroy if person is not member " do
     get :edit, {:id => @note}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path
+    assert_redirected_to xueyuan_path
     post :create, {:note => @note.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path
+    assert_redirected_to xueyuan_path
     put :update, {:id => @note, :note => @note.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path    
+    assert_redirected_to xueyuan_path    
     delete :destroy, {:id => @note}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path
+    assert_redirected_to xueyuan_path
     
   end
   

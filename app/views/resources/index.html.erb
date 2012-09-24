@@ -16,7 +16,11 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 		<ul>
 			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有资源", resources_path %></li>
 			<% @categories.each do |category| %>
-			<li <%="class='selected'" if @path == category.path  %>><%= image_tag category.avatar.url(:thumb) %><%= link_to category.name, category_resources_path(:path => category.path) %></li>
+			<li <%="class='selected'" if @path == category.path  %>>
+			<%= link_to category_resources_path(:path => category.path) do %>
+				<%= image_tag category.avatar.url(:thumb) %><%= category.name %>
+			<% end %>
+			</li>
 			<% end %>
 		</ul>
 	</div>
@@ -28,7 +32,7 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 				<% if is_member? %>
 					<%= render :partial => 'form'  %>
 				<% else %>
-					<div class="note_notice">只有学员才可以创建资源分享, <%= link_to "成为学员", :join %>, 是学员的请<%= link_to "登录", :login  %></div>
+					<div class="note_notice">只有学员才可以创建资源分享, <%= link_to "成为学员", :xueyuan %>, 是学员的请<%= link_to "登录", :login  %></div>
 				<% end %>
 				<h2>最近资源分享</h2>
 				<% unless is_member? %>

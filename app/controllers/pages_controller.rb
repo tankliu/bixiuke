@@ -11,16 +11,13 @@ class PagesController < ApplicationController
     
   end
   
-  def join
+  def xueyuan
     
   end
   def zhinanzhen
     
   end
-  
-  def baike
-    
-  end
+
   def faq
     
   end
@@ -28,7 +25,7 @@ class PagesController < ApplicationController
   def hezuo
   end
   
-  def qq
+  def qun
     
   end
 end

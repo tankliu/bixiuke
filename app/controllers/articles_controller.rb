@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   
   def index
     #如果分类浏览. 按照 category.name
-    @category_id = params[:category_id].to_i
+    @path = params[:path]
     @article = Article.new
     @categories = Category.where(:typeable => "Article").order("order_number")
     if params[:category_id]

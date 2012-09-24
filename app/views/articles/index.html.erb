@@ -2,13 +2,21 @@
 <% content_for :keywords,"泡妞秘籍,泡妞视频,泡妞电影,泡妞专家,泡妞技巧,怎么泡妞,泡妞高手,泡妞图片,泡妞大全,泡妞书籍,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法" %>
 <% content_for :description,"泡妞文章和泡妞视频栏目,文章里面包含了泡妞秘籍,专题里面有泡妞视频,以及泡妞电影的下载地址, 看看泡妞高手和电影明星是如何泡妞,如何搭讪的.学习搭讪的技巧和约会技巧." %>
 
+<!--[if lte IE 6]>
+<style>
+.article_box{
+	width:998px;
+</style>
+}
+<![endif]-->
+
 <% unless is_member? %>
 	<div id="header_guanggao">
 		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
 	</div>
 <% end %>
 
-<div class="box">
+<div class="box article_box">
 	<div id="categories">
 		<ul>
 			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有文章", articles_path %></li>

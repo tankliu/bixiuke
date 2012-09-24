@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
     @person = Person.find_by_email(params[:email])
     if @person && @person.authenticate(params[:password])
       session[:person_id] = @person.id
-      redirect_to @person, :notice => "登录成功。"  
+      @classroom = Classroom.find(1)
+      redirect_to @classroom, :notice => "登录成功。"  
     else
       flash.now.notice = "用户名或者密码不正确。"
       render "new"

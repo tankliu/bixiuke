@@ -34,7 +34,8 @@
 				<%= simple_format discussion.content %>	
 			</div>
 			<br/>
-		<% end %>                                 
+		<% end %>      
+		<hr />                           
 		<%= paginate @discussions, :params => {:controller => 'classrooms', :action => 'show', :id => 1} %>
 		
 </div>

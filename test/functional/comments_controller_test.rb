@@ -16,9 +16,9 @@ class CommentsControllerTest < ActionController::TestCase
   
   test "should not create and update and destroy if person is not member " do
     post :create, {:comment => @comment.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path
+    assert_redirected_to xueyuan_path
     delete :destroy, {:id => @comment}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path
+    assert_redirected_to xueyuan_path
     
   end
   

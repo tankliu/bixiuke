@@ -14,9 +14,16 @@
 
   // send fast
 	$('form#new_discussion').live('submit', function(e) {
+		
 		var d = new Date();
-		var s = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+(d.getDate())+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-		$("#discussions").append("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ s+"</div><div class='discussion_content'><p class='"+$("#discussion_content").attr("class")+"'>"+$("#discussion_content").attr("value") +"</p></div><br/>");
+		var time = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+(d.getDate())+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+		var content = "";
+		if ($("#person_id").text() != "msr") {
+			content = $("#discussion_content").attr("value");
+		} else {
+			content = "陌生人不可以参与聊天";
+		}
+		$("#discussions").append("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ time+"</div><div class='discussion_content'><p>"+content +"</p></div><br/>");
 		$("#discussion_content").attr({value: ''});
 		// when add a discussion, scroll to latest discussion
 		$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;
@@ -36,10 +43,6 @@
 			    if (message.channel === '/meta/subscribe' || message.channel === '/meta/disconnect' ) {
 			      message.person_nick_name = $('#person_nick_name').text();
 			      message.person_id = $('#person_id').text();
-						if (message.person_id == "") {
-							message.person_id = "msr";
-							message.person_nick_name = "陌生人";
-						}
 			    }
 			    callback(message);
 			  }
@@ -63,11 +66,17 @@
 				}
 		  });
 	});
+	
+	setTimeout(function() {
+     $("#join").fadeOut();
+  }, 2 * 1000);
 
-		
 </script>
-
+<% if notice %>
+<div id="join"><%= notice %></div>
+<% end %>
 <div class="box classroom_index">
+	
 	<div id="classroom_top">
 		<div id="classroom_photo">
 			<%= image_tag @classroom.avatar.url(:medium) %>
@@ -77,7 +86,6 @@
 			<% if can_delete?(@classroom) %>
 				<%= link_to '编辑', edit_classroom_path(@classroom) %> 
 			<% end %>
-			<p id="notice"><%= notice %></p>
 		</div>
 	</div>
 	<div id="classroom_left">
@@ -92,8 +100,8 @@
 	
 	<div id="classroom_people">
 		<div id="person_info" style="display:none;">
-			<div id="person_id"><%= session[:person_id] if session[:person_id]%></div>
-			<div id="person_nick_name"><%= current_person.nick_name if session[:person_id]%></div>
+			<div id="person_id"><%= session[:person_id] ? session[:person_id] : "msr"%></div>
+			<div id="person_nick_name"><%= session[:person_id] ? current_person.nick_name : "陌生人"%></div>
 			<div id="person_city"><%= current_person.city if session[:person_id] %></div>
 		</div>
 		<p><b>聊天室在线:(<span id="online_size"></span>):</b></p>

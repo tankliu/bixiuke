@@ -20,13 +20,13 @@ class SubjectsControllerTest < ActionController::TestCase
   
   test "should not create and update and destroy if person is not member " do
     get :edit, {:id => @subject}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path
+    assert_redirected_to xueyuan_path
     post :create, {:subject => @subject.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path
+    assert_redirected_to xueyuan_path
     put :update, {:id => @subject, :subject => @subject.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path    
+    assert_redirected_to xueyuan_path    
     delete :destroy, {:id => @subject}, {:person_id => people(:youke).id}
-    assert_redirected_to join_path
+    assert_redirected_to xueyuan_path
     
   end
   

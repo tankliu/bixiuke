@@ -2,7 +2,7 @@
 	<h2>泡妞学网学员和老师,助教(非学员不显示)</h2>
  	<p id="notice"><%= notice %></p>
 	<div class="order_way">
-		<ul class="public_nav">
+		<ul class="page_nav">
 			<li <%="class='selected'" if @order_way == "score" %> >
 				<%= link_to "积分排行", people_path(:order_way => "score") %>
 			</li>
@@ -16,7 +16,8 @@
 			</li>
 		</ul>
 	</div>
-	<br><br><br>
+	<hr/>
+	<%= paginate @people %>
 	<% @people.each do |person| %>
 		<div class="person_info_index">
 			<div class="person_photo_index">
@@ -52,7 +53,9 @@
 			</div>
 		</div>		
 	<% end %>
+	
 	<hr />
+	<%= paginate @people %>
 	<% if is_admin? %>
 		<%= link_to '创建学员', new_person_path %>
 	<% end %>
