@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
   
   def only_member_can_do
     unless is_member?
-      redirect_to :xueyuan
+      redirect_to :xueyuan, :notice => "非学员不能进行此操作,请学完光盘和书籍后联系客服开通学员."
     end
   end
   

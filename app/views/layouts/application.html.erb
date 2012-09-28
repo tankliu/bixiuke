@@ -7,7 +7,11 @@
   <meta name = "description" content = "<%= yield(:description) %>" /> 
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application"%>
-  <%= javascript_include_tag "http://localhost:9292/faye.js"%>
+
+  <%= javascript_include_tag "http://www.paoniuxue.com:9292/faye.js"%>
+	
+
+
   <%= csrf_meta_tags %>
 <% if Rails.env == "production" %>
 	<% if controller.class == PagesController or controller.class == CoursesController %>
@@ -126,7 +130,7 @@
 			</ul> 		
 		</div>		
 		<div id="guanggao">
-				泡妞学网,专为学员打造,客服QQ：1341548835；手机：15818131421,最新培训：深圳9月22，23号<a href="/courses">赶紧报名参加</a>
+				泡妞学网,专为学员打造,客服QQ：1341548835；手机：15818131421,最新培训：深圳10月05，06号<a href="/courses">赶紧报名参加</a>
 		</div>
 	
 		<%= yield %>

@@ -7,19 +7,18 @@
 	});
 		// enter to send discussion
 	$('#discussion_content').live('keydown', function(e) {
-	  if (e.keyCode === 13) {
-	    $('#discussion_submit').trigger('submit');
-	  }
+	  if (!e.ctrlKey && e.keyCode === 13) {
+			$('#discussion_submit').trigger('submit');
+	  } 
 	});
 
   // send fast
 	$('form#new_discussion').live('submit', function(e) {
-		
 		var d = new Date();
 		var time = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+(d.getDate())+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
 		var content = "";
 		if ($("#person_id").text() != "msr") {
-			content = $("#discussion_content").attr("value");
+			content = $("#discussion_content").attr("value").replace('\n','<br />');
 		} else {
 			content = "陌生人不可以参与聊天";
 		}

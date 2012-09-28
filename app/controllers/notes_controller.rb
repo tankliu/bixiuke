@@ -29,7 +29,7 @@ class NotesController < ApplicationController
         end
       else
         categories_range = 29..34
-        @notes = Note.where(:category_id => categories_range).page(params[:page])
+        @notes = Note.where(:category_id => categories_range).order("created_at desc").page(params[:page])
       end
       respond_to do |format|
         format.html # index.html.erb
@@ -61,7 +61,11 @@ class NotesController < ApplicationController
   end
   # GET /notes/1/edit
   def edit
-    @note = current_person.notes.find(params[:id])
+    if is_admin?
+      @note = Note.find(params[:id])
+    else
+      @note = current_person.notes.find(params[:id])
+    end
   end
 
   # POST /notes
@@ -84,7 +88,11 @@ class NotesController < ApplicationController
   # PUT /notes/1
   # PUT /notes/1.json
   def update
-    @note = current_person.notes.find(params[:id])
+    if is_admin?
+      @note = Note.find(params[:id])
+    else
+      @note = current_person.notes.find(params[:id])
+    end
 
     respond_to do |format|
       if @note.update_attributes(params[:note])

@@ -28,7 +28,12 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/edit
   def edit
-    @topic = current_person.topics.find(params[:id])
+    if is_admin?
+      @topic = Topic.find(params[:id])
+    else
+      @topic = current_person.topics.find(params[:id])
+    end
+    @group = @topic.group
   end
 
 
@@ -52,7 +57,11 @@ class TopicsController < ApplicationController
   # PUT /topics/1
   # PUT /topics/1.json
   def update
-    @topic = current_person.topics.find(params[:id])
+    if is_admin?
+      @topic = Topic.find(params[:id])
+    else
+      @topic = current_person.topics.find(params[:id])
+    end
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
@@ -68,11 +77,15 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.json
   def destroy
-    @topic = current_person.topics.find(params[:id])
+    if is_admin?
+      @topic = Topic.find(params[:id])
+    else
+      @topic = current_person.topics.find(params[:id])
+    end
     @topic.destroy
 
     respond_to do |format|
-      format.html { redirect_to topics_url }
+      format.html { redirect_to @topic.group }
       format.json { head :no_content }
     end
   end  
