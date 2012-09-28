@@ -10,10 +10,10 @@ class ArticlesController < ApplicationController
     @path = params[:path]
     @article = Article.new
     @categories = Category.where(:typeable => "Article").order("order_number")
-    if params[:category_id]
-      @articles = Category.find(params[:category_id]).articles.includes(:person).order("created_at desc").page(params[:page])      
+    if params[:path] 
+      @articles = Category.where("typeable = ? and path=?", "Article", params[:path])[0].articles.includes(:person).order("created_at desc").page(params[:page])      
     else
-      @articles = Article.includes(:person).order("created_at desc").page(params[:page])      
+	    @articles = Article.includes(:person).order("created_at desc").page(params[:page])     
     end
     
     respond_to do |format|

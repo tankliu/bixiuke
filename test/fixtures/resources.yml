@@ -3,13 +3,11 @@
 one:
   title: MyString
   download_link: MyString
-  description: MyText
   person: admin
   category: A3
 two:
   title: MyString
   download_link: MyString
-  description: MyText
   person: xueyuan
   category: A3
   

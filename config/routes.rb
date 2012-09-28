@@ -86,6 +86,8 @@ V8::Application.routes.draw do
   match '/resources/category/:path/page(/:page)' => 'resources#index'
   
   match '/classrooms/:id/page(/:page)' => 'classrooms#show'
+
+  match '/classes/:id/page(/:page)' => 'groups#show'
   
   # match '/notes/categories(/:category_id)' , :controller=>"notes",:action=>"index"
   # match '/notes/category(/:category_id)' => 'notes#index'

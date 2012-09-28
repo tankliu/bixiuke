@@ -21,7 +21,7 @@ class NoteTest < ActiveSupport::TestCase
     note = notes(:one)
     note.content = note.content + " @适合酒吧,搭讪 "
     assert note.save
-    assert note.content.include?("<span class='note_pinglun'>@适合酒吧,搭讪</span>")
+    assert note.content.include?("<span class='usage_pinglun'>@适合酒吧,搭讪</span>")
     
   end
 end
