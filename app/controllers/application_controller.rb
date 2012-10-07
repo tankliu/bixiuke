@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   #开发模式和测试模式还是要直接输出错误便于调试, 只有产品模式下运行
   rescue_errors unless Rails.env.development? or Rails.env.test?
   
-  
   def render_not_found(exception = nil)
     render :template => "error/404", :status => 404, :layout => 'application'
   end

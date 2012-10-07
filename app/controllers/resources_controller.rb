@@ -85,7 +85,11 @@ class ResourcesController < ApplicationController
   # DELETE /resources/1
   # DELETE /resources/1.json
   def destroy
-    @resource = current_person.resources.find(params[:id])
+    if is_admin?
+      @resource = Resource.find(params[:id])
+    else
+      @resource = current_person.resources.find(params[:id])
+    end
     @resource.destroy
 
     respond_to do |format|

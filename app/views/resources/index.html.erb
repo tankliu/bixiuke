@@ -50,10 +50,6 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 					</div>
 
 					<div class="topic_edit_bar">
-						<% if is_admin? %>
-								<%= link_to 'X', resource, :data => { :confirm => '确定删除?' }, method: :delete %>
-						<% end %>
-						
 						<%= link_to "去下载或评论(#{resource.comments.size})", resource  %>
 					</div>
 					<hr />

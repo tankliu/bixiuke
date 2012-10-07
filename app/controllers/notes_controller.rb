@@ -22,7 +22,7 @@ class NotesController < ApplicationController
     else
       if params[:path]
         case 
-        when ["qianxi","asd","sex"].include?(params[:path])
+        when ["fangjian","asd","sex"].include?(params[:path])
           redirect_to :xueyuan, notice:"高级惯例只有学员才可以浏览" and return
         else
           @notes = Category.where("typeable=? and path=?","Note",params[:path])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
@@ -96,7 +96,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        format.html { redirect_to notes_path, notice: '更新成功' }
+        format.html { redirect_to @note, notice: '更新成功' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
