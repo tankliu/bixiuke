@@ -53,7 +53,7 @@ class Person < ActiveRecord::Base
                        :confirmation  => {:message => "两次输入密码必须相同", :allow_blank => true}
   
   validates :nick_name, :presence => {:message => "请填写昵称"},
-                        :length => {:in => 1..20, :message => "昵称长度必须大于2，小于10", :allow_blank => true},
+                        :length => {:in => 1..10, :message => "昵称长度必须大于2，小于10", :allow_blank => true},
                         :exclusion => {:in => %w(admin 管理员), :message => "不能用这些昵称", :allow_blank => true}
   
   validates :city, :presence => {:message => "请选择你所在的城市名称"},

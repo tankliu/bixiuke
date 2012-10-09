@@ -125,8 +125,6 @@ h4 {
 }
 /*---------------top-------*/
 
-
-
 .page_nav{
 	width: 100%;
 	margin: 0 auto;
@@ -138,6 +136,21 @@ h4 {
 	
 }
 
+.user_tool, .user_tool li{
+	float:right;
+}
+.user_tool img{
+	margin:0;
+	float:right;
+	margin-left:-10px;
+}
+.drop_menu{
+	width:200px;
+	height:300px;
+	display:none;
+	position:absolute;
+	top:10px;
+}
 .page_nav li{
 	float: left;
 }
@@ -145,9 +158,6 @@ h4 {
 	color:#f09;
 	font-size: 14px;
 	margin: 0 10px 0 10px;
-}
-li.li_space{
-	margin-left:170px;
 }
 
 .page_nav li.selected a{
@@ -268,7 +278,7 @@ li.li_space{
 	border: 1px dashed #f09;
 	margin: 10px auto;
 	color:#f09;
-	font-size:28px;
+	font-size:25px;
 	line-height:50px;
 }
 #header_guangpan{

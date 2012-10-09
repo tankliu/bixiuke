@@ -48,7 +48,7 @@
 	</div>
 
 	<% if session[:person_id] and !is_member? %>
-		<p id="notice">本网站专为学员打造,你还不是正式学员<br>不能加入聊天室聊天<br>不能在小组提问<br>也不能查看高级惯例<br>不能下载资料<br>不能玩测试<br>不能分享和收藏<br>请去这里学完光盘和书籍后加入<%= link_to "成为学员",:xueyuan_path %><br>有问题联系客服QQ:1341548835
+		<p id="notice">本网站专为学员打造,如果你还没学习,请看看这里<%= link_to "光盘",:guangpan %>和<%= link_to "书籍", :zhinanzhen %>, <br>需要先学完光盘后 再联系客服QQ:1341548835开通学员服务.<br>成为学员后,可以:<br>到聊天室聊天<br>去小组提问<br>查看高级惯例<br>下载资料<br>玩测试<br>分享和收藏<br>
 		</p>
 	<% end %>
 	<div id="content">

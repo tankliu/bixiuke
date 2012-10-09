@@ -30,7 +30,7 @@ class PersonTest < ActiveSupport::TestCase
   
   
   test "length should be" do
-    {:name => 2..20, :password => 6..16, :nick_name => 1..20, :job => 2..10}.each do |key, value|
+    {:name => 2..20, :password => 6..16, :nick_name => 1..10, :job => 2..10}.each do |key, value|
         arg_array = []
         if value.instance_of?(Fixnum)
           arg_array << "课"*(value+1)

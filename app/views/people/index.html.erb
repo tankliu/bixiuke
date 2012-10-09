@@ -46,8 +46,8 @@
 				  <b>等级:</b>
 				  <%= person.rank %>
 				</p>
-				<% if session[:person_id] == person.id or is_admin? %>
-				<%= link_to '编辑', edit_person_path(person) %>
+				<% if is_admin? %>
+					<%= link_to '编辑', edit_person_path(person) %>	<%= link_to '删除', person, :data => { :confirm => '确定删除' }, method: :delete %>	
 				<% end %>
 
 			</div>
