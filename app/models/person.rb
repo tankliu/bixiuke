@@ -23,7 +23,7 @@ class Person < ActiveRecord::Base
   #TODO:,图片如何加水印
   
   has_attached_file :avatar,   
-          :default_url => "/system/:class/:attachment/default/:style.png",
+          :default_url =>  :default_url_by_role,
           :styles => {:medium => '100x100',:thumb => "50x50"},
           # :path => ":rails_root/public/system/:class/:attachment/#{Date.today.to_s[0,7]}/:avatar_file_name",
           # :url => "/system/:class/:attachment/:avatar_date/:filename"
@@ -88,4 +88,7 @@ class Person < ActiveRecord::Base
     end
   end
   
+  def default_url_by_role
+    self.role != "非学员" ? "/system/:class/:attachment/default/:style.png" : "/system/:class/:attachment/default/fei-:style.png"
+  end
 end
