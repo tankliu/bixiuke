@@ -6,7 +6,7 @@ class AddImageToCategory < ActiveRecord::Migration
   end
 
   def down
-    t.drop_attached_file :categories, :avatar
+    drop_attached_file :categories, :avatar
   end
 
 end

@@ -4,20 +4,24 @@
 	<div class="order_way">
 		<ul class="page_nav">
 			<li <%="class='selected'" if @order_way == "score" %> >
-				<%= link_to "积分排行", people_path(:order_way => "score") %>
+				<%= link_to "积分排行", admin_people_path(:order_way => "score") %>
 			</li>
 			
 			<li <%="class='selected'" if @order_way == "join_time" %> >
-				<%= link_to "最新加入", people_path(:order_way => "join_time") %>
+				<%= link_to "最新加入", admin_people_path(:order_way => "join_time") %>
 			</li>
 			
 			<li <%="class='selected'" if @order_way == "city" %> >
-				<%= link_to "按城市排序", people_path(:order_way => "city") %>
+				<%= link_to "按城市排序", admin_people_path(:order_way => "city") %>
 			</li>
+			
+			<li <%="class='selected'" if @order_way == "dead" %> >
+				<%= link_to "按注销排序", admin_people_path(:order_way => "dead") %>
+			</li>
+			
 		</ul>
 	</div>
 	<hr/>
-	<%= paginate @people %>
 	<% @people.each do |person| %>
 		<div class="person_info_index">
 			<div class="person_photo_index">
@@ -43,11 +47,11 @@
 				  <%= person.score %>
 				</p>
 				<p>
-				  <b>等级:</b>
-				  <%= person.rank %>
+				  <b>注销:</b>
+				  <%= person.dead %>
 				</p>
 				<% if is_admin? %>
-					<%= link_to '编辑', edit_person_path(person) %>	
+					<%= link_to '编辑', edit_person_path(person) %>	<%= link_to '删除', person, :data => { :confirm => '确定删除' }, method: :delete %>	
 				<% end %>
 
 			</div>
@@ -55,7 +59,6 @@
 	<% end %>
 	
 	<hr />
-	<%= paginate @people %>
 	<% if is_admin? %>
 		<%= link_to '创建学员', new_person_path %>
 	<% end %>

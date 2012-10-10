@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Person < ActiveRecord::Base
   has_secure_password  #TODO: this method alse validates confirmation and can not be overrided
-  # attr_protected :role, :score
+  attr_protected :role,:dead
   paginates_per 30
   
   #考虑下, 删除用户不一定非得删除用户的数据.可以这样:删除等于注销用户, 不允许用户登录而已．但是用户的资源仍然在， 除非用户自己一个一个删除．类似豆瓣
@@ -72,6 +72,7 @@ class Person < ActiveRecord::Base
   validates :salary, :numericality => {:greater_than_or_equal_to => 1000, :less_than_or_equal_to => 10000000, :only_integer => true, :message => "月薪只能是1000到10000000的整数", :allow_blank => true}
   validates :sex, :inclusion => {:in => %w(男 女),  :message => "性别只能是男,女,也可不填写.", :allow_blank => true} 
   Roles = %w(非学员 学员 助教 老师)   #放到form里面供选择
+  Dead = %w(yes no)
   def collect_subjects_for_select
     self.subjects.order("order_number").collect{|subject| [subject.title,subject.id] }
   end
