@@ -19,6 +19,8 @@ module ApplicationHelper
     obj.person.id == session[:person_id] or is_admin? 
   end
   
+
+  
   def commend_star(score)
     case score
       when 1 then "★" 

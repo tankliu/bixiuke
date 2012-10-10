@@ -79,7 +79,7 @@ class NotesController < ApplicationController
         format.html { redirect_to notes_path, notice: '创建成功' }
         format.json { render json: @note, status: :created, location: @note }
       else
-        format.html { redirect_to notes_path, notice: '创建失败' }
+        format.html { redirect_to notes_path, notice: @note.errors.full_messages.size.to_s+"个错误:"+format_error(@note.errors.full_messages.join(","))}
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end

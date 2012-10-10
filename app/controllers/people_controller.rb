@@ -87,14 +87,13 @@ class PeopleController < ApplicationController
   # PUT /people/1
   # PUT /people/1.json
   def update
-    @person = Person.find(params[:id])
+    @person = Person.find(session[:person_id])
     if is_admin? and @person.id != session[:person_id]
       @person.attributes= params[:person]
       @person.role =  params[:role]
       @person.dead = params[:dead]
     else
-      
-      @person = current_person
+      #下面一行是为了避免更改别人的资料, 防止通过命令行发送消息修改别人资料
       # can not change name when update
       #因为在person里面设置role受保护,所以不可能在params[:person]里面,防止通过url更新
       @person.attributes = params[:person]

@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       else  
         session[:person_id] = @person.id
         @classroom = Classroom.find(1)
-        notice =  is_member? ? "登录成功,请参与聊天,发帖" : "你不是学员,请联系QQ:1341548835开通学员."  
+        notice =  is_member? ? "登录成功,请参与聊天,发帖" : "你不是学员,不能聊天,请联系QQ:1341548835开通学员."  
         redirect_to @classroom, :notice => notice
       end
     else

@@ -24,6 +24,9 @@
 		</div>
 		<hr />
 		<h2>所有回复(回复:+1积分)</h2>
+		<% if notice %>
+			<div id="notice"><%= notice %></div>
+		<% end %>
 		<div id="comments">
 			<% @comments.each do |comment| %>
 				<%= render comment %>

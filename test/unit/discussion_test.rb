@@ -11,7 +11,7 @@ class DiscussionTest < ActiveSupport::TestCase
 
   
   test "length should be" do
-    {:content => 1..100000}.each do |key, value|
+    {:content => 1..138}.each do |key, value|
         arg_array = []
         if value.instance_of?(Fixnum)
           arg_array << "课"*(value+1)

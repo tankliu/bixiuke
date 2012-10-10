@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @topics = @group.topics.order("created_at desc").page(params[:page])      
-    @topic = Topic.new
+    @topic = @topic || Topic.new
     @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
     
     respond_to do |format|
@@ -56,6 +56,7 @@ class GroupsController < ApplicationController
 
   # PUT /groups/1
   # PUT /groups/1.json
+
   def update
     @group = current_person.groups.find(params[:id])
 

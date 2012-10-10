@@ -4,7 +4,9 @@
 
 
 <div id="new_article_bar">
-	<span id="notice"><%= flash[:notice] || flash.now[:notice] %></span>
+	<% if notice %>
+		<div id="notice"><%= notice %></div>
+	<% end %>
 	<% if is_admin? %> 			
 		<%= link_to '创建组', new_classroom_path %>
 	<% end %>

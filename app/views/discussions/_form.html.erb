@@ -1,11 +1,11 @@
 <%= form_for(discussion, :remote => true) do |f| %>
   <%if discussion.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(discussion.errors.count, "错误") %> :</h2>
+      <h2><%= discussion.errors.count.to_s+"个错误" %> :</h2>
 
       <ul>
       <% discussion.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li><%= format_error(msg) %></li>
       <% end %>
       </ul>
     </div>

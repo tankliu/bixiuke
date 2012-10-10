@@ -71,10 +71,15 @@ class ApplicationController < ActionController::Base
   
   def only_member_can_do
     unless is_member?
-      redirect_to :xueyuan, :notice => "非学员不能进行此操作,请学完光盘和书籍后联系客服开通学员."
+      redirect_to :xueyuan, :notice => "非学员不能进行此操作,请联系客服QQ:1341548835开通学员."
     end
   end
   
-  helper_method :current_person, :is_admin?, :is_member?
+  def format_error(msg)
+    return msg.gsub(/([a-z]|[A-Z]|\s)*/,"")
+  end
+  
+  
+  helper_method :current_person, :is_admin?, :is_member?, :format_error
   
 end

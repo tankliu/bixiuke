@@ -48,7 +48,7 @@ class TopicsController < ApplicationController
         format.html { redirect_to @topic.group, notice: '创建成功' }
         format.json { render json: @topic, status: :created, location: @topic }
       else
-        format.html { redirect_to @topic.group, notice: '创建失败' }
+        format.html { redirect_to @topic.group, notice: @topic.errors.full_messages.size.to_s+"个错误:"+format_error(@topic.errors.full_messages.join(",")) }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end

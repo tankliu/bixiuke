@@ -49,6 +49,18 @@ form{
 	margin-top:5px;
 }
 #notice{
+	width: 100%;
+	height: 50px;
+	border: 1px dashed #f09;
+	margin: 10px auto;
+	color:#f00;
+	font-size:20px;
+	line-height:50px;
+}
+#error_explanation{
+	color:#f00;
+}
+#error_explanation h2{
 	color:#f00;
 }
 
@@ -272,15 +284,7 @@ h4 {
 #header_courses{
 	background-image: url(/assets/header_courses_bg.png);
 }
-#join{
-	width: 960px;
-	height: 50px;
-	border: 1px dashed #f09;
-	margin: 10px auto;
-	color:#f09;
-	font-size:25px;
-	line-height:50px;
-}
+
 #header_guangpan{
 	background-color: #F8F5F3;
 	height:630px;
@@ -868,6 +872,9 @@ h4 {
 	clear:both;
 	float:left;
 }
+.fail_notice{
+	color:#f00;
+}
 .discussion_content{
 	clear:both;
 	float:left;
@@ -943,10 +950,5 @@ h4 {
 	margin-top:10px;
 }
 
-/*apps*/
-#apps_notice{
-	font-size:30px;
-	color:#f09;
-}
 
 /*for ie*/

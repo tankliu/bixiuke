@@ -6,8 +6,9 @@
 
 <div class="box">
 	<h2>你有成为把妹达人的天赋吗?</h2>
-	<div class="note_notice">(1分钟答完)</div>
-	<div id="apps_notice"><%= flash[:notice] || flash.now[:notice] %></div>	
+	<% if notice %>
+		<div id="notice"><%= notice %></div>
+	<% end %>
 
 	<%= form_tag :test do |f| %>
  	 	<div id="test">

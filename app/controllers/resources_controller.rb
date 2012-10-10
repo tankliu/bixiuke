@@ -56,7 +56,7 @@ class ResourcesController < ApplicationController
         format.html { redirect_to resources_path, notice: '创建成功' }
         format.json { render json: @resource, status: :created, location: @resource }
       else
-        format.html { redirect_to resources_path, notice: '创建失败' }
+        format.html { redirect_to resources_path, notice: @resource.errors.full_messages.size.to_s+"个错误:"+format_error(@resource.errors.full_messages.join(","))} 
         format.json { render json: @resource.errors, status: :unprocessable_entity }
       end
     end

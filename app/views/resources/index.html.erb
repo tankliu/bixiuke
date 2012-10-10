@@ -26,7 +26,9 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 	</div>
 	
 	<div id="content">		
-				<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>	
+				<% if notice %>
+					<div id="notice"><%= notice %></div>
+				<% end %>
 					
 				<h2>分享资源(+3积分)</h2>
 				<% if is_member? %>

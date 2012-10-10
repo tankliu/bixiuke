@@ -1,6 +1,8 @@
 <div class="box">
 	<h2>泡妞学网学员和老师,助教(非学员不显示)</h2>
- 	<p id="notice"><%= notice %></p>
+	<% if notice %>
+	<div id="notice"><%= notice %></div>
+	<% end %>
 	<div class="order_way">
 		<ul class="page_nav">
 			<li <%="class='selected'" if @order_way == "score" %> >

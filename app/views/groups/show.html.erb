@@ -45,11 +45,14 @@
 		
 	
 	<div id="content">
-		<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>
-		<h2>发帖</h2>
-		<div class="note_notice">(发帖+2积分,回贴:+1积分)</div>
+
 		
-		<%= render :partial => 'topics/form'  %>
+		<h2>发帖(2积分)</h2>		
+		<% if notice %>
+			<div id="notice"><%= notice %></div>
+		<% end %>
+	
+		<%= render :partial => 'topics/form' %>
 		<h2>最近帖子</h2>
 		<% @topics.each do |topic| %>
 			<div class="topic_person_photo">

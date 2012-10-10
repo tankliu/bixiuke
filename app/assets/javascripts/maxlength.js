@@ -43,6 +43,7 @@ $.fn.maxlength = function (settings) {
                 case 40:
                 case 46:
                 case 65:
+				case 13:
                     return;
 
                 default:

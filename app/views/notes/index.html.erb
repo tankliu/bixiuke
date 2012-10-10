@@ -21,7 +21,9 @@
 	
 	<div id="content">
 		<div class="note_form">
-			<p id="notice"><%= flash[:notice] || flash.now[:notice] %></p>
+			<% if notice %>
+				<div id="notice"><%= notice %></div>
+			<% end %>
 
 			<h2>创建惯例(+3积分)</h2>
 			<div class="note_notice">换行后,添加@标记,后面可以写适合场合等(请看下面已创建的惯例).</div>

@@ -1,10 +1,10 @@
 <%= form_for(@resource) do |f| %>
   <% if @resource.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@resource.errors.count, "错误") %> :</h2>
+      <h2><%= @resource.errors.count.to_s+"个错误" %> :</h2>
       <ul>
       <% @resource.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li><%= format_error(msg) %></li>
       <% end %>
       </ul>
     </div>

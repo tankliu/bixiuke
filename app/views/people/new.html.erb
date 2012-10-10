@@ -2,7 +2,7 @@
 	<h2>必读:创建账户(请先学完<a href="/guangpan">光盘</a>和<a href="/zhinanzhen">书籍</a>,注册后通知客服开通学员,注册后没开通学员仍不能用高级功能)</h2>
 	<p>如果已有账号,请到这里<%= link_to "登录", :login %></p>
 	<% if session[:person_id] and !is_admin? %>
-		<p id="notice">你已经注册,请回到<%= link_to "个人主页", Person.find(session[:person_id]) %></p>
+		<div id="notice">你已经注册,请回到<%= link_to "个人主页", Person.find(session[:person_id]) %></div>
 	<% else  %>
 		<%= render 'form' %>
 	<% end %>

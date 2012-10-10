@@ -1,1 +1,2 @@
-$("#discussions").prepend('<%= escape_javascript(render :partial => "fail_notice", :locals => {:discussion => @discussion}) %>');
+$("#discussions").append('<%= escape_javascript(render :partial => "fail_notice", :locals => {:discussion => @discussion}) %>');
+$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;

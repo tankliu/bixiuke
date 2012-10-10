@@ -23,11 +23,6 @@ class DiscussionsController < ApplicationController
     end
   end
 
-
-
-
-
-
   # DELETE /discussions/1
   # DELETE /discussions/1.json
   def destroy
