@@ -1,3 +1,13 @@
+<% if Rails.env == "production" %>
+<script type="text/javascript">
+	var faye = new Faye.Client('http://www.paoniuxue.com:9292/faye');
+</script>
+<% else %>
+<script type="text/javascript">
+	var faye = new Faye.Client('http://localhost:9292/faye');
+</script>
+<% end %>
+
 <script type="text/javascript">
 	// for limit words
 	$(function () {
@@ -27,7 +37,7 @@
 		// when add a discussion, scroll to latest discussion
 		$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;
 	});
-		// after load window, scroll to the bottom of dicusssions
+		// after load window, scroll to the bottom of dicusssions, setTimeout for IE issues
 		$(document).ready(function() { 
 			setTimeout(function(){   
 		    $("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight; 
@@ -36,7 +46,6 @@
 
 	// add extension to send user name, and update discussion or user list message
 	$(function() {
-	 	 var faye = new Faye.Client('http://localhost:9292/faye');
 			faye.addExtension({
 			  outgoing: function(message, callback) {
 			    if (message.channel === '/meta/subscribe' || message.channel === '/meta/disconnect' ) {

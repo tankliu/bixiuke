@@ -7,7 +7,11 @@
   <meta name = "description" content = "<%= yield(:description) %>" /> 
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application"%>
-  <%= javascript_include_tag "http://localhost:9292/faye.js"%>
+<% if Rails.env == "production" %>
+  <%= javascript_include_tag "http://www.paoniuxue.com:9292/faye.js"%>
+<% else %>
+	<%= javascript_include_tag "http://localhost:9292/faye.js"%>
+<% end %>
   <%= csrf_meta_tags %>
 <% if Rails.env == "production" %>
 	<% if controller.class == PagesController or controller.class == CoursesController %>
