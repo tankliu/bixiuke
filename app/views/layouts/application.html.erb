@@ -33,42 +33,8 @@
 		<body>
 <% end %>
 
-	<!-- <div id="paoniuxue_top">     -->
 	<div id="main_container">
     <ul class="page_nav">
-    	<li <%="class=selected" if controller.class == PagesController and action_name == 'guangpan' %> >
-  				<a href="/guangpan" target="_top">泡妞秘籍</a>
-  		</li>
-			<li <%="class=selected" if controller.class == CoursesController %> >
- 					<a href="/courses" target="_top">泡妞培训</a>
-			</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'zhinanzhen' %> >
-				<a href="/zhinanzhen" target="_top">指男针</a>
-			</li>
-	
-			<li <%="class=selected" if controller.class == ArticlesController %> >
-				<a href="/articles" target="_top">泡妞文章</a>
-			</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'hezuo'%> >
- 				<a href="/hezuo" target="_top">合作推广</a>
- 			</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'qun' %> >
-				<a href="/qun" target="_top">泡妞咨询</a>
-			</li>				
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'baodao'%> >
-				<a href="/baodao" target="_top">媒体报道</a>
-			</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'faq'%> >
-  				<a href="/faq" target="_top">购买问题</a>      
-  			</li>
-  	
-
-		
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'xueyuan'%> >
-				<a href="/xueyuan" target="_top">成为学员</a>
-			</li>						
-			
-			
 			<span class="user_tool">
 				<li>|</li>
 				<% unless session[:person_id] %>
@@ -89,6 +55,36 @@
 					</li>
 				<% end %>
 	 	  </span>
+    	<li <%="class=selected" if controller.class == PagesController and action_name == 'guangpan' %> >
+  				<a href="/guangpan" target="_top">泡妞秘籍</a>
+  		</li>
+			<li <%="class=selected" if controller.class == PagesController and action_name == 'zhinanzhen' %> >
+				<a href="/zhinanzhen" target="_top">指男针</a>
+			</li>
+			<li <%="class=selected" if controller.class == CoursesController %> >
+ 					<a href="/courses" target="_top">泡妞培训</a>
+			</li>
+
+			<li <%="class=selected" if controller.class == ArticlesController %> >
+				<a href="/articles" target="_top">泡妞文章</a>
+			</li>
+			<li <%="class=selected" if controller.class == PagesController and action_name == 'hezuo'%> >
+ 				<a href="/hezuo" target="_top">合作推广</a>
+ 			</li>
+			<li <%="class=selected" if controller.class == PagesController and action_name == 'qun' %> >
+				<a href="/qun" target="_top">泡妞咨询</a>
+			</li>				
+			<li <%="class=selected" if controller.class == PagesController and action_name == 'baodao'%> >
+				<a href="/baodao" target="_top">媒体报道</a>
+			</li>
+			<li <%="class=selected" if controller.class == PagesController and action_name == 'faq'%> >
+  				<a href="/faq" target="_top">购买问题</a>      
+  		</li>
+		
+			<li <%="class=selected" if controller.class == PagesController and action_name == 'xueyuan'%> >
+				<a href="/xueyuan" target="_top">成为学员</a>
+			</li>						
+	
   	</ul>
            
 		<div id="nav">
@@ -142,7 +138,7 @@
 		</div>
 	
 		<%= yield %>
-	</div>
+	</div> <!-- end of main-container -->
 	<hr />
 	<div id="footer">
 		<p>	

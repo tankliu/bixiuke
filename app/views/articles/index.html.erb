@@ -19,9 +19,9 @@
 <div class="box article_box">
 	<div id="categories">
 		<ul>
-			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有文章", articles_path %></li>
+			<li <%="class=selected" if @path == nil  %>><%= link_to "所有文章", articles_path %></li>
 			<% @categories.each do |category| %>
-			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_articles_path(:path => category.path) %></li>
+			<li <%="class=selected" if @path == category.path  %>><%= link_to category.name, category_articles_path(:path => category.path) %></li>
 			<% end %>
 		</ul>
 	</div>
@@ -38,18 +38,18 @@
 		<h2>最近分享文章</h2>
 
 		<% @articles.each do |article| %>
-			<div class="topic_person_photo">
+			<div class="entry_person_photo">
 				<%= image_tag article.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title"><%= link_to truncate(article.title,:length => 35), article %></div>
+			<div class="entry_title"><%= link_to truncate(article.title,:length => 35), article,:target => "_blank" %></div>
 			<br /><br />
-			<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(:path => article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
+			<div class="entry_meta">类别:<%= link_to article.category.name, category_articles_path(:path => article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
 			</div>
 			<br />
 			<div class="article_image"><%= image_tag article.attachment.url %></div>
-			<div class="topic_content"><%= simple_format article.description %></div>
-			<div class="topic_edit_bar">
-				<%= link_to "评论(#{article.comments.size})", article  %>
+			<div class="entry_content"><%= simple_format article.description %></div>
+			<div class="entry_edit_bar">
+				<%= link_to "评论(#{article.comments.size})", article, :target => "_blank"  %>
 			</div>
 			<hr />
 		<% end %>

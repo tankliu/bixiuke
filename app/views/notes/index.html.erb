@@ -9,10 +9,10 @@
 <div class="box">
 	<div id="categories">
 		<ul>
-			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有阶段", notes_path %></li>
+			<li <%="class=selected" if @path == nil  %>><%= link_to "所有阶段", notes_path %></li>
 			<% @categories.each do |category| %>
 			<li class="arrow"></li>			
-			<li <%="class='selected'" if @path == category.path  %>><%= link_to category.name, category_notes_path(:path => category.path) %></li>
+			<li <%="class=selected" if @path == category.path  %>><%= link_to category.name, category_notes_path(:path => category.path) %></li>
 			<% end %>
 		</ul>
 
@@ -20,34 +20,26 @@
 	
 	
 	<div id="content">
-		<div class="note_form">
-			<% if notice %>
-				<div id="notice"><%= notice %></div>
-			<% end %>
-
-			<h2>创建惯例(+3积分)</h2>
-			<div class="note_notice">换行后,添加@标记,后面可以写适合场合等(请看下面已创建的惯例).</div>
-
-			<%= render 'form'  %>
-		</div>
+		<h2>创建惯例(+3积分)</h2>
+		<% if notice %>
+			<div id="notice"><%= notice %></div>
+		<% end %>
+		<%= render 'form'  %>
 		
-		<h2>最近惯例</h2>
+		<h2>最新惯例</h2>
 		
-		<div class="note_notice">惯例可以利用,不要依赖,最终通过学习惯例,形成自己风格.</div>
-		<br />
-		<br />
 		<% @notes.each do |note| %>
-			<div class="topic_person_photo">
+			<div class="entry_person_photo">
 				<%= image_tag note.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title">阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %></div>
+			<div class="entry_title">阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %></div>
 			<br /><br />
-			<div class="topic_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
+			<div class="entry_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
 			</div>
 
-			<div class="topic_content"><%= simple_format note.content %></div>
-			<div class="topic_edit_bar">
-				<%= link_to "评论(#{note.comments.size})", note %>
+			<div class="entry_content"><%= simple_format note.content %></div>
+			<div class="entry_edit_bar">
+				<%= link_to "详细(#{note.comments.size})", note, :target => "_blank" %>
 			</div>
 			<hr />
 		<% end %>

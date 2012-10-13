@@ -1,13 +1,13 @@
-<div class="topic_person_photo">
+<div class="entry_person_photo">
 	<%= image_tag comment.person.avatar.url(:thumb) %>
 </div>
-<div class="topic_meta">发布:<%= link_to comment.person.nick_name, comment.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= comment.created_at.to_date.to_s %>
+<div class="entry_meta">发布:<%= link_to comment.person.nick_name, comment.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= comment.created_at.to_date.to_s %>
 </div>
 <br />
 <div class="comment_content">
 	<%= simple_format comment.content %>
 </div>
-<div class="topic_edit_bar">
+<div class="entry_edit_bar">
 	<% if can_delete?(comment) %>
 		<%= link_to '删除', comment, :data => { :confirm => '确定删除' }, method: :delete %>
 	<% end %>

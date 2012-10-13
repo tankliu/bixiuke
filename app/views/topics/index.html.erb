@@ -8,7 +8,7 @@
 	<div id="content">
 				 
 		<% @topics.each do |topic| %>
-			<p class="topic_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %></p>
+			<p class="entry_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %></p>
 			<p><%= simple_format truncate(topic.content, :length => 300) %></p>
 			<%= link_to "回复", topic  %>
 			<% if can_delete?(topic) %>
@@ -20,13 +20,9 @@
 		<%= paginate @topics %>		
 	</div>
 
-	<div id="ask_topic">
-		<% if is_member? %>
-			<div class="note_form">
-				<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>
-				<%= render 'form'  %>
-			</div>
-		<% end %>
-	</div>
+		<div class="note_form">
+			<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>
+			<%= render 'form'  %>
+		</div>
 	
 </div>

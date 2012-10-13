@@ -55,17 +55,17 @@
 		<%= render :partial => 'topics/form' %>
 		<h2>最近帖子</h2>
 		<% @topics.each do |topic| %>
-			<div class="topic_person_photo">
+			<div class="entry_person_photo">
 				<%= image_tag topic.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title"><%= link_to topic.title, class_topic_path(@group,topic) %></div>
+			<div class="entry_title"><%= link_to topic.title, class_topic_path(@group,topic), :target => "_blank" %></div>
 			<br /><br />
-			<div class="topic_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
+			<div class="entry_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
 			</div>
 			
-			<div class="topic_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
-			<div class="topic_edit_bar">
-				<%= link_to "回复(#{topic.comments.size})", class_topic_path(@group,topic)  %>
+			<div class="entry_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
+			<div class="entry_edit_bar">
+				<%= link_to "详细(#{topic.comments.size})", class_topic_path(@group,topic), :target => "_blank"  %>
 			</div>
 			<hr />
 		<% end %>

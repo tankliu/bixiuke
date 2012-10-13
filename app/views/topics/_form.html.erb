@@ -11,11 +11,10 @@
     </div>
   <% end %>
 
-
   <br />
   <div class="field">
     <%= f.label :title, "1到2句话概括问题(不超过50字)" %><br />
-    <%= f.text_field :title, :size => "95" %>
+    <%= f.text_field :title, :size => "90" %>
   </div>
   <div class="field">
     <%= f.label :content, "详细内容(至少100字,最多1000字,便于分析)" %><br />
@@ -27,7 +26,7 @@
 
 
   <div class="actions">
-    <%= f.submit "写好了,提交!" %>
+    <%= f.submit "提交" %>
   </div>
 <% end %>
 

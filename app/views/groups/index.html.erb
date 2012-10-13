@@ -3,7 +3,6 @@
 <% content_for :description,"泡妞学网小组列表,每天推出一个小组." %>
 
 
-<div id="new_article_bar">
 	<% if notice %>
 		<div id="notice"><%= notice %></div>
 	<% end %>
@@ -11,9 +10,8 @@
 	<% if is_admin? %> 			
 		<%= link_to '创建组', new_group_path %>
 	<% end %>
-</div>
 
-<div class="box articles_box">
+<div class="box">
 	<h1>所有小组</h1>
 	<div id="groups">		
 		<% @groups.each do |group| %>
@@ -22,7 +20,7 @@
 			<h2 class= "index_organization_title"><%= link_to group.name, group %></h2>
 			<div class="index_organization_description"><%= truncate(group.description, :length => 55) %></div><br />
 			创建时间:<%= group.created_at.to_date.to_s %>
-			<span class="meta_space">创建者:<%= link_to group.person.nick_name, :root %></span>
+			<span class="space">创建者:<%= link_to group.person.nick_name, :root %></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<% if is_admin? %>
 				<%= link_to '编辑', edit_group_path(group) %>

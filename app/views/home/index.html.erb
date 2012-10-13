@@ -39,16 +39,16 @@
 <div class="box">
 		<a name="latest_topics" id="latest_topics"></a><h1>最近帖子</h1>
 		<% @topics.each do |topic| %>
-			<div class="topic_person_photo">
+			<div class="entry_person_photo">
 				<%= image_tag topic.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title"><%= link_to truncate(topic.title,:length => 35), topic %></div>
+			<div class="entry_title"><%= link_to truncate(topic.title,:length => 35), topic %></div>
 			<br /><br />
-			<div class="topic_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
+			<div class="entry_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
 			</div>
 			
-			<div class="topic_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
-			<div class="topic_edit_bar">
+			<div class="entry_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
+			<div class="entry_edit_bar">
 				<%= link_to "回复(#{topic.comments.size})", topic  %>
 			</div>
 			<hr />
@@ -59,16 +59,16 @@
 <div class="box">
 		<a name="latest_notes" id="latest_notes"></a><h1>最近惯例</h1>
 		<% @notes.each do |note| %>
-			<div class="topic_person_photo">
+			<div class="entry_person_photo">
 				<%= image_tag note.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title">阶段:<%= link_to note.category.name, category_notes_path(note.category) %></div>
+			<div class="entry_title">阶段:<%= link_to note.category.name, category_notes_path(note.category) %></div>
 			<br /><br />
-			<div class="topic_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
+			<div class="entry_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
 			</div>
 
-			<div class="topic_content"><%= simple_format note.content %></div>
-			<div class="topic_edit_bar">
+			<div class="entry_content"><%= simple_format note.content %></div>
+			<div class="entry_edit_bar">
 				<%= link_to "评论(#{note.comments.size})", note %>
 			</div>
 			<hr />
@@ -79,15 +79,15 @@
 <div class="box">
 		<a name="latest_resources" id="latest_resources"></a><h1>最近资源分享</h1>
 		<% @resources.each do |resource| %>
-			<div class="topic_person_photo">
+			<div class="entry_person_photo">
 				<%= image_tag resource.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title"><%= link_to truncate(resource.title,:length => 35), resource %></div>
+			<div class="entry_title"><%= link_to truncate(resource.title,:length => 35), resource %></div>
 			<br /><br />
-			<div class="topic_meta">类别:<%= link_to resource.category.name, category_resources_path(resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
+			<div class="entry_meta">类别:<%= link_to resource.category.name, category_resources_path(resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
 			</div>
 
-			<div class="topic_edit_bar">
+			<div class="entry_edit_bar">
 				<%= link_to "去下载或评论(#{resource.comments.size})", resource  %>
 			</div>
 			<hr />
@@ -167,17 +167,17 @@
 		<a name="latest_articles" id="latest_articles"></a><h1>最近分享文章</h1>
 		
 		<% @articles.each do |article| %>
-			<div class="topic_person_photo">
+			<div class="entry_person_photo">
 				<%= image_tag article.person.avatar.url(:thumb) %>
 			</div>
-			<div class="topic_title"><%= link_to truncate(article.title,:length => 35), article %></div>
+			<div class="entry_title"><%= link_to truncate(article.title,:length => 35), article %></div>
 			<br /><br />
-			<div class="topic_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
+			<div class="entry_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
 			</div>
 			<br />
 			<div class="article_image"><%= image_tag article.attachment.url %></div>
-			<div class="topic_content"><%= simple_format article.description %></div>
-			<div class="topic_edit_bar">
+			<div class="entry_content"><%= simple_format article.description %></div>
+			<div class="entry_edit_bar">
 				<%= link_to "评论(#{article.comments.size})", article  %>
 			</div>
 			<hr />

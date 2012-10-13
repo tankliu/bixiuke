@@ -24,11 +24,11 @@
 
 <div class="box">
 	<a name="latest_courses" id="latest_courses"></a><h1>寒江雪超级约会学最近课程计划</h1>
-	<div id="new_course_bar">
-		<% if is_admin? %>
-		<%= link_to '创建课程', new_course_path %>
-		<% end %>
-	</div>
+	<% if is_admin? %>
+		<div class="entry_edit_bar">
+			<%= link_to '创建课程', new_course_path %>
+		</div>
+	<% end %>
 	<div class="courses_update_time">更新时间:<%= Course.last.updated_at.to_date %></div>
 	<table id="courses">
 	  <tr>

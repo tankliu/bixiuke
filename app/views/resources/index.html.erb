@@ -14,9 +14,9 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 	
 	<div id="categories">	
 		<ul>
-			<li <%="class='selected'" if @path == nil  %>><%= link_to "所有资源", resources_path %></li>
+			<li <%="class=selected" if @path == nil  %>><%= link_to "所有资源", resources_path %></li>
 			<% @categories.each do |category| %>
-			<li <%="class='selected'" if @path == category.path  %>>
+			<li <%="class=selected" if @path == category.path  %>>
 			<%= link_to category_resources_path(:path => category.path) do %>
 				<%= image_tag category.avatar.url(:thumb) %><%= category.name %>
 			<% end %>
@@ -26,33 +26,34 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 	</div>
 	
 	<div id="content">		
+			
+				<h2>分享资源(+3积分)</h2>
 				<% if notice %>
 					<div id="notice"><%= notice %></div>
 				<% end %>
-					
-				<h2>分享资源(+3积分)</h2>
+			
 				<% if is_member? %>
 					<%= render :partial => 'form'  %>
 				<% else %>
-					<div class="note_notice">只有学员才可以创建资源分享, <%= link_to "成为学员", :xueyuan %>, 是学员的请<%= link_to "登录", :login  %></div>
+					<div class="hint">只有学员才可以创建资源分享, <%= link_to "成为学员", :xueyuan %>, 是学员的请<%= link_to "登录", :login  %></div>
 				<% end %>
 				<h2>最近资源分享</h2>
 				<% unless is_member? %>
-					<div class="note_notice">只有学员才可以下载</div>
+					<div class="hint">只有学员才可以下载</div>
 				<% end %>
 				
 				
 				<% @resources.each do |resource| %>
-					<div class="topic_person_photo">
+					<div class="entry_person_photo">
 						<%= image_tag resource.category.avatar.url(:medium) %>
 					</div>
-					<div class="topic_title"><%= link_to truncate(resource.title,:length => 35), resource %></div>
+					<div class="entry_title"><%= link_to truncate(resource.title,:length => 35), resource, :target => "_blank" %></div>
 					<br /><br />
-					<div class="topic_meta">发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
+					<div class="entry_meta">发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
 					</div>
 
-					<div class="topic_edit_bar">
-						<%= link_to "去下载或评论(#{resource.comments.size})", resource  %>
+					<div class="entry_edit_bar">
+						<%= link_to "去下载或评论(#{resource.comments.size})", resource, :target => "_blank"  %>
 					</div>
 					<hr />
 				<% end %>
