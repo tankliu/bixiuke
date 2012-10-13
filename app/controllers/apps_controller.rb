@@ -30,6 +30,22 @@ class AppsController < ApplicationController
     end
     
   end
+  
+  def test2 
+    if is_member?
+      if params[:test2] == "A"
+        notice_text = "恭喜你!你具有成为把妹达人的潜力!"
+      else
+        notice_text = "你还需要再接再励才能具有把妹达人的潜力!加油学习!"
+      end
+    else
+      notice_text = "你还不是学员不能参加测试,如果是学员请先登录,如果不是学员请联系客服成为学员."
+    end
+    respond_to do |format|
+      format.html{ redirect_to apps_path, notice: notice_text }
+      format.json
+    end
+  end
 
   # GET /apps/1
   # GET /apps/1.json

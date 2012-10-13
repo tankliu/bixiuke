@@ -65,6 +65,7 @@ V8::Application.routes.draw do
   match 'login' => 'sessions#create', :via => :post
   match 'logout'  => 'sessions#destroy', :via => :delete
   match 'test'  =>  "apps#test", :via => :post
+  match 'test2'  =>  "apps#test2", :via => :post
   match '/classes/:id'  => "groups#show", :as => :group
   match '/classes'  => "groups#index"
   match '/classes/:group_id/topics/:id' => 'topics#show', :as => :class_topic

@@ -11,10 +11,14 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
+
 */
 
 /* body ,p,a等基本元素*/
+
+
+
+
 
 body {
 	background: #f6f2e9;
@@ -52,6 +56,9 @@ form{
 .pagination{
 	margin:5px 0;
 }
+
+
+
 #notice,#error_explanation{
 	width: 100%;
 	border: 1px dashed #f00;
@@ -138,7 +145,7 @@ h4 {
 	width: 99.8%;
 	margin: 0 auto;
 	height: 22px;
-	border: 1px dashed #f09;
+	border: 1px dashed #F09;
 	background: #eee;
 	padding: 6px 0 0 0;
 }
@@ -211,7 +218,7 @@ h4 {
 	color: #aaa;
 }
 
-#nav ul li.selected a, #nav ul li a:hover {
+#nav ul li.selected a, #nav ul li a:hover {    
 	background-color: #f09;
 	color: #fff;	
 	border-color: #000;

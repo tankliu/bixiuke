@@ -5,13 +5,14 @@
 <% end %>
 
 <div class="box">
-	<h2>你有成为把妹达人的天赋吗?</h2>
 	<% if notice %>
 		<div id="notice"><%= notice %></div>
 	<% end %>
 
+
+	<h3>测试1:你有成为把妹达人的天赋吗?</h3>
 	<%= form_tag :test do |f| %>
- 	 	<div id="test">
+ 	 	<div class="test">
 			<div id="question1">
 				<h4>第1题 – “请我喝一杯吧。”</h4>
 				<p>你在酒吧和一个9分辣妹搭上了，她说：“我渴了，不如请我喝一杯吧。”……….你该怎么回应？？</p>
@@ -81,6 +82,38 @@
 			  </div>
 			</div>
 
+		</div> <!-- end test -->
+	<% end %>
+	
+	
+	<%= form_tag :test2 do |f| %>
+ 	 	<div class="test">
+			<div id="test2">
+				<h3>测试2</h3>
+				<p>明天就要跟搭讪认识的女孩首次约会了，今晚她突然短信说要带个女伴一起去，你该如何应对:</p>
+				<p>请选择:</p>
+				<div class="field">
+				 <%= radio_button_tag "test2","A", false %>		
+				  <%= label_tag "test2", "A:告诉她你也带个男伴去。" %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "test2","B", false %>		
+				  <%= label_tag "test2", "B:告诉她你只想跟她单独约会." %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "test2","C", false %>		
+				  <%= label_tag "test2", "C:欣然接受并且你还是自己去。" %><br />
+				</div>
+				<div class="field">
+				 <%= radio_button_tag "test2","D", false %>		
+				  <%= label_tag "test2", "D:对她说如果是因为不放心的话可以安排在一个公共场所见面." %><br />
+				</div>
+				<div class="field">
+			    <%= submit_tag "提交" %>
+			  </div>
+			</div>
+			
+	
 		</div> <!-- end test -->
 	<% end %>
 
