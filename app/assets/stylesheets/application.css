@@ -17,9 +17,6 @@
 /* body ,p,a等基本元素*/
 
 
-
-
-
 body {
 	background: #f6f2e9;
 	padding: 0;
@@ -148,17 +145,16 @@ h4 {
 	border: 1px dashed #F09;
 	background: #eee;
 	padding: 6px 0 0 0;
+	
 }
-.user_tool{
-	_margin-top:10px;
-}
-.user_tool, .user_tool li{
-	float:right;
-}
+
 
 .page_nav li{
 	float: left;
 	margin: 0 5px;
+}
+li.user_tool{
+	float:right;
 }
 .page_nav li a{
 	color:#f09;
@@ -560,7 +556,7 @@ h4 {
 #classroom_top{
 	width:920px;
 	height:60px;
-	padding:0 10px 10px 10px;
+	padding:0 10px 9px 10px;
 }
 #classroom_photo{
 	width: 60px;
@@ -583,7 +579,7 @@ h4 {
 	float: left;
 }
 #classroom_people{
-	padding:3px 3px 3px 8px;
+	padding:1px 3px 3px 8px;
 	width:187px;
 	float:right;
 	height:460px;

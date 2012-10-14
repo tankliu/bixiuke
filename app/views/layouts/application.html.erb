@@ -35,26 +35,7 @@
 
 	<div id="main_container">
     <ul class="page_nav">
-			<span class="user_tool">
-				<li>|</li>
-				<% unless session[:person_id] %>
-					<li <%="class=selected" if controller.class == PeopleController and action_name == "new"%> >
-						<a href="/people/new" target="_top">注册</a>
-					</li>
-					<li <%="class=selected" if controller.class == SessionsController and action_name == "new"%> >
-						<a href="/login" target="_top">登录</a>
-					</li>
-				<% end %>
-				<% unless session[:person_id].nil? %>					
-					<li>
-						<%= link_to current_person.nick_name, current_person %>
-					</li>
-					<li><%= link_to "修改资料", edit_person_path(current_person) %></li>
-					<li>
-						<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
-					</li>
-				<% end %>
-	 	  </span>
+			
     	<li <%="class=selected" if controller.class == PagesController and action_name == 'guangpan' %> >
   				<a href="/guangpan" target="_top">泡妞秘籍</a>
   		</li>
@@ -83,7 +64,29 @@
 		
 			<li <%="class=selected" if controller.class == PagesController and action_name == 'xueyuan'%> >
 				<a href="/xueyuan" target="_top">成为学员</a>
-			</li>						
+			</li>		
+			<li class="user_tool">
+				<ul>
+					<li>|</li>
+					<% unless session[:person_id] %>
+						<li <%="class=selected" if controller.class == PeopleController and action_name == "new"%> >
+							<a href="/people/new" target="_top">注册</a>
+						</li>
+						<li <%="class=selected" if controller.class == SessionsController and action_name == "new"%> >
+							<a href="/login" target="_top">登录</a>
+						</li>
+					<% end %>
+					<% unless session[:person_id].nil? %>					
+						<li>
+							<%= link_to current_person.nick_name, current_person %>
+						</li>
+						<li><%= link_to "修改资料", edit_person_path(current_person) %></li>
+						<li>
+							<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
+						</li>
+					<% end %>
+		 	  </ul>			
+			</li>
 	
   	</ul>
            

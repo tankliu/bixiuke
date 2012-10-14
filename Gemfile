@@ -37,6 +37,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'faye'
 gem 'thin'
 gem 'hashie'
+
+group :development do
+  gem 'guard-livereload'
+end
+gem 'rb-fsevent'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

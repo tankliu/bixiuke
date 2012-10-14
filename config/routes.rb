@@ -90,6 +90,7 @@ V8::Application.routes.draw do
 
   match '/classes/:id/page(/:page)' => 'groups#show'
   
+  
   # match '/notes/categories(/:category_id)' , :controller=>"notes",:action=>"index"
   # match '/notes/category(/:category_id)' => 'notes#index'
   # The priority is based upon order of creation:
