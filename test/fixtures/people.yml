@@ -6,15 +6,18 @@ admin:
   role: admin
   nick_name: 专业泡妞培训
   city: 广州
+  score: 0
 xueyuan:  #学员
   email: xueyuan@qq.com
   password_digest: <%= BCrypt::Password.create("123456") %>
   role: "学员"
   nick_name: 小狼
   city: 广州
+  score: 0
 youke:  #游客
   email: youke@qq.com
   password_digest: <%= BCrypt::Password.create("123456") %>
-  role: ""
+  role: "非学员"
   nick_name: 小狼
   city: 广州
+  score: 0

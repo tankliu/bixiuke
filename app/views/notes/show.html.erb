@@ -21,6 +21,9 @@
 
 			<div class="entry_content"><%= simple_format @note.content %></div>
 			<div class="entry_edit_bar">
+
+		    <%= render :partial => "share/bdshare" %>
+				
 				<% if can_delete?(@note) %>
 					<%= link_to '编辑', edit_note_path(@note) %>
 					<%= link_to '删除', @note, :data => { :confirm => '确定删除' }, method: :delete %>

@@ -1,22 +1,65 @@
-<% if notice %>
-<div id="notice"><%= notice %></div>
+<% content_for :title,"测试你的情商" %>
+<% content_for :keywords,"情感测试,性爱测试" %>
+<% content_for :description,"测试你的情商,测试你性商,泡妞学测试" %>
+<% unless is_member? %>
+	<div id="header_guanggao">
+		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	</div>
 <% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @app.name %>
-</p>
 
-<p>
-  <b>Description:</b>
-  <%= @app.description %>
-</p>
+<div class="box ">
+	<div id="content">
+		<% if notice %>
+			<div id="notice"><%= notice %></div>
+		<% end %>
+		<div class="entry_person_photo">
+			<%= image_tag @app.person.avatar.url(:thumb) %>
+		</div>
+		<div class="entry_title"><%=  @app.title %></div>
+		<br /><br />
+		<div class="entry_meta">发布:<%= link_to @app.person.nick_name, @app.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @app.created_at.to_date.to_s %>
+		</div>
 
-<p>
-  <b>Person:</b>
-  <%= @app.person %>
-</p>
+		<div class="entry_content"><%= simple_format @app.content %></div>
+		<div class="entry_content">
+			<%= form_tag :test do |f| %>
+				<% @app.options.each_with_index do |option,index| %>
+					<div class="field">
+						<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false %>		
+						<%= ApplicationHelper::IndexToLetter[index] %>.<%= label_tag "answer", option.content %>
+					</div>
+					<div class="field">
+						<%= hidden_field_tag "app_id",@app.id %>		
+					</div>
+				<% end %>
+				<div class="field">
+					<%= submit_tag "提交" %>
+				</div>	
+			<% end %>
+		</div>
+		
+		<div class="entry_edit_bar">
+			<%= render :partial => "share/bdshare" %>
+			<% if can_delete?(@app) %>
+				<%= link_to '编辑', edit_app_path(@app) %>
+				<%= link_to '删除', @app, :data => { :confirm => '确定删除' }, method: :delete %>
+			<% end %>
+		</div>
+		<hr />
+		
+		<h2>所有评论(评论:+1积分)</h2>
 
-
-<%= link_to 'Edit', edit_app_path(@app) %> |
-<%= link_to 'Back', apps_path %>
+		<div id="comments">
+			<% @comments.each do |comment| %>
+				<%= render comment %>
+			<% end %>
+			
+			<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "App", :commable_id => @app.id } %>
+		</div>
+			
+	</div>
+	<div id="sidebar">
+		<%= link_to "返回", :back %>
+	</div>
+</div>

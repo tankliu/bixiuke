@@ -1,11 +1,13 @@
+# -*- encoding : utf-8 -*-
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+
 one:
-  name: MyString
-  description: MyText
-  person: 
+  title: 测试1
+  content: 测试的内容测试的内容
+  person: admin
 
 two:
-  name: MyString
-  description: MyText
-  person: 
+  title: 测试2
+  content: 测试的内容测试的内容
+  person: xueyuan

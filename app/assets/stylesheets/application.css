@@ -137,6 +137,7 @@ h4 {
 	float: right;
 }
 
+
 /*---------------top-------*/
 .page_nav{
 	width: 99.8%;
@@ -685,6 +686,15 @@ li.user_tool{
 	clear:both;
 	margin:5px 0;	
 }
+
+/*-------------------apps------------------------*/
+fieldset {
+    margin:10px 0;
+    color:#333; 
+    border:#f09 dashed 1px;
+	width:510px;
+} 
+
 /*-------------------resources------------------------*/
 
 #comments{
@@ -698,4 +708,16 @@ li.user_tool{
 	margin-top:10px;
 }
 
-/*for ie*/
+/*-------------------rss------------------------*/
+
+#rss {
+	margin-bottom:20px;
+}
+#rss img{
+	margin:0;
+}
+.create_rss{
+	margin-bottom:20px;
+	text-indent:1.5em;
+	background: url(/assets/rss/rss.gif) no-repeat 0px 50%;
+}

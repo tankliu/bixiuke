@@ -39,14 +39,14 @@ class ApplicationController < ActionController::Base
    if session[:person_id]
      return true
    else
-     redirect_to :login
+     redirect_to :login, :notice => "如果是学员,请先登录才能进行此操作."
    end
   end
   
   def is_admin?
     if session[:person_id]
       person = Person.find(session[:person_id])
-      person.role == "老师" and person.id == 4
+      person.role=="admin" || (person.role == "老师" and person.id == 4)
     else
       false
     end

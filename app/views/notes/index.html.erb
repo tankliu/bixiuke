@@ -1,6 +1,8 @@
 <% content_for :title,"泡妞话术惯例库,追女孩子的技巧,追女孩子的短信都在这里" %>
 <% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
 <% content_for :description,"你还在不知道怎么和女孩说话吗?你还在寻找追女孩子的技巧吗?也许你还在收集追女孩子的短信,一切都在这里.包括追女生技巧.追女秘籍,追女孩子的甜言蜜语." %>
+
+
 <% unless is_member? %>
 	<div id="header_guanggao">
 		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
@@ -38,7 +40,7 @@
 			</div>
 
 			<div class="entry_content"><%= simple_format note.content %></div>
-			<div class="entry_edit_bar">
+			<div class="entry_edit_bar">				
 				<%= link_to "详细(#{note.comments.size})", note, :target => "_blank" %>
 			</div>
 			<hr />

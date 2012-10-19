@@ -16,7 +16,6 @@
 //= require_tree .
 
 
-
 setTimeout(function() {
  $("#notice").fadeOut();
-}, 4 * 1000);
+}, 5 * 1000);

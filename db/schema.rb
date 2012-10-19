@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010024559) do
+ActiveRecord::Schema.define(:version => 20121016054833) do
 
   create_table "apps", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
+    t.string   "title"
+    t.text     "content"
     t.integer  "person_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "answer"
   end
 
   add_index "apps", ["person_id"], :name => "index_apps_on_user_id"
@@ -130,6 +131,15 @@ ActiveRecord::Schema.define(:version => 20121010024559) do
     t.integer  "person_id"
     t.integer  "category_id"
   end
+
+  create_table "options", :force => true do |t|
+    t.integer  "app_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "options", ["app_id"], :name => "index_options_on_app_id"
 
   create_table "people", :force => true do |t|
     t.string   "email"

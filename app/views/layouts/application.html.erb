@@ -7,18 +7,19 @@
   <meta name = "description" content = "<%= yield(:description) %>" /> 
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application"%>
-<% if Rails.env == "production" %>
-  <%= javascript_include_tag "http://www.paoniuxue.com:9292/faye.js"%>
-	<% if controller.class == PagesController or controller.class == CoursesController %>
-  	<!--禁止firefox右键-->
+	<%= csrf_meta_tags %>
+	<% if Rails.env == "production" %>
+	  <%= javascript_include_tag "http://www.paoniuxue.com:9292/faye.js"%>
+		<% if controller.class == PagesController or controller.class == CoursesController %>
+	  	<!--禁止firefox右键-->
 	    <script type="text/javascript">
 		   	 document.oncontextmenu=function(e){return false;}
 	    </script>
+		<% end %>
+	<% else %>
+		<%= javascript_include_tag "http://localhost:9292/faye.js"%>
 	<% end %>
-<% else %>
-	<%= javascript_include_tag "http://localhost:9292/faye.js"%>
-<% end %>
-  <%= csrf_meta_tags %>
+	
 </head>
 <!-- 产品模式下拒绝右键和复制 -->
 <% if Rails.env == "production" %>
@@ -30,6 +31,8 @@
 <% else %>
 		<body>
 <% end %>
+
+
 
 	<div id="main_container">
     <ul class="page_nav">
@@ -135,9 +138,8 @@
 			</ul> 		
 		</div>		
 		<div id="guanggao">
-				泡妞学网,专为学员打造,客服QQ：1341548835；手机：15818131421,请先学完光盘成为学员,<a href="/guangpan">购买=></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最新培训：深圳10月05，06号<a href="/courses">赶紧报名参加</a>
+				泡妞学网,专为学员打造,客服QQ：1341548835；手机：15818131421,请先学完光盘成为学员,<a href="/guangpan">购买=></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最新培训：深圳11月03，04号<a href="/courses">赶紧报名参加</a>
 		</div>
-	
 		<%= yield %>
 	</div> <!-- end of main-container -->
 	<hr />
@@ -160,12 +162,25 @@
 		
 	</div><!-- end of footer -->
 	
+	<% if [GroupsController, TopicsController, NotesController, ResourcesController, AppsController].include?(controller.class) and action_name=="show" %>
+		
+		<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+		<script type="text/javascript" id="bdshell_js"></script>
+		<script type="text/javascript">
+			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+		</script>		
+		
+
+		
+	<% end %>
+	
 	<% if Rails.env == "production" %>
 		<script type="text/javascript">
 		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd23a7abb99279fee20249f938c04b70e' type='text/javascript'%3E%3C/script%3E"));
 		</script>
 	<% end %>
+	
 
 </body>
 </html>

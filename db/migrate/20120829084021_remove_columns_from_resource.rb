@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveColumnsFromResource < ActiveRecord::Migration
   def up
     remove_columns :resources, :author, :score

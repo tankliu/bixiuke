@@ -1,143 +1,75 @@
+<% content_for :title,"测试你的情商" %>
+<% content_for :keywords,"情感测试,性爱测试" %>
+<% content_for :description,"测试你的情商,测试你性商,泡妞学测试" %>
+
+<script>
+	$(document).ready(function() {
+		$('#new_app').hide();
+		$('.create_app_button').click(function() {
+			$('#new_app').slideToggle();
+			var text = $(this).text() == '创建测试' ? '取消创建' : '创建测试';
+			$(this).text(text);
+		});
+	});
+</script>
+
 <% unless is_member? %>
 	<div id="header_guanggao">
 		<a href="http://item.taobao.com/item.htm?id=16817107913"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
 	</div>
 <% end %>
+<div class="box">	
+		
+	<div id="content">
+		<% if notice %>
+			<div id="notice"><%= notice %></div>
+		<% end %>
+		
+		<h2>创建测试,点击下面按钮开始(+3积分)</h2>
+		<% if is_member? %>
+			<%= button_tag(:type => 'button', :class => "create_app_button") do %>创建测试<% end %>
+		<% else %>
+			<div class="hint">只有学员才可以创建测试, <%= link_to "成为学员", :xueyuan %>, 是学员的请<%= link_to "登录", :login  %></div>
+		<% end %>
 
-<div class="box">
-	<% if notice %>
-		<div id="notice"><%= notice %></div>
-	<% end %>
+		<%= render 'form'  %>
+		
+		<h2>最新测试</h2>
+		
+		<% @apps.each do |app| %>
+			<div class="entry_person_photo">
+				<%= image_tag app.person.avatar.url(:thumb) %>
+			</div>
+			<div class="entry_title"><%=  app.title %></div>
+			<br /><br />
+			<div class="entry_meta">发布:<%= link_to app.person.nick_name, app.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= app.created_at.to_date.to_s %>
+			</div>
 
-
-	<h3>测试1:你有成为把妹达人的天赋吗?</h3>
-	<%= form_tag :test do |f| %>
- 	 	<div class="test">
-			<div id="question1">
-				<h4>第1题 – “请我喝一杯吧。”</h4>
-				<p>你在酒吧和一个9分辣妹搭上了，她说：“我渴了，不如请我喝一杯吧。”……….你该怎么回应？？</p>
-				<p>请选择:</p>
-				<div class="field">
-				 <%= radio_button_tag "question1","A", false %>		
-				  <%= label_tag "question1", "A：“没问题。你想喝什么呢？”" %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "question1","B", false %>		
-				  <%= label_tag "question1", "B：“我不是慈善机构，我从来不请女孩子喝酒。”" %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "question1","C", false %>		
-				  <%= label_tag "question1", "C：“没问题。但你需要给我一个理由 – 为什么我该请你喝一杯？”" %><br />
-				</div>
-				<div class="field">
-					<%= button_tag(:type => 'button', :class => "next2") do %>
-					  <%= content_tag(:strong, '继续') %>
+			<div class="entry_content"><%= simple_format app.content %></div>
+			<div class="entry_content">
+				<%= form_tag :test do |f| %>
+					<% app.options.each_with_index do |option,index| %>
+						<div class="field">
+							<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false %>		
+							<%= ApplicationHelper::IndexToLetter[index] %>.<%= label_tag "answer", option.content %>
+						</div>
+						<div class="field">
+							<%= hidden_field_tag "app_id",app.id %>		
+						</div>
 					<% end %>
-				</div>
+					<div class="field">
+						<%= submit_tag "提交" %>
+					</div>	
+				<% end %>
 			</div>
 			
-			<div id="question2">
-				<h4>第2题 – “我只喜欢高个/成熟的男生。”</h4>
-				<p>你和她刚认识半小时，她跟你说：“我只喜欢高个/成熟的男生。”</p>
-				<p>请选择:</p>
-				<div class="field">
-				 <%= radio_button_tag "question2","A", false %>		
-				  <%= label_tag "question2", "A：“其实我虽然不算太高，但我觉得我也不算太矮/太小孩子气。上一次，我……（然后说一个你如何优秀的故事去证明你并不矮或者小孩子气）”" %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "question2","B", false %>		
-				  <%= label_tag "question2", "B：“我看你反转了吧，你比我还矮”" %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "question2","C", false %>		
-				  <%= label_tag "question2", "C：“我看你就像我那个4岁的表妹。非常可爱，但总是喜欢引人注意。下次我给你买一个那种带小风扇的帽子，那一定非常适合你！”" %><br />
-				</div>
-				<div class="field">
-					<%= button_tag(:type => 'button', :class => "next3") do %>
-					  <%= content_tag(:strong, '继续') %>
-					<% end %>
-				</div>
+			<div class="entry_edit_bar">
+				<%= link_to "详细(#{app.comments.size})", app, :target => "_blank" %>
 			</div>
-			
-			
-			
-			<div id="question3">
-				<h4>第3题 – “你是不是喜欢我？”</h4>
-				<p>你在聊天一段时间后，终于，这个女生看着你的眼睛，问你：“你是不是喜欢我？”</p>
-				<p>请选择:</p>
-				<div class="field">
-				 <%= radio_button_tag "question3","A", false %>		
-				  <%= label_tag "question3", "A：“我只是享受和你聊天而已！”" %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "question3","B", false %>		
-				  <%= label_tag "question3", "B：“你还是别抱太多的希望了，我没那么容易的。”" %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "question3","C", false %>		
-				  <%= label_tag "question3", "C：“为什么你会这样想呢？”" %><br />
-				</div>
-				<div class="field">
-			    <%= submit_tag "提交" %>
-			  </div>
-			</div>
-
-		</div> <!-- end test -->
-	<% end %>
+			<hr />
+		<% end %>
+		<%= paginate @apps %>		
+	</div>
 	
-	
-	<%= form_tag :test2 do |f| %>
- 	 	<div class="test">
-			<div id="test2">
-				<h3>测试2</h3>
-				<p>明天就要跟搭讪认识的女孩首次约会了，今晚她突然短信说要带个女伴一起去，你该如何应对:</p>
-				<p>请选择:</p>
-				<div class="field">
-				 <%= radio_button_tag "test2","A", false %>		
-				  <%= label_tag "test2", "A:告诉她你也带个男伴去。" %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "test2","B", false %>		
-				  <%= label_tag "test2", "B:告诉她你只想跟她单独约会." %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "test2","C", false %>		
-				  <%= label_tag "test2", "C:欣然接受并且你还是自己去。" %><br />
-				</div>
-				<div class="field">
-				 <%= radio_button_tag "test2","D", false %>		
-				  <%= label_tag "test2", "D:对她说如果是因为不放心的话可以安排在一个公共场所见面." %><br />
-				</div>
-				<div class="field">
-			    <%= submit_tag "提交" %>
-			  </div>
-			</div>
-			
-	
-		</div> <!-- end test -->
-	<% end %>
-
-
-
-
-
-<script>
-	$(document).ready(function() {
-		$('#question2').hide();
-		$('#question3').hide();
-		$('button.next2').click(function() {
-			$('#question1').slideUp();
-			$('#question2').slideDown();
-		});
-		$('button.next3').click(function() {
-			$('#question2').slideUp();
-			$('#question3').slideDown();
-		});
-
-	});
-</script>
-	
-	
-<h2>更多的测试开发中,请等待...</h2>
 </div>
 

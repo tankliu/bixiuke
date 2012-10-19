@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangeUserToPerson < ActiveRecord::Migration
   def up
     rename_table :users, :people

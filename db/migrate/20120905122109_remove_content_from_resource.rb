@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveContentFromResource < ActiveRecord::Migration
   def up
     remove_column :resources, :description

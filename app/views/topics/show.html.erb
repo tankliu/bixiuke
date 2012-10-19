@@ -17,6 +17,8 @@
 		
 		<div class="entry_content"><%= simple_format @topic.content %></div>
 		<div class="entry_edit_bar">
+			<%= render :partial => "share/bdshare" %>
+	    
 			<% if can_delete?(@topic) %>
 				<%= link_to '编辑', edit_topic_path(@topic) %>
 				<%= link_to '删除', @topic, :data => { :confirm => '确定删除' }, method: :delete %>

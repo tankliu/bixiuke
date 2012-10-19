@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ChangePhotoToAvatar < ActiveRecord::Migration
   def up
     drop_attached_file :people, :photo

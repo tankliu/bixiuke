@@ -95,6 +95,7 @@ class NotesController < ApplicationController
     end
 
     respond_to do |format|
+      raise params[:cheers_size].to_s
       if @note.update_attributes(params[:note])
         format.html { redirect_to @note, notice: '更新成功' }
         format.json { head :no_content }
@@ -108,7 +109,12 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
-    @note = current_person.notes.find(params[:id])
+    if is_admin?
+      @note = Note.find(params[:id])
+    else
+      @note = current_person.notes.find(params[:id])
+    end
+    
     @note.destroy
 
     respond_to do |format|

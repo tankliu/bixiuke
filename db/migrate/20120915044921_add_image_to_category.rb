@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddImageToCategory < ActiveRecord::Migration
   def up
     change_table :categories do |t|

@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 V8::Application.routes.draw do
 
+  resources :options
+
   root :to => 'home#index' 
 
   match 'guangpan' => 'pages#guangpan'
@@ -15,7 +17,8 @@ V8::Application.routes.draw do
   
   #answer 并不需要路由, 直接显示在ask下面即可
     
-  resources :people, :articles, :courses, :apps, :categories, :discussions, :topics, :notes, :resources, :comments, :subjects
+  # match "feeds/notes(.:format)" => "feeds#notes", :as => :notes_rss
+  resources :people, :articles, :courses, :categories, :discussions, :topics, :notes, :resources, :comments, :subjects
 
   
   resources :classrooms do

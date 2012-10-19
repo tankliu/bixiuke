@@ -15,6 +15,7 @@ class Person < ActiveRecord::Base
   has_many :classrooms
   has_many :comments
   has_many :groups
+  has_many :apps
   
   Paperclip.interpolates :avatar_date do |avatar, style|
     avatar.instance.avatar_updated_at.to_date.to_s[0,7]

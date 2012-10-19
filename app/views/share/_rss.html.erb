@@ -1,0 +1,41 @@
+<!-- 需要传入rss_url参数进来 -->
+<script>
+	$(document).ready(function() {
+		$('#rss').hide();
+		$('.create_rss').click(function() {
+			$('#rss').slideToggle();
+			var text = $(this).text() == '订阅' ? '隐藏菜单' : '订阅';
+			$(this).text(text);
+
+		});
+	});
+</script>
+
+<%= button_tag(:type => 'button', :class => "create_rss") do %>订阅<% end %>
+
+<div id="rss">
+	
+	<a title="订阅到QQ" rel="nofollow" href="http://mail.qq.com/cgi-bin/feed?u=<%= rss_url %>" target="_blank">
+	<img src="/assets/rss/qq.gif" alt="订阅到QQ" /></a><br />
+
+	<a title="订阅到有道" rel="nofollow" href="http://reader.youdao.com/#url=<%= rss_url %>" target="_blank">
+	<img src="/assets/rss/youdao.gif" alt="订阅到有道" /></a><br />		
+
+	<a title="订阅到Google" rel="nofollow" href="http://www.google.com/reader/view/feed/<%= rss_url %>" target="_blank">
+	<img src="/assets/rss/google.gif" alt="订阅到Google" /></a><br />
+
+	<a title="订阅到豆瓣9点" rel="nofollow" href="http://9.douban.com/reader/subscribe?url=<%= rss_url %>" target="_blank">
+	<img src="/assets/rss/9dian.gif" alt="订阅到豆瓣9点" />  </a><br />
+
+	<a title="订阅到鲜果" rel="nofollow" href="http://www.xianguo.com/subscribe.php?url=<%= rss_url %>" target="_blank">
+	<img src="/assets/rss/xianguo.gif" alt="订阅到鲜果" /></a><br />
+
+	<a title="订阅到抓虾" rel="nofollow" href="http://www.zhuaxia.com/add_channel.php?url=<%= rss_url %>" target="_blank">
+	<img src="/assets/rss/zhuaxia.gif" alt="订阅到抓虾" /></a><br />
+
+	<a title="订阅到和讯" rel="nofollow" href="http://rss.hexun.com/sub/<%= rss_url %>" target="_blank"><img src="/assets/rss/hexun.gif" alt="订阅到和讯"></a> <br />
+	
+	<a title="订阅到桌面软件" rel="nofollow" href="<%= rss_url %>" target="_blank">
+	<img src="/assets/rss/zhuomian.gif" alt="订阅到客户端" /></a><br />
+	
+</div>

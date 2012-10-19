@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameUsageToNote < ActiveRecord::Migration
   def up
     rename_table :usages, :notes

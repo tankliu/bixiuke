@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPathToCategory < ActiveRecord::Migration
   def change
     add_column :categories, :path, :string

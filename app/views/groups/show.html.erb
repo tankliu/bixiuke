@@ -1,3 +1,9 @@
+<% content_for :title,"泡妞学小组" %>
+<% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
+<% content_for :description,"泡妞学小组, 如果白天老师不在聊天室,如果你有约会恋爱问题,请发到泡妞学小组." %>
+
+
+
 <div class="box">
 	<div id="sidebar">
 		<div id="group_photo">
@@ -54,6 +60,9 @@
 	
 		<%= render :partial => 'topics/form' %>
 		<h2>最近帖子</h2>
+		
+		
+	
 		<% @topics.each do |topic| %>
 			<div class="entry_person_photo">
 				<%= image_tag topic.person.avatar.url(:thumb) %>
