@@ -2,7 +2,6 @@
 <% content_for :keywords,"泡妞学聊天室" %>
 <% content_for :description,"泡妞学聊天室,每天晚上9点." %>
 
-
 <% if Rails.env == "production" %>
 <script type="text/javascript">
 	var faye = new Faye.Client('http://www.paoniuxue.com:9292/faye');
@@ -14,12 +13,13 @@
 <% end %>
 
 <script type="text/javascript">
-	// for limit words
+
 	$(function () {
 	      $('textarea.limited').maxlength({
 	          'feedback' : '.charsLeft', 'useInput' : true
 	      });
 	});
+
 		// enter to send discussion
 	$('#discussion_content').live('keydown', function(e) {
 	  if (!e.ctrlKey && e.keyCode === 13) {
@@ -32,10 +32,13 @@
 		var d = new Date();
 		var time = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+(d.getDate())+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
 		var content = "";
-		if ($("#person_id").text() != "msr") {
-			content = $("#discussion_content").attr("value").replace('\n','<br />');
+		var person_id = $("#person_id").text();
+		if (person_id == "msr") {
+			content = "<span class='fail_notice'>陌生人不可以参与聊天</span>";
+		} else if (person_id.indexOf("fxy") > 0) {
+			content = "<span class='fail_notice'>非学员不可以参与聊天</span>";
 		} else {
-			content = "陌生人不可以参与聊天";
+			content = $("#discussion_content").attr("value").replace('\n','<br />');
 		}
 		$("#discussions").append("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ time+"</div><div class='discussion_content'><p>"+content +"</p></div><br/>");
 		$("#discussion_content").attr({value: ''});
@@ -80,8 +83,6 @@
 		  });
 	});
 	
-
-
 </script>
 <% if notice %>
 <div id="notice"><%= notice %></div>
@@ -111,7 +112,7 @@
 	
 	<div id="classroom_people">
 		<div id="person_info" style="display:none;">
-			<div id="person_id"><%= session[:person_id] ? session[:person_id] : "msr"%></div>
+			<div id="person_id"><%= session[:person_id] ? (is_member? ? session[:person_id] : session[:person_id].to_s+"fxy") : "msr"%></div>
 			<div id="person_nick_name"><%= session[:person_id] ? current_person.nick_name : "陌生人"%></div>
 			<div id="person_city"><%= current_person.city if session[:person_id] %></div>
 		</div>

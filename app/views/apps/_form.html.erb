@@ -24,12 +24,10 @@
 	  <legend>(有几个选项就填写几个,最多四个)</legend>
 		<% 4.times do |index| %>
 			<div class="field">
-		    <%= label_tag :option1, "选项"+ApplicationHelper::IndexToLetter[index] %><br />
-		    <%= text_field_tag 'options[]',   @app.options[index].nil? ? "" : @app.options[index].content, :size => 95 %>
+		    <%= label_tag :options, "选项"+ApplicationHelper::IndexToLetter[index] %><br />
+		    <%= text_field_tag 'options[]',  @app.options[index].nil? ? "" : @app.options[index].content, :size => 95 %>
 		  </div>
 		<% end %>
-
-	
 	</fieldset>
  
 	<!-- answer -->

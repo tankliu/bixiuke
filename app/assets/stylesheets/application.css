@@ -232,6 +232,8 @@ li.user_tool{
 	padding:5px 0;
 	text-indent:1em;
 	line-height:25px;
+/*	for ie6 :制造标签效果*/
+	_margin-top:-6px;
 }
 #guanggao a{
 	color: white;
@@ -493,11 +495,12 @@ li.user_tool{
 }
 .entry_edit_bar{
 	width:100%;
-	float:left;
 	clear:both;
+	float:left;
 	margin:10px 0;
 	text-align:right;
 }
+
 .entry_meta{
 	float: left;
 	color:#4087ae;
@@ -692,10 +695,13 @@ fieldset {
     margin:10px 0;
     color:#333; 
     border:#f09 dashed 1px;
-	width:510px;
+	padding:10px;
 } 
+legend{
+	background:#fff;
+}
 
-/*-------------------resources------------------------*/
+/*-------------------comments------------------------*/
 
 #comments{
 	clear:both;
@@ -703,21 +709,22 @@ fieldset {
 	width:570px;
 }
 .comment_content{
-	float:right;
+	float:left;
 	width:510px;
 	margin-top:10px;
 }
 
-/*-------------------rss------------------------*/
+/*-------------------kfqq------------------------*/
+.kfqq{
+	background: url(/assets/kfqq.png) no-repeat fixed 100% 180px;
+}
+/*-------------------for input ------------------------*/
+#topic_title,#topic_content,#comment_content,#options_{
+	width:560px;
+}
+#note_content,#resource_title,#resource_download_link,#app_title,#app_content{
+	width:580px;
+}
 
-#rss {
-	margin-bottom:20px;
-}
-#rss img{
-	margin:0;
-}
-.create_rss{
-	margin-bottom:20px;
-	text-indent:1.5em;
-	background: url(/assets/rss/rss.gif) no-repeat 0px 50%;
-}
+
+

@@ -140,6 +140,7 @@
 		<div id="guanggao">
 				泡妞学网,专为学员打造,客服QQ：1341548835；手机：15818131421,请先学完光盘成为学员,<a href="/guangpan">购买=></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最新培训：深圳11月03，04号<a href="/courses">赶紧报名参加</a>
 		</div>
+
 		<%= yield %>
 	</div> <!-- end of main-container -->
 	<hr />
@@ -162,17 +163,24 @@
 		
 	</div><!-- end of footer -->
 	
-	<% if [GroupsController, TopicsController, NotesController, ResourcesController, AppsController].include?(controller.class) and action_name=="show" %>
+	<% unless is_member? %>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("body").addClass("kfqq");
+			});
+		</script>
+	<% end %>
+	
+	<% if [TopicsController, NotesController, ResourcesController, AppsController].include?(controller.class) and action_name=="show" %>
 		
 		<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
 		<script type="text/javascript" id="bdshell_js"></script>
 		<script type="text/javascript">
 			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
 		</script>		
-		
-
-		
 	<% end %>
+	
+
 	
 	<% if Rails.env == "production" %>
 		<script type="text/javascript">
