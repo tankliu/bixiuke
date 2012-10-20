@@ -3,10 +3,10 @@
 	<% if is_admin? %>
 			<%= link_to 'X', discussion, :data => { :confirm => '确定删除?' }, method: :delete %>
 	<% end %>
+	<%= link_to 'Re',"#",:class => "reply_discussion" %>
 </div>
 <div class="discussion_content">				
-	<%= simple_format discussion.content %>	
+	<%= simple_format discussion.content %>
 </div>
 <br/>
-
 

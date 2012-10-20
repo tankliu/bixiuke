@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016054833) do
+ActiveRecord::Schema.define(:version => 20121020035859) do
 
   create_table "apps", :force => true do |t|
     t.string   "title"
@@ -102,9 +102,8 @@ ActiveRecord::Schema.define(:version => 20121016054833) do
     t.text     "content"
     t.integer  "person_id"
     t.integer  "classroom_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "primary_chat_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "discussions", ["classroom_id"], :name => "index_topics_on_group_id"

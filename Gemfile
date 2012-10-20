@@ -37,6 +37,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'faye'
 gem 'thin'
 gem 'hashie'
+gem "auto_html"
 
 group :development do
   gem 'guard-livereload'

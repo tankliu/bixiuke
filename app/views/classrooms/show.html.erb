@@ -14,6 +14,14 @@
 
 <script type="text/javascript">
 
+	$('.reply_discussion').live('click', function(e) {
+		var name = $(this).parent().children().first().text();
+		var content = $(this).parent().next().children().first().text().substr(0,15);
+		var reply = name+":"+content+"..."+"\n"+"=========="+"\n";
+	  $('#discussion_content').attr({value: reply});
+		e.preventDefault();
+	});
+	
 	$(function () {
 	      $('textarea.limited').maxlength({
 	          'feedback' : '.charsLeft', 'useInput' : true
