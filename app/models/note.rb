@@ -6,7 +6,7 @@ class Note < ActiveRecord::Base
   paginates_per 10
   validates :content, :length => {:in => 10..500, :too_short => "惯例内容至少10个字", :too_long => "写的太多了，请简明扼要，字数限制500"}
 
-  before_save :add_color_to_tag
+  before_save :add_color_to_tag, :change_url
 
   protected
   def add_color_to_tag
@@ -14,6 +14,14 @@ class Note < ActiveRecord::Base
     if tag_match_data
       tag                     = tag_match_data[0]
       self.content            = self.content.sub!(tag, "<span class='usage_pinglun'>#{tag}</span>")
+    end
+  end
+
+  def change_url
+    match_data            = self.content.match(/\[url\](.+)\[\/url\]/) 
+    if match_data
+      url                     = match_data[1]  #匹配里面的url
+      self.content            = self.content.gsub(match_data[0], "<a href='#{url.include?("http") ? url : "http://"+url}' target='_blank'>#{url}</a>")
     end
   end
 end

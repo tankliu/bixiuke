@@ -1,8 +1,6 @@
-<% content_for :title,"一个问答" %>
-<% content_for :keywords,"一个问答" %>
-<% content_for :description,"一个问答" %>
-
-
+<% content_for :title,@topic.title %>
+<% content_for :keywords,"泡妞学问答,泡妞问题,泡妞案例分享." %>
+<% content_for :description, truncate(@topic.content, :length => 300) %>
 
 <div class="box ">
 	<div id="content">

@@ -10,7 +10,6 @@ class Discussion < ActiveRecord::Base
   paginates_per 100
   
   before_save :change_url
-
   protected
   def change_url
     match_data            = self.content.match(/\[url\](.+)\[\/url\]/) 

@@ -1,6 +1,6 @@
-<% content_for :title,"泡妞话术惯例库,追女孩子的技巧,追女孩子的短信都在这里" %>
+<% content_for :title, truncate(@note.content, :length => 50) %>
 <% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
-<% content_for :description,"你还在不知道怎么和女孩说话吗?你还在寻找追女孩子的技巧吗?也许你还在收集追女孩子的短信,一切都在这里.包括追女生技巧.追女秘籍,追女孩子的甜言蜜语." %>
+<% content_for :description, @note.content) %>
 
 <% unless is_member? %>
 	<div id="header_guanggao">
