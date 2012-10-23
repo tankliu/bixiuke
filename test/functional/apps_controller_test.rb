@@ -20,13 +20,13 @@ class AppsControllerTest < ActionController::TestCase
   
   test "should not create and update and destroy if person is not member " do
     get :edit, {:id => @app}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     post :create, {:app => @app.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     put :update, {:id => @app, :app => @app.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path    
+    assert_redirected_to guangpan_path    
     delete :destroy, {:id => @app}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     
   end
   

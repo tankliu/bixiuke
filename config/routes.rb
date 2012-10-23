@@ -7,11 +7,10 @@ V8::Application.routes.draw do
 
   match 'guangpan' => 'pages#guangpan'
   match 'baodao' => 'pages#baodao'
-  match 'xueyuan' => 'pages#xueyuan'
   match 'zhinanzhen' => 'pages#zhinanzhen'
-  match 'faq' => 'pages#faq'
-  match 'hezuo' => 'pages#hezuo'
-  match 'qun'  => "pages#qun"
+  match 'zhidao'  => "pages#zhidao"
+  match 'xianchang'  => "pages#xianchang"
+  
 
   #这不是注册页面, 而是说服用户去购买的页面.
   
@@ -69,8 +68,16 @@ V8::Application.routes.draw do
   match 'logout'  => 'sessions#destroy', :via => :delete
   match 'test'  =>  "apps#test", :via => :post
   match 'test2'  =>  "apps#test2", :via => :post
-  match '/classes/:id'  => "groups#show", :as => :group
-  match '/classes'  => "groups#index"
+  match '/classes/:id'  => "groups#show", :as => :group, :via => :get
+  match '/classes/:id'  => "groups#update", :as => :group, :via => :put
+  match '/classes/:id'  => "groups#destroy", :as => :group, :via => :delete
+  
+  match '/classes'  => "groups#index", :as => :groups, :via => :get
+  match '/classes'  => "groups#create", :as => :groups, :via => :post
+  
+  match '/classes/new'  => "groups#new", :as => :new_group, :via => :get
+  match '/classes/:id/edit'  => "groups#edit", :as => :edit_group, :via => :get
+    
   match '/classes/:group_id/topics/:id' => 'topics#show', :as => :class_topic
   
   match 'resources/category/:path' => "resources#index", :as => :category_resources

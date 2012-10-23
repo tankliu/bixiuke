@@ -23,7 +23,7 @@ class NotesController < ApplicationController
       if params[:path]
         case 
         when ["fangjian","asd","sex"].include?(params[:path])
-          redirect_to :xueyuan, notice:"高级惯例只有学员才可以浏览" and return
+          redirect_to :guangpan, notice:"高级惯例只有学员才可以浏览" and return
         else
           @notes = Category.where("typeable=? and path=?","Note",params[:path])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
         end
@@ -47,7 +47,7 @@ class NotesController < ApplicationController
     @comment = Comment.new
     unless is_member?
       if (35..37).include?(@note.category_id)
-        redirect_to :xueyuan, notice: "高级惯例只有学员可浏览" and return
+        redirect_to :guangpan, notice: "高级惯例只有学员可浏览" and return
       end
     end
     

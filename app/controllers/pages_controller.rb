@@ -10,22 +10,19 @@ class PagesController < ApplicationController
   def baodao
     
   end
-  
-  def xueyuan
-    
-  end
+
   def zhinanzhen
     
   end
 
-  def faq
-    
-  end
-  
+
   def hezuo
   end
   
-  def qun
+  def zhidao
+    
+  end
+  def xianchang
     
   end
 end

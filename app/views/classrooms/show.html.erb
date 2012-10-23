@@ -46,7 +46,7 @@
 		} else if (person_id.indexOf("fxy") > 0) {
 			content = "<span class='fail_notice'>非学员不可以参与聊天</span>";
 		} else {
-			content = $("#discussion_content").attr("value").replace('\n','<br />');
+			content = $("#discussion_content").attr("value").replace(/\n/g,'<br />');
 		}
 		$("#discussions").append("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ time+"</div><div class='discussion_content'><p>"+content +"</p></div><br/>");
 		$("#discussion_content").attr({value: ''});
@@ -124,10 +124,10 @@
 			<div id="person_nick_name"><%= session[:person_id] ? current_person.nick_name : "陌生人"%></div>
 			<div id="person_city"><%= current_person.city if session[:person_id] %></div>
 		</div>
-		<p><b>聊天室在线:(<span id="online_size"></span>):</b></p>
+		<p><b>在线学员:(<span id="online_size"></span>):</b></p>
 		<div id="online_people_list">
 		</div>
-		<p><b>所有成员:(<%= @nick_names.size %>):</b></p>
+		<p><b>所有学员:(<%= @nick_names.size %>):</b></p>
 		<div id="people_list">
 			<% @nick_names.each do |nick_name| %>
 			<li><%= nick_name %></li>

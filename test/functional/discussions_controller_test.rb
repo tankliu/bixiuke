@@ -20,13 +20,13 @@ class DiscussionsControllerTest < ActionController::TestCase
   
   test "should not create and update and destroy if person is not member " do
     get :edit, {:id => @discussion}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     post :create, {:discussion => @discussion.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     put :update, {:id => @discussion, :discussion => @discussion.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path    
+    assert_redirected_to guangpan_path    
     delete :destroy, {:id => @discussion}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     
   end
   

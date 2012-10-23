@@ -35,7 +35,7 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 				<% if is_member? %>
 					<%= render :partial => 'form'  %>
 				<% else %>
-					<div class="hint">只有学员才可以创建资源分享, <%= link_to "成为学员", :xueyuan %>, 是学员的请<%= link_to "登录", :login  %></div>
+					<div class="hint">只有学员才可以创建资源分享, <%= link_to "成为学员", :guangpan %>, 是学员的请<%= link_to "登录", :login  %></div>
 				<% end %>
 				<h2>最近资源分享</h2>
 				<% unless is_member? %>

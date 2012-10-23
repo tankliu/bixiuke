@@ -5,13 +5,13 @@ class GroupsController < ApplicationController
 
   # GET /groups/1
   # GET /groups/1.json
-  # def index  
-  #  @groups = Group.includes(:person).order("created_at desc")
-  #   respond_to do |format|
-  #   format.html # index.html.erb
-  #   format.json { render json: @groups }
-  #  end
-  # end
+  def index  
+   @groups = Group.includes(:person).order("created_at desc")
+    respond_to do |format|
+    format.html # index.html.erb
+    format.json { render json: @groups }
+   end
+  end
   
   def show
     @group = Group.find(params[:id])
@@ -61,12 +61,12 @@ class GroupsController < ApplicationController
 
   def update
     @group = current_person.groups.find(params[:id])
-
     respond_to do |format|
       if @group.update_attributes(params[:group])
         format.html { redirect_to @group, notice: '更新成功' }
         format.json { head :no_content }
       else
+        
         format.html { render action: "edit", notice: "更新失败" }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end

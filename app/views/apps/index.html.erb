@@ -29,7 +29,7 @@
 		<% if is_member? %>
 			<%= button_tag(:type => 'button', :class => "create_app_button") do %>创建测试<% end %>
 		<% else %>
-			<div class="hint">只有学员才可以创建测试, <%= link_to "成为学员", :xueyuan %>, 是学员的请<%= link_to "登录", :login  %></div>
+			<div class="hint">只有学员才可以创建测试, <%= link_to "成为学员", :guangpan %>, 是学员的请<%= link_to "登录", :login  %></div>
 		<% end %>
 
 		<%= render 'form'  %>

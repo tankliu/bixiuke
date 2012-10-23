@@ -21,13 +21,13 @@ class ResourcesControllerTest < ActionController::TestCase
   
   test "should not create and update and destroy if person is not member " do
     get :edit, {:id => @resource}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     post :create, {:resource => @resource.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     put :update, {:id => @resource, :resource => @resource.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path    
+    assert_redirected_to guangpan_path    
     delete :destroy, {:id => @resource}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     
   end
   

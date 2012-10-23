@@ -132,7 +132,7 @@ h4 {
 
 /*page页面的媒体采访youku视频*/
 .caifang{
-	margin-top:120px;
+	margin-top:-420px;
 	margin-right:30px;
 	float: right;
 }
@@ -142,11 +142,11 @@ h4 {
 .page_nav{
 	width: 99.8%;
 	margin: 0 auto;
-	height: 22px;
+	height: 30px;
 	border: 1px dashed #F09;
 	background: #eee;
-	padding: 6px 0 0 0;
-	
+	padding: 10px 0 0 0;
+	font-size:16px;
 }
 
 
@@ -248,7 +248,7 @@ li.user_tool{
 }
 
 /*header*/
-#header_index,#header_guangpan,#header_zhinanzhen,#header_courses,#header_qun,#header_guanggao,#header_baodao,#header_xueyuan{
+#header_index,#header_guanggao{
 	width: 960px;
 	height: 529px;
 	border: 1px dashed #f09;
@@ -260,42 +260,23 @@ li.user_tool{
 	margin: 0;
 }
 
-#header_guangpan h4, #header_zhinanzhen h4{
-	margin:0 auto;
-}
-
-.header_left{
-	float: left;
+.header_right{
+	float: right;
 	width: 300px;	
 }
 
-.header_left img{
+.header_right img{
 	float:none;
 	margin-right:0;
 	margin-bottom: 4px;
 }
 
-.header_right{
-	float: right;
+.header_left{
+	float: left;
 	width: 600px;
 	padding-right: 15px;
 }
 
-#header_courses{
-	background-image: url(/assets/header_courses_bg.png);
-}
-
-#header_qun{
-	background-image: url(/assets/header_qun_bg.png) ;
-}
-
-#header_baodao{
-	background-image: url(/assets/header_baodao_bg.png) ;
-}
-
-#header_xueyuan{
-	background-image: url(/assets/header_xueyuan_bg.png);
-}
 
 #header_guanggao{
 	height: 200px;
@@ -409,6 +390,7 @@ li.user_tool{
 .courses_update_time {
 	text-align: left;
 	font-size: 14px;
+	margin-top:10px;
 	color: #777;
 }
 

@@ -10,7 +10,7 @@ class Course < ActiveRecord::Base
     to_start_days = (start_date - Date.current).to_i
     to_end_days = (end_date - Date.current).to_i 
     case 
-      when 0 < to_start_days  then to_start_days
+      when 0 < to_start_days  then "剩"+to_start_days.to_s+"天"
       when 0 >= to_start_days && to_end_days >= 0 then "培训中"
       when 0 > to_end_days then "培训完"
     end

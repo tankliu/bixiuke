@@ -20,13 +20,13 @@ class NotesControllerTest < ActionController::TestCase
   
   test "should not create and update and destroy if person is not member " do
     get :edit, {:id => @note}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     post :create, {:note => @note.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     put :update, {:id => @note, :note => @note.attributes}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path    
+    assert_redirected_to guangpan_path    
     delete :destroy, {:id => @note}, {:person_id => people(:youke).id}
-    assert_redirected_to xueyuan_path
+    assert_redirected_to guangpan_path
     
   end
   
@@ -42,7 +42,7 @@ class NotesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:notes)
   end
   
-  test "should get index when past category id"  do
+  test "should get index when post category id"  do
     get :index, {:category_id => categories(:A5).id}
     assert_response :success
     assert_not_nil assigns(:notes)

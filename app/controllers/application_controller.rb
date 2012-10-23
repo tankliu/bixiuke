@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
   
   def only_member_can_do
     unless is_member?
-      redirect_to :xueyuan, :notice => "非学员不能进行此操作,请联系客服QQ:1341548835开通学员."
+      redirect_to :guangpan, :notice => "非学员不能进行此操作,请联系客服QQ:1341548835开通学员."
     end
   end
   

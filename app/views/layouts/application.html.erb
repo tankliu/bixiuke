@@ -38,34 +38,26 @@
     <ul class="page_nav">
 			
     	<li <%="class=selected" if controller.class == PagesController and action_name == 'guangpan' %> >
-  				<a href="/guangpan" target="_top">泡妞秘籍</a>
+  				<a href="/guangpan" target="_top">专业约会指导教程</a>
   		</li>
 			<li <%="class=selected" if controller.class == PagesController and action_name == 'zhinanzhen' %> >
 				<a href="/zhinanzhen" target="_top">指男针</a>
 			</li>
-			<li <%="class=selected" if controller.class == CoursesController %> >
- 					<a href="/courses" target="_top">泡妞培训</a>
+			<li <%="class=selected" if controller.class == PagesController and action_name == 'xianchang' %> >
+ 					<a href="/xianchang" target="_top">现场培训</a>
 			</li>
 
-			<li <%="class=selected" if controller.class == ArticlesController %> >
-				<a href="/articles" target="_top">泡妞文章</a>
-			</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'hezuo'%> >
- 				<a href="/hezuo" target="_top">合作推广</a>
- 			</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'qun' %> >
-				<a href="/qun" target="_top">泡妞咨询</a>
+			<li <%="class=selected" if controller.class == PagesController and action_name == 'zhidao' %> >
+				<a href="/zhidao" target="_top">售后指导</a>
 			</li>				
 			<li <%="class=selected" if controller.class == PagesController and action_name == 'baodao'%> >
 				<a href="/baodao" target="_top">媒体报道</a>
 			</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'faq'%> >
-  				<a href="/faq" target="_top">购买问题</a>      
-  		</li>
 		
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'xueyuan'%> >
-				<a href="/xueyuan" target="_top">成为学员</a>
-			</li>		
+			
+			<li <%="class=selected" if controller.class == ArticlesController %> >
+				<a href="/articles" target="_top">泡妞文章</a>
+			</li>
 			<li class="user_tool">
 				<ul>
 					<li>|</li>
@@ -78,7 +70,7 @@
 						</li>
 					<% end %>
 					<% unless session[:person_id].nil? %>					
-						<li>
+						<li <%="class=selected" if controller.class == PeopleController and action_name == "show" and params[:id].to_i == session[:person_id] %> >
 							<%= link_to current_person.nick_name, current_person %>
 						</li>
 						<li><%= link_to "修改资料", edit_person_path(current_person) %></li>
@@ -104,24 +96,16 @@
 				<li <%="class=selected" if controller.class == PeopleController and action_name == "index" %> >
 					<a href="/people" target="_top">所有学员<br /><span>最近,排行版</span></a>
 				</li>
-				<li <%="class=selected" if controller.class == PeopleController and action_name == "show" and params[:id].to_i == session[:person_id] %> >
-					<% if session[:person_id] %>
-						<%= link_to Person.find(session[:person_id]) do %>
-							我的主页<br /><span>记录,收藏</span>
-						<% end %> 
-					<% else %>
-						<%= link_to :login do %>
-						我的主页<br /><span>记录,收藏</span>
-						<% end %>
-					<% end %>
+				<li <%="class=selected" if controller.class == CoursesController and action_name == "index" %> >
+					<a href="/courses" target="_top">最近课程<br /><span>最近城市</span></a>
 				</li>
 				
 				<li <%="class=selected" if controller.class == ClassroomsController %> >
-  				<a href="/classrooms/1" target="_top">聊天室<br /><span>讨论,每晚9点</span></a>
+  				<a href="/classrooms/1" target="_top">教室<br /><span>讨论,每晚9点</span></a>
   			</li>
 
 				<li <%="class=selected" if controller.class == GroupsController %> >
-  				<a href="/classes/1" target="_top">小组<br /><span>问答和案例</a>
+  				<a href="/classes/1" target="_top">班级<br /><span>问答和案例</a>
   			</li>
 
 				<li <%="class=selected" if controller.class == NotesController %> >
