@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
     @topics = @group.topics.order("created_at desc").page(params[:page])      
     @topic = @topic || Topic.new
     @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
+    @people_size = Person.all.size
     
     respond_to do |format|
       format.html # show.html.erb
