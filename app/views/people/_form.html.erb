@@ -42,11 +42,11 @@
 	<% if is_admin? and @person.id != session[:person_id]%>
 	  <div class="field">
 	    <%= label_tag :role, "角色" %><br />
-	    <%= select_tag :role, options_for_select(Person::Roles.collect {|role| [role,role]}, @person.new_record? ? "非会员" : @person.role) %>
+	    <%= select_tag :role, options_for_select(Person::Roles.collect {|role| [role,role]}, @person.new_record? ? "学员" : @person.role) %>
 	  </div>
 		<div class="field">
 	    <%= label_tag :dead, "注销" %><br />
-	    <%= select_tag :dead, options_for_select(Person::Dead.collect {|dead| [dead,dead]}, @person.dead) %>
+	    <%= select_tag :dead, options_for_select(Person::Dead.collect {|dead| [dead,dead]}, @person.new_record? ? "no" : @person.dead) %>
 	  </div>
   <% end %>
   
