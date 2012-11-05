@@ -13,6 +13,9 @@ class ClassroomsController < ApplicationController
    
    def show
      @classroom = Classroom.find(params[:id])
+     if session[:user_id] == 194
+       session[:user_id] = nil
+     end
      @discussions = @classroom.discussions.order("created_at desc").page(params[:page])
      @nick_names = Person.all.collect{|x| x.nick_name}
      @discussion = Discussion.new

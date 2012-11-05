@@ -95,7 +95,6 @@ class NotesController < ApplicationController
     end
 
     respond_to do |format|
-      raise params[:cheers_size].to_s
       if @note.update_attributes(params[:note])
         format.html { redirect_to @note, notice: '更新成功' }
         format.json { head :no_content }

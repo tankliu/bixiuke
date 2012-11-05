@@ -10,7 +10,7 @@
 	<%= csrf_meta_tags %>
 	<% if Rails.env == "production" %>
 	  <%= javascript_include_tag "http://www.paoniuxue.com:9292/faye.js"%>
-		<% if controller.class == PagesController or controller.class == CoursesController %>
+		<% if controller.class == PagesController %>
 	  	<!--禁止firefox右键-->
 	    <script type="text/javascript">
 		   	 document.oncontextmenu=function(e){return false;}
@@ -23,7 +23,7 @@
 </head>
 <!-- 产品模式下拒绝右键和复制 -->
 <% if Rails.env == "production" %>
-	<% if controller.class == PagesController or controller.class == CoursesController %>
+	<% if controller.class == PagesController %>
 		<body oncontextmenu="self.event.returnValue=false"  onselectstart="return false" oncopy="event.returnValue=false">
 	<% else %>
 		<body>
