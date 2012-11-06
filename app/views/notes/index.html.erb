@@ -5,7 +5,7 @@
 
 <% unless is_member? %>
 	<div id="header_guanggao">
-		<a href="http://item.taobao.com/item.htm?id=17777247318"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+		<a href="http://item.taobao.com/item.htm?id=16378605912"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
 	</div>
 <% end %>
 <div class="box">
@@ -34,14 +34,14 @@
 			<div class="entry_person_photo">
 				<%= image_tag note.person.avatar.url(:thumb) %>
 			</div>
-			<div class="entry_title">阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %></div>
+			<div class="entry_title"><%= link_to note.title, note, :target => "_blank" %></div>
 			<br /><br />
-			<div class="entry_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
+			<div class="entry_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
 			</div>
 
 			<div class="entry_content"><%= simple_format note.content %></div>
-			<div class="entry_edit_bar">				
-				<%= link_to "详细(#{note.comments.size})", note, :target => "_blank" %>
+			<div class="entry_edit_bar">
+				<%= link_to "详细(#{note.comments.size})", note, :target => "_blank"  %>
 			</div>
 			<hr />
 		<% end %>

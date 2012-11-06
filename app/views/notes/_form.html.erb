@@ -16,9 +16,15 @@
     <%= f.select :category_id, collect_note_categories_for_select %>
   </div>
 
+
+  <div class="field">
+    <%= f.label :title, "标题" %><br />
+    <%= f.text_field :title, :size => "90" %>
+  </div>
+
   <div class="field">
     <%= f.label :content, "内容(10到500字)" %><br />
-    <%= f.text_area :content, :size  => "82x8" %>
+    <%= f.text_area :content, :size  => "82x15", :value => @note.new_record? ? "" : @note.remove_hint_span %>
   </div>
 	<div class="hint">换行后,添加@标记,后面可以写适合场合等(请看下面已创建的惯例).</div>
   <div class="actions">

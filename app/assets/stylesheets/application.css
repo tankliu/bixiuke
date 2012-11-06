@@ -704,7 +704,7 @@ legend{
 #topic_title,#topic_content,#comment_content,#options_{
 	width:560px;
 }
-#note_content,#resource_title,#resource_download_link,#app_title,#app_content{
+#note_title, #note_content,#resource_title,#resource_download_link,#app_title,#app_content{
 	width:580px;
 }
 
