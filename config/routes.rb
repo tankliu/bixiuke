@@ -10,6 +10,7 @@ V8::Application.routes.draw do
   match 'zhinanzhen' => 'pages#zhinanzhen'
   match 'zhidao'  => "pages#zhidao"
   match 'xianchang'  => "pages#xianchang"
+  match 'wangpan'  => "pages#wangpan"
   
 
   #这不是注册页面, 而是说服用户去购买的页面.

@@ -69,6 +69,7 @@ class PeopleController < ApplicationController
       @person.role = "非学员"
     end
     @person.score = 0
+    @person.dead = "no"
     
     respond_to do |format|
       if @person.save

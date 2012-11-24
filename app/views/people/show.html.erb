@@ -109,15 +109,15 @@
 		<h2>最近共享的资源</h2>
 		<% @latest_resources.each do |resource| %>
 			<div class="entry_person_photo">
-				<%= image_tag resource.person.avatar.url(:thumb) %>
+				<%= image_tag resource.category.avatar.url(:medium) %>
 			</div>
-			<div class="entry_title"><%= link_to truncate(resource.title,:length => 35), resource %></div>
+			<div class="entry_title"><%= link_to truncate(resource.title,:length => 35), resource, :target => "_blank" %></div>
 			<br /><br />
-			<div class="entry_meta">类别:<%= link_to resource.category.name, category_resources_path(resource.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
+			<div class="entry_meta">发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
 			</div>
 
 			<div class="entry_edit_bar">
-				<%= link_to "去下载或评论(#{resource.comments.size})", resource  %>
+				<%= link_to "去下载或评论(#{resource.comments.size})", resource, :target => "_blank"  %>
 			</div>
 			<hr />
 		<% end %>

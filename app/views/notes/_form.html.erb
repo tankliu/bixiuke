@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :category_id, "选择阶段" %><br />
-    <%= f.select :category_id, collect_note_categories_for_select %>
+    <%= f.select :category_id, collect_note_categories_for_select, :selected => @note.new_record? ? 33 : @note.category.id %>
   </div>
 
 

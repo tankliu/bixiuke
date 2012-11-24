@@ -6,6 +6,7 @@
 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
   <meta name = "description" content = "<%= yield(:description) %>" /> 
   <%= stylesheet_link_tag "application", :media => "all" %>
+
   <%= javascript_include_tag "application"%>
 	<%= csrf_meta_tags %>
 	<% if Rails.env == "production" %>
@@ -31,7 +32,6 @@
 <% else %>
 		<body>
 <% end %>
-
 
 
 	<div id="main_container">
