@@ -15,9 +15,9 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find(params[:id])
-    @topics = @group.topics.order("created_at desc").page(params[:page])      
+    @topics = @group.topics.includes(:person).includes(:last_replied_person).includes(:comments).order("last_replied_at desc").page(params[:page])      
     @topic = @topic || Topic.new
-    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
+    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").limit(30)
     @people_size = Person.all.size
     
     respond_to do |format|

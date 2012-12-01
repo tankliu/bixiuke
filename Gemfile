@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,7 +17,6 @@ gem "paperclip", "~> 3.0"
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # 执行 "bundle exec rake assets:precompile", 需要下面两个gems, execjs, therubyracer
   gem 'execjs'
@@ -25,6 +24,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
 
 
 gem 'jquery-rails'

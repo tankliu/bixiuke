@@ -10,6 +10,7 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 	</div>
 <% end %>
 
+
 <div class="box">
 	
 	<div id="categories">	
@@ -18,7 +19,7 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 			<% @categories.each do |category| %>
 			<li <%="class=selected" if @path == category.path  %>>
 			<%= link_to category_resources_path(:path => category.path) do %>
-				<%= image_tag category.avatar.url(:thumb) %><%= category.name %>
+				<%= image_tag category.avatar.url(:thumb) %><%= category.name %>(<%= category.resources.size %>)
 			<% end %>
 			</li>
 			<% end %>

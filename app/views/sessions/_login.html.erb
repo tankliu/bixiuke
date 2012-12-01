@@ -1,0 +1,23 @@
+<h2>请输入email账号和密码登录</h2>
+<% if notice %>
+	<div id="notice"><%= notice %></div>
+<% end %>
+<p>如果没有账号,请先学完<a href="/guangpan">光盘</a>和<a href="/zhinanzhen">书籍</a>,然后注册开通学员.点击<%= link_to "注册", new_person_path %></p>
+
+
+<%= form_tag :login do |f| %>
+
+  <div class="field">
+    <%= label_tag :email, "email账号" %><br />
+    <%= text_field_tag :email %>
+  </div>
+  <div class="field">
+    <%= label_tag :password, "密码" %><br />
+    <%= password_field_tag :password %>
+  </div>
+  <div class="field">
+    <%= submit_tag "提交" %>
+  </div>
+
+
+<% end %>

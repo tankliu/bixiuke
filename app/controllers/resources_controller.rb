@@ -8,7 +8,7 @@ class ResourcesController < ApplicationController
   def index
     @path = params[:path]
     @resource = Resource.new
-    @categories = Category.where(:typeable => "Resource").order("order_number")
+    @categories = Category.where(:typeable => "Resource").includes(:resources).order("order_number")
     if params[:path] 
       @resources = Category.where("typeable = ? and path=?", "Resource", params[:path])[0].resources.includes(:person).order("created_at desc").page(params[:page])      
     else

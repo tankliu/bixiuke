@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106015651) do
+ActiveRecord::Schema.define(:version => 20121127083202) do
 
   create_table "apps", :force => true do |t|
     t.string   "title"
@@ -185,11 +185,13 @@ ActiveRecord::Schema.define(:version => 20121106015651) do
 
   create_table "topics", :force => true do |t|
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "person_id"
     t.string   "title"
     t.integer  "group_id"
+    t.string   "last_replied_by"
+    t.datetime "last_replied_at"
   end
 
 end

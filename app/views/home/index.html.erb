@@ -2,185 +2,91 @@
 <% content_for :keywords, "泡妞网,泡妞,泡妞视频,泡妞秘籍,泡妞电影,追女孩子的技巧,追女孩子的短信,寒江雪,泡妞网,泡妞专家,泡妞技巧,怎么泡妞,泡学,泡学网,搭讪,搭讪的法则,魔鬼搭讪学,搭讪技巧,搭讪开场白,把妹,把妹达人,约会,约会技巧,约会去哪里,恋爱高手,谈恋爱的技巧" %>
 <% content_for :description, "你在苦苦寻找泡妞高手帮忙指导吗?你想尽快追到心仪的她吗?你还在各个泡妞论坛里面苦苦寻找泡妞秘籍吗?你想成为泡妞高手吗?请来泡妞学网,5年打造大陆第一专业泡妞追女约会恋爱指导网站.助你告别宅男,追到你的意中人." %>
 
-<% unless is_member? %>
-	<div id="header_index">
-		 <a href="/guangpan"><img src="/assets/header_index_bg.png" alt="泡妞秘籍" /></a>
+<script type="text/javascript">
+	$(function(){ 
+		var interval = 3000; 
+		var slide = setInterval(slideIt,interval); 
+		function slideIt(){ 
+			var obj = $(".discussion");//定义一个变量obj
+			// obj.last().insertBefore(obj.first()).hide();
+			obj.first().slideDown(2000);//让第一个div以5000毫秒(5秒)的速度下滑,这个div默认是隐藏的 
+			obj.last().insertBefore(obj.first()).hide();//把div里的最后一组插到最前面（这样容器里的div标签就可以循环起来）并隐藏
+		}
+	});
+</script>
+
+<div class="box">
+	<div id="content">
+		<a href="http://item.taobao.com/item.htm?id=16378605912"><img src="/assets/header_index_bg.png" class="home_img" alt="泡妞秘籍" /></a><br />
+		
 	</div>
-<% end %>
-
-<h3>目录</h3>
-<div id="menu">	
-	<ul>			 
-		<li><a href="#latest_discussions">聊天室最近记录</a></li>                                                                                       
-		<li><a href="#latest_topics">小组最近主题</a></li>
-		<li><a href="#latest_notes">最近泡妞惯例</a></li>
-		<li><a href="#latest_resources">最近共享泡妞资源</a></li>
-		<li><a href="#latest_courses">最近泡妞现场培训课程</a></li>
-		<li><a href="#latest_articles">最新泡妞文章视频</a></li>
-	</ul>
-</div>
-
-<div class="box">
-
-		<a name="latest_discussions" id="latest_discussions"></a><h1>最近聊天记录:</h1>
-	  <% @discussions.each do |discussion| %>
-			<div class="discussion_meta">
-				<%= discussion.person.nick_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= discussion.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-			</div>
-			<div class="discussion_content">					
-				<%= simple_format discussion.content %>	
-			</div>
-			<br/>
-		<% end %>      
-		<hr />                           
-		<%= paginate @discussions, :params => {:controller => 'classrooms', :action => 'show', :id => 1} %>
-		
-</div>
-<div class="box">
-		<a name="latest_topics" id="latest_topics"></a><h1>最近帖子</h1>
-		<% @topics.each do |topic| %>
-			<div class="entry_person_photo">
-				<%= image_tag topic.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title"><%= link_to truncate(topic.title,:length => 35), topic %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
-			</div>
+	
+	<div id="sidebar" class="home_login_area">
+		<%= render "sessions/login" %>
+	</div>
+	<div class="clear"></div>
+	
+	<div class="latest_message_3">
+		<h2>泡妞学网学员排行版</h2>
+		<% @people.each do |person| %>
+		<div class="person_photo_thumb">				
+			<%= link_to image_tag(person.avatar.url(:thumb)), person %> <br />
+			<%= link_to person.nick_name, person %>
 			
-			<div class="entry_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
-			<div class="entry_edit_bar">
-				<%= link_to "回复(#{topic.comments.size})", topic  %>
-			</div>
-			<hr />
+		</div>
 		<% end %>
-		<%= paginate @topics, :params => {:controller => 'groups', :action => 'show', :id => 1} %>		
-		
-</div>
-<div class="box">
-		<a name="latest_notes" id="latest_notes"></a><h1>最近惯例</h1>
-		<% @notes.each do |note| %>
-			<div class="entry_person_photo">
-				<%= image_tag note.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title">阶段:<%= link_to note.category.name, category_notes_path(note.category) %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
-			</div>
+	</div>
+	
+	<div class="latest_message_3">
+		<h2>泡妞学班内最近讨论</h2>
+		<%= render @discussions.reverse %>
+	</div>
+	
+	<div class="latest_message_3 latest_resources">
+		<h2>最近泡妞资源分享</h2>
+		<ul>
+			<% @resources.each do |resource| %>
+				
+				<li><%= image_tag resource.category.avatar.url(:thumb) %><%= link_to resource.title, resource %><br /></li>
+			<% end %>				
+		</ul>
+	</div>
 
-			<div class="entry_content"><%= simple_format note.content %></div>
-			<div class="entry_edit_bar">
-				<%= link_to "评论(#{note.comments.size})", note %>
-			</div>
-			<hr />
-		<% end %>
-		<%= paginate @notes, :params => {:controller => 'notes', :action => 'index'} %>
-		
-</div>
-<div class="box">
-		<a name="latest_resources" id="latest_resources"></a><h1>最近资源分享</h1>
-		<% @resources.each do |resource| %>
-			<div class="entry_person_photo">
-				<%= image_tag resource.category.avatar.url(:medium) %>
-			</div>
-			<div class="entry_title"><%= link_to truncate(resource.title,:length => 35), resource, :target => "_blank" %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
-			</div>
+	
+	<div class="latest_message_4">
+		<h2>最近约会课程计划</h2>
+		<ul>
+			<% @courses.each do |course| %>
+				<li><b><%= course.city %>:</b><%= link_to course.name, courses_path %>(<%= course.start_date.to_date.to_s %>)<br /></li>
+			<% end %>				
+		</ul>
+	</div>
+	<div class="latest_message_4">
+		<h2>泡妞学班级最近提问</h2>
+		<ul>
+			<% @topics.each do |topic| %>
+				<li><%= link_to topic.title, class_topic_path(topic.group, topic) %><br /></li>
+			<% end %>				
+		</ul>
+	</div>
 
-			<div class="entry_edit_bar">
-				<%= link_to "去下载或评论(#{resource.comments.size})", resource, :target => "_blank"  %>
-			</div>
-			<hr />
-		<% end %>
-		<%= paginate @resources, :params => {:controller => 'resources', :action => 'index'} %>
-</div>
-
-
-<div class="box">
-	<a name="latest_courses" id="latest_courses"></a><h1>最近泡妞课程</h1>
-	<div class="courses_update_time">更新时间:<%= Course.last.updated_at.to_date %></div>
-	<table id="courses">
-	  <tr>
-	    <th class="name">课名</th>
-	    <th class="category">类型</th>
+	<div class="latest_message_4">
+		<h2>最近发布泡妞学惯例</h2>
+		<ul>
+			<% @notes.each do |note| %>
+				<li><%= link_to note.title, note %><br /></li>
+			<% end %>				
+		</ul>
+	</div>
+	<div class="latest_message_4">
+		<h2>最近发布泡妞学测试</h2>
+		<ul>
+			<% @apps.each do |app| %>
+				<li><%= link_to app.title, app %><br /></li>
+			<% end %>				
+		</ul>
+	</div>
 	
-	    <th class="date">开始</th>
-	    <th class="date">结束</th>
-	    <th class="holiday">假期</th>
 	
-	    <th class="city">城市</th>
-	    <th class="teacher">讲师</th>
-	
-	    <th class="digit">名额</th>
-	    <th class="digit">已报</th>
-	
-	    <th class="digit">学费</th>
-	    <th class="digit">优惠</th>
-	    <th class="discount_requirement">优惠条件</th>
-	    <th class="digit">定金</th>
-		<th class="remain_days">倒计时</th>
-	  </tr>
-	
-	<% even = 1 %>
-	<% @courses.each do |course| %>
-		<% even = even+1 %>
-		<% odd = (even + 1)%2 %>
-	  <tr class="line_<%= odd %>">
-	    <td><%= course.name %></td>
-		<td><%= course.category %></td>
-		
-	    <td><%= course.start_date %></td>
-	    <td><%= course.end_date %></td>
-	    <td><%= course.holiday %></td>
-	
-	    <td><%= course.city %></td>
-	    <td><%= course.teacher %></td>
-	
-	    <td><%= course.top_number %></td>
-	    <td><%= course.now_number %></td>
-	
-	    <td><%= course.cost %></td>
-	    <td><%= course.discount %></td>
-	    <td><%= course.discount_requirement %></td>
-	    <td><%= course.deposite %></td>
-	
-			<td>
-				<% if course.remain_days.is_a?(Integer) %>
-				剩<%= course.remain_days %>天
-				<br />
-				<%=  link_to "报名", "/courses" %>
-				<% else %>
-				<%= course.remain_days %>
-				<% end %>
-			</td>
-	  </tr>
-	<% end %>
-	
-	</table>
-	<p class="clear"></p>
-	<br />
-	<!--注意这个翻页跟courses index页面翻页不一样,增加了具体controller和action-->
-	<%= paginate @courses, :params => {:controller => 'courses', :action => 'index'} %>
 </div>
 
-<div class="box">
-		<a name="latest_articles" id="latest_articles"></a><h1>最近分享文章</h1>
-		
-		<% @articles.each do |article| %>
-			<div class="entry_person_photo">
-				<%= image_tag article.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title"><%= link_to truncate(article.title,:length => 35), article %></div>
-			<br /><br />
-			<div class="entry_meta">类别:<%= link_to article.category.name, category_articles_path(article.category) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
-			</div>
-			<br />
-			<div class="article_image"><%= image_tag article.attachment.url %></div>
-			<div class="entry_content"><%= simple_format article.description %></div>
-			<div class="entry_edit_bar">
-				<%= link_to "评论(#{article.comments.size})", article  %>
-			</div>
-			<hr />
-		<% end %>
-		<%= paginate @articles, :params => {:controller => 'articles', :action => 'index'} %>
-</div>

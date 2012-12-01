@@ -14,7 +14,11 @@
 			<li <%="class=selected" if @path == nil  %>><%= link_to "所有阶段", notes_path %></li>
 			<% @categories.each do |category| %>
 			<li class="arrow"></li>			
-			<li <%="class=selected" if @path == category.path  %>><%= link_to category.name, category_notes_path(:path => category.path) %></li>
+			<li <%="class=selected" if @path == category.path  %>>
+				<%= link_to category_notes_path(:path => category.path) do %>
+					<%=  category.name %>(<%= category.notes.size %>)
+				<% end %>
+				
 			<% end %>
 		</ul>
 

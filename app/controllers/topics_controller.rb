@@ -41,7 +41,7 @@ class TopicsController < ApplicationController
   # POST /topics.json
   def create
     @topic = current_person.topics.build(params[:topic])
-
+    @topic.last_replied_at = Time.now
     respond_to do |format|
       if @topic.save
         @topic.person.update_column(:score,@topic.person.score+2)

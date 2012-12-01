@@ -68,7 +68,8 @@ V8::Application.routes.draw do
   match 'login' => 'sessions#create', :via => :post
   match 'logout'  => 'sessions#destroy', :via => :delete
   match 'test'  =>  "apps#test", :via => :post
-  match 'test2'  =>  "apps#test2", :via => :post
+  
+
   match '/classes/:id'  => "groups#show", :as => :group, :via => :get
   match '/classes/:id'  => "groups#update", :as => :group, :via => :put
   match '/classes/:id'  => "groups#destroy", :as => :group, :via => :delete
@@ -97,9 +98,12 @@ V8::Application.routes.draw do
   match '/resources/page(/:page)' => 'resources#index'
   match '/resources/category/:path/page(/:page)' => 'resources#index'
   
+  match '/apps/page(/:page)' => 'apps#index'
+  
   match '/classrooms/:id/page(/:page)' => 'classrooms#show'
 
-  match '/classes/:id/page(/:page)' => 'groups#show'
+  match '/classes/:id/topics/page(/:page)' => 'groups#show'
+  
   
   
   # match '/notes/categories(/:category_id)' , :controller=>"notes",:action=>"index"

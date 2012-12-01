@@ -1,6 +1,6 @@
 <% content_for :title, @resource.title %>
 <% content_for :keywords,"国外泡妞书籍,台湾泡妞书籍,大陆泡妞书籍,泡妞案例,泡妞电影,泡妞图片,追女孩子的短信,搭讪技术,冷读术,接吻技巧,接吻的视频教程,泡妞小说大全,相亲" %>
-<% content_for :description, @resource.content %>
+<% content_for :description, @resource.title %>
 
 <% unless is_member? %>
 	<div id="header_guanggao">
@@ -22,7 +22,7 @@
 		<div class="download_link_area">
 			<p>下载链接:</p>
 			<% if is_member? %>
-					<%= word_wrap(@resource.download_link) %></p>
+					<%= link_to word_wrap(@resource.download_link), @resource.download_link %></p>
 			<% else %>
 				只有学员才可以下载, <%= link_to "成为学员", :guangpan %>, 是学员的请<%= link_to "登录", :login  %>
 			<% end %>

@@ -7,4 +7,5 @@ class DropTesting < ActiveRecord::Migration
   def down
     create_table :testings
   end
+  
 end

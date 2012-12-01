@@ -1,7 +1,7 @@
 <div class="entry_person_photo">
 	<%= image_tag comment.person.avatar.url(:thumb) %>
 </div>
-<div class="entry_meta">发布:<%= link_to comment.person.nick_name, comment.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= comment.created_at.to_date.to_s %>
+<div class="entry_meta">发布:<%= link_to comment.person.nick_name, comment.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %>
 </div>
 <br />
 <div class="comment_content">

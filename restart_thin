@@ -1,6 +1,6 @@
-export PATH=/usr/local/rvm/gems/ruby-1.9.3-p194@rails328/bin:/usr/local/rvm/rubies/ruby-1.9.3-p194/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-export GEM_HOME=/usr/local/rvm/gems/ruby-1.9.3-p194@rails328
-export GEM_PATH=/usr/local/rvm/gems/ruby-1.9.3-p194@rails328
+export PATH=/usr/local/rvm/gems/ruby-1.9.3-p194@rails329/bin:/usr/local/rvm/rubies/ruby-1.9.3-p194/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export GEM_HOME=/usr/local/rvm/gems/ruby-1.9.3-p194@rails329
+export GEM_PATH=/usr/local/rvm/gems/ruby-1.9.3-p194@rails329
 
 
 DTTERM = `ps -ef|grep thin | grep -v "grep"|wc -l`

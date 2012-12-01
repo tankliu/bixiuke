@@ -8,7 +8,7 @@ class NotesController < ApplicationController
   def index
     @note = Note.new
     @path = params[:path]
-    @categories = Category.where(:typeable => "Note").order("order_number")
+    @categories = Category.where(:typeable => "Note").includes(:notes).order("order_number")
     if is_member? 
       if params[:path]
         @notes = Category.where("typeable=? and path=?","Note",params[:path])[0].notes.includes(:person).order("created_at desc").page(params[:page])      

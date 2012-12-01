@@ -10,7 +10,7 @@
 		</div>
 		<div class="entry_title"><%=  @topic.title %></div>
 		<br /><br />
-		<div class="entry_meta">发布:<%= link_to @topic.person.nick_name, @topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @topic.created_at.to_date.to_s %>
+		<div class="entry_meta">发布:<%= link_to @topic.person.nick_name, @topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发表于:<%= time_ago_in_words(@topic.created_at) %>
 		</div>
 		
 		<div class="entry_content"><%= simple_format @topic.content %></div>

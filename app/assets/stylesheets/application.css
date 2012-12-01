@@ -16,7 +16,6 @@
 
 /* body ,p,a等基本元素*/
 
-
 body {
 	background: #f6f2e9;
 	padding: 0;
@@ -24,6 +23,7 @@ body {
 	margin: auto;
 	font-size: 14px;	
 }
+
 
 p {
 	margin: 0px;
@@ -78,9 +78,7 @@ a img{
 	border: 0;
 }
 
-.space{
-	margin-left:150px;
-}
+
 /*-----------------h1 h2 h3 h2, h4 -----------------------------*/
 
 h1,h2,h3,h4 {
@@ -129,6 +127,7 @@ h4 {
 	float: left;
 	margin: 0px 65px 65px 0px;
 }
+
 
 /*page页面的媒体采访youku视频*/
 .caifang{
@@ -248,7 +247,7 @@ li.user_tool{
 }
 
 /*header*/
-#header_index,#header_guanggao{
+#header_guanggao{
 	width: 960px;
 	height: 529px;
 	border: 1px dashed #f09;
@@ -256,8 +255,9 @@ li.user_tool{
 	background-repeat: no-repeat center top;
 }
 
-#header_index img{
-	margin: 0;
+.header_index_bg_big{
+	margin:0;
+/*	margin-top:-;*/
 }
 
 .header_right{
@@ -269,6 +269,7 @@ li.user_tool{
 	float:none;
 	margin-right:0;
 	margin-bottom: 4px;
+	margin-top:30px;
 }
 
 .header_left{
@@ -285,6 +286,50 @@ li.user_tool{
 #header_guanggao img{
 	margin: 0;
 }
+
+.home_img{
+	margin:0px;
+}
+.home_login_area{
+	height:272px;
+}
+.latest_message_3{
+	margin-top:20px;
+	width:301px;
+	padding:5px;
+	height:500px;
+	border:1px dashed #a0f;
+	float:left;
+	overflow: hidden;
+}
+
+.latest_message_4{
+	margin-top:20px;
+	width:223px;
+	padding:5px;
+	height:1250px;
+	border:1px dashed #a0f;
+	float:left;
+	overflow: hidden;
+}
+.latest_message_3 li, .latest_message_4 li{
+	margin-left:-40px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	margin-top:8px;
+}
+.latest_resources li{
+	margin-top:0px;
+	line-height:180%;
+}
+.latest_resources li img{
+	margin: 0 0 0 0;
+	float:left;
+	display:inline;
+}
+
+
 
 /*---------------- menu tab----------------------*/
 
@@ -403,7 +448,7 @@ li.user_tool{
 }
 
 #categories{
-	width:205px;
+	width:225px;
 	margin-right:40px;
 	float:left;
 }
@@ -432,12 +477,12 @@ li.user_tool{
 	line-height: 35px;
 	width:100%;
 	font-size: 16px;
-	background: #eee url(/assets/sidebar_bg.gif) no-repeat -8px 50%;
+	background: #eee url(/assets/sidebar_bg.gif) no-repeat -2px 50%;
 }
 
 #categories ul li.selected a,#categories ul li a:hover {
 	color: #fff;	
-	background: #f09 url(/assets/sidebar_bg.gif) no-repeat -211px 50%;
+	background: #f09 url(/assets/sidebar_bg.gif) no-repeat -205px 50%;
 }
 
 #categories ul li.arrow{
@@ -480,7 +525,7 @@ li.user_tool{
 	clear:both;
 	float:left;
 	margin:10px 0;
-	text-align:right;
+	text-align:left;
 }
 
 .entry_meta{
@@ -611,11 +656,13 @@ li.user_tool{
 	color:#4087ae;
 	clear:both;
 	float:left;
+	width:100%;
 }
 .fail_notice{
 	color:#f00;
 }
 .discussion_content{
+	width:100%;
 	clear:both;
 	float:left;
 	margin-bottom:10px;
@@ -648,9 +695,13 @@ li.user_tool{
 }
 
 .person_photo_thumb{
-	width:60px;
-	height:80px;
+	width:50px;
+	margin-left:10px;
+	height:72px;
 	float:left;
+	overflow: hidden;
+	white-space:nowrap;
+/*	text-overflow:ellipsis;*/
 }
 .person_photo_thumb img{
 	margin:0px;
@@ -698,7 +749,7 @@ legend{
 
 /*-------------------kfqq------------------------*/
 .kfqq{
-	background: url(/assets/kfqq.png) no-repeat fixed 100% 180px;
+	background: #f6f2e9 url(/assets/kfqq.png) no-repeat fixed 100% 180px;
 }
 /*-------------------for input ------------------------*/
 #topic_title,#topic_content,#comment_content,#options_{
@@ -707,6 +758,12 @@ legend{
 #note_title, #note_content,#resource_title,#resource_download_link,#app_title,#app_content{
 	width:580px;
 }
+form #email, form #password{
+	width:150px;
+}
 
+.gray{
+	color:#999;
+}
 
 

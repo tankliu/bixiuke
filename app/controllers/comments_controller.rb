@@ -22,10 +22,14 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         notice = "创建成功"
+        if @comment.commable.is_a?(Topic)
+          @comment.commable.update_column(:last_replied_at, Time.now) 
+          @comment.commable.update_column(:last_replied_by,current_person.id)
+        end
       else
         notice = @comment.errors.full_messages.size.to_s+"个错误:"+format_error(@comment.errors.full_messages.join(","))
       end
-      @comment.person.update_column(:score,@comment.person.score+1)
+        @comment.person.update_column(:score,@comment.person.score+1)
       if @comment.commable.is_a?(Topic)
         format.html { redirect_to class_topic_path(@comment.commable.group,@comment.commable), notice: notice }
       else

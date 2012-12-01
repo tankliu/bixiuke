@@ -42,8 +42,8 @@
 					<%= image_tag person.avatar.url(:thumb) %>
 				</div>
 				<% end %>
-				<%= paginate @people %>
-			</div>
+				...<%= link_to "查看所有学员", people_path %>
+		</div>
 	</div>
 		
 	
@@ -55,7 +55,7 @@
 		<% end %>
 	
 		<%= render :partial => 'topics/form' %>
-		<h2>最近帖子</h2>
+		<h2>最近回复</h2>
 		
 		<% @topics.each do |topic| %>
 			<div class="entry_person_photo">
@@ -68,7 +68,10 @@
 			
 			<div class="entry_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
 			<div class="entry_edit_bar">
-				<%= link_to "详细(#{topic.comments.size})", class_topic_path(@group,topic), :target => "_blank"  %>
+				<%= link_to "(#{topic.comments.size})回复", class_topic_path(@group,topic), :target => "_blank"  %>
+				<% if topic.comments.size > 0 %>
+					<span class="gray">最后回复于<%= time_ago_in_words(topic.last_replied_at) %>, 来自</span><%= link_to  topic.last_replied_person.nick_name, topic.last_replied_person %>
+				<% end %>
 			</div>
 			<hr />
 		<% end %>

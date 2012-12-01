@@ -18,7 +18,7 @@
 		var name = $(this).parent().children().first().text();
 		var content = $(this).parent().next().children().first().text().substr(0,15);
 		var reply = name+":"+content+"..."+"\n"+"=========="+"\n";
-	  $('#discussion_content').attr({value: reply});
+	  	$('#discussion_content').attr({value: reply});
 		e.preventDefault();
 	});
 	
@@ -28,14 +28,14 @@
 	      });
 	});
 
-		// enter to send discussion
+	// enter to send discussion
 	$('#discussion_content').live('keydown', function(e) {
 	  if (!e.ctrlKey && e.keyCode === 13) {
 			$('#discussion_submit').trigger('submit');
 	  } 
 	});
 
-  // send fast
+    // send fast
 	$('form#new_discussion').live('submit', function(e) {
 		var d = new Date();
 		var time = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+(d.getDate())+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
@@ -93,10 +93,9 @@
 	
 </script>
 <% if notice %>
-<div id="notice"><%= notice %></div>
+	<div id="notice"><%= notice %></div>
 <% end %>
 <div class="box classroom_index">
-	
 	<div id="classroom_top">
 		<div id="classroom_photo">
 			<%= image_tag @classroom.avatar.url(:medium) %>
