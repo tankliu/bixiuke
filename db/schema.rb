@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127083202) do
+ActiveRecord::Schema.define(:version => 20121205075401) do
 
   create_table "apps", :force => true do |t|
     t.string   "title"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20121127083202) do
 
   create_table "courses", :force => true do |t|
     t.string   "name"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.string   "holiday"
     t.string   "city"
     t.integer  "top_number"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20121127083202) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.string   "category"
+    t.string   "online"
   end
 
   add_index "courses", ["person_id"], :name => "index_courses_on_user_id"

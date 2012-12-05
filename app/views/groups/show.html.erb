@@ -27,35 +27,75 @@
 			<% end %>
 
 		</div>
-		<div id="group_des">
-				<p>
-				  <b>描述:</b>
-				  <%= simple_format @group.description %>
-				</p>
-		</div>
+
 		
 		<div id="group_people">
-				<p><b>班级学员(<%= @people_size %>):</b></p>
+				<p><b>积分前10名:</b></p>
 
 				<% @people.each do |person| %>
 				<div class="person_photo_thumb">				
-					<%= image_tag person.avatar.url(:thumb) %>
+					<%= link_to image_tag(person.avatar.url(:thumb)), person %> <br />
+					<%= link_to person.nick_name, person %>
+					
 				</div>
 				<% end %>
-				...<%= link_to "查看所有学员", people_path %>
+				<div class="clear"></div>
+				<br />
+				<%= link_to "...所有学员", people_path %>
+				<hr />
+				
+				<div class="latest_message_4 group_latest_messages">
+				<p><b>最近发布惯例:</b></p>
+				<ul>
+					<% @notes.each do |note| %>
+						<li><%= link_to note.title, note %><br /></li>
+					<% end %>				
+				</ul>
+				<br />
+				<%= link_to "...所有惯例", notes_path %>
+				</div>
+				<hr />
+				
+				<div class="latest_message_4 group_latest_messages">
+				<p><b>最近发布测试:</b></p>
+				<ul>
+					<% @apps.each do |app| %>
+						<li><%= link_to app.title, app %><br /></li>
+					<% end %>				
+				</ul>
+				<br />
+				<%= link_to "...所有测试", apps_path %>
+				</div>
+				<hr />
+				
+				<p><b>最近发布资源:</b></p>
+				<div class="latest_message_4 group_latest_messages latest_resources">
+				<ul>
+					<% @resources.each do |resource| %>
+
+						<li><%= image_tag resource.category.avatar.url(:thumb) %><%= link_to resource.title, resource %><br /></li>
+					<% end %>				
+				</ul>
+				</div>
+				<br />
+				<%= link_to "...所有资源", resources_path %>
+
+
+				
 		</div>
 	</div>
 		
 	
 	<div id="content">
 
-		<h2>发帖(2积分)</h2>		
+		<h2>发帖(有问必答,老师每晚9点回复)</h2>		
 		<% if notice %>
 			<div id="notice"><%= notice %></div>
 		<% end %>
 	
 		<%= render :partial => 'topics/form' %>
 		<h2>最近回复</h2>
+	
 		
 		<% @topics.each do |topic| %>
 			<div class="entry_person_photo">

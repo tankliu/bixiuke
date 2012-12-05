@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
         render "new"
       else  
         session[:person_id] = @person.id
-        @classroom = Classroom.find(1)
-        notice =  is_member? ? "登录成功,请参与聊天,发帖" : "你不是学员,不能聊天,请联系QQ:1341548835开通学员."  
-        redirect_to @classroom, :notice => notice
+        @group = Group.find(1)
+        notice =  is_member? ? "登录成功,请发帖" : "你不是学员,不能聊天,请联系QQ:1341548835开通学员."  
+        redirect_to @group, :notice => notice
       end
     else
       flash.now.notice = "用户名或者密码不正确。"

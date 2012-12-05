@@ -13,13 +13,13 @@ class ClassroomsController < ApplicationController
    
    def show
      @classroom = Classroom.find(params[:id])
-     if session[:user_id] == 194
-       session[:user_id] = nil
-     end
      @discussions = @classroom.discussions.order("created_at desc").page(params[:page])
-     @nick_names = Person.all.collect{|x| x.nick_name}
      @discussion = Discussion.new
-     @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
+     @upcoming_online_courses = Course.where("start_at > ? and online = ?", Time.now, "yes").limit(5).order("start_at")
+     @this_week_online_course = @upcoming_online_courses.first
+     @latest_online_courses = Course.where("start_at <= ? and online = ?", Time.now, "yes").limit(15).order("start_at desc")
+     
+     # @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
      respond_to do |format|
        format.html # show.html.erb
        format.json { render json: @classroom }

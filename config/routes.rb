@@ -71,6 +71,8 @@ V8::Application.routes.draw do
   
 
   match '/classes/:id'  => "groups#show", :as => :group, :via => :get
+  match '/classes/:id/topics/page(/:page)' => 'groups#show'
+  
   match '/classes/:id'  => "groups#update", :as => :group, :via => :put
   match '/classes/:id'  => "groups#destroy", :as => :group, :via => :delete
   
@@ -102,7 +104,6 @@ V8::Application.routes.draw do
   
   match '/classrooms/:id/page(/:page)' => 'classrooms#show'
 
-  match '/classes/:id/topics/page(/:page)' => 'groups#show'
   
   
   

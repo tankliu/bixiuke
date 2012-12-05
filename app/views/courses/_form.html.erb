@@ -14,6 +14,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :online, "线上课程?" %><br />
+	  <%= f.select :online, %w(no yes) %>
+
+  </div>
+
+
+
+  <div class="field">
     <%= f.label :name, "课名(2到20字)" %><br />
     <%= f.text_field :name %>
   </div>
@@ -23,12 +31,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :start_date, "选择开始日期" %><br />
-    <%= f.date_select :start_date %>
+    <%= f.label :start_at, "选择开始日期" %><br />
+    <%= f.datetime_select :start_at %>
   </div>
   <div class="field">
-    <%= f.label :end_date, "选择结束日期" %><br />
-    <%= f.date_select :end_date %>
+    <%= f.label :end_at, "选择结束日期" %><br />
+    <%= f.datetime_select :end_at %>
   </div>
   <div class="field">
     <%= f.label :holiday, "假期(0到10字)" %><br />

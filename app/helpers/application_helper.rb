@@ -13,6 +13,8 @@ module ApplicationHelper
   def collect_note_categories_for_select
       Category.where(:typeable => "Note").order("order_number").collect{|category| [category.name, category.id]}     
   end
+  
+  
 
   
   def can_delete?(obj)
@@ -35,6 +37,7 @@ module ApplicationHelper
   Education = %w(没上学 小学 初中 高中 专科 本科 硕士 博士 博士后 留学)
   Sex = %w(男 女)   
   IndexToLetter = {0 => "A",1 => "B",2 => "C", 3 => "D"}
+  
   def broadcast(channel, &block)
       message = {:channel => channel, :data => capture(&block)}
       uri = URI.parse("http://localhost:9292/faye")

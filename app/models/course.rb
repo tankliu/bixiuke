@@ -7,15 +7,15 @@ class Course < ActiveRecord::Base
   paginates_per 10
   #还剩下多少天开始培训, 如果培训了, 不显示天, 而是显示状态
   def remain_days
-    to_start_days = (start_date - Date.current).to_i
-    to_end_days = (end_date - Date.current).to_i 
+    to_start_days = (start_at.to_date - Date.current).to_i
+    to_end_days = (end_at.to_date - Date.current).to_i 
     case 
       when 0 < to_start_days  then "剩"+to_start_days.to_s+"天"
-      when 0 >= to_start_days && to_end_days >= 0 then "培训中"
-      when 0 > to_end_days then "培训完"
+      when 0 >= to_start_days && to_end_days >= 0 then "进行中"
+      when 0 > to_end_days then "完毕"
     end
   end
-
+  
   
   validate :compare     
 
@@ -24,8 +24,8 @@ class Course < ActiveRecord::Base
   validates :category, :presence => {:message => "请填写活动类别"},                 
                    :length  => {:in => 1..20, :message => "活动类别字数在1到20之间", :allow_blank => true}
                    
-  validates :start_date, :presence => {:message => "请填写活动开始日期"}  
-  validates :end_date, :presence => {:message => "请填写活动结束日期"}
+  validates :start_at, :presence => {:message => "请填写活动开始日期"}  
+  validates :end_at, :presence => {:message => "请填写活动结束日期"}
   validates :holiday, :length => {:maximum => 10, :message => "假期字数长度不能超过10", :allow_blank => true}
 
   validates :city, :presence => {:message => "请填写城市"},
@@ -58,8 +58,8 @@ class Course < ActiveRecord::Base
     if !deposite.blank? && !cost.blank?
       errors[:deposite] << "定金不能超过活动花费" if deposite > cost 
     end
-    if !start_date.blank? && !end_date.blank?
-      errors[:end_date] << "活动结束日期必须在活动开始日期后" if (start_date - end_date).to_i > 0
+    if !start_at.blank? && !end_at.blank?
+      errors[:end_at] << "活动结束日期必须在活动开始日期后" if (start_at - end_at).to_i > 0
     end
   end  
 

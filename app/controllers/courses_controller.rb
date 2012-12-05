@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   before_filter :only_admin_can_do, :except => [:index, :show]
   
   def index
-    @courses = Course.order("start_date desc").page(params[:page])      
+    @courses = Course.order("start_at desc").page(params[:page])      
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @courses }

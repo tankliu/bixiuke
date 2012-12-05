@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     @discussions = Discussion.order("created_at desc").limit(20)
     @resources = Resource.order("created_at desc").limit(17)
     
-    @courses = Course.order("start_date desc").limit(50)      
+    @courses = Course.order("start_at desc").limit(50)      
     @topics = Topic.order("created_at desc").limit(50)
     @notes = Note.order("created_at desc").limit(50)
     @apps = App.order("created_at desc").limit(50)

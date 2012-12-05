@@ -57,7 +57,7 @@
 		<h2>最近约会课程计划</h2>
 		<ul>
 			<% @courses.each do |course| %>
-				<li><b><%= course.city %>:</b><%= link_to course.name, courses_path %>(<%= course.start_date.to_date.to_s %>)<br /></li>
+				<li><b><%= course.city %>:</b><%= link_to course.name, courses_path %>(<%= course.start_at.strftime("%Y-%m-%d %H:%M")  %>)<br /></li>
 			<% end %>				
 		</ul>
 	</div>

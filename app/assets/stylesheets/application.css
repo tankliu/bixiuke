@@ -140,7 +140,8 @@ h4 {
 /*---------------top-------*/
 .page_nav{
 	width: 99.8%;
-	margin: 0 auto;
+	margin: 0px auto;
+	margin-top:10px;
 	height: 30px;
 	border: 1px dashed #F09;
 	background: #eee;
@@ -398,27 +399,30 @@ li.user_tool{
 	padding: 8px 3px;
 }
 #courses th{
-	background-color: #fc0;
+	background-color: #f09;
 	color: #000;
 	padding: 10px 0px;
+}
+#courses .online{
+	width: 100px;
 }
 #courses .name{
 	width: 100px;
 }
 #courses .category{
-	width: 66px;
+	width: 58px;
 }
 #courses .date{
 	width: 76px;
 }
 #courses .holiday{
-	width: 44px;
-}
-#courses .city{
 	width: 30px;
 }
+#courses .city{
+	width: 55px;
+}
 #courses .teacher{
-	width: 81px;
+	width: 50px;
 }
 #courses .digit{
 	width: 28px;
@@ -429,8 +433,12 @@ li.user_tool{
 #courses .remain_days{
 	width: 60px;
 }
-#courses .line_0{
-	background: #eee;
+
+.online_course_color{
+	background-color:#df6;
+}
+.offline_course_color{
+	background-color:#6df;	
 }
 .courses_update_time {
 	text-align: left;
@@ -581,43 +589,61 @@ li.user_tool{
 
 /*-------------------classrooms------------------------*/
 .classroom_index{
-	background: url(/assets/classroom_bg.png) no-repeat 10px 0px;
+	background: url(/assets/classroom_bg_small.png) no-repeat 0px 0px;
+	width:692px;
+	height:550px;
+	float:left;
+}
+
+.classroom_latest_message{
+	margin-top:0px;
+	height:533px;
+	float:right;
 }
 
 #classroom_top{
-	width:920px;
-	height:60px;
-	padding:0 10px 9px 10px;
+	width:730px;
+	height:80px;
+	padding:0px;
 }
 #classroom_photo{
-	width: 60px;
+	width: 50px;
 	float: left;
 }
 
 #classroom_photo img{
-	margin: 0;
+	margin-left: 6px;
+	margin-top:6px;
 }
 
 #classroom_des{
-	width: 838px;
+	width: 620px;
 	float: left;
 	margin-left: 20px;
 }
+#classroom_des .zhibo_dayi{
+	color:#a0f;
+	font-size:20px;
+	float:left;
+	margin-top:10px;
+	margin-left:20px;
+}
+
 #classroom_left{
-	margin-left:1px;
-	width:739px;
-	height:466px;
+	width:491px;
+	height:465px;
 	float: left;
 }
 #classroom_people{
-	padding:1px 3px 3px 8px;
-	width:187px;
-	float:right;
-	height:460px;
+	padding:1px 2px 3px 8px;
+	width:190px;
+	float:left;
+	height:462px;
 }
-#online_people_list,#people_list{
+
+#online_people_list{
 	width:100%;
-	height:208px;
+	height:442px;
 	float:left;
 	overflow:auto;
 	overflow-x:hidden;
@@ -629,27 +655,32 @@ li.user_tool{
 /*discussion*/
 #discussions{
 	padding:10px;
-	width:720px;
+	width:473px;
 	height:300px;
 	overflow:auto;
 	overflow-x:hidden;
 	float:left;
+	font-size:13px;
+}
+#discussions p{
+	font-size:13px;
 }
 #discussions_history{
-	width:720px;
+	width:512px;
 	height:16px;
 	float:left;
-	padding:5px 10px;
+	padding:1px 10px 6px 10px;
 }
 #new_discussion{
 	margin: 0;
-	width: 740px;
-	height: 120px;
+	width: 491px;
+	height: 121px;
 	float: left;
 }
 #discussion_content{
-	width:730px;
-	height:79px;
+	width:485px;
+	margin-left:2px;
+	height:81px;
 }
 
 .discussion_meta{
@@ -684,8 +715,11 @@ li.user_tool{
 
 /*-------------------groups------------------------*/
 #group_des{
-	width:300px;
+	width:295px;
 	float:left;
+/*	white-space:nowrap;*/
+	text-overflow:ellipsis;
+	overflow: hidden;
 }
 
 #group_people{
@@ -693,6 +727,14 @@ li.user_tool{
 	width:300px;
 	margin-top:20px;
 }
+
+.group_latest_messages{
+	height:auto;
+	border-width:0;
+	margin-top:0;
+	width:280px;
+}
+
 
 .person_photo_thumb{
 	width:50px;

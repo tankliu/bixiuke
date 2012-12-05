@@ -99,30 +99,32 @@
 				<li <%="class=selected" if controller.class == CoursesController and action_name == "index" %> >
 					<a href="/courses" target="_top">最近课程<br /><span>最近城市</span></a>
 				</li>
-				
+			
 				<li <%="class=selected" if controller.class == ClassroomsController %> >
-  				<a href="/classrooms/1" target="_top">网上教室<br /><span>讨论,每晚9点</span></a>
+  				<a href="/classrooms/1" target="_top">周末聊天室<br /><span>8点开始</span></a>
   			</li>
 
 				<li <%="class=selected" if controller.class == GroupsController %> >
-  				<a href="/classes/1" target="_top">班级<br /><span>问答和案例</a>
+  				<a href="/classes/1" target="_top">有问必答<br /><span>问答和案例</a>
   			</li>
 
 				<li <%="class=selected" if controller.class == NotesController %> >
 					<a href="/notes" target="_top">惯例库<br /><span>追女孩子的话</span></a>
 				</li>
-				
+					
+				<li <%="class=selected" if controller.class == AppsController %> >
+					<a href="/apps" target="_top">情商测试<br /><span>魅力指数</span></a>
+				</li>
+										
   			<li <%="class=selected" if controller.class == ResourcesController %> >
   				<a href="/resources" target="_top">泡妞资源<br /><span>国内最全</span></a>
   			</li>    		    			
 
-				<li <%="class=selected" if controller.class == AppsController %> >
-					<a href="/apps" target="_top">情商测试<br /><span>魅力指数</span></a>
-				</li>
+			
 			</ul> 		
 		</div>		
 		<div id="guanggao">
-				泡妞学网,专为学员打造,客服QQ：1341548835；手机：15818131421,请先学完光盘成为学员,<a href="/guangpan">购买=></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最新培训：深圳12月7，8号<a href="/courses">赶紧报名参加</a>
+				泡妞学网,专为学员打造,客服QQ：1341548835；请先学完光盘成为学员,<a href="/guangpan">购买=></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最新培训：深圳12月7，8号<a href="/courses">赶紧报名参加</a>
 		</div>
 
 		<%= yield %>
