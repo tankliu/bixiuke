@@ -98,14 +98,6 @@ class ResourcesController < ApplicationController
     end
   end
   
-  # def replace_mark_with_picture
-  #     # 如果没有attachment,没必要对内容进行更好, 所以用unless,  img后内容里面增加<p></p>, 是为了css显示, 让后面的内容重新开始
-  #     unless params[:resource][:cover].blank?
-  #       @article.attachment_file_name = Time.now.to_i.to_s + rand(10000..99999).to_s + "_" + @article.attachment.original_filename
-  #       image_url_for_content = "<img src='/system/articles/attachments/#{Date.today.to_s[0,7]}/#{@article.attachment_file_name}' /><p></p>"
-  #       @article.content = @article.content.sub!("<picture>",image_url_for_content)
-  #     end
-  #     
-  #   end
+
   
 end

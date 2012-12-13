@@ -8,8 +8,10 @@
 	<%= simple_format comment.content %>
 </div>
 <div class="entry_edit_bar">
+	<div class="right_text">
 	<% if can_delete?(comment) %>
-		<%= link_to '删除', comment, :data => { :confirm => '确定删除' }, method: :delete %>
+		<%= link_to 'X', comment, :data => { :confirm => '确定删除' }, method: :delete %>
 	<% end %>
+	</div>
 </div>
 <hr />

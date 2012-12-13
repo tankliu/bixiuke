@@ -13,7 +13,10 @@
 <% end %>
 
 <script type="text/javascript">
-
+  $('.dengji button').live('click',function(e){
+		$(this).parent().html("感谢你提前登记,请记得时间.");
+	});
+	
 	$('.reply_discussion').live('click', function(e) {
 		var name = $(this).parent().children().first().text();
 		var content = $(this).parent().next().children().first().text().substr(0,15);
@@ -42,13 +45,15 @@
 		var content = "";
 		var person_id = $("#person_id").text();
 		if (person_id == "msr") {
-			content = "<span class='fail_notice'>陌生人不可以参与聊天</span>";
+			content = "<span class='fail_notice'>陌生人不可以参与聊天,请联系QQ:1341548835开通学员</span>";
 		} else if (person_id.indexOf("fxy") > 0) {
-			content = "<span class='fail_notice'>非学员不可以参与聊天</span>";
+			content = "<span class='fail_notice'>你不是学员,不可以参与聊天,请联系QQ:1341548835开通学员</span>";
 		} else {
 			content = $("#discussion_content").attr("value").replace(/\n/g,'<br />');
 		}
+		// send fast
 		$("#discussions").append("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ time+"</div><div class='discussion_content'><p>"+content +"</p></div><br/>");
+		// after send, clear content
 		$("#discussion_content").attr({value: ''});
 		// when add a discussion, scroll to latest discussion
 		$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;
@@ -103,8 +108,10 @@
 			</div>
 			<div id="classroom_des">
 				<div class="zhibo_dayi">
-					最近的"<%= @this_week_online_course.name %>"时间是<%= @this_week_online_course.start_at.strftime("%m-%d(周%w) %H:%M") %>,欢迎前来讨论
+					最近的"<%= @this_week_online_course.name %>"时间是<%= @this_week_online_course.start_at.strftime("%m-%d(周%w) %H:%M") %>,欢迎前来参加<br />	
 				</div>
+				<div class="dengji"><%= button_tag(:type => 'button') do %>点击提前登记<% end %></div>
+				
 
 			</div>
 		</div>
@@ -120,6 +127,7 @@
 	
 		<div id="classroom_people">
 			<div id="person_info" style="display:none;">
+				<!-- fxy代表非学员 -->
 				<div id="person_id"><%= session[:person_id] ? (is_member? ? session[:person_id] : session[:person_id].to_s+"fxy") : "msr"%></div>
 				<div id="person_nick_name"><%= session[:person_id] ? current_person.nick_name : "陌生人"%></div>
 				<div id="person_city"><%= current_person.city if session[:person_id] %></div>
@@ -145,7 +153,6 @@
 		</ul>
 		<br />
 		...<%= link_to "查看所有", courses_path %>
-		
 		
 	</div>
 	<hr />

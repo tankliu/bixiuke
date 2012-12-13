@@ -30,64 +30,71 @@
 
 		
 		<div id="group_people">
-				<p><b>积分前10名:</b></p>
-
-				<% @people.each do |person| %>
+			<p><b>积分前10名:</b></p>
+			<% @people.each do |person| %>
 				<div class="person_photo_thumb">				
 					<%= link_to image_tag(person.avatar.url(:thumb)), person %> <br />
 					<%= link_to person.nick_name, person %>
-					
 				</div>
-				<% end %>
-				<div class="clear"></div>
-				<br />
-				<%= link_to "...所有学员", people_path %>
-				<hr />
-				
-				<div class="latest_message_4 group_latest_messages">
-				<p><b>最近发布惯例:</b></p>
-				<ul>
-					<% @notes.each do |note| %>
-						<li><%= link_to note.title, note %><br /></li>
-					<% end %>				
-				</ul>
-				<br />
-				<%= link_to "...所有惯例", notes_path %>
-				</div>
-				<hr />
-				
-				<div class="latest_message_4 group_latest_messages">
-				<p><b>最近发布测试:</b></p>
-				<ul>
-					<% @apps.each do |app| %>
-						<li><%= link_to app.title, app %><br /></li>
-					<% end %>				
-				</ul>
-				<br />
-				<%= link_to "...所有测试", apps_path %>
-				</div>
-				<hr />
-				
-				<p><b>最近发布资源:</b></p>
-				<div class="latest_message_4 group_latest_messages latest_resources">
-				<ul>
-					<% @resources.each do |resource| %>
-
-						<li><%= image_tag resource.category.avatar.url(:thumb) %><%= link_to resource.title, resource %><br /></li>
-					<% end %>				
-				</ul>
-				</div>
-				<br />
-				<%= link_to "...所有资源", resources_path %>
-
-
-				
+			<% end %>
 		</div>
+		
+		<div class="clear"></div>
+		<br />
+		<%= link_to "...所有学员", people_path %>
+		<hr />
+		
+		<div class="latest_message_4 group_latest_messages">
+			<p><b>最近发布惯例:</b></p>
+			<ul>
+				<% @notes.each do |note| %>
+					<li><%= link_to note.title, note %><br /></li>
+				<% end %>				
+			</ul>
+			<br />
+			<%= link_to "...所有惯例", notes_path %>
+		</div>
+		<hr />
+		
+		<div class="latest_message_4 group_latest_messages">
+			<p><b>最近发布测试:</b></p>
+			<ul>
+				<% @apps.each do |app| %>
+					<li><%= link_to app.title, app %><br /></li>
+				<% end %>				
+			</ul>
+			<br />
+			<%= link_to "...所有测试", apps_path %>
+		</div>
+		<hr />
+		
+		
+		<div class="latest_message_4 group_latest_messages latest_resources">
+			<p><b>最近发布资源:</b></p>
+			<ul>
+				<% @resources.each do |resource| %>
+					<li><%= image_tag resource.category.avatar.url(:thumb) %><%= link_to resource.title, resource %><br /></li>
+				<% end %>				
+			</ul>
+			<br />
+			<%= link_to "...所有资源", resources_path %>
+		</div>
+		<hr />
+		
+		<div class="latest_message_4 group_latest_messages">
+			<p><b>最近发布文章:</b></p>
+			<ul>
+				<% @articles.each do |article| %>
+					<li><%= link_to article.title, article %><br /></li>
+				<% end %>				
+			</ul>
+			<br />
+			<%= link_to "...所有文章", articles_path %>
+		</div>		
 	</div>
 		
 	
 	<div id="content">
-
 		<h2>发帖(有问必答,老师每晚9点回复)</h2>		
 		<% if notice %>
 			<div id="notice"><%= notice %></div>
@@ -95,7 +102,6 @@
 	
 		<%= render :partial => 'topics/form' %>
 		<h2>最近回复</h2>
-	
 		
 		<% @topics.each do |topic| %>
 			<div class="entry_person_photo">
@@ -108,10 +114,11 @@
 			
 			<div class="entry_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
 			<div class="entry_edit_bar">
-				<%= link_to "(#{topic.comments.size})回复", class_topic_path(@group,topic), :target => "_blank"  %>
+				
 				<% if topic.comments.size > 0 %>
 					<span class="gray">最后回复于<%= time_ago_in_words(topic.last_replied_at) %>, 来自</span><%= link_to  topic.last_replied_person.nick_name, topic.last_replied_person %>
 				<% end %>
+				<div class="right_text"><%= link_to "(#{topic.comments.size})回复", class_topic_path(@group,topic), :target => "_blank"  %></div>
 			</div>
 			<hr />
 		<% end %>

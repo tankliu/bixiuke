@@ -17,11 +17,12 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @topics = @group.topics.includes(:person).includes(:last_replied_person).includes(:comments).order("last_replied_at desc").page(params[:page])      
     @topic = @topic || Topic.new
-    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").limit(10)
+    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").limit(12)
 
     @notes = Note.order("created_at desc").limit(10)
     @apps = App.order("created_at desc").limit(10)
     @resources = Resource.order("created_at desc").limit(10)
+    @articles = Article.order("created_at desc").limit(10)
      
     respond_to do |format|
       format.html # show.html.erb

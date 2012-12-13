@@ -1,0 +1,5 @@
+$("#notice_answer_<%=@app.id%> > .notice").not("[id]").attr({"id" : "notice_<%= @rand_num %>"}).append('<%= @notice_text %>'); 
+setTimeout(function() {
+ $("#notice_<%= @rand_num %>").fadeOut();
+}, 2 * 1000);
+

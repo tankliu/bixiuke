@@ -19,13 +19,23 @@
 		<div class="entry_meta">类别:<%= link_to @article.category.name, category_articles_path(:path => @article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to @article.person.nick_name, @article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= @article.views %>
 		</div>
 		
-		<div class="entry_content"><%= simple_format @article.content %></div>
+		<div class="entry_content">
+			<div class="article_image">
+				<%= image_tag @article.picture.url(:medium) %>
+			</div>
+			<%= simple_format @article.content %>
+		</div>
+		
+
 		
 		<div class="entry_edit_bar">
+			<%= render :partial => "share/bdshare" %>				
+			<div class="right_text">
 			<% if can_delete?(@article) %>
 				<%= link_to '编辑', edit_article_path(@article) %>
 				<%= link_to '删除', @article, :data => { :confirm => '确定删除' }, method: :delete %>
 			<% end %>
+			</div>
 		</div>
 		<hr />
 		

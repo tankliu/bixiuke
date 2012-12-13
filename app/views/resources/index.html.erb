@@ -54,7 +54,9 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 					</div>
 
 					<div class="entry_edit_bar">
-						<%= link_to "去下载或评论(#{resource.comments.size})", resource, :target => "_blank"  %>
+						<div class="right_text">
+						<%= link_to "=>去下载(#{resource.comments.size})", resource, :target => "_blank"  %>
+						</div>
 					</div>
 					<hr />
 				<% end %>

@@ -45,7 +45,9 @@
 
 			<div class="entry_content"><%= simple_format note.content %></div>
 			<div class="entry_edit_bar">
+				<div class="right_text">
 				<%= link_to "详细(#{note.comments.size})", note, :target => "_blank"  %>
+				</div>
 			</div>
 			<hr />
 		<% end %>

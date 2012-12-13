@@ -30,10 +30,12 @@
 		
 		<div class="entry_edit_bar">
 			<%= render :partial => "share/bdshare" %>
+			<div class="right_text">
 			<% if can_delete?(@resource) %>
 				<%= link_to '编辑', edit_resource_path(@resource) %>
 				<%= link_to '删除', @resource, :data => { :confirm => '确定删除' }, method: :delete %>
 			<% end %>
+			</div>
 		</div>
 		<hr />
 		

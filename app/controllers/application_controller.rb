@@ -1,7 +1,9 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   #TODO: rescue_from ActiveRecord::RecordInvalid, :with => :show_errors
+  
   protect_from_forgery
+  before_filter :subdomain_filter 
   before_filter :is_login?
   
   #一个诡异的问题. 对于用路由方法截获路由错误传入到这里执行render_not_found时,会自动到login页面. 
@@ -27,7 +29,21 @@ class ApplicationController < ActionController::Base
     render :template => "error/500", :status => 500, :layout => 'application'
   end
   
- 
+  def subdomain_filter  
+    subdomain_name = request.subdomains.first.to_s  
+    # 把所有的paoniuxue.com转到www.paoniuxue.com
+    if subdomain_name.blank? 
+      # 对于开发模式以及线下的产品模式不需要转,否则机器没法工作
+      unless request.url.to_s.include?("local")
+        redirect_to request.url.to_s.sub("//","//www.")
+        return false
+      end
+    # 所有非www的二级域名无效
+    elsif subdomain_name != "www"  
+      render_not_found
+    end
+  end
+  
     
 	private
   # TODO, 如果一个用户已经登录了,但是你在后台把他删除了. 那么会抛出ActiveRecord::RecordNotFound, 怎么处理?

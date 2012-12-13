@@ -18,6 +18,8 @@ V8::Application.routes.draw do
   #answer 并不需要路由, 直接显示在ask下面即可
     
   # match "feeds/notes(.:format)" => "feeds#notes", :as => :notes_rss
+  
+  
   resources :people, :articles, :courses, :categories, :discussions, :topics, :notes, :resources, :comments, :subjects
 
   
@@ -164,7 +166,7 @@ V8::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'home#index'
-
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

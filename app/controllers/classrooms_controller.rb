@@ -12,6 +12,7 @@ class ClassroomsController < ApplicationController
    #   end
    
    def show
+     
      @classroom = Classroom.find(params[:id])
      @discussions = @classroom.discussions.order("created_at desc").page(params[:page])
      @discussion = Discussion.new

@@ -17,13 +17,15 @@ class AppsController < ApplicationController
   def test
     @app = App.find(params[:app_id])      
     if params[:answer] == @app.answer.upcase
-      notice_text = "恭喜你!答对了!你具有成为把妹达人的潜力!"
+      @notice_text = "第"+@app.id.to_s+"题:"+"恭喜你!答对了!你具有成为把妹达人的潜力!"
     else
-      notice_text = "答错了!再接再厉!你需要继续学习!"
+      @notice_text = "第"+@app.id.to_s+"题:"+"答错了!再接再厉!你需要继续学习!"
     end
+    @rand_num = rand(1000)
     respond_to do |format|
-      format.html{ redirect_to :back, notice: notice_text }
+      format.html{ redirect_to :back}
       format.json
+      format.js {}
     end
   end
   

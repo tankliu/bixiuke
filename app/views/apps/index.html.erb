@@ -10,7 +10,14 @@
 			var text = $(this).text() == '创建测试' ? '取消创建' : '创建测试';
 			$(this).text(text);
 		});
+	
+		$('form').live('submit', function(e) {
+			var text = "<%= is_member? ? '答案:' : '你不是学员,不能参加测试,请先联系QQ:1341548835开通学员'%>";
+			$(this).parent().find(".notice_answer").append('<div class="notice">'+text+'</div>');
+		});
+		
 	});
+	
 </script>
 
 <% unless is_member? %>
@@ -24,7 +31,6 @@
 		<% if notice %>
 			<div id="notice"><%= notice %></div>
 		<% end %>
-		
 		<h2>创建测试,点击下面按钮开始(+3积分)</h2>
 		<% if is_member? %>
 			<%= button_tag(:type => 'button', :class => "create_app_button") do %>创建测试<% end %>
@@ -46,8 +52,11 @@
 			</div>
 
 			<div class="entry_content"><%= simple_format app.content %></div>
+			
+			
 			<div class="entry_content">
-				<%= form_tag :test do |f| %>
+				<div class="notice_answer" id="notice_answer_<%= app.id %>"></div>
+				<%= form_tag :test, :remote => true do |f| %>
 					<% app.options.each_with_index do |option,index| %>
 						<div class="field">
 							<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false %>		
@@ -64,7 +73,9 @@
 			</div>
 			
 			<div class="entry_edit_bar">
+				<div class="right_text">
 				<%= link_to "详细(#{app.comments.size})", app, :target => "_blank" %>
+				</div>
 			</div>
 			<hr />
 		<% end %>

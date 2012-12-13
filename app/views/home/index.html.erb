@@ -1,4 +1,4 @@
-<% content_for :title, "泡妞学网-第一家个性化约会指导-我们帮你追女朋友" %>
+<% content_for :title, "泡妞学网-第一家个人约会指导网站-我们帮你追女朋友" %>
 <% content_for :keywords, "泡妞网,泡妞,泡妞视频,泡妞秘籍,泡妞电影,追女孩子的技巧,追女孩子的短信,寒江雪,泡妞网,泡妞专家,泡妞技巧,怎么泡妞,泡学,泡学网,搭讪,搭讪的法则,魔鬼搭讪学,搭讪技巧,搭讪开场白,把妹,把妹达人,约会,约会技巧,约会去哪里,恋爱高手,谈恋爱的技巧" %>
 <% content_for :description, "你在苦苦寻找泡妞高手帮忙指导吗?你想尽快追到心仪的她吗?你还在各个泡妞论坛里面苦苦寻找泡妞秘籍吗?你想成为泡妞高手吗?请来泡妞学网,5年打造大陆第一专业泡妞追女约会恋爱指导网站.助你告别宅男,追到你的意中人." %>
 
@@ -22,45 +22,51 @@
 	</div>
 	
 	<div id="sidebar" class="home_login_area">
+		<% unless session[:person_id] %>
 		<%= render "sessions/login" %>
+		<% else %>
+		<%= render :partial => "people/person_info", :locals => {:person => Person.find(session[:person_id])} %>
+		<% end %>
 	</div>
 	<div class="clear"></div>
 	
-	<div class="latest_message_3">
-		<h2>泡妞学网学员排行版</h2>
-		<% @people.each do |person| %>
-		<div class="person_photo_thumb">				
-			<%= link_to image_tag(person.avatar.url(:thumb)), person %> <br />
-			<%= link_to person.nick_name, person %>
+	<div class="short_latest">
+		<div class="latest_message_4">
+			<h2>泡妞学网学员排行版</h2>
+			<% @people.each do |person| %>
+			<div class="person_photo_thumb">				
+				<%= link_to image_tag(person.avatar.url(:thumb)), person %> <br />
+				<%= link_to person.nick_name, person %>
 			
+			</div>
+			<% end %>
 		</div>
-		<% end %>
-	</div>
 	
-	<div class="latest_message_3">
-		<h2>泡妞学班内最近讨论</h2>
-		<%= render @discussions.reverse %>
-	</div>
+		<div class="latest_message_4">
+			<h2>泡妞学班内最近讨论</h2>
+			<%= render @discussions.reverse %>
+		</div>
 	
-	<div class="latest_message_3 latest_resources">
-		<h2>最近泡妞资源分享</h2>
-		<ul>
-			<% @resources.each do |resource| %>
+		<div class="latest_message_4 latest_resources">
+			<h2>最近泡妞资源分享</h2>
+			<ul>
+				<% @resources.each do |resource| %>
 				
-				<li><%= image_tag resource.category.avatar.url(:thumb) %><%= link_to resource.title, resource %><br /></li>
-			<% end %>				
-		</ul>
-	</div>
-
+					<li><%= image_tag resource.category.avatar.url(:thumb) %><%= link_to resource.title, resource %><br /></li>
+				<% end %>				
+			</ul>
+		</div>
 	
-	<div class="latest_message_4">
-		<h2>最近约会课程计划</h2>
-		<ul>
-			<% @courses.each do |course| %>
-				<li><b><%= course.city %>:</b><%= link_to course.name, courses_path %>(<%= course.start_at.strftime("%Y-%m-%d %H:%M")  %>)<br /></li>
-			<% end %>				
-		</ul>
+		<div class="latest_message_4">
+			<h2>泡妞学班内最近课程</h2>
+			<ul>
+				<% @courses.each do |course| %>
+					<li><b><%= course.city %>:</b><%= link_to course.name, courses_path %>(<%= course.start_at.strftime("%Y-%m-%d %H:%M")  %>)<br /></li>
+				<% end %>				
+			</ul>
+		</div>
 	</div>
+	
 	<div class="latest_message_4">
 		<h2>泡妞学班级最近提问</h2>
 		<ul>
@@ -86,6 +92,16 @@
 			<% end %>				
 		</ul>
 	</div>
+	
+	<div class="latest_message_4">
+		<h2>最近发布泡妞学文章</h2>
+		<ul>
+			<% @articles.each do |article| %>
+				<li><%= link_to article.title, article %><br /></li>
+			<% end %>				
+		</ul>
+	</div>
+	
 	
 	
 </div>

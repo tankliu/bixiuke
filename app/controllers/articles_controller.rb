@@ -9,7 +9,8 @@ class ArticlesController < ApplicationController
     #如果分类浏览. 按照 category.name
     @path = params[:path]
     @article = Article.new
-    @categories = Category.where(:typeable => "Article").order("order_number")
+    @categories = Category.where(:typeable => "Article").includes(:articles).order("order_number")
+    
     if params[:path] 
       @articles = Category.where("typeable = ? and path=?", "Article", params[:path])[0].articles.includes(:person).order("created_at desc").page(params[:page])      
     else
@@ -56,37 +57,27 @@ class ArticlesController < ApplicationController
     
     @article = current_person.articles.build(params[:article])
     @article.views = 0
-    if has_attachment_but_no_mark?
-        flash.now[:notice] = "内容里忘记写站位符了。"
-        render :action => "new" and return
-    end
-    replace_mark_with_picture
-    
+   
     respond_to do |format|
       if @article.save
-        @article.person.update_column(:score,@article.person.score+2)
-        format.html { redirect_to @article, notice: '创建成功' }
+        @article.person.update_column(:score,@article.person.score+3)
+        format.html { redirect_to articles_path, notice: '创建成功' }
         format.json { render json: @article, status: :created, location: @article }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to articles_path, notice: @article.errors.full_messages.size.to_s+"个错误:"+format_error(@article.errors.full_messages.join(","))}
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /articles/1
   # PUT /articles/1.json
   def update
     @article = current_person.articles.find(params[:id])
-    @article.attributes  = params[:article]
-    if has_attachment_but_no_mark?
-        flash.now[:notice] = "内容里忘记写站位符了。"
-        render :action => "edit" and return
-    end
-    replace_mark_with_picture
     
     respond_to do |format|
-      if @article.save
+      if @article.update_attributes(params[:article])
         format.html { redirect_to @article, notice: '更新成功' }
         format.json { head :no_content }
       else
@@ -107,27 +98,6 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url }
       format.json { head :no_content }
     end
-  end
-  
-  
-  private
-  
-  def has_attachment_but_no_mark?
-    if !params[:article][:attachment].blank? and !params[:article][:content].include?("<picture>")
-      return true
-    else
-      return false
-    end          
-  end
-  
-  def replace_mark_with_picture
-    # 如果没有attachment,没必要对内容进行更好, 所以用unless,  img后内容里面增加<p></p>, 是为了css显示, 让后面的内容重新开始
-    unless params[:article][:attachment].blank?
-      @article.attachment_file_name = Time.now.to_i.to_s + rand(10000..99999).to_s + "_" + @article.attachment.original_filename
-      image_url_for_content = "<img src='/system/articles/attachments/#{Date.today.to_s[0,7]}/#{@article.attachment_file_name}' alt='#{@article.title}' /><p></p>"
-      @article.content = @article.content.sub!("<picture>",image_url_for_content)
-    end
-    
   end
   
 end

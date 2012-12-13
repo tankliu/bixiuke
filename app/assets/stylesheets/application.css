@@ -56,7 +56,7 @@ form{
 
 
 
-#notice,#error_explanation{
+.notice, #notice,#error_explanation{
 	width: 100%;
 	border: 1px dashed #f00;
 	margin: 10px auto;
@@ -64,6 +64,7 @@ form{
 	font-size:16px;
 	line-height:30px;
 	text-indent:0.5em;
+	float:left;
 }
 
 #error_explanation h2{
@@ -141,7 +142,7 @@ h4 {
 .page_nav{
 	width: 99.8%;
 	margin: 0px auto;
-	margin-top:10px;
+	margin-top:5px;
 	height: 30px;
 	border: 1px dashed #F09;
 	background: #eee;
@@ -175,7 +176,7 @@ li.user_tool{
 
 #logo{
 	float: left;
-	width: 185px;
+	width: 147px;
 	height: 76px;
 	margin: 15px 0 0 0;
 }
@@ -246,6 +247,14 @@ li.user_tool{
 	width: 964px;
 	margin: 0 auto;
 }
+#subscription{
+	width:216px;
+	height:130px;
+	float:right;
+	top:155px;
+	right:0px;
+	position:absolute;
+}
 
 /*header*/
 #header_guanggao{
@@ -312,6 +321,9 @@ li.user_tool{
 	border:1px dashed #a0f;
 	float:left;
 	overflow: hidden;
+}
+.short_latest .latest_message_4{
+	height:500px;
 }
 .latest_message_3 li, .latest_message_4 li{
 	margin-left:-40px;
@@ -485,12 +497,12 @@ li.user_tool{
 	line-height: 35px;
 	width:100%;
 	font-size: 16px;
-	background: #eee url(/assets/sidebar_bg.gif) no-repeat -2px 50%;
+	background: #eee url(/assets/sidebar_bg.gif) no-repeat -28px 50%;
 }
 
 #categories ul li.selected a,#categories ul li a:hover {
 	color: #fff;	
-	background: #f09 url(/assets/sidebar_bg.gif) no-repeat -205px 50%;
+	background: #f09 url(/assets/sidebar_bg.gif) no-repeat -271px 50%;
 }
 
 #categories ul li.arrow{
@@ -535,7 +547,10 @@ li.user_tool{
 	margin:10px 0;
 	text-align:left;
 }
-
+.entry_edit_bar .right_text{
+	float:right;
+	margin-top:5px;
+}
 .entry_meta{
 	float: left;
 	color:#4087ae;
@@ -545,6 +560,8 @@ li.user_tool{
 .article_image{
 	clear:both;
 	float:left;
+	margin-right:10px;
+	margin-bottom:10px;
 }
 
 .article_image img{
@@ -600,9 +617,12 @@ li.user_tool{
 	height:533px;
 	float:right;
 }
+.classroom_latest_message b{
+	color:#a0f;
+}
 
 #classroom_top{
-	width:730px;
+	width:692px;
 	height:80px;
 	padding:0px;
 }
@@ -617,7 +637,7 @@ li.user_tool{
 }
 
 #classroom_des{
-	width: 620px;
+	width: 615px;
 	float: left;
 	margin-left: 20px;
 }
@@ -626,7 +646,13 @@ li.user_tool{
 	font-size:20px;
 	float:left;
 	margin-top:10px;
-	margin-left:20px;
+	margin-left:15px;
+}
+#classroom_des .dengji{
+	color:#f00;
+	font-size:16px;
+	float:left;
+	margin-top:10px;
 }
 
 #classroom_left{
@@ -635,15 +661,15 @@ li.user_tool{
 	float: left;
 }
 #classroom_people{
-	padding:1px 2px 3px 8px;
-	width:190px;
+	padding:2px 0px 0px 10px;
+	width:186px;
 	float:left;
-	height:462px;
+	height:458px;
 }
 
 #online_people_list{
 	width:100%;
-	height:442px;
+	height:438px;
 	float:left;
 	overflow:auto;
 	overflow-x:hidden;
@@ -655,7 +681,8 @@ li.user_tool{
 /*discussion*/
 #discussions{
 	padding:10px;
-	width:473px;
+	padding-right:15px;
+	width:470px;
 	height:300px;
 	overflow:auto;
 	overflow-x:hidden;
@@ -666,10 +693,10 @@ li.user_tool{
 	font-size:13px;
 }
 #discussions_history{
-	width:512px;
-	height:16px;
+	width:490px;
+	height:28px;
 	float:left;
-	padding:1px 10px 6px 10px;
+	padding:0;
 }
 #new_discussion{
 	margin: 0;
@@ -737,7 +764,7 @@ li.user_tool{
 
 
 .person_photo_thumb{
-	width:50px;
+	width:60px;
 	margin-left:10px;
 	height:72px;
 	float:left;
@@ -791,7 +818,15 @@ legend{
 
 /*-------------------kfqq------------------------*/
 .kfqq{
-	background: #f6f2e9 url(/assets/kfqq.png) no-repeat fixed 100% 180px;
+	width:130px;
+	height:248px;
+	float:right;
+	top:330px;
+	right:10px;
+	position:absolute;
+}
+.kfqq img{
+	margin:0;
 }
 /*-------------------for input ------------------------*/
 #topic_title,#topic_content,#comment_content,#options_{
