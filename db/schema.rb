@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207134309) do
-
-  create_table "apps", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "person_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "answer"
-  end
-
-  add_index "apps", ["person_id"], :name => "index_apps_on_user_id"
+ActiveRecord::Schema.define(:version => 20121221100818) do
 
   create_table "articles", :force => true do |t|
     t.integer  "person_id"
@@ -134,13 +123,13 @@ ActiveRecord::Schema.define(:version => 20121207134309) do
   end
 
   create_table "options", :force => true do |t|
-    t.integer  "app_id"
+    t.integer  "testing_id"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "options", ["app_id"], :name => "index_options_on_app_id"
+  add_index "options", ["testing_id"], :name => "index_options_on_app_id"
 
   create_table "people", :force => true do |t|
     t.string   "email"
@@ -183,6 +172,17 @@ ActiveRecord::Schema.define(:version => 20121207134309) do
   end
 
   add_index "subjects", ["person_id"], :name => "index_things_on_user_id"
+
+  create_table "testings", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "person_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "answer"
+  end
+
+  add_index "testings", ["person_id"], :name => "index_apps_on_user_id"
 
   create_table "topics", :force => true do |t|
     t.text     "content"

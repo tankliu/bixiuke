@@ -1,10 +1,10 @@
 
-<%= form_for(@app) do |f| %>
-  <% if @app.errors.any? %>
+<%= form_for(@testing) do |f| %>
+  <% if @testing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @app.errors.count.to_s+"个错误" %> :</h2>
+      <h2><%= @testing.errors.count.to_s+"个错误" %> :</h2>
       <ul>
-      <% @app.errors.full_messages.each do |msg| %>
+      <% @testing.errors.full_messages.each do |msg| %>
         <li><%= format_error(msg) %></li>
       <% end %>
       </ul>
@@ -25,7 +25,7 @@
 		<% 4.times do |index| %>
 			<div class="field">
 		    <%= label_tag :options, "选项"+ApplicationHelper::IndexToLetter[index] %><br />
-		    <%= text_field_tag 'options[]',  @app.options[index].nil? ? "" : @app.options[index].content, :size => 95 %>
+		    <%= text_field_tag 'options[]',  @testing.options[index].nil? ? "" : @testing.options[index].content, :size => 95 %>
 		  </div>
 		<% end %>
 	</fieldset>

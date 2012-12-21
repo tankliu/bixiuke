@@ -1,6 +1,17 @@
 <% content_for :title,"泡妞学网-测试你的情商" %>
 <% content_for :keywords,"情感测试,性爱测试" %>
 <% content_for :description,"泡妞学网,测试你的情商,测试你性商,泡妞学测试" %>
+
+<script>
+	$(document).ready(function() {
+		$('form').live('submit', function(e) {
+			var text = "<%= is_member? ? '答案:' : '你不是学员,不能参加测试,请先联系QQ:1341548835开通学员'%>";
+			$(this).parent().find(".notice_answer").append('<div class="notice">'+text+'</div>');
+		});
+	});
+</script>
+
+
 <% unless is_member? %>
 	<div id="header_guanggao">
 		<a href="http://item.taobao.com/item.htm?id=16378605912"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
@@ -14,23 +25,24 @@
 			<div id="notice"><%= notice %></div>
 		<% end %>
 		<div class="entry_person_photo">
-			<%= image_tag @app.person.avatar.url(:thumb) %>
+			<%= image_tag @testing.person.avatar.url(:thumb) %>
 		</div>
-		<div class="entry_title"><%=  @app.title %></div>
+		<div class="entry_title"><%=  link_to @testing.title, @testing %></div>
 		<br /><br />
-		<div class="entry_meta">发布:<%= link_to @app.person.nick_name, @app.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @app.created_at.to_date.to_s %>
+		<div class="entry_meta">发布:<%= link_to @testing.person.nick_name, @testing.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @testing.created_at.to_date.to_s %>
 		</div>
 
-		<div class="entry_content"><%= simple_format @app.content %></div>
+		<div class="entry_content"><%= simple_format @testing.content %></div>
 		<div class="entry_content">
-			<%= form_tag :test do |f| %>
-				<% @app.options.each_with_index do |option,index| %>
+			<div class="notice_answer" id="notice_answer_<%= @testing.id %>"></div>
+			<%= form_tag :test, :remote => true do |f| %>
+				<% @testing.options.each_with_index do |option,index| %>
 					<div class="field">
 						<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false %>		
 						<%= ApplicationHelper::IndexToLetter[index] %>.<%= label_tag "answer", option.content %>
 					</div>
 					<div class="field">
-						<%= hidden_field_tag "app_id",@app.id %>		
+						<%= hidden_field_tag "testing_id",@testing.id %>		
 					</div>
 				<% end %>
 				<div class="field">
@@ -42,9 +54,9 @@
 		<div class="entry_edit_bar">
 			<%= render :partial => "share/bdshare" %>
 			<div class="right_text">
-			<% if can_delete?(@app) %>
-				<%= link_to '编辑', edit_app_path(@app) %>
-				<%= link_to '删除', @app, :data => { :confirm => '确定删除' }, method: :delete %>
+			<% if can_delete?(@testing) %>
+				<%= link_to '编辑', edit_testing_path(@testing) %>
+				<%= link_to '删除', @testing, :data => { :confirm => '确定删除' }, method: :delete %>
 			<% end %>
 			</div>
 		</div>
@@ -57,7 +69,7 @@
 				<%= render comment %>
 			<% end %>
 			
-			<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "App", :commable_id => @app.id } %>
+			<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Testing", :commable_id => @testing.id } %>
 		</div>
 			
 	</div>

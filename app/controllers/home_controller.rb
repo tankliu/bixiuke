@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     @courses = Course.order("start_at desc").limit(18)      
     @topics = Topic.order("created_at desc").limit(50)
     @notes = Note.order("created_at desc").limit(50)
-    @apps = App.order("created_at desc").limit(50)
+    @testings = Testing.order("created_at desc").limit(50)
     @articles = Article.order("created_at desc").limit(50)
   end
 end

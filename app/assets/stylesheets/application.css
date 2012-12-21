@@ -792,7 +792,7 @@ li.user_tool{
 	margin:5px 0;	
 }
 
-/*-------------------apps------------------------*/
+/*-------------------testings------------------------*/
 fieldset {
     margin:10px 0;
     color:#333; 
@@ -832,7 +832,7 @@ legend{
 #topic_title,#topic_content,#comment_content,#options_{
 	width:560px;
 }
-#note_title, #note_content,#resource_title,#resource_download_link,#app_title,#app_content{
+#note_title, #note_content,#resource_title,#resource_download_link,#testing_title,#testing_content{
 	width:580px;
 }
 form #email, form #password{

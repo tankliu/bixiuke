@@ -88,14 +88,14 @@ class PeopleController < ApplicationController
   # PUT /people/1
   # PUT /people/1.json
   def update
-      @person = Person.find(params[:id])
+    @person = Person.find(params[:id])
     if is_admin? and @person.id != session[:person_id]
       @person = Person.find(params[:id])
       @person.attributes= params[:person]
       @person.role =  params[:role]
       @person.dead = params[:dead]
       if params[:dead] == "yes"
-        reset_session
+        # reset_session 这里应该只要清理一个人的.而不是全部的
       end
     else
       @person = Person.find(session[:person_id])

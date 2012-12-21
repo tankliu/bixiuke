@@ -20,39 +20,39 @@ V8::Application.routes.draw do
   # match "feeds/notes(.:format)" => "feeds#notes", :as => :notes_rss
   
   
-  resources :people, :articles, :courses, :categories, :discussions, :topics, :notes, :resources, :comments, :subjects
+  resources  :discussions, :comments, :subjects
 
+  
+  resources :topics do
+    resources :comments
+  end
   
   resources :classrooms do
     resources :discussions
   end
 
-  resources :groups do
-    resources :topics
-  end
-  
-  resources :topics do
+  resources :notes, :constraints => {:id => /\d+/} do
     resources :comments
   end
 
-  resources :notes do
+  resources :resources, :constraints => {:id => /\d+/} do
     resources :comments
   end
 
-  resources :resources do
+  resources :testings do
     resources :comments
   end
 
-  resources :apps do
-    resources :comments
-  end
-
-  resources :articles do
+  resources :articles, :constraints => {:id => /\d+/} do
     resources :comments
   end
   
-  resources :subjects do;
+  resources :courses do 
     resources :notes
+  end
+  
+  resources :subjects do
+    resources :courses
   end
 
   resources :categories do
@@ -61,7 +61,6 @@ V8::Application.routes.draw do
     resources :notes
   end
   
-  
   resources :people do
     resources :subjects
   end
@@ -69,11 +68,12 @@ V8::Application.routes.draw do
   match 'login' => 'sessions#new', :via => :get
   match 'login' => 'sessions#create', :via => :post
   match 'logout'  => 'sessions#destroy', :via => :delete
-  match 'test'  =>  "apps#test", :via => :post
+  match 'test'  =>  "testings#test", :via => :post  
   
-
-  match '/classes/:id'  => "groups#show", :as => :group, :via => :get
+  match '/classes/:id' => 'groups#show', :as => :group, :via => :get
   match '/classes/:id/topics/page(/:page)' => 'groups#show'
+  match '/topics/page(/:page)' => 'topics#index'
+  
   
   match '/classes/:id'  => "groups#update", :as => :group, :via => :put
   match '/classes/:id'  => "groups#destroy", :as => :group, :via => :delete
@@ -86,25 +86,48 @@ V8::Application.routes.draw do
     
   match '/classes/:group_id/topics/:id' => 'topics#show', :as => :class_topic
   
-  match 'resources/category/:path' => "resources#index", :as => :category_resources
-  match 'notes/category/:path' => "notes#index", :as => :category_notes
-  match 'articles/category/:path' => "articles#index", :as => :category_articles
+
+  
+  
+  match 'resources/:path' => "resources#index", :as => :category_resources
+  match 'notes/:path' => "notes#index", :as => :category_notes
+  match 'articles/:path' => "articles#index", :as => :category_articles
+  
+  
+  match 'resources/category/:path' => "resources#index", :as => :category_resources_old
+  match 'notes/category/:path' => "notes#index", :as => :category_notes_old
+  match 'articles/category/:path' => "articles#index", :as => :category_articles_old
+  
   
   
   match '/courses/page(/:page)' => 'courses#index'
   
   match '/notes/page(/:page)' => 'notes#index'
+  match '/notes/:path/page(/:page)' => 'notes#index'
   match '/notes/category/:path/page(/:page)' => 'notes#index'
   
+  
   match '/articles/page(/:page)' => 'articles#index'
+  match '/articles/:path/page(/:page)' => 'articles#index'
   match '/articles/category/:path/page(/:page)' => 'articles#index'
   
+  
   match '/resources/page(/:page)' => 'resources#index'
+  match '/resources/:path/page(/:page)' => 'resources#index'
   match '/resources/category/:path/page(/:page)' => 'resources#index'
   
-  match '/apps/page(/:page)' => 'apps#index'
+  
+  match '/testings/page(/:page)' => 'testings#index'
+  match '/apps' => 'testings#index'
+  match '/apps/:id' => 'testings#show'
+  match '/apps/page(/:page)' => 'testings#index'
   
   match '/classrooms/:id/page(/:page)' => 'classrooms#show'
+  match '/discussions/page(/:page)' => 'discussions#index'
+  
+  
+  match '/people/page(/:page)' => 'people#index'
+  
 
   
   

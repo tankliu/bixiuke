@@ -7,14 +7,23 @@ class TopicsController < ApplicationController
   before_filter :only_member_can_do, :except => [:index, :show]
 
   def index
-    @topic = Topic.new
-	  @topics = Topic.includes(:person).order("created_at desc").page(params[:page])      
+    @group = Group.find(1)
+    @topics = @group.topics.includes(:person).includes(:last_replied_person).includes(:comments).order("last_replied_at desc").page(params[:page])      
+    @topic = @topic || Topic.new
+    @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").limit(12)
 
+    @notes = Note.order("created_at desc").limit(10)
+    @testings = Testing.order("created_at desc").limit(10)
+    @resources = Resource.order("created_at desc").limit(10)
+    @articles = Article.order("created_at desc").limit(10)
+     
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @topics }
+      format.html # show.html.erb
+      format.json { render json: @group }
+      format.rss
     end
   end
+
   
   def show
     @topic = Topic.find(params[:id])
@@ -45,10 +54,10 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         @topic.person.update_column(:score,@topic.person.score+2)
-        format.html { redirect_to @topic.group, notice: '创建成功' }
+        format.html { redirect_to @topic, notice: '创建成功' }
         format.json { render json: @topic, status: :created, location: @topic }
       else
-        format.html { redirect_to @topic.group, notice: @topic.errors.full_messages.size.to_s+"个错误:"+format_error(@topic.errors.full_messages.join(",")) }
+        format.html { redirect_to topics_path, notice: @topic.errors.full_messages.size.to_s+"个错误:"+format_error(@topic.errors.full_messages.join(",")) }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
@@ -85,7 +94,7 @@ class TopicsController < ApplicationController
     @topic.destroy
 
     respond_to do |format|
-      format.html { redirect_to @topic.group }
+      format.html { redirect_to topics_path }
       format.json { head :no_content }
     end
   end  

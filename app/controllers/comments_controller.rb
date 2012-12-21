@@ -29,12 +29,8 @@ class CommentsController < ApplicationController
       else
         notice = @comment.errors.full_messages.size.to_s+"个错误:"+format_error(@comment.errors.full_messages.join(","))
       end
-        @comment.person.update_column(:score,@comment.person.score+1)
-      if @comment.commable.is_a?(Topic)
-        format.html { redirect_to class_topic_path(@comment.commable.group,@comment.commable), notice: notice }
-      else
-        format.html { redirect_to @comment.commable, notice: notice }
-      end
+      @comment.person.update_column(:score,@comment.person.score+1)
+      format.html { redirect_to @comment.commable, notice: notice }
       format.json { render json: @comment, status: :created, location: @comment }
     end
   end

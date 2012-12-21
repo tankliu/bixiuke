@@ -1,0 +1,166 @@
+<% content_for :title,"泡妞学教室" %>
+<% content_for :keywords,"泡妞学教室" %>
+<% content_for :description,"泡妞学教室,每天晚上9点." %>
+
+<% if Rails.env == "production" %>
+<script type="text/javascript">
+	var faye = new Faye.Client('http://www.paoniuxue.com:9292/faye');
+</script>
+<% else %>
+<script type="text/javascript">
+	var faye = new Faye.Client('http://localhost:9292/faye');
+</script>
+<% end %>
+
+<script type="text/javascript">
+  $('.dengji button').live('click',function(e){
+		$(this).parent().html("感谢你提前登记,请记得时间.");
+	});
+	
+	$('.reply_discussion').live('click', function(e) {
+		var name = $(this).parent().children().first().text();
+		var content = $(this).parent().next().children().first().text().substr(0,15);
+		var reply = name+":"+content+"..."+"\n"+"=========="+"\n";
+	  	$('#discussion_content').attr({value: reply});
+		e.preventDefault();
+	});
+	
+	$(function () {
+	      $('textarea.limited').maxlength({
+	          'feedback' : '.charsLeft', 'useInput' : true
+	      });
+	});
+
+	// enter to send discussion
+	$('#discussion_content').live('keydown', function(e) {
+	  if (!e.ctrlKey && e.keyCode === 13) {
+			$('#discussion_submit').trigger('submit');
+	  } 
+	});
+
+    // send fast
+	$('form#new_discussion').live('submit', function(e) {
+		var d = new Date();
+		var time = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+(d.getDate())+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+		var content = "";
+		var person_id = $("#person_id").text();
+		if (person_id == "msr") {
+			content = "<span class='fail_notice'>陌生人不可以参与聊天,请联系QQ:1341548835开通学员</span>";
+		} else if (person_id.indexOf("fxy") > 0) {
+			content = "<span class='fail_notice'>你不是学员,不可以参与聊天,请联系QQ:1341548835开通学员</span>";
+		} else {
+			content = $("#discussion_content").attr("value").replace(/\n/g,'<br />');
+		}
+		// send fast
+		$("#discussions").append("<div class='discussion_meta'><a href='/people/"+$('#person_id').text()+"'>"+$('#person_nick_name').text()+"</a> ("+$('#person_city').text()+")&nbsp;&nbsp;&nbsp;&nbsp;"+ time+"</div><div class='discussion_content'><p>"+content +"</p></div><br/>");
+		// after send, clear content
+		$("#discussion_content").attr({value: ''});
+		// when add a discussion, scroll to latest discussion
+		$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;
+	});
+		// after load window, scroll to the bottom of dicusssions, setTimeout for IE issues
+		$(document).ready(function() { 
+			setTimeout(function(){   
+		    $("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight; 
+		  },100);
+		});
+
+	// add extension to send user name, and update discussion or user list message
+	$(function() {
+			faye.addExtension({
+			  outgoing: function(message, callback) {
+			    if (message.channel === '/meta/subscribe' || message.channel === '/meta/disconnect' ) {
+			      message.person_nick_name = $('#person_nick_name').text();
+			      message.person_id = $('#person_id').text();
+			    }
+			    callback(message);
+			  }
+			});
+	
+		  faye.subscribe('/discussions/new', function (data) {
+		
+				if (data.message != null) {
+							$("#discussions").append("<div class='discussion_content'><li>" + data.message.content + "</li></div><br/>");
+							$("#discussions")[0].scrollTop = $("#discussions")[0].scrollHeight;
+							var list = '';
+							var list_size = data.message.list_size;
+							$.each(data.message.people_list, function(entryIndex,entry) {
+								list += "<li>" + entry + "</li>";
+							});
+							$("#online_size").html(list_size);
+				      $("#online_people_list").html(list);
+							
+				} else {
+					eval(data);
+				}
+		  });
+	});
+	
+</script>
+<% if notice %>
+	<div id="notice"><%= notice %></div>
+<% end %>
+<div class="box">
+	<div class="classroom_index">
+		<div id="classroom_top">
+			<div id="classroom_photo">
+				<%= image_tag @classroom.person.avatar.url(:thumb) %>
+			</div>
+			<div id="classroom_des">
+				<div class="zhibo_dayi">
+					最近的"<%= @this_week_online_course.name %>"时间是<%= @this_week_online_course.start_at.strftime("%m-%d(周%w) %H:%M") %>,欢迎前来参加<br />	
+				</div>
+				<div class="dengji"><%= button_tag(:type => 'button') do %>点击提前登记<% end %></div>
+				
+
+			</div>
+		</div>
+	
+		<div id="classroom_left">
+			<div id="discussions" class="<%= 'discussions_'+session[:person_id].to_s if session[:person_id] %>">
+					<%= render @discussions.reverse %>
+			</div>
+			<div id="discussions_history">
+			</div>
+			<%= render :partial => "discussions/form", :locals => {:classroom_id => @classroom.id, :discussion => @discussion} %>	
+		</div>
+	
+		<div id="classroom_people">
+			<div id="person_info" style="display:none;">
+				<!-- fxy代表非学员 -->
+				<div id="person_id"><%= session[:person_id] ? (is_member? ? session[:person_id] : session[:person_id].to_s+"fxy") : "msr"%></div>
+				<div id="person_nick_name"><%= session[:person_id] ? current_person.nick_name : "陌生人"%></div>
+				<div id="person_city"><%= current_person.city if session[:person_id] %></div>
+			</div>
+			<p><b>在线学员:(<span id="online_size"></span>):</b></p>
+			<div id="online_people_list">
+			</div>
+		
+		</div>	
+	</div>
+	<div class="latest_message_4 classroom_latest_message">
+		<p><b>接下来时间表:</b></p>
+		<ul>
+			<% @upcoming_online_courses.each do |course| %>
+			<li><%= course.name %>(<%= course.start_at.strftime("%m-%d %H:%M") %>)</li>
+			<% end %>
+		</ul>
+		<p><b>往期:</b></p>
+		<ul>
+				<% @latest_online_courses.each do |course| %>
+				<li><%= course.name %>(<%= course.start_at.strftime("%m-%d %H:%M") %>)</li>
+				<% end %>
+		</ul>
+		<br />
+		...<%= link_to "查看所有", courses_path %>
+		
+	</div>
+	<hr />
+	<h2>查询聊天记录</h2>
+  <div id="content">
+		<%= paginate @discussions %>
+  	<%= render @discussions %>
+		<%= paginate @discussions %>
+  </div>
+	
+</div>

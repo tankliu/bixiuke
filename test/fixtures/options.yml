@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  app: one
+  testing: one
   content: MyTextMyText
 
 two:
-  app: one
+  testing: one
   content: MyTextMyText

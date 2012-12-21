@@ -1,0 +1,6 @@
+// 用random避免几秒中内连续提交会出现js问题.给没有id的增加rand id,已经有了的就不增加.
+$("#notice_answer_<%=@testing.id%> > .notice").not("[id]").attr({"id" : "notice_<%= @rand_num %>"}).append('<%= @notice_text %>'); 
+setTimeout(function() {
+ $("#notice_<%= @rand_num %>").fadeOut();
+}, 2 * 1000);
+

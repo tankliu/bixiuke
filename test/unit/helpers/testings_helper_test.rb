@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
 require 'test_helper'
 
-class AppsHelperTest < ActionView::TestCase
+class TestingsHelperTest < ActionView::TestCase
 end

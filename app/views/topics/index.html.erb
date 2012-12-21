@@ -1,28 +1,128 @@
-<% content_for :title,"问答" %>
-<% content_for :keywords,"问答" %>
-<% content_for :description,"问答" %>
-
-
+<% content_for :title,"泡妞学班级" %>
+<% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
+<% content_for :description,"泡妞学班级, 如果白天老师不在教室,如果你有约会恋爱问题,请发到泡妞学班级." %>
 
 <div class="box">
-	<div id="content">
-				 
-		<% @topics.each do |topic| %>
-			<p class="entry_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %></p>
-			<p><%= simple_format truncate(topic.content, :length => 300) %></p>
-			<%= link_to "回复", topic  %>
-			<% if can_delete?(topic) %>
-				<%= link_to '编辑', edit_topic_path(topic) %>
-				<%= link_to '删除', topic, :data => { :confirm => '确定删除' }, method: :delete %>
+	<div id="sidebar">
+		<div id="group_photo">
+			<%= image_tag @group.avatar.url(:medium) %>
+		</div>
+		<div id="group_meta">
+			<p>
+			  <b>班级名:</b>
+			  <%= @group.name %>
+			</p>
+
+			<p>
+			  <b>创建者:</b>
+			  <%= @group.person.nick_name %>
+			</p>
+
+			<p>
+			  <b>创建时间:</b>
+			  <%= @group.created_at.to_date.to_s %>
+			</p>
+			<% if can_delete?(@group) %>
+				<%= link_to '编辑', edit_group_path(@group) %> 
 			<% end %>
+
+		</div>
+
+		
+		<div id="group_people">
+			<p><b>积分前10名:</b></p>
+			<% @people.each do |person| %>
+				<div class="person_photo_thumb">				
+					<%= link_to image_tag(person.avatar.url(:thumb)), person %> <br />
+					<%= link_to person.nick_name, person %>
+				</div>
+			<% end %>
+		</div>
+		
+		<div class="clear"></div>
+		<br />
+		<%= link_to "...所有学员", people_path %>
+		<hr />
+		
+		<div class="latest_message_4 group_latest_messages">
+			<p><b>最近发布惯例:</b></p>
+			<ul>
+				<% @notes.each do |note| %>
+					<li><%= link_to note.title, note %><br /></li>
+				<% end %>				
+			</ul>
+			<br />
+			<%= link_to "...所有惯例", notes_path %>
+		</div>
+		<hr />
+		
+		<div class="latest_message_4 group_latest_messages">
+			<p><b>最近发布测试:</b></p>
+			<ul>
+				<% @testings.each do |testing| %>
+					<li><%= link_to testing.title, testing %><br /></li>
+				<% end %>				
+			</ul>
+			<br />
+			<%= link_to "...所有测试", testings_path %>
+		</div>
+		<hr />
+		
+		
+		<div class="latest_message_4 group_latest_messages latest_resources">
+			<p><b>最近发布资源:</b></p>
+			<ul>
+				<% @resources.each do |resource| %>
+					<li><%= image_tag resource.category.avatar.url(:thumb) %><%= link_to resource.title, resource %><br /></li>
+				<% end %>				
+			</ul>
+			<br />
+			<%= link_to "...所有资源", resources_path %>
+		</div>
+		<hr />
+		
+		<div class="latest_message_4 group_latest_messages">
+			<p><b>最近发布文章:</b></p>
+			<ul>
+				<% @articles.each do |article| %>
+					<li><%= link_to article.title, article %><br /></li>
+				<% end %>				
+			</ul>
+			<br />
+			<%= link_to "...所有文章", articles_path %>
+		</div>		
+	</div>
+		
+	
+	<div id="content">
+		<h2>发帖(有问必答,老师每晚9点回复)</h2>		
+		<% if notice %>
+			<div id="notice"><%= notice %></div>
+		<% end %>
+	
+		<%= render :partial => 'topics/form' %>
+		<h2>最近回复</h2>
+		
+		<% @topics.each do |topic| %>
+			<div class="entry_person_photo">
+				<%= image_tag topic.person.avatar.url(:thumb) %>
+			</div>
+			<div class="entry_title"><%= link_to topic.title, topic, :target => "_blank" %></div>
+			<br /><br />
+			<div class="entry_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
+			</div>
+			
+			<div class="entry_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
+			<div class="entry_edit_bar">
+				
+				<% if topic.comments.size > 0 %>
+					<span class="gray">最后回复于<%= time_ago_in_words(topic.last_replied_at) %>, 来自</span><%= link_to  topic.last_replied_person.nick_name, topic.last_replied_person %>
+				<% end %>
+				<div class="right_text"><%= link_to "(#{topic.comments.size})回复", topic, :target => "_blank"  %></div>
+			</div>
 			<hr />
 		<% end %>
 		<%= paginate @topics %>		
 	</div>
-
-		<div class="note_form">
-			<div id="notice"><%= flash[:notice] || flash.now[:notice] %></div>
-			<%= render 'form'  %>
-		</div>
-	
 </div>
+

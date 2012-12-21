@@ -4,9 +4,9 @@
 
 <script>
 	$(document).ready(function() {
-		$('#new_app').hide();
-		$('.create_app_button').click(function() {
-			$('#new_app').slideToggle();
+		$('#new_testing').hide();
+		$('.create_testing_button').click(function() {
+			$('#new_testing').slideToggle();
 			var text = $(this).text() == '创建测试' ? '取消创建' : '创建测试';
 			$(this).text(text);
 		});
@@ -33,7 +33,7 @@
 		<% end %>
 		<h2>创建测试,点击下面按钮开始(+3积分)</h2>
 		<% if is_member? %>
-			<%= button_tag(:type => 'button', :class => "create_app_button") do %>创建测试<% end %>
+			<%= button_tag(:type => 'button', :class => "create_testing_button") do %>创建测试<% end %>
 		<% else %>
 			<div class="hint">只有学员才可以创建测试, <%= link_to "成为学员", :guangpan %>, 是学员的请<%= link_to "登录", :login  %></div>
 		<% end %>
@@ -42,28 +42,28 @@
 		
 		<h2>最新测试</h2>
 		
-		<% @apps.each do |app| %>
+		<% @testings.each do |testing| %>
 			<div class="entry_person_photo">
-				<%= image_tag app.person.avatar.url(:thumb) %>
+				<%= image_tag testing.person.avatar.url(:thumb) %>
 			</div>
-			<div class="entry_title"><%=  app.title %></div>
+			<div class="entry_title"><%=  link_to testing.title, testing %></div>
 			<br /><br />
-			<div class="entry_meta">发布:<%= link_to app.person.nick_name, app.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= app.created_at.to_date.to_s %>
+			<div class="entry_meta">发布:<%= link_to testing.person.nick_name, testing.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= testing.created_at.to_date.to_s %>
 			</div>
 
-			<div class="entry_content"><%= simple_format app.content %></div>
+			<div class="entry_content"><%= simple_format testing.content %></div>
 			
 			
 			<div class="entry_content">
-				<div class="notice_answer" id="notice_answer_<%= app.id %>"></div>
+				<div class="notice_answer" id="notice_answer_<%= testing.id %>"></div>
 				<%= form_tag :test, :remote => true do |f| %>
-					<% app.options.each_with_index do |option,index| %>
+					<% testing.options.each_with_index do |option,index| %>
 						<div class="field">
 							<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false %>		
 							<%= ApplicationHelper::IndexToLetter[index] %>.<%= label_tag "answer", option.content %>
 						</div>
 						<div class="field">
-							<%= hidden_field_tag "app_id",app.id %>		
+							<%= hidden_field_tag "testing_id",testing.id %>		
 						</div>
 					<% end %>
 					<div class="field">
@@ -74,12 +74,12 @@
 			
 			<div class="entry_edit_bar">
 				<div class="right_text">
-				<%= link_to "详细(#{app.comments.size})", app, :target => "_blank" %>
+				<%= link_to "详细(#{testing.comments.size})", testing, :target => "_blank" %>
 				</div>
 			</div>
 			<hr />
 		<% end %>
-		<%= paginate @apps %>		
+		<%= paginate @testings %>		
 	</div>
 	
 </div>

@@ -59,12 +59,12 @@
 		<div class="latest_message_4 group_latest_messages">
 			<p><b>最近发布测试:</b></p>
 			<ul>
-				<% @apps.each do |app| %>
-					<li><%= link_to app.title, app %><br /></li>
+				<% @testings.each do |testing| %>
+					<li><%= link_to testing.title, testing %><br /></li>
 				<% end %>				
 			</ul>
 			<br />
-			<%= link_to "...所有测试", apps_path %>
+			<%= link_to "...所有测试", testings_path %>
 		</div>
 		<hr />
 		

@@ -32,16 +32,43 @@ class ApplicationController < ActionController::Base
   def subdomain_filter  
     subdomain_name = request.subdomains.first.to_s  
     # 把所有的paoniuxue.com转到www.paoniuxue.com
-    if subdomain_name.blank? 
-      # 对于开发模式以及线下的产品模式不需要转,否则机器没法工作
+    if subdomain_name.blank?  # 对于开发模式以及线下的产品模式不需要转,否则机器没法工作
       unless request.url.to_s.include?("local")
         redirect_to request.url.to_s.sub("//","//www.")
         return false
       end
-    # 所有非www的二级域名无效
     elsif subdomain_name != "www"  
       render_not_found
     end
+    
+    if request.url.to_s == "http://www.paoniuxue.com/classes/1"
+      redirect_to "http://www.paoniuxue.com/topics"
+      return false
+    end
+    if request.url.to_s == "http://localhost:3000/classes/1"
+      redirect_to "http://localhost:3000/topics"
+      return false
+    end
+
+    if request.url.include?("classes/1/")
+      redirect_to request.url.to_s.sub("classes/1/","")
+      return false 
+    end
+    
+    if request.url.include?("classrooms/1")
+      redirect_to request.url.to_s.sub("classrooms/1","discussions")
+      return false 
+    end    
+
+    if request.url.include?("category/")
+      redirect_to request.url.to_s.sub("category/","")
+      return false 
+    end
+    if request.url.include?("apps")
+      redirect_to request.url.to_s.sub("apps","testings")
+      return false 
+    end
+  
   end
   
     

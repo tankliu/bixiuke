@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class App < ActiveRecord::Base
+class Testing < ActiveRecord::Base
   belongs_to :person
   has_many :options, :dependent => :destroy
   paginates_per 10

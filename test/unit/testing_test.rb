@@ -1,13 +1,13 @@
 # -*- encoding : utf-8 -*-
 require 'test_helper'
 
-class AppTest < ActiveSupport::TestCase
+class TestingTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
   
   setup do
-    @app = apps(:one)
+    @testing = testings(:one)
   end
   
   test "length should be" do
@@ -19,10 +19,10 @@ class AppTest < ActiveSupport::TestCase
           arg_array << "课"*(value.first-1)  << "课"*(value.last+1)
         end
         arg_array.each do |arg|
-          @app.send((key.to_s + "=").to_sym, arg)
-          assert !@app.save
+          @testing.send((key.to_s + "=").to_sym, arg)
+          assert !@testing.save
         end
-        @app = App.first
+        @testing = Testing.first
     end
   end
   
