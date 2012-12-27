@@ -257,7 +257,7 @@ li.user_tool{
 }
 
 /*header*/
-#header_guanggao{
+#header_gaoguang{
 	width: 960px;
 	height: 529px;
 	border: 1px dashed #f09;
@@ -270,30 +270,28 @@ li.user_tool{
 /*	margin-top:-;*/
 }
 
-.header_right{
-	float: right;
+.header_left{
+	float: left;
 	width: 300px;	
 }
 
-.header_right img{
+.header_left img{
 	float:none;
 	margin-right:0;
 	margin-bottom: 4px;
-	margin-top:30px;
 }
 
-.header_left{
-	float: left;
+.header_right{
+	float: right;
 	width: 600px;
-	padding-right: 15px;
 }
 
 
-#header_guanggao{
-	height: 200px;
+#header_gaoguang{
+	height: 180px;
 }
 
-#header_guanggao img{
+#header_gaoguang img{
 	margin: 0;
 }
 
@@ -411,13 +409,11 @@ li.user_tool{
 	padding: 8px 3px;
 }
 #courses th{
-	background-color: #f09;
+	background-color: #fc0;
 	color: #000;
 	padding: 10px 0px;
 }
-#courses .online{
-	width: 100px;
-}
+
 #courses .name{
 	width: 100px;
 }
@@ -446,12 +442,7 @@ li.user_tool{
 	width: 60px;
 }
 
-.online_course_color{
-	background-color:#df6;
-}
-.offline_course_color{
-	background-color:#6df;	
-}
+
 .courses_update_time {
 	text-align: left;
 	font-size: 14px;
@@ -518,6 +509,7 @@ li.user_tool{
 /*-------------------entries------------------------*/
 .hint{
 	margin:10px auto;
+	margin-bottom:20px;
 	color:#f09;
 }
 

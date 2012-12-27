@@ -5,8 +5,8 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 
 
 <% unless is_member? %>
-	<div id="header_guanggao">
-		<a href="http://item.taobao.com/item.htm?id=16378605912"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	<div id="header_gaoguang">
+		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
 	</div>
 <% end %>
 
@@ -28,19 +28,18 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 	
 	<div id="content">		
 			
-				<h2>分享资源(+3积分)</h2>
 				<% if notice %>
 					<div id="notice"><%= notice %></div>
 				<% end %>
 			
 				<% if is_member? %>
 					<%= render :partial => 'form'  %>
-				<% else %>
-					<div class="hint">只有学员才可以创建资源分享, <%= link_to "成为学员", :guangpan %>, 是学员的请<%= link_to "登录", :login  %></div>
 				<% end %>
 				<h2>最近资源分享</h2>
 				<% unless is_member? %>
-					<div class="hint">只有学员才可以下载</div>
+					<div class="hint">注意:泡妞书籍所有人可以下载,只有开通网站学员才可以下载泡妞音频,泡妞视频.<%= link_to "点击购买成为网站学员", :guangpan %>, 学员请先<%= link_to "登录", :login %>然后可以查看.
+					</div>	
+					
 				<% end %>
 				
 				

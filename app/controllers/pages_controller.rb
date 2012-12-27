@@ -28,4 +28,7 @@ class PagesController < ApplicationController
   def wangpan
     
   end
+  def xingxiang
+    
+  end
 end

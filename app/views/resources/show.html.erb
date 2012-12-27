@@ -3,8 +3,8 @@
 <% content_for :description, @resource.title %>
 
 <% unless is_member? %>
-	<div id="header_guanggao">
-		<a href="http://item.taobao.com/item.htm?id=16378605912"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	<div id="header_gaoguang">
+		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
 	</div>
 <% end %>
 
@@ -21,10 +21,10 @@
 				
 		<div class="download_link_area">
 			<p>下载链接:</p>
-			<% if is_member? %>
-					<%= link_to word_wrap(@resource.download_link), @resource.download_link %></p>
+			<% if (@resource.category.id == 16 || @resource.category.id == 21) and !is_member? %>
+					只有学员才可以下载, <%= link_to "成为学员", :guangpan %>, 是学员的请<%= link_to "登录", :login  %>
 			<% else %>
-				只有学员才可以下载, <%= link_to "成为学员", :guangpan %>, 是学员的请<%= link_to "登录", :login  %>
+				<%= link_to word_wrap(@resource.download_link), @resource.download_link %></p>
 			<% end %>
 		</div>
 		

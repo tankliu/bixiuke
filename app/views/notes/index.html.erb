@@ -4,8 +4,8 @@
 
 
 <% unless is_member? %>
-	<div id="header_guanggao">
-		<a href="http://item.taobao.com/item.htm?id=16378605912"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	<div id="header_gaoguang">
+		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
 	</div>
 <% end %>
 <div class="box">
@@ -26,13 +26,20 @@
 	
 	
 	<div id="content">
-		<h2>创建惯例(+3积分)</h2>
+		
 		<% if notice %>
 			<div id="notice"><%= notice %></div>
 		<% end %>
-		<%= render 'form'  %>
-		
+		<% if is_member? %>
+			<h2>创建惯例(+3积分)</h2>
+			<%= render 'form'  %>
+		<% end %>
 		<h2>最新惯例</h2>
+		<% unless is_member? %>
+			<div class="hint">注意:高级惯例只有网站学员可以查看.<%= link_to "点击购买成为网站学员", :guangpan %>, 学员请先<%= link_to "登录", :login %>然后可以下载.
+			</div>	
+		<% end %>
+		
 		
 		<% @notes.each do |note| %>
 			<div class="entry_person_photo">

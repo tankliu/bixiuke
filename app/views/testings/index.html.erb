@@ -12,8 +12,7 @@
 		});
 	
 		$('form').live('submit', function(e) {
-			var text = "<%= is_member? ? '答案:' : '你不是学员,不能参加测试,请先联系QQ:1341548835开通学员'%>";
-			$(this).parent().find(".notice_answer").append('<div class="notice">'+text+'</div>');
+			$(this).parent().find(".notice_answer").append('<div class="notice">'+"答案"+'</div>');
 		});
 		
 	});
@@ -21,8 +20,8 @@
 </script>
 
 <% unless is_member? %>
-	<div id="header_guanggao">
-		<a href="http://item.taobao.com/item.htm?id=16378605912"><img src="/assets/guanggao.png" alt="泡妞秘籍购买链接" /></a>
+	<div id="header_gaoguang">
+		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
 	</div>
 <% end %>
 <div class="box">	
@@ -31,17 +30,13 @@
 		<% if notice %>
 			<div id="notice"><%= notice %></div>
 		<% end %>
-		<h2>创建测试,点击下面按钮开始(+3积分)</h2>
 		<% if is_member? %>
 			<%= button_tag(:type => 'button', :class => "create_testing_button") do %>创建测试<% end %>
-		<% else %>
-			<div class="hint">只有学员才可以创建测试, <%= link_to "成为学员", :guangpan %>, 是学员的请<%= link_to "登录", :login  %></div>
+			<%= render 'form'  %>
 		<% end %>
-
-		<%= render 'form'  %>
 		
 		<h2>最新测试</h2>
-		
+
 		<% @testings.each do |testing| %>
 			<div class="entry_person_photo">
 				<%= image_tag testing.person.avatar.url(:thumb) %>

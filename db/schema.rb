@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121221100818) do
+ActiveRecord::Schema.define(:version => 20121227145353) do
 
   create_table "articles", :force => true do |t|
     t.integer  "person_id"
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(:version => 20121221100818) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.string   "category"
-    t.string   "online"
   end
 
   add_index "courses", ["person_id"], :name => "index_courses_on_user_id"

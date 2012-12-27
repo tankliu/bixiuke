@@ -14,12 +14,11 @@
 		</div>
 	<% end %>
 	
-	<div class="courses_update_time">更新时间:<%= Course.last.updated_at.to_date %>	注意:<span class="online_course_color">在线答疑背景是浅绿色</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="offline_course_color">现场课程背景是天蓝色</span>
+	<div class="courses_update_time">更新时间:<%= Course.last.updated_at.to_date %>
 	</div>
-
+	
 	<table id="courses">
 	  <tr>
-	    <th class="online">线上线下</th>
 	    <th class="name">课名</th>
 	    <th class="category">类型</th>
 	
@@ -39,12 +38,11 @@
 	    <th class="digit">定金</th>
 		<th class="remain_days">倒计时</th>
 	  </tr>
-	
+	<% num = 1 %>
 	<% @courses.each do |course| %>
-	  <tr class=<%= course.online == "yes" ? "online_course_color" : "offline_course_color" %> >
-			<td><%= course.online == "no" ? (link_to "现场课程介绍=>", :xianchang) : (link_to "在线答疑聊天室=>", Classroom.find(1)) %></td>
+	  <tr> 
 	    <td><%= course.name %></td>
-		<td><%= course.category %></td>
+			<td><%= course.category %></td>
 		
 	    <td><%= course.start_at.strftime("%Y-%m-%d %H:%M")  %></td>
 	    <td><%= course.end_at.strftime("%Y-%m-%d %H:%M") %></td>

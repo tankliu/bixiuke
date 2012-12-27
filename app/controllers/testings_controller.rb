@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 class TestingsController < ApplicationController
   # GET /testings
-  skip_before_filter :is_login?, :only => [:index, :show]
-  before_filter :only_member_can_do, :except => [:index, :show]
+  skip_before_filter :is_login?, :only => [:index, :show,:test]
+  before_filter :only_member_can_do, :except => [:index, :show, :test]
 
   # GET /testings.json
   def index
