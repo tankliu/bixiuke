@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HierarchyData</key>
+	<array>
+		<string>8D6A1104-BEC1-4C34-897C-AF286D91BBE1</string>
+	</array>
+	<key>ProjectItems</key>
+	<dict>
+		<key>8D6A1104-BEC1-4C34-897C-AF286D91BBE1</key>
+		<dict>
+			<key>ItemData</key>
+			<dict>
+				<key>BookmarkData</key>
+				<data>
+				Ym9va3wCAAAAAAEQEAAAAKQBAAAFAAAAAQEAAFVzZXJz
+				AAAABAAAAAEBAAB0YW5rBwAAAAEBAABEcm9wYm94AAcA
+				AAABAQAAcHJvamVjdAACAAAAAQEAAHY4AAAUAAAAAQYA
+				AAQAAAAUAAAAIAAAADAAAABAAAAACAAAAAQDAAD2kQAA
+				AAAAAAgAAAAEAwAA4NcFAAAAAAAIAAAABAMAAAexEgEA
+				AAAACAAAAAQDAAAg+zIBAAAAAAgAAAAEAwAANI0bAAAA
+				AAAUAAAAAQYAAGgAAAB4AAAAiAAAAJgAAACoAAAAGAAA
+				AAECAAACAAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAEAAAA
+				AwMAAAAAAAAEAAAAAwMAAAMAAAAEAAAAAwMAAPUBAAAE
+				AAAAAQEAAFRBTksIAAAABAMAAAAAdP05AAAACAAAAAAE
+				AABBtcJKXAAAACQAAAABAQAANDY4RTZERDEtMzVCMC0z
+				QjJBLTlCQUItRTcwNjk2MkE0OUU1GAAAAAECAACBAAAA
+				AQAIAO8/AAABAAgAAAAAAAAAAAABAAAAAQEAAC8AAAAA
+				AAAAAQUAAMAAAAD+////AQAAAAAAAAAPAAAABBAAAEwA
+				AAAAAAAABRAAALgAAAAAAAAAEBAAANQAAAAAAAAAVBAA
+				APQAAAAAAAAAVRAAAPQAAAAAAAAAAiAAAJABAAAAAAAA
+				ECAAABgBAAAAAAAAESAAAEQBAAAAAAAAEiAAACQBAAAA
+				AAAAEyAAADQBAAAAAAAAICAAAHABAAAAAAAAMCAAAJwB
+				AAAAAAAAAcAAAAABAAAAAAAAEcAAABQAAAAAAAAAEsAA
+				AAwBAAAAAAAA
+				</data>
+				<key>FileURL</key>
+				<string>file://localhost/Users/tank/Dropbox/project/v8/</string>
+				<key>RelativePath</key>
+				<string>./v8</string>
+				<key>TypeID</key>
+				<string>_CFileLocator</string>
+				<key>Version</key>
+				<integer>1</integer>
+			</dict>
+			<key>ItemName</key>
+			<string>v8</string>
+			<key>ItemType</key>
+			<string>FolderReference</string>
+		</dict>
+	</dict>
+	<key>com.barebones.DocumentFormatVersion</key>
+	<integer>5</integer>
+	<key>com.barebones.DocumentType</key>
+	<string>Project</string>
+</dict>
+</plist>

@@ -38,9 +38,11 @@
 	    <th class="digit">定金</th>
 		<th class="remain_days">倒计时</th>
 	  </tr>
-	<% num = 1 %>
-	<% @courses.each do |course| %>
-	  <tr> 
+		<% even = 1 %>
+		<% @courses.each do |course| %>
+			<% even = even+1 %>
+			<% odd = (even+1)%2 %>
+		 <tr class="line_<%= odd %>">
 	    <td><%= course.name %></td>
 			<td><%= course.category %></td>
 		

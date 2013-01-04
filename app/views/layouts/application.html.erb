@@ -20,7 +20,8 @@
 	<% else %>
 		<%= javascript_include_tag "http://localhost:9292/faye.js"%>
 	<% end %>
-	
+
+
 	<!-- <%# unless is_member? %>
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -58,7 +59,8 @@
 			<li <%="class=selected" if controller.class == PagesController and action_name == 'baodao'%> >
 				<a href="/baodao" target="_top">媒体报道</a>
 			</li>
-		
+
+				
 
 			<li class="user_tool">
 				<ul>
@@ -106,7 +108,7 @@
   			<!-- </li> -->
 
 				<li <%="class=selected" if controller.class == TopicsController %> >
-  				<a href="/topics" target="_top">有问必答<br /><span>约会问题</span></a>
+  				<a href="/topics" target="_top">情感求助<br /><span>有问必答</span></a>
   			</li>
 
 				<li <%="class=selected" if controller.class == NotesController %> >
@@ -126,7 +128,7 @@
   			</li>  
 
 	 			<li <%="class=selected" if controller.class == PagesController and action_name == "xingxiang" %> >
-	  				<a href="/xingxiang" target="_top">型男设计<br /><span>重塑自己形象</span></a>
+	  				<a href="/xingxiang" target="_top">型男设计<br /><span>提高形象</span></a>
 	  		</li>
 			
 			</ul> 		

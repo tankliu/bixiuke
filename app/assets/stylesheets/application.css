@@ -14,7 +14,11 @@
 
 */
 
-/* body ,p,a等基本元素*/
+/* body ,p,aÃ§Â­ÂÃ¥ÂÂºÃ¦ÂÂ¬Ã¥ÂÂÃ§Â´Â */
+
+
+
+
 
 body {
 	background: #f6f2e9;
@@ -74,7 +78,7 @@ form{
 img{
 	margin:20px 0;
 }
-/*修正ie下面会自动产生边框*/
+/*img for ie6*/
 a img{
 	border: 0;
 }
@@ -130,7 +134,7 @@ h4 {
 }
 
 
-/*page页面的媒体采访youku视频*/
+/*caifang*/
 .caifang{
 	margin-top:-420px;
 	margin-right:30px;
@@ -233,7 +237,7 @@ li.user_tool{
 	padding:5px 0;
 	text-indent:1em;
 	line-height:25px;
-/*	for ie6 :制造标签效果*/
+/*	for ie6 :Ã¥ÂÂ¶Ã©ÂÂ Ã¦Â ÂÃ§Â­Â¾Ã¦ÂÂÃ¦ÂÂ*/
 	_margin-top:-6px;
 }
 #guanggao a{
@@ -412,6 +416,9 @@ li.user_tool{
 	background-color: #fc0;
 	color: #000;
 	padding: 10px 0px;
+}
+.line_0{
+	background-color: #eee;
 }
 
 #courses .name{
