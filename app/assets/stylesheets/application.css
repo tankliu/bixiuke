@@ -14,8 +14,6 @@
 
 */
 
-/* body ,p,aÃ§Â­ÂÃ¥ÂÂºÃ¦ÂÂ¬Ã¥ÂÂÃ§Â´Â */
-
 
 
 
@@ -37,7 +35,7 @@ p {
 }
 
 a {
-	color:#f09;
+	color:#d00;
 }
 
 hr {
@@ -76,7 +74,7 @@ form{
 }
 
 img{
-	margin:20px 0;
+	margin:0;
 }
 /*img for ie6*/
 a img{
@@ -86,7 +84,7 @@ a img{
 
 /*-----------------h1 h2 h3 h2, h4 -----------------------------*/
 
-h1,h2,h3,h4 {
+h1,h2,h3,h4,h5{
 	line-height: 150%;
 	font-family: sans-serif;
 	text-align: left;
@@ -94,24 +92,24 @@ h1,h2,h3,h4 {
 }
 
 h1 {
-	font-size: 22px;
+	font-size: 24px;
 	margin-top: 0px;
 	margin-bottom:30px;
 	padding:12px 8px;
 	color: #ff0;
 	font-weight: bold;	
-	background: #f09;
 	text-indent: 0.2em;
+	background: #d70 url(/assets/arrow_right.png) no-repeat 100% 0px;
 }
 
 h2 {
 	font-size: 20px;
-	color: #0cf;
+	color: #0dd;
 }
 
 h3 {
 	font-size: 18pt;
-	color: #a0f;
+	color: #d07;
 }
 
 h4 {
@@ -119,7 +117,11 @@ h4 {
 	color: #000;	
 }
 
-
+h5{
+	font-size:18px;
+	font-family:kai;
+	color:#d00;
+}
 /*---------------some special class----------------*/
 .clear{
 	clear:both;
@@ -128,49 +130,61 @@ h4 {
 	text-align: right;
 }
 
-.image_class {
+.image_right_bottom {
 	float: left;
 	margin: 0px 65px 65px 0px;
 }
-
+.image_top_bottom{
+	margin:10px 0;
+}
+.image_bottom{
+	margin-bottom:20px;
+}
 
 /*caifang*/
 .caifang{
-	margin-top:-420px;
+	margin-top:-410px;
 	margin-right:30px;
 	float: right;
 }
 
 
 /*---------------top-------*/
-.page_nav{
+.logo_and_login{
 	width: 99.8%;
 	margin: 0px auto;
 	margin-top:5px;
-	height: 30px;
-	border: 1px dashed #F09;
-	background: #eee;
-	padding: 10px 0 0 0;
+	height: 80px;
+/*	border: 1px dashed #d00;*/
+/*	background: #eee;*/
 	font-size:16px;
 }
 
-
-.page_nav li{
-	float: left;
-	margin: 0 5px;
+.logo_and_login  a{
+	color:#d00;
 }
-li.user_tool{
+
+.login_area{
+	float:right;
+	padding:3px 10px 0 0;
+	width:200px;
+}
+.login_area form{
+	margin:0;
+	padding:0;
+}
+.login_area .login_action{
 	float:right;
 }
-.page_nav li a{
-	color:#f09;
-}
 
-.page_nav li.selected a{
-	background-color: #f09;
-	color: #fff;	
-	padding: 2px 5px;
-	text-decoration: none;
+.logo_and_login img.user_head{
+	float:right;
+	margin-top:10px;
+}
+.login_user_info{
+	float:right;
+	margin-right:10px;
+	margin-top:10px;
 }
 
 #nav,#guanggao{
@@ -178,38 +192,46 @@ li.user_tool{
 	margin: 0 auto;
 }
 
-#logo{
+#logo_image{
 	float: left;
 	width: 147px;
 	height: 76px;
-	margin: 15px 0 0 0;
+	margin: 0;
 }
-#logo img{
+#logo_image img{
 	margin:0;
 }
 
 #nav{
-	height: 91px;
+	height: 80px;
+	margin-top:5px;
 }
-
+.nav_arrow{
+	width:49px;
+}
+.nav_arrow img{
+	margin:10px 0;
+}
 #nav ul{
 	font-weight: bold;
-	height: 91px;
+	height: 80px;
 	margin: 0px;
+	margin-left:-42px;
+	_margin-left:-2px;
+	margin-bottom:0;
 }
 
 #nav ul li {
 	float:left;
-	margin-top: 1px;
 }
 
 #nav ul li a {
 	float: left;
-	border: 1px dashed #f09;
-	padding: 12px 9px 5px 9px;
-	margin: 10px 2px 0px 2px;
+	border: 1px solid #d00;
+	padding: 12px 4px 5px 4px;
+	margin: 0px 2px 0px 2px;
 	text-decoration: none;
-	color: #888;
+	color: #A2421A;
 	line-height: 30px;
 	font-size: 16px;
 	background-color: #eee;
@@ -221,23 +243,23 @@ li.user_tool{
 }
 
 #nav ul li.selected a, #nav ul li a:hover {    
-	background-color: #f09;
+	background-color: #d00;
 	color: #fff;	
 	border-color: #000;
-	border-bottom-color: #f09;
+	border-bottom-color: #d00;
 }
 #nav ul li.selected a span, #nav ul li a:hover span {
 	color: #fff;
 }
 #guanggao {
-	height: 25px;
-	background: #f09;
+	height: 20px;
+	background: #d00;
 	color: white;
 	font-size: 12px;
 	padding:5px 0;
 	text-indent:1em;
-	line-height:25px;
-/*	for ie6 :Ã¥ÂÂ¶Ã©ÂÂ Ã¦Â ÂÃ§Â­Â¾Ã¦ÂÂÃ¦ÂÂ*/
+	line-height:20px;
+/*	for ie6 :*/
 	_margin-top:-6px;
 }
 #guanggao a{
@@ -245,33 +267,49 @@ li.user_tool{
 }
 
 
+/*---------------- menu tab----------------------*/
+
+#menu {
+	width: 960px;
+	height:48px;
+	margin-top: 10px;
+	padding-top:15px;
+	float:left;
+	background: url(/assets/menu_bg.png) no-repeat 0px 0px;
+}
+
+#menu ul {
+	margin: 0;
+	padding-left:10px;
+}
+#menu ul li{
+	float:left;
+	margin-right:10px;
+}
+#menu ul li a {
+	display: block;
+	color: #999;
+	font-size: 16px;
+}
+
+#menu ul li a:hover {
+	background-color: #0dd;
+}
+
 /* ------------------content -container---------------*/
 
 #main_container {
 	width: 964px;
 	margin: 0 auto;
 }
-#subscription{
-	width:216px;
-	height:130px;
-	float:right;
-	top:155px;
-	right:0px;
-	position:absolute;
-}
+
 
 /*header*/
 #header_gaoguang{
 	width: 960px;
 	height: 529px;
-	border: 1px dashed #f09;
+	border: 1px dashed #d00;
 	margin: 0 auto;
-	background-repeat: no-repeat center top;
-}
-
-.header_index_bg_big{
-	margin:0;
-/*	margin-top:-;*/
 }
 
 .header_left{
@@ -284,6 +322,10 @@ li.user_tool{
 	margin-right:0;
 	margin-bottom: 4px;
 }
+.header_left h4{
+	margin:0;
+}
+
 
 .header_right{
 	float: right;
@@ -291,6 +333,13 @@ li.user_tool{
 }
 
 
+
+.highlight{
+	font-size:1.3em;
+	background-color:#ff0;
+	color:#f00;
+	
+}
 #header_gaoguang{
 	height: 180px;
 }
@@ -299,35 +348,17 @@ li.user_tool{
 	margin: 0;
 }
 
-.home_img{
-	margin:0px;
-}
-.home_login_area{
-	height:272px;
-}
-.latest_message_3{
-	margin-top:20px;
-	width:301px;
-	padding:5px;
-	height:500px;
-	border:1px dashed #a0f;
-	float:left;
-	overflow: hidden;
-}
-
 .latest_message_4{
 	margin-top:20px;
 	width:223px;
 	padding:5px;
-	height:1250px;
 	border:1px dashed #a0f;
 	float:left;
 	overflow: hidden;
+	height:550px;
 }
-.short_latest .latest_message_4{
-	height:500px;
-}
-.latest_message_3 li, .latest_message_4 li{
+
+.latest_message_4 li{
 	margin-left:-40px;
 	white-space:nowrap;
 	text-overflow:ellipsis;
@@ -345,34 +376,6 @@ li.user_tool{
 }
 
 
-
-/*---------------- menu tab----------------------*/
-
-#menu {
-	width: 960px;
-	margin: 10px auto;
-	padding:10px 0;
-	float:left;
-	border: 1px dashed #a0f;
-}
-
-#menu ul {
-	margin: 0;
-	padding-left:10px;
-}
-
-#menu ul li a {
-	display: block;
-	padding: 0;
-	color: #a0f;
-	width:100%;
-	font-size: 16px;
-	line-height:160%;
-}
-
-#menu ul li a:hover {
-	background-color: #bf0;
-}
 
 
 /*-------------------footer------------------------*/
@@ -397,6 +400,8 @@ li.user_tool{
 	clear:both;
 	float:left;	
 }
+
+/*home*/
 
 /*-------------------courses------------------------*/
 
@@ -487,7 +492,7 @@ li.user_tool{
 }
 
 #categories ul li a {
-	border: 1px dashed #f09;
+	border: 1px dashed #d00;
 	text-indent: 1em;
 	display: block;
 	text-decoration: none;
@@ -500,7 +505,7 @@ li.user_tool{
 
 #categories ul li.selected a,#categories ul li a:hover {
 	color: #fff;	
-	background: #f09 url(/assets/sidebar_bg.gif) no-repeat -271px 50%;
+	background: #d00 url(/assets/sidebar_bg.gif) no-repeat -271px 50%;
 }
 
 #categories ul li.arrow{
@@ -517,7 +522,7 @@ li.user_tool{
 .hint{
 	margin:10px auto;
 	margin-bottom:20px;
-	color:#f09;
+	color:#d00;
 }
 
 .entry_person_photo{
@@ -586,7 +591,7 @@ li.user_tool{
 	width:33.2%;
 	height:150px;
 	float:left;	
-	border-right: 1px dotted #f09;
+	border-right: 1px dotted #d00;
 	
 }
 .person_photo_index{
@@ -795,7 +800,7 @@ li.user_tool{
 fieldset {
     margin:10px 0;
     color:#333; 
-    border:#f09 dashed 1px;
+    border:#d00 dashed 1px;
 	padding:10px;
 } 
 legend{
@@ -820,7 +825,7 @@ legend{
 	width:130px;
 	height:248px;
 	float:right;
-	top:330px;
+	top:200px;
 	right:10px;
 	position:absolute;
 }

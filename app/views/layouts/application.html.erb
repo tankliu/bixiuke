@@ -21,15 +21,6 @@
 		<%= javascript_include_tag "http://localhost:9292/faye.js"%>
 	<% end %>
 
-
-	<!-- <%# unless is_member? %>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("body").addClass("kfqq");
-			});
-		</script>
-	<%# end %> -->
-
 </head>
 <!-- 产品模式下拒绝右键和复制 -->
 <% if Rails.env == "production" and controller.class == PagesController %>
@@ -41,82 +32,93 @@
 <%# session[:person_id] = nil if session[:person_id] == 739 %>
 
 	<div id="main_container">
-    <ul class="page_nav">
-			
-    	<li <%="class=selected" if controller.class == PagesController and action_name == 'guangpan' %> >
-  				<a href="/guangpan" target="_top">专业约会指导教程</a>
-  		</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'zhinanzhen' %> >
-				<a href="/zhinanzhen" target="_top">指男针</a>
-			</li>
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'xianchang' %> >
- 					<a href="/xianchang" target="_top">现场培训</a>
-			</li>
-
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'zhidao' %> >
-				<a href="/zhidao" target="_top">售后指导</a>
-			</li>				
-			<li <%="class=selected" if controller.class == PagesController and action_name == 'baodao'%> >
-				<a href="/baodao" target="_top">媒体报道</a>
-			</li>
-
-				
-
-			<li class="user_tool">
-				<ul>
-					<li>|</li>
-					<% unless session[:person_id] %>
-						<li <%="class=selected" if controller.class == PeopleController and action_name == "new"%> >
-							<a href="/people/new" target="_top">注册</a>
-						</li>
-						<li <%="class=selected" if controller.class == SessionsController and action_name == "new"%> >
-							<a href="/login" target="_top">登录</a>
-						</li>
-					<% end %>
-					<% unless session[:person_id].nil? %>					
-						<li <%="class=selected" if controller.class == PeopleController and action_name == "show" and params[:id].to_i == session[:person_id] %> >
-							<%= link_to current_person.nick_name, current_person %>
-						</li>
-						<li><%= link_to "修改资料", edit_person_path(current_person) %></li>
-						<li>
-							<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
-						</li>
-					<% end %>
-		 	  </ul>			
-			</li>
 	
-  	</ul>
-           
-		<div id="nav">
-		  <div id="logo">
-				<img src="/assets/logo.png" alt="泡妞学网" />
+    <div class="logo_and_login">
+		 	<div id="logo_image">
+				<img src= "/assets/logo.png", alt = "泡妞学网" />
 			</div>
+				
+			<% unless session[:person_id] %>
+				<div class="login_area">
+			
+				
+				<%= form_tag :login do |f| %>
+
+				  <div class="field">
+				    <%= label_tag :email, "账号" %>
+				    <%= text_field_tag :email %>
+				  </div>
+				  <div class="field">
+				    <%= label_tag :password, "密码" %>
+				    <%= password_field_tag :password %>
+				  </div>
+				  <div class="field">
+				    <%= submit_tag "登录", :class => "login_action" %>
+				  </div>
+			 	 <% end %>
+				</div>
+				
+			 <% end %>
+				<% unless session[:person_id].nil? %>	
+					<%= link_to image_tag(current_person.avatar.url(:thumb),:class => "user_head"), current_person %> 
+					<div class="login_user_info">
+						<%= link_to current_person.nick_name, current_person %>&nbsp;|&nbsp;
+						<%= link_to "设置", edit_person_path(current_person) %>&nbsp;|&nbsp;
+						<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
+						<br /><br />
+						<p>
+						  <b>用户组:</b>
+						  <%= current_person.role %>
+							<b>积分:</b>
+						  <%= current_person.score %>
+							<b>等级:</b>
+						  <%= current_person.rank %>
+						</p>
+					</div>
+					
+				<% end %>
+	
+    </div>
+		<div id="nav">
+		 
 			<ul>
 				<li <%="class=selected" if controller.class == HomeController %> >
-					<a href="/" target="_top">首页<br /><span>动态更新</span></a>
+					<a href="/" target="_top">泡妞秘籍<br /><span>学完进群和网</span></a>
 				</li>
 				
-				<li <%="class=selected" if controller.class == PeopleController and action_name == "index" %> >
-					<a href="/people" target="_top">所有学员<br /><span>排行版</span></a>
+				<li <%="class=selected" if controller.class == PagesController and action_name == "zhinanzhen" %> >
+					<a href="/zhinanzhen" target="_top">指男针<br /><span>最适合国内</span></a>
 				</li>
-				<li <%="class=selected" if controller.class == CoursesController and action_name == "index" %> >
-					<a href="/courses" target="_top">最近课程<br /><span>最近城市</span></a>
-				</li>
+				
 			
-				<!-- <li <%#="class=selected" if controller.class == DiscussionsController %> > -->
-  				<!-- <a href="/discussions" target="_top">聊天室<br /><span>周六晚8点</span></a> -->
-  			<!-- </li> -->
+				<li <%="class=selected" if controller.class == PagesController and action_name == "xianchang" %> >
+					<a href="/courses" target="_top">现场培训<br /><span>最近城市</span></a>
+				</li>
+				
+				<li <%="class=selected" if controller.class == PagesController and action_name == "baodao" %> >
+					<a href="/baodao" target="_top">媒体报道<br /><span>腾讯,新浪</span></a>
+				</li>
 
+				
+				<li <%="class=selected" if controller.class == PeopleController and action_name == "index" %> >
+					<a href="/people" target="_top">所有学员<br /><span>在学学员</span></a>
+				</li>
+				
+				<li class="nav_arrow">
+					<%= image_tag "/assets/nav_arrow.png" %>
+				</li>
+					
+				
 				<li <%="class=selected" if controller.class == TopicsController %> >
   				<a href="/topics" target="_top">情感求助<br /><span>有问必答</span></a>
   			</li>
 
 				<li <%="class=selected" if controller.class == NotesController %> >
-					<a href="/notes" target="_top">惯例库<br /><span>追女孩子的话</span></a>
+					<a href="/notes" target="_top">惯例库<br /><span>追女孩的话</span></a>
 				</li>
 										
   			<li <%="class=selected" if controller.class == ResourcesController %> >
-  				<a href="/resources" target="_top">泡妞资源<br /><span>国内最全</span></a>
+  				<a href="/resources" target="_top">资源下载<br /><span>国内最全</span></a>
   			</li>    		    			
 
 				<li <%="class=selected" if controller.class == TestingsController %> >
@@ -128,22 +130,18 @@
   			</li>  
 
 	 			<li <%="class=selected" if controller.class == PagesController and action_name == "xingxiang" %> >
-	  				<a href="/xingxiang" target="_top">型男设计<br /><span>提高形象</span></a>
+	  				<a href="/xingxiang" target="_top">形象设计<br /><span>宅男变型男</span></a>
 	  		</li>
 			
 			</ul> 		
 		</div>		
 		<div id="guanggao">
-				泡妞学网,专为学员打造,客服QQ：1341548835；请先学完光盘成为学员,<a href="/guangpan">购买=></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最新培训：深圳1月1，2号<a href="/courses">赶紧报名参加</a>
+				欢迎来到泡妞学网,你的情感人生从此改变.客服QQ：1341548835,群:111692197,请先学完<专业约会指导教程>,然后加入群和网站.交流指导
 		</div>
 
 		<%= yield %>
 	</div> <!-- end of main-container -->
 
-	<div id="subscription">
-<!--以下是QQ邮件列表订阅嵌入代码--><script >var nId = "e202938b28dc42ec9ebdaec67e943c2bebd596421a46b5b1",nWidth="170px",sColor="light",sText="填QQ邮箱点击订阅,去邮箱点击确认订阅链接,会收到10本大陆最强泡妞电子书,以后更多精彩!" ;</script><script src="http://list.qq.com/zh_CN/htmledition/js/qf/page/qfcode.js" charset="gb18030"></script>
-	</div>
-	
 	<% unless is_member? %>
 			<div class="kfqq">
 				<%= image_tag "/assets/kfqq.png" %>

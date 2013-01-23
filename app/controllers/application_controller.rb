@@ -55,10 +55,23 @@ class ApplicationController < ActionController::Base
       return false 
     end
     
-    if request.url.include?("classrooms/1")
-      redirect_to request.url.to_s.sub("classrooms/1","discussions")
-      return false 
-    end    
+    if request.url.include?("guangpan")
+      redirect_to request.url.to_s.sub("guangpan","")
+      return false
+    end
+    
+    if request.url.include?("zhidao")
+      redirect_to request.url.to_s.sub("zhidao","")
+      return false
+    end
+    
+        
+      if request.url.include?("courses")
+        redirect_to request.url.to_s.sub("courses","xianchang")
+        return false
+      end
+    
+    
 
     if request.url.include?("category/")
       redirect_to request.url.to_s.sub("category/","")

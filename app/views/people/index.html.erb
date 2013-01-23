@@ -8,19 +8,13 @@
 	<div id="notice"><%= notice %></div>
 	<% end %>
 	<!-- <div class="order_way"> -->
-		<ul class="page_nav">
-			<li <%="class=selected" if @order_way == "score" %> >
-				<%= link_to "积分排行", people_path(:order_way => "score") %>
-			</li>
-			
-			<li <%="class=selected" if @order_way == "join_time" %> >
-				<%= link_to "最新加入", people_path(:order_way => "join_time") %>
-			</li>
-			
-			<li <%="class=selected" if @order_way == "city" %> >
-				<%= link_to "按城市排序", people_path(:order_way => "city") %>
-			</li>
-		</ul>
+	<%= link_to "积分排行", people_path(:order_way => "score") %>&nbsp;|&nbsp;
+
+	<%= link_to "最新加入", people_path(:order_way => "join_time") %>&nbsp;|&nbsp;
+
+	<%= link_to "按城市排序", people_path(:order_way => "city") %>
+	<br /><br />
+	
 	<!-- </div>
 	<hr/> -->
 	<%= paginate @people %>
@@ -41,7 +35,7 @@
 				</p>
 
 				<p>
-				  <b>角色:</b>
+				  <b>用户组:</b>
 				  <%= person.role %>
 				</p>
 				<p>

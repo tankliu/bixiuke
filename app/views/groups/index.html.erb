@@ -15,7 +15,7 @@
 	<h1>所有小组</h1>
 	<div id="groups">		
 		<% @groups.each do |group| %>
-			<%= link_to image_tag(group.avatar.url(:medium), :class => "image_class"), group %>					
+			<%= link_to image_tag(group.avatar.url(:medium), :class => "image_right_bottom"), group %>					
 			
 			<h2 class= "index_organization_title"><%= link_to group.name, group %></h2>
 			<div class="index_organization_description"><%= truncate(group.description, :length => 55) %></div><br />

@@ -23,6 +23,11 @@ class PagesController < ApplicationController
     
   end
   def xianchang
+    @courses = Course.order("start_at desc").page(params[:page])      
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @courses }
+    end
     
   end
   def wangpan

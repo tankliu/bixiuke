@@ -41,7 +41,7 @@
 	
 	<% if is_admin? and @person.id != session[:person_id]%>
 	  <div class="field">
-	    <%= label_tag :role, "角色" %><br />
+	    <%= label_tag :role, "用户组" %><br />
 	    <%= select_tag :role, options_for_select(Person::Roles.collect {|role| [role,role]}, @person.new_record? ? "学员" : @person.role) %>
 	  </div>
 		<div class="field">

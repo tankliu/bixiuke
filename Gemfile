@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.10'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -20,14 +20,13 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # 执行 "bundle exec rake assets:precompile", 需要下面两个gems, execjs, therubyracer
   gem 'execjs'
-  gem 'therubyracer'
+  gem 'therubyracer', '0.11.0beta8'
 
   gem 'uglifier', '>= 1.0.3'
 end
 
 
-
-
+gem 'libv8', '3.11.8.3', :platform => :ruby
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
