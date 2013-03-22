@@ -5,7 +5,7 @@
 <script>
 	$(document).ready(function() {
 		$('form').live('submit', function(e) {
-			var text = "<%= is_member? ? '答案:' : '你不是学员,不能参加测试,请先联系QQ:1341548835开通学员'%>";
+			var text = "<%= is_member? ? '答案:' : '你不是学员,不能参加测试,请先联系QQ:910265340开通学员'%>";
 			$(this).parent().find(".notice_answer").append('<div class="notice">'+text+'</div>');
 		});
 	});

@@ -40,47 +40,25 @@ class ApplicationController < ActionController::Base
     elsif subdomain_name != "www"  
       render_not_found
     end
-    
-    if request.url.to_s == "http://www.paoniuxue.com/classes/1"
-      redirect_to "http://www.paoniuxue.com/topics"
-      return false
-    end
-    if request.url.to_s == "http://localhost:3000/classes/1"
-      redirect_to "http://localhost:3000/topics"
-      return false
-    end
 
-    if request.url.include?("classes/1/")
-      redirect_to request.url.to_s.sub("classes/1/","")
-      return false 
-    end
     
     if request.url.include?("guangpan")
       redirect_to request.url.to_s.sub("guangpan","")
       return false
     end
-    
-    if request.url.include?("zhidao")
-      redirect_to request.url.to_s.sub("zhidao","")
+  
+
+    if request.url.include?("courses")
+      redirect_to request.url.to_s.sub("courses","xianchang")
       return false
     end
-    
-        
-      if request.url.include?("courses")
-        redirect_to request.url.to_s.sub("courses","xianchang")
-        return false
-      end
-    
     
 
     if request.url.include?("category/")
       redirect_to request.url.to_s.sub("category/","")
       return false 
     end
-    if request.url.include?("apps")
-      redirect_to request.url.to_s.sub("apps","testings")
-      return false 
-    end
+    
   
   end
   
@@ -127,7 +105,7 @@ class ApplicationController < ActionController::Base
   
   def only_member_can_do
     unless is_member?
-      redirect_to :guangpan, :notice => "非学员不能进行此操作,请联系客服QQ:1341548835开通学员."
+      redirect_to :guangpan, :notice => "非学员不能进行此操作,请联系客服QQ:910265340开通学员."
     end
   end
   

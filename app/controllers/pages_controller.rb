@@ -28,7 +28,6 @@ class PagesController < ApplicationController
       format.html # index.html.erb
       format.json { render :json => @courses }
     end
-    
   end
   def wangpan
     

@@ -16,8 +16,6 @@
 
 
 
-
-
 body {
 	background: #f6f2e9;
 	padding: 0;
@@ -131,7 +129,6 @@ h5{
 }
 
 .image_right_bottom {
-	float: left;
 	margin: 0px 65px 65px 0px;
 }
 .image_top_bottom{
@@ -168,6 +165,12 @@ h5{
 	float:right;
 	padding:3px 10px 0 0;
 	width:200px;
+}
+.register{
+	float:right;
+	text-align:right;
+	width:90px;
+	padding-top:3px;
 }
 .login_area form{
 	margin:0;
@@ -206,12 +209,7 @@ h5{
 	height: 80px;
 	margin-top:5px;
 }
-.nav_arrow{
-	width:49px;
-}
-.nav_arrow img{
-	margin:10px 0;
-}
+
 #nav ul{
 	font-weight: bold;
 	height: 80px;
@@ -228,8 +226,8 @@ h5{
 #nav ul li a {
 	float: left;
 	border: 1px solid #d00;
-	padding: 12px 4px 5px 4px;
-	margin: 0px 2px 0px 2px;
+	padding: 12px 6px 5px 6px;
+	margin: 0px 6px 0px 2px;
 	text-decoration: none;
 	color: #A2421A;
 	line-height: 30px;
@@ -314,7 +312,7 @@ h5{
 
 .header_left{
 	float: left;
-	width: 300px;	
+	width: 600px;	
 }
 
 .header_left img{
@@ -329,7 +327,7 @@ h5{
 
 .header_right{
 	float: right;
-	width: 600px;
+	width: 300px;
 }
 
 
@@ -402,6 +400,12 @@ h5{
 }
 
 /*home*/
+.chunjie{
+	font-size:48px;
+	color:red;
+	margin:10px;
+	margin-left:0;
+}
 
 /*-------------------courses------------------------*/
 
