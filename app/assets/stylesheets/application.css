@@ -11,9 +11,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
-
+ *= require bootstrap.css
+ *= require bootstrap-responsive.css
 */
-
 
 
 body {
@@ -126,7 +126,9 @@ h5{
 }
 .align_right {
 	text-align: right;
+	text-align: right;
 }
+
 
 .image_right_bottom {
 	margin: 0px 65px 65px 0px;
@@ -226,8 +228,8 @@ h5{
 #nav ul li a {
 	float: left;
 	border: 1px solid #d00;
-	padding: 12px 6px 5px 6px;
-	margin: 0px 6px 0px 2px;
+	padding: 12px 3px 5px 3px;
+	margin: 0px 4px 0px 2px;
 	text-decoration: none;
 	color: #A2421A;
 	line-height: 30px;
@@ -310,24 +312,24 @@ h5{
 	margin: 0 auto;
 }
 
-.header_left{
-	float: left;
-	width: 600px;	
+.header_right{
+	float: right;
+	width: 300px;	
 }
 
-.header_left img{
+.header_right img{
 	float:none;
 	margin-right:0;
 	margin-bottom: 4px;
 }
-.header_left h4{
+.header_right h4{
 	margin:0;
 }
 
 
-.header_right{
-	float: right;
-	width: 300px;
+.header_left{
+	float: left;
+	width: 600px;
 }
 
 

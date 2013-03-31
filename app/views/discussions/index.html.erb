@@ -45,9 +45,9 @@
 		var content = "";
 		var person_id = $("#person_id").text();
 		if (person_id == "msr") {
-			content = "<span class='fail_notice'>陌生人不可以参与聊天,请联系QQ:910265340开通学员</span>";
+			content = "<span class='fail_notice'>陌生人不可以参与聊天,请联系QQ:399906796开通学员</span>";
 		} else if (person_id.indexOf("fxy") > 0) {
-			content = "<span class='fail_notice'>你不是学员,不可以参与聊天,请联系QQ:910265340开通学员</span>";
+			content = "<span class='fail_notice'>你不是学员,不可以参与聊天,请联系QQ:399906796开通学员</span>";
 		} else {
 			content = $("#discussion_content").attr("value").replace(/\n/g,'<br />');
 		}

@@ -11,12 +11,12 @@ class SessionsController < ApplicationController
     @person = Person.find_by_email(params[:email])
     if @person && @person.authenticate(params[:password])
       if @person.dead == "yes"
-        flash.now.notice = "你的账户存在安全问题,暂时被注销或者限制登陆。请联系客服QQ:910265340"
+        flash.now.notice = "你的账户存在安全问题,暂时被注销或者限制登陆。请联系客服QQ:399906796"
         render "new"
       else  
         session[:person_id] = @person.id
         @group = Group.find(1)
-        notice =  is_member? ? "登录成功,请发帖" : "你不是学员,不能发帖和聊天室聊天,请联系QQ:910265340开通学员."  
+        notice =  is_member? ? "登录成功,请发帖" : "你不是学员,不能发帖和聊天室聊天,请联系QQ:399906796开通学员."  
         redirect_to @group, :notice => notice
       end
     else

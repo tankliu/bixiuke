@@ -1,9 +1,11 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+gem 'fastthread', :git => "git://github.com/zoltankiss/fastthread.git"
 
 gem 'sqlite3'
 gem 'mysql2'
@@ -11,6 +13,7 @@ gem 'mysql2'
 gem 'passenger'
 gem 'kaminari'
 gem "paperclip", "~> 3.0"
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,13 +23,13 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # 执行 "bundle exec rake assets:precompile", 需要下面两个gems, execjs, therubyracer
   gem 'execjs'
-  gem 'therubyracer', '0.11.0beta8'
+  gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+  
 end
 
-
-gem 'libv8', '3.11.8.3', :platform => :ruby
+gem 'libv8', '~> 3.11.8'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

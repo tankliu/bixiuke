@@ -15,7 +15,6 @@
 //= require maxlength
 //= require_tree .
 
-
 setTimeout(function() {
  $("#notice").fadeOut();
 }, 5 * 1000);

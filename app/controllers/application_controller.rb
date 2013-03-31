@@ -48,10 +48,10 @@ class ApplicationController < ActionController::Base
     end
   
 
-    if request.url.include?("courses")
-      redirect_to request.url.to_s.sub("courses","xianchang")
-      return false
-    end
+    # if request.url.include?("courses")
+    #    redirect_to request.url.to_s.sub("courses","xianchang")
+    #    return false
+    #  end
     
 
     if request.url.include?("category/")
@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
   
   def only_member_can_do
     unless is_member?
-      redirect_to :guangpan, :notice => "非学员不能进行此操作,请联系客服QQ:910265340开通学员."
+      redirect_to :guangpan, :notice => "非学员不能进行此操作,请联系客服QQ:399906796开通学员."
     end
   end
   

@@ -11,7 +11,7 @@
 			$(this).text(text);
 		});
 	
-		$('form').live('submit', function(e) {
+		$('form').on('submit', function(e) {
 			$(this).parent().find(".notice_answer").append('<div class="notice">'+"答案"+'</div>');
 		});
 		
