@@ -1,91 +1,128 @@
 <% content_for :title,"泡妞学网-我的主页" %>
 <% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
-<% content_for :description,"泡妞学网,我的主页,最近在聊天室的讨论,最近在小组里面的发言,最近发表的惯例,最近共享的资源." %>
+<% content_for :description,"泡妞学网,我的主页,最近在聊天室的讨论,最近在班级里面的发言,最近发表的惯例,最近共享的资源." %>
 
 
-<div class="box">
-	<div id="sidebar">
+<div class="row">
+	
+	<div class="span8">
+		<% if notice %>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %>
+			</div>
+		<% end %>
+		
+		<% if session[:person_id] and !is_member? %>
+			<div class="alert" id="alert_permanence">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <h4>你还不是学员!请联系QQ:399906796开通学员</h4>
+	      <p>本网站专为学员打造,如果你还没学习,请看看这里<%= link_to "泡妞秘籍58套培训视频音频","/" %>和<%= link_to "书籍", :zhinanzhen %>, <br>需要请联系QQ:399906796,购买泡妞秘籍后,开通学员服务.<br>成为学员后,可以:去班级提问<br>查看高级惯例<br>下载资料<br>玩测试<br>形象设计<br>
+				</p>
+			</div>
+		<% end %>
+		
+		
+		
+		<h4>最近你在班级发表的帖子</h4>
+		<table id="topics" class="table table-condensed">
+			<thead>
+			  <tr>
+			    <th class="topic-title">话题</th>
+			    <th class="topic-comments-size">回应</th>
+			    <th class="last-reply-at">最后回应</th>
+			  </tr>
+			</thead>
+			<tbody>
+				<% @latest_topics.each do |topic| %>
+					<tr>
+				    <td><%= link_to topic.title, topic, :target => "_blank" %></td>
+				    <td><%= topic.comments.size %></td>
+				    <td><%= time_ago_in_words(topic.last_replied_at) %></td>
+				
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+			
+						
+	
+		
+			<h4>最近发表的惯例</h4>
+			<% @latest_notes.each do |note| %>
+				<div class="media">
+				  <a class="pull-left" href="#">
+						<%= image_tag note.person.avatar.url(:thumb),:class => "media-object" %>
+				  </a>
+				  <div class="media-body">
+				    <h4 class="media-heading"><%= link_to note.title, note, :target => "_blank" %></h4>
+				    <div class="media">
+							发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
+							<br />
+							<br />
+							<%= simple_format note.content %>
+							<%= link_to "详细(#{note.comments.size})", note, :target => "_blank",:class => "pull-right"  %>
+							<% if can_delete?(note) %>
+								<%= link_to '编辑', edit_note_path(note) %>
+								<%= link_to '删除', note, :data => { :confirm => '确定删除' }, method: :delete %>
+							<% end %>
+				    </div>
+				  </div>
+				</div>
+				<hr />
+			<% end %>
+
+
+		<h4>最近共享的资源</h4>
+		
+		
+		<% @latest_resources.each do |resource| %>
+			<div class="media">
+			  <a class="pull-left" href="#">
+					<%= image_tag resource.category.avatar.url(:medium),:class => "media-object" %>
+			  </a>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= link_to resource.title, resource, :target => "_blank" %></h4>
+			    <div class="media">
+						发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
+						<br />
+						<br />
+						<%= link_to "去下载(#{resource.comments.size})", resource, :target => "_blank",:class => "pull-right"  %>
+						<% if can_delete?(resource) %>
+							<%= link_to '编辑', edit_resource_path(resource) %>
+							<%= link_to '删除', resource, :data => { :confirm => '确定删除' }, method: :delete %>
+						<% end %>
+			    </div>
+			  </div>
+			</div>
+			<hr />
+		<% end %>
+		
+	
+		
+		<!-- <h4>最近在聊天室的讨论</h4>
+		  <%# @latest_discussions.each do |discussion| %>
+				<div class="discussion_meta">
+					<%#= discussion.person.nick_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%#= discussion.created_at.to_date.to_s %>
+					<%# if is_admin? %>
+							<%#= link_to 'X', discussion, :data => { :confirm => '确定删除?' }, method: :delete %>
+					<%# end %>
+				</div>
+				<div class="discussion_content">					
+					<%#= simple_format discussion.content %>	
+				</div>
+				<br/>
+			<%# end %> -->
+		
+
+
+		<h4>收藏等更多功能开发中...</h4>
+	</div>
+	
+	<div class="span4">
 		<%= render :partial => "person_info", :locals => { :person => @person} %> 
 	</div>
 
-	<% if session[:person_id] and !is_member? %>
-		<div id="notice">你还不是学员!请联系QQ:399906796开通学员</div>
-		<p class="hint">本网站专为学员打造,如果你还没学习,请看看这里<%= link_to "泡妞秘籍58套培训视频音频","/" %>和<%= link_to "书籍", :zhinanzhen %>, <br>需要请联系QQ:399906796,购买泡妞秘籍后,开通学员服务.<br>成为学员后,可以:<br>到聊天室聊天<br>去小组提问<br>查看高级惯例<br>下载资料<br>玩测试<br>分享和收藏<br>
-		</p>
-	<% end %>
-	<div id="content">
-		
-		<% if notice %>
-			<div id="notice"><%= notice %></div>
-		<% end %>
-		<h2>最近在聊天室的讨论</h2>
-	  <% @latest_discussions.each do |discussion| %>
-			<div class="discussion_meta">
-				<%= discussion.person.nick_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= discussion.created_at.to_date.to_s %>
-				<% if is_admin? %>
-						<%= link_to 'X', discussion, :data => { :confirm => '确定删除?' }, method: :delete %>
-				<% end %>
-			</div>
-			<div class="discussion_content">					
-				<%= simple_format discussion.content %>	
-			</div>
-			<br/>
-		<% end %>
-		
-		<h2>最近在小组发表的帖子</h2>
-		<% @latest_topics.each do |topic| %>
-			<div class="entry_person_photo">
-				<%= image_tag topic.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title"><%= link_to truncate(topic.title,:length => 35), topic %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= topic.created_at.to_date.to_s %>
-			</div>
-			
-			<div class="entry_content"><%= simple_format truncate(topic.content, :length => 200) %></div>
-			<div class="entry_edit_bar">
-				<%= link_to "回复(#{topic.comments.size})", topic  %>
-			</div>
-			<hr />
-		<% end %>
-		
-		<h2>最近发表的惯例</h2>
-		
-		<% @latest_notes.each do |note| %>
-			<div class="entry_person_photo">
-				<%= image_tag note.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title">阶段:<%= link_to note.category.name, category_notes_path(note.category) %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
-			</div>
-
-			<div class="entry_content"><%= simple_format note.content %></div>
-			<div class="entry_edit_bar">
-				<%= link_to "评论(#{note.comments.size})", note %>
-			</div>
-			<hr />
-		<% end %>
-
-		<h2>最近共享的资源</h2>
-		<% @latest_resources.each do |resource| %>
-			<div class="entry_person_photo">
-				<%= image_tag resource.category.avatar.url(:medium) %>
-			</div>
-			<div class="entry_title"><%= link_to truncate(resource.title,:length => 35), resource, :target => "_blank" %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
-			</div>
-
-			<div class="entry_edit_bar">
-				<%= link_to "去下载或评论(#{resource.comments.size})", resource, :target => "_blank"  %>
-			</div>
-			<hr />
-		<% end %>
-
-
-
-		<h2>收藏等更多功能开发中...</h2>
-	</div>
+	
 	
 </div>

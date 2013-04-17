@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         session[:person_id] = @person.id
         @group = Group.find(1)
         notice =  is_member? ? "登录成功,请发帖" : "你不是学员,不能发帖和聊天室聊天,请联系QQ:399906796开通学员."  
-        redirect_to @group, :notice => notice
+        redirect_to topics_path, :notice => notice
       end
     else
       flash.now.notice = "用户名或者密码不正确。"

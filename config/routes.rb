@@ -24,7 +24,7 @@ V8::Application.routes.draw do
   resources  :discussions, :comments, :subjects
 
   
-  resources :topics do
+  resources :topics,:constraints => {:id => /\d+/}  do
     resources :comments
   end
   
@@ -66,10 +66,18 @@ V8::Application.routes.draw do
     resources :subjects
   end
   
+  match '/topics/search' => "topics#search", :as => :topic_search
+  match '/notes/search' => "notes#search", :as => :note_search
+  match '/resources/search' => "resources#search", :as => :resource_search
+  match '/articles/search' => "articles#search", :as => :article_search
+  
+  
+  
   match 'login' => 'sessions#new', :via => :get
   match 'login' => 'sessions#create', :via => :post
   match 'logout'  => 'sessions#destroy', :via => :delete
-  match 'test'  =>  "testings#test", :via => :post  
+  match 'test'  =>  "testings#test", :via => :post 
+  
   
   match '/classes/:id' => 'groups#show', :as => :group, :via => :get
   match '/classes/:id/topics/page(/:page)' => 'groups#show'

@@ -2,41 +2,46 @@
 <% content_for :keywords,"泡妞秘籍,搭讪理论,搭讪实践,泡妞视频,泡妞电影,泡妞高手,如何泡妞,泡妞教程,泡妞书籍,泡妞话术,泡妞惯例库,QQ泡妞,短信泡妞,读懂女人,泡妞心态,泡妞实战案例.泡妞技巧,泡妞理论,泡妞实战,酒吧泡妞,泡妞活动" %>
 <% content_for :description, @article.description %>
 
-<% unless is_member? %>
-	<div id="header_gaoguang">
-		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
-	</div>
-<% end %>
 
-<div class="box">
-	<div id="content">
+
+<div class="row">
+	<div class="span8">
+		<% if notice %>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %>
+			</div>
+		<% end %>
+		
+		<div class="media">
+		  <a class="pull-left" href="#">
+				<%= image_tag @article.person.avatar.url(:thumb),:class => "media-object" %>
+		  </a>
+		  <div class="media-body">
+		    <h4 class="media-heading"><%= link_to @article.title, @article, :target => "_blank" %></h4>
+		    <div class="media">
+					发布:<%= link_to @article.person.nick_name, @article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to @article.category.name, category_articles_path(:path => @article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= @article.views %>
+					<br />
+					<br />
+					<div class="article_image">
+						<%= image_tag @article.picture.url(:medium) %>
+					</div>
+					<%= simple_format @article.content %>
+					<% if can_delete?(@article) %>
+						<%= link_to '编辑', edit_article_path(@article) %>
+						<%= link_to '删除', @article, :data => { :confirm => '确定删除' }, method: :delete %>
+					<% end %>
+					<%= render :partial => "share/bdshare" %>	
+					
+		    </div>
+		  </div>
+		</div>
+		<br />
+		
 				 
-		<div class="entry_person_photo">
-			<%= image_tag @article.person.avatar.url(:thumb) %>
-		</div>
-		<div class="entry_title"><%= simple_format truncate(@article.title,:length => 35) %></div>
-		<br /><br />
-		<div class="entry_meta">类别:<%= link_to @article.category.name, category_articles_path(:path => @article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to @article.person.nick_name, @article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= @article.views %>
-		</div>
+	
+		<h4>所有评论</h4>
 		
-		<div class="entry_content">
-			<div class="article_image">
-				<%= image_tag @article.picture.url(:medium) %>
-			</div>
-			<%= simple_format @article.content %>
-		</div>
-		
-
-		
-		<div class="entry_edit_bar">
-			<%= render :partial => "share/bdshare" %>				
-			<div class="right_text">
-			<% if can_delete?(@article) %>
-				<%= link_to '编辑', edit_article_path(@article) %>
-				<%= link_to '删除', @article, :data => { :confirm => '确定删除' }, method: :delete %>
-			<% end %>
-			</div>
-		</div>
 		<hr />
 		
 		<div id="comments">
@@ -48,7 +53,14 @@
 		</div>
 			
 	</div>
-	<div id="sidebar">
-		<%= link_to "返回", :back %>
+	<div class="span4">
+		<%= link_to "返回<<", :back %>
+		<hr />
+		<h4>最近文章</h4>
+		<ul>
+		<% @latest_articles.each do |article| %>
+			<li><%= link_to article.title, article %></li>
+		<% end %>
+		</ul>
 	</div>
 </div>

@@ -5,65 +5,65 @@
 <script>
 	$(document).ready(function() {
 		$('form').on('submit', function(e) {
-			var text = "<%= is_member? ? '答案:' : '你不是学员,不能参加测试,请先联系QQ:399906796开通学员'%>";
-			$(this).parent().find(".notice_answer").append('<div class="notice">'+text+'</div>');
+			$(this).parent().find(".notice_answer").append('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+"答案:"+'</div>');
 		});
 	});
+	
+
 </script>
 
 
-<% unless is_member? %>
-	<div id="header_gaoguang">
-		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
-	</div>
-<% end %>
 
 
-<div class="box ">
-	<div id="content">
+
+<div class="row">
+	<div class="span8">
 		<% if notice %>
-			<div id="notice"><%= notice %></div>
+					<div class="alert">
+					  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <%= notice %>
+					</div>
 		<% end %>
-		<div class="entry_person_photo">
-			<%= image_tag @testing.person.avatar.url(:thumb) %>
+		<div class="media">
+		  <a class="pull-left" href="#">
+				<%= image_tag @testing.person.avatar.url(:thumb),:class => "media-object" %>
+		  </a>
+		  <div class="media-body">
+		    <h4 class="media-heading"><%= link_to @testing.title, @testing, :target => "_blank" %></h4>
+		    <div class="media">
+					发布:<%= link_to @testing.person.nick_name, @testing.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @testing.created_at.to_date.to_s %>
+					<br />
+					<br />
+					<%= simple_format @testing.content %>
+					<div class="notice_answer" id="notice_answer_<%= @testing.id %>"></div>
+					<%= form_tag :test, :remote => true do |f| %>
+						<% @testing.options.each_with_index do |option,index| %>
+							<div class="field">
+								<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false %>		
+								<%= ApplicationHelper::IndexToLetter[index] %>.<span class="help-inline"><%= label_tag "answer", option.content %></span>
+							</div>
+							<div class="field">
+								<%= hidden_field_tag "testing_id",@testing.id %>		
+							</div>
+						<% end %>
+						<div class="field">
+							<%= submit_tag "提交", :class => "btn btn-primary" %>
+						</div>	
+					<% end %>
+				
+					<% if can_delete?(@testing) %>
+						<%= link_to '编辑', edit_testing_path(@testing) %>
+						<%= link_to '删除', @testing, :data => { :confirm => '确定删除' }, method: :delete %>
+					<% end %>
+					<%= render :partial => "share/bdshare" %>	
+					
+		    </div>
+		  </div>
 		</div>
-		<div class="entry_title"><%=  link_to @testing.title, @testing %></div>
-		<br /><br />
-		<div class="entry_meta">发布:<%= link_to @testing.person.nick_name, @testing.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @testing.created_at.to_date.to_s %>
-		</div>
-
-		<div class="entry_content"><%= simple_format @testing.content %></div>
-		<div class="entry_content">
-			<div class="notice_answer" id="notice_answer_<%= @testing.id %>"></div>
-			<%= form_tag :test, :remote => true do |f| %>
-				<% @testing.options.each_with_index do |option,index| %>
-					<div class="field">
-						<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false %>		
-						<%= ApplicationHelper::IndexToLetter[index] %>.<%= label_tag "answer", option.content %>
-					</div>
-					<div class="field">
-						<%= hidden_field_tag "testing_id",@testing.id %>		
-					</div>
-				<% end %>
-				<div class="field">
-					<%= submit_tag "提交" %>
-				</div>	
-			<% end %>
-		</div>
+		<br />
 		
-		<div class="entry_edit_bar">
-			<%= render :partial => "share/bdshare" %>
-			<div class="right_text">
-			<% if can_delete?(@testing) %>
-				<%= link_to '编辑', edit_testing_path(@testing) %>
-				<%= link_to '删除', @testing, :data => { :confirm => '确定删除' }, method: :delete %>
-			<% end %>
-			</div>
-		</div>
+		<h4>所有评论(评论:+1积分)</h4>
 		<hr />
-		
-		<h2>所有评论(评论:+1积分)</h2>
-
 		<div id="comments">
 			<% @comments.each do |comment| %>
 				<%= render comment %>
@@ -73,7 +73,15 @@
 		</div>
 			
 	</div>
-	<div id="sidebar">
-		<%= link_to "返回", :back %>
+	<div class="span4">
+		<%= link_to "返回<<", :back %>
+		<hr />
+		<h4>最近惯例</h4>
+		<ul>
+		<% @latest_testings.each do |testing| %>
+			<li><%= link_to testing.title, testing %></li>
+		<% end %>
+		</ul>
 	</div>
+	
 </div>

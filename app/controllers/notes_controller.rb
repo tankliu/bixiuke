@@ -2,8 +2,8 @@
 class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
-  skip_before_filter :is_login?, :only => [:index, :show]
-  before_filter :only_member_can_do, :except => [:index, :show]
+  skip_before_filter :is_login?, :only => [:index, :show, :search]
+  before_filter :only_member_can_do, :except => [:index, :show, :search]
 
   def index
     @note = Note.new
@@ -38,10 +38,33 @@ class NotesController < ApplicationController
     end
     
   end
-  
-  def show
+
+  def search
+    if params[:query] == "" || params[:query].is_a?(NilClass)
+      @notes = []
+      flash.now[:notice] = "请输入搜索词语"
+      render :search 
+    else 
+      @notes = Note.where("title LIKE ?", "%"+params[:query]+"%").order("created_at desc").page(params[:page])
+      respond_to do |format|
+        format.html # search.html.erb
+        format.json { render json: @notes }
+      end
+    end
     
+  end
+  
+  def new
+    @note = Note.new
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @note }
+    end
+  end
+    
+  def show
     @note = Note.find(params[:id])
+    @latest_notes = Note.order("created_at desc").limit(10)
     @comments = @note.comments
     @comment = Comment.new
     unless is_member?
@@ -75,11 +98,12 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.save
         @note.person.update_column(:score,@note.person.score+3)
-        format.html { redirect_to notes_path, notice: '创建成功' }
+        format.html { redirect_to @note, notice: '创建成功' }
         format.json { render json: @note, status: :created, location: @note }
       else
-        format.html { redirect_to notes_path, notice: @note.errors.full_messages.size.to_s+"个错误:"+format_error(@note.errors.full_messages.join(","))}
+        format.html { render action: "new" }
         format.json { render json: @note.errors, status: :unprocessable_entity }
+        
       end
     end
   end

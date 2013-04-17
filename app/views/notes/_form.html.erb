@@ -1,34 +1,36 @@
 <%= form_for(@note) do |f| %>
   <% if @note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @note.errors.count.to_s+"个错误" %> :</h2>
-
-      <ul>
-      <% @note.errors.full_messages.each do |msg| %>
-        <li><%= format_error(msg) %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <h4><%= @note.errors.count.to_s+"个错误" %> :</h4>
+	      <ul>
+	      <% @note.errors.full_messages.each do |msg| %>
+	        <li><%= format_error(msg) %></li>
+	      <% end %>
+	      </ul>
+			</div>
+	  <% end %>
 
   <div class="field">
-    <%= f.label :category_id, "选择阶段" %><br />
+    <%= f.label :category_id, "选择阶段" %>
     <%= f.select :category_id, collect_note_categories_for_select, :selected => @note.new_record? ? 33 : @note.category.id %>
   </div>
 
 
   <div class="field">
-    <%= f.label :title, "标题" %><br />
-    <%= f.text_field :title, :size => "90" %>
+    <%= f.label :title, "标题" %>
+    <%= f.text_field :title,  :class => "input-xxlarge" %>
   </div>
 
   <div class="field">
-    <%= f.label :content, "内容(10到500字)" %><br />
-    <%= f.text_area :content, :size  => "82x15", :value => @note.new_record? ? "" : @note.remove_hint_span %>
+    <%= f.label :content, "内容(10到500字)" %>
+    <%= f.text_area :content, :size  => "82x10", :class => "input-xxlarge", :value => @note.new_record? ? "" : @note.remove_hint_span %>
   </div>
-	<div class="hint">换行后,添加@标记,后面可以写适合场合等(请看下面已创建的惯例).</div>
+	<div class="help-block">换行后,添加@标记,后面可以写适合场合等(请看下面已创建的惯例).</div>
   <div class="actions">
-    <%= f.submit "提交" %>
+    <%= f.submit "提交", :class => "btn btn-primary ie6-btn" %>
+		<%= link_to '取消', topics_path, :class => "btn cancel" %>
+
   </div>
 <% end %>
 

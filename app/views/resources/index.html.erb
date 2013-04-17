@@ -3,39 +3,144 @@
 <% content_for :description,"你还在网上到处搜索泡妞书籍吗?所有的国内外最经典泡妞书籍都在这里,并且常常更新.把妹达人,冷读术,迷男方法,约会倍增术,身体语言密码,恋爱方程式,逆向恋爱术,现实世界诱惑术,杂耍人方法,
 David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.男人来自火星,女人来自金星,魔法诱惑等,以及一些保密文档." %>
 
-
-<% unless is_member? %>
-	<div id="header_gaoguang">
-		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
-	</div>
-<% end %>
-
-
-<div class="box">
+<div class="row ie6-row">
 	
-	<div id="categories">	
-		<ul>
-			<li <%="class=selected" if @path == nil  %>><%= link_to "所有资源", resources_path %></li>
+	<div class="span3">	
+		<ul class="nav nav-tabs nav-stacked">
+			<li <%="class=active" if @path == nil  %>><%= link_to resources_path do %>所有资源<i class="icon-chevron-right pull-right"></i><% end %></li>
 			<% @categories.each do |category| %>
-			<li <%="class=selected" if @path == category.path  %>>
+			<li <%="class=active" if @path == category.path  %>>
 			<%= link_to category_resources_path(:path => category.path) do %>
-				<%= image_tag category.avatar.url(:thumb) %><%= category.name %>(<%= category.resources.size %>)
+				<%= image_tag category.avatar.url(:thumb) %><%= category.name %>(<%= category.resources.size %>)<i class="icon-chevron-right pull-right"></i>
 			<% end %>
 			</li>
 			<% end %>
 		</ul>
+		<h4>标签(国内高手你知几个?)</h4>
+		<ul>
+				<li class="label label-warning"><%= link_to "七烟",resource_search_path(:query => "七烟") %></li><br />
+				<li class="label label-warning"><%= link_to "寒江雪",resource_search_path(:query => "七烟") %></li><br />
+				<li class="label label-warning"><%= link_to "郑匡宇",resource_search_path(:query => "郑匡宇") %></li><br />
+				<li class="label label-warning"><%= link_to "成真",resource_search_path(:query => "成真") %></li><br />
+				<li class="label label-warning"><%= link_to "淘宝猎手",resource_search_path(:query => "淘宝猎手") %></li><br />
+				<li class="label label-warning"><%= link_to "冷爱",resource_search_path(:query => "冷爱") %></li><br />
+				<li class="label label-warning"><%= link_to "魔鬼咨询师",resource_search_path(:query => "魔鬼咨询师") %></li><br />
+				<li class="label label-warning"><%= link_to "Q帝",resource_search_path(:query => "Q帝") %></li><br />
+				<li class="label label-warning"><%= link_to "tango",resource_search_path(:query => "tango") %></li><br />
+				
+				
+				<li class="label label-warning"><%= link_to "CYD",resource_search_path(:query => "CYD") %></li><br />
+				<li class="label label-warning"><%= link_to "公主",resource_search_path(:query => "公主") %></li><br />
+				<li class="label label-warning"><%= link_to "Cris",resource_search_path(:query => "Cris") %></li><br />
+				<li class="label label-warning"><%= link_to "但丁",resource_search_path(:query => "但丁") %></li><br />
+				<li class="label label-warning"><%= link_to "Highly-Guest",resource_search_path(:query => "Highly-Guest") %></li><br />
+				<li class="label label-warning"><%= link_to "痴情男",resource_search_path(:query => "痴情男") %></li><br />
+				<li class="label label-warning"><%= link_to "PUA三人行",resource_search_path(:query => "PUA三人行") %></li><br />
+				<li class="label label-warning"><%= link_to "安迪",resource_search_path(:query => "安迪") %></li><br />
+				<li class="label label-warning"><%= link_to "妖精",resource_search_path(:query => "妖精") %></li><br />
+				<li class="label label-warning"><%= link_to "玫瑰有约",resource_search_path(:query => "玫瑰有约") %></li><br />
+				<li class="label label-warning"><%= link_to "墨菲斯",resource_search_path(:query => "墨菲斯") %></li><br />
+				<li class="label label-warning"><%= link_to "龙语墨",resource_search_path(:query => "龙语墨") %></li><br />
+				<li class="label label-warning"><%= link_to "你不是一个人七夕",resource_search_path(:query => "你不是一个人七夕") %></li><br />				
+				<li class="label label-warning"><%= link_to "女语者",resource_search_path(:query => "女语者") %></li><br />
+				<li class="label label-warning"><%= link_to "老贾",resource_search_path(:query => "老贾") %></li><br />
+				<li class="label label-warning"><%= link_to "路易",resource_search_path(:query => "路易") %></li><br />
+				<li class="label label-warning"><%= link_to "海沟",resource_search_path(:query => "海沟") %></li><br />
+				<li class="label label-warning"><%= link_to "小狗",resource_search_path(:query => "小狗") %></li><br />
+				<li class="label label-warning"><%= link_to "面具",resource_search_path(:query => "面具") %></li><br />
+				<li class="label label-warning"><%= link_to "无情",resource_search_path(:query => "无情") %></li><br />
+				<li class="label label-warning"><%= link_to "蓝色答案",resource_search_path(:query => "蓝色答案") %></li><br />
+				<li class="label label-warning"><%= link_to "浪迹",resource_search_path(:query => "浪迹") %></li><br />
+				<li class="label label-warning"><%= link_to "神曲",resource_search_path(:query => "神曲") %></li><br />
+				<li class="label label-warning"><%= link_to "小杰",resource_search_path(:query => "小杰") %></li><br />
+				<li class="label label-warning"><%= link_to "真命舞者",resource_search_path(:query => "真命舞者") %></li><br />
+				<li class="label label-warning"><%= link_to "子陵",resource_search_path(:query => "子陵") %></li><br />
+				
+			</ul>
+			<hr />
+
+
+			<h4>标签(泡妞著作你知几本?)</h4>
+			<ul>
+				<li class="label label-warning"><%= link_to "超级异性吸引术",resource_search_path(:query => "超级异性吸引术") %></li><br />
+				<li class="label label-warning"><%= link_to "迷上我",resource_search_path(:query => "迷上我") %></li><br />
+				<li class="label label-warning"><%= link_to "逆向恋爱术",resource_search_path(:query => "逆向恋爱术") %></li><br />
+				<li class="label label-warning"><%= link_to "正妹心理学",resource_search_path(:query => "正妹心理学") %></li><br />
+				<li class="label label-warning"><%= link_to "搭讪圣经",resource_search_path(:query => "搭讪圣经") %></li><br />
+				<li class="label label-warning"><%= link_to "正妹心理学",resource_search_path(:query => "正妹心理学") %></li><br />
+				<li class="label label-warning"><%= link_to "脱离好人",resource_search_path(:query => "脱离好人") %></li><br />
+				<li class="label label-warning"><%= link_to "约会倍增术",resource_search_path(:query => "约会倍增术") %></li><br />
+				<li class="label label-warning"><%= link_to "谜男方法",resource_search_path(:query => "谜男方法") %></li><br />
+				<li class="label label-warning"><%= link_to "杂耍人方法",resource_search_path(:query => "杂耍人") %></li><br />
+				<li class="label label-warning"><%= link_to "david_x方法",resource_search_path(:query => "david_x方法") %></li><br />
+				<li class="label label-warning"><%= link_to "现实世界诱惑术",resource_search_path(:query => "现实世界诱惑术") %></li><br />
+				<li class="label label-warning"><%= link_to "把妹达人",resource_search_path(:query => "把妹达人") %></li><br />
+				<li class="label label-warning"><%= link_to "把妹达人2游戏规则",resource_search_path(:query => "把妹达人2游戏规则") %></li><br />
+				<li class="label label-warning"><%= link_to "瞬间赢得信任的冷读术",resource_search_path(:query => "瞬间赢得信任的冷读术") %></li><br />
+				<li class="label label-warning"><%= link_to "你不可不知的情场制胜秘密",resource_search_path(:query => "你不可不知的情场制胜秘密") %></li><br />
+				<li class="label label-warning"><%= link_to "男人来自火星，女人来自金星",resource_search_path(:query => "男人来自火星，女人来自金星") %></li><br />
+				
+				<li class="label label-warning"><%= link_to "约会经济学",resource_search_path(:query => "约会经济学") %></li><br />
+			</ul>			
+			
+			<h4>标签(泡妞词汇你知几个?)</h4>
+			<ul>
+				<li class="label label-warning"><%= link_to "pua",resource_search_path(:query => "pua") %></li><br />
+				<li class="label label-warning"><%= link_to "短信",resource_search_path(:query => "短信") %></li><br />
+				<li class="label label-warning"><%= link_to "电话",resource_search_path(:query => "电话") %></li><br />
+				<li class="label label-warning"><%= link_to "游戏",resource_search_path(:query => "游戏") %></li><br />
+				<li class="label label-warning"><%= link_to "惯例",resource_search_path(:query => "惯例") %></li><br />
+				<li class="label label-warning"><%= link_to "搭讪教主",resource_search_path(:query => "搭讪教主") %></li><br />
+				<li class="label label-warning"><%= link_to "搭讪",resource_search_path(:query => "搭讪") %></li><br />
+				<li class="label label-warning"><%= link_to "正妹",resource_search_path(:query => "正妹") %></li><br />
+				<li class="label label-warning"><%= link_to "把妹教学",resource_search_path(:query => "把妹教学") %></li><br />
+				<li class="label label-warning"><%= link_to "泡妞高手",resource_search_path(:query => "泡妞高手") %></li><br />
+				<li class="label label-warning"><%= link_to "约会培训",resource_search_path(:query => "约会培训") %></li><br />
+				<li class="label label-warning"><%= link_to "恋爱高手",resource_search_path(:query => "恋爱高手") %></li><br />
+				<li class="label label-warning"><%= link_to "坏男人",resource_search_path(:query => "坏男人") %></li><br />
+				<li class="label label-warning"><%= link_to "笑话",resource_search_path(:query => "笑话") %></li><br />
+				<li class="label label-warning"><%= link_to "接吻",resource_search_path(:query => "接吻") %></li><br />
+				<li class="label label-warning"><%= link_to "约会培训",resource_search_path(:query => "约会培训") %></li><br />
+				<li class="label label-warning"><%= link_to "追女孩子的技巧",resource_search_path(:query => "追女孩子的技巧") %></li><br />
+				<li class="label label-warning"><%= link_to "kino",resource_search_path(:query => "kino") %></li><br />
+				<li class="label label-warning"><%= link_to "泡妞秘籍",resource_search_path(:query => "泡妞秘籍") %></li><br />
+				<li class="label label-warning"><%= link_to "约会学",resource_search_path(:query => "约会学") %></li><br />
+				<li class="label label-warning"><%= link_to "心理学",resource_search_path(:query => "心理学") %></li><br />
+				<li class="label label-warning"><%= link_to "催眠",resource_search_path(:query => "催眠") %></li><br />
+				<li class="label label-warning"><%= link_to "吸引",resource_search_path(:query => "吸引") %></li><br />
+				<li class="label label-warning"><%= link_to "幽默",resource_search_path(:query => "幽默") %></li><br />
+				<li class="label label-warning"><%= link_to "上床",resource_search_path(:query => "上床") %></li><br />
+				<li class="label label-warning"><%= link_to "少妇",resource_search_path(:query => "少妇") %></li><br />
+		</ul>
 	</div>
 	
-	<div id="content">		
+	<div class="span9">		
 			
 				<% if notice %>
-					<div id="notice"><%= notice %></div>
+					<div class="alert">
+					  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <%= notice %>
+					</div>
 				<% end %>
+				<div class="row">
+					<div class="span9">
+						<%= form_tag :resource_search, :class => "form-search" do |f| %>
+					    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
+				  		<button type="submit" class="btn btn-primary">搜索资源</button>
+							<p class="help-inline">热门:</p>
+							<span class="label"><%= link_to "泡妞",resource_search_path(:query => "泡妞") %></span>
+							<span class="label"><%= link_to "泡妞秘籍",resource_search_path(:query => "泡妞秘籍") %></span>
+							<span class="label"><%= link_to "追女孩子的技巧",resource_search_path(:query => "追女孩子的技巧") %></span>
+							<span class="label"><%= link_to "泡妞视频",resource_search_path(:query => "泡妞视频") %></span>
+							<span class="label"><%= link_to "约会培训",resource_search_path(:query => "约会培训") %></span>
+							<span class="label"><%= link_to "寒江雪",resource_search_path(:query => "寒江雪") %></span>
+						<% end %>
+					</div>
+				</div>
 			
-				<% if is_member? %>
-					<%= render :partial => 'form'  %>
-				<% end %>
-				<h2>最近资源分享</h2>
+				<%= link_to "+ 分享资源",:new_resource, :class => "btn btn-success pull-right" %>
+				
+				<h4>最近资源分享</h4>
 				<% unless is_member? %>
 					<div class="hint">注意:泡妞书籍所有人可以下载,只有开通网站学员才可以下载泡妞音频,泡妞视频.<%= link_to "点击购买成为网站学员", :guangpan %>, 学员请先<%= link_to "登录", :login %>然后可以查看.
 					</div>	
@@ -44,24 +149,25 @@ David_x方法, 把妹大人之游戏规则.你不可不知的情场致胜秘密.
 				
 				
 				<% @resources.each do |resource| %>
-					<div class="entry_person_photo">
-						<%= image_tag resource.category.avatar.url(:medium) %>
-					</div>
-					<div class="entry_title"><%= link_to truncate(resource.title,:length => 35), resource, :target => "_blank" %></div>
-					<br /><br />
-					<div class="entry_meta">发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
-					</div>
-
-					<div class="entry_edit_bar">
-						<div class="right_text">
-						<%= link_to "=>去下载(#{resource.comments.size})", resource, :target => "_blank"  %>
-						</div>
+					<div class="media">
+					  <a class="pull-left" href="#">
+							<%= image_tag resource.person.avatar.url(:thumb),:class => "media-object" %>
+					  </a>
+					  <div class="media-body">
+					    <h4 class="media-heading"><%= link_to resource.title, resource, :target => "_blank" %></h4>
+					    <div class="media">
+								发布:<%= link_to resource.person.nick_name, resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to resource.category.name, category_resources_path(:path => resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= resource.created_at.to_date.to_s %>
+								
+								<%= link_to "去下载(#{resource.comments.size})", resource, :target => "_blank",:class => "pull-right"  %>
+					    </div>
+					  </div>
 					</div>
 					<hr />
+
 				<% end %>
+
 				<%= paginate @resources %>		
-			
-	</div>
+			</div>
 
 	
 </div>  <!-- end of box -->

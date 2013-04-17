@@ -15,6 +15,11 @@
 //= require maxlength
 //= require_tree .
 
-setTimeout(function() {
- $("#notice").fadeOut();
+$(".alert").alert();
+
+setTimeout(function () {
+ $(".alert").not("[id]").fadeOut();
 }, 5 * 1000);
+
+
+k

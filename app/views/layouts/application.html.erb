@@ -6,6 +6,9 @@
   	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
     <meta name = "description" content = "<%= yield(:description) %>" /> 
     <%= stylesheet_link_tag "application", :media => "all" %>
+		<!--[if lte IE 6]>
+		<%= stylesheet_link_tag "ie/index", :media => "all" %>
+    <![endif]-->
 		
     <%= javascript_include_tag "application"%>
   	<%= csrf_meta_tags %>
@@ -30,129 +33,132 @@
 <% end %>
 <!-- 清理一个人的session -->
 <%# session[:person_id] = nil if session[:person_id] == 739 %>
-
-	<div id="main_container">
 	
-    <div class="logo_and_login">
-		 	<div id="logo_image">
-				<img src= "/assets/logo.png", alt = "泡妞学网" />
-			</div>
-				
-			<% unless session[:person_id] %>
-				<div class="register"><%= link_to "立即注册", new_person_path %></div>
-				<div class="login_area">
-				  
-				
-				<%= form_tag :login do |f| %>
-
-				  <div class="field">
-				    <%= label_tag :email, "账号" %>
-				    <%= text_field_tag :email %>
-				  </div>
-				  <div class="field">
-				    <%= label_tag :password, "密码" %>
-				    <%= password_field_tag :password %>
-				  </div>
-				  <div class="field">
-				    <%= submit_tag "登录", :class => "login_action" %>
-				  </div>
-			 	 <% end %>
-			
-				</div>
-				
-				
-			 <% end %>
-				<% unless session[:person_id].nil? %>	
-					<%= link_to image_tag(current_person.avatar.url(:thumb),:class => "user_head"), current_person %> 
-					<div class="login_user_info">
-						<%= link_to current_person.nick_name, current_person %>&nbsp;|&nbsp;
-						<%= link_to "设置", edit_person_path(current_person) %>&nbsp;|&nbsp;
-						<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
-						<br /><br />
-						<p>
-						  <b>用户组:</b>
-						  <%= current_person.role %>
-							<b>积分:</b>
-						  <%= current_person.score %>
-							<b>等级:</b>
-						  <%= current_person.rank %>
-						</p>
-					</div>
-					
-				<% end %>
 	
-    </div>
-		<div id="nav">
-		 
-			<ul>
-			
-
-				<li <%="class=selected" if controller.class == HomeController and action_name == "index" %> >
-					<a href="/" target="_top">泡妞秘籍<br /><span>学完进群和网</span></a>
-				</li>
-				
-				<li <%="class=selected" if controller.class == PagesController and action_name == "zhinanzhen" %> >
-					<a href="/zhinanzhen" target="_top">指男针<br /><span>最适合国内</span></a>
-				</li>
-				
-				<li <%="class=selected" if controller.class == PagesController and action_name == "xianchang" %> >
-					<a href="/xianchang" target="_top">现场培训<br /><span>学完进群和网</span></a>
-				</li>
-				
-				<li <%="class=selected" if controller.class == PagesController and action_name == "baodao" %> >
-					<a href="/baodao" target="_top">媒体报道<br /><span>学完进群和网</span></a>
-				</li>
-		
-				
-				
-				<li <%="class=selected" if controller.class == PeopleController and action_name == "index" %> >
-					<a href="/people" target="_top">所有学员<br /><span>在学学员</span></a>
-				</li>
-
-				
-				<li <%="class=selected" if controller.class == TopicsController %> >
-  				<a href="/topics" target="_top">情感求助<br /><span>有问必答</span></a>
-  			</li>
-
-				<li <%="class=selected" if controller.class == NotesController %> >
-					<a href="/notes" target="_top">惯例库<br /><span>追女孩子的话</span></a>
-				</li>
-										
-  			<li <%="class=selected" if controller.class == ResourcesController %> >
-  				<a href="/resources" target="_top">资源下载<br /><span>国内最全</span></a>
-  			</li>    		    			
-
-				<li <%="class=selected" if controller.class == TestingsController %> >
-					<a href="/testings" target="_top">情商测试<br /><span>魅力指数</span></a>
-				</li>
-						
-  			<li <%="class=selected" if controller.class == ArticlesController %> >
-  				<a href="/articles" target="_top">约会文章<br /><span>理论实践</span></a>
-  			</li>  
-
-	 			<li <%="class=selected" if controller.class == PagesController and action_name == "xingxiang" %> >
-	  				<a href="/xingxiang" target="_top">形象设计<br /><span>宅男变型男</span></a>
-	  		</li>
-			
-			</ul> 		
-		</div>		
+	<div class="container">
 		<div id="guanggao">
 				欢迎来到泡妞学网,最近有"三陪"现场实战培训.咨询QQ：399906796,也可联系此QQ购买pua课程,然后加入群和网站,成为网站学员,交流指导,阅读下载更高级资料!
 		</div>
+		<div class="row">
+			<div class="span3">
+				<img src= "/assets/logo.png", alt = "泡妞学网" />
+			</div>
+			<% unless session[:person_id] %>
+				<div class="span6 offset2">
+					<%= form_tag :login, :class => "form-inline" do |f| %>
+
+					    <%= label_tag :email, "账号" %>
+					    <%= text_field_tag :email,nil, :class => "input-medium" %>
+					    <%= label_tag :password, "密码" %>
+					    <%= password_field_tag :password,nil,:class => "input-medium" %>
+					
+					    <%= submit_tag "登录", :class => "btn btn-primary ie6-btn" %>
+					
+				  <% end %>
+				</div>
+				<div class='span1'>
+					<%= link_to "注册", new_person_path, :class => "btn btn-success ie6-btn" %>
+				</div>
+			<% end %>
+		
+		
+		
+				<% unless session[:person_id].nil? %>	
+							<div class="span4 offset4 ie6-span">
+								<%= link_to current_person.nick_name, current_person %>&nbsp;|&nbsp;
+								<%= link_to "设置", edit_person_path(current_person) %>&nbsp;|&nbsp;
+								<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
+								<br /><br />
+								<p>
+								  <b>用户组:</b>
+								  <%= current_person.role %>
+									<b>积分:</b>
+								  <%= current_person.score %>
+									<b>等级:</b>
+								  <%= current_person.rank %>
+								</p>
+							</div>
+							<div class="span1">
+								<%= link_to image_tag(current_person.avatar.url(:thumb),:class => "user_head"), current_person %> 
+							</div>
+				<% end %>
+		</div>
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+			<ul class="nav">
+				<li <%="class=active" if controller.class == HomeController and action_name == "index" %> >
+					<a href="/" target="_top">泡妞秘籍</a>
+				</li>
+				<li class="divider-vertical"></li>
+				
+				
+				<li <%="class=active" if controller.class == PagesController and action_name == "zhinanzhen" %> >
+					<a href="/zhinanzhen" target="_top">指男针</a>
+				</li>
+				<li class="divider-vertical"></li>
+				
+				<li <%="class=active" if controller.class == PagesController and action_name == "xianchang" %> >
+					<a href="/xianchang" target="_top">现场培训</a>
+				</li>
+				<li class="divider-vertical"></li>
+				
+				<li <%="class=active" if controller.class == PagesController and action_name == "baodao" %> >
+					<a href="/baodao" target="_top">媒体报道</a>
+				</li>
+				<li class="divider-vertical"></li>
+				
+				<li <%="class=active" if controller.class == PeopleController and action_name == "index" %> >
+					<a href="/people" target="_top">所有学员</a>
+				</li>
+				<li class="divider-vertical"></li>
+				
+				<li <%="class=active" if controller.class == TopicsController %> >
+  				<a href="/topics" target="_top">情感求助</a>
+  			</li>
+				<li class="divider-vertical"></li>
+
+				<li <%="class=active" if controller.class == NotesController %> >
+					<a href="/notes" target="_top">惯例库</a>
+				</li>
+				<li class="divider-vertical"></li>
+										
+  			<li <%="class=active" if controller.class == ResourcesController %> >
+  				<a href="/resources" target="_top">资源下载</a>
+  			</li>    
+				<li class="divider-vertical"></li>		    			
+
+						
+  			<li <%="class=active" if controller.class == ArticlesController %> >
+  				<a href="/articles" target="_top">约会文章</a>
+  			</li>  
+				<li class="divider-vertical"></li>
+
+
+				<li <%="class=active" if controller.class == TestingsController %> >
+					<a href="/testings" target="_top">情商测试</a>
+				</li>
+		
+			
+			</ul> 
+			</div>
+		</div>		
+		
+
 
 		<%= yield %>
+		<% unless is_member? %>
+				<div class="kfqq">
+					<%= image_tag "/assets/kfqq.png" %>
+				</div>
+		<% end %>
 	</div> <!-- end of main-container -->
 
-	<% unless is_member? %>
-			<div class="kfqq">
-				<%= image_tag "/assets/kfqq.png" %>
-			</div>
-	<% end %>
+	
 		
 	
 	<hr />
-	<div id="footer">
-		<p>	
+	<div class="container">
+		<p class="text-center">	
 			Copyright(C)2007-2012 <a href="http://www.paoniuxue.com/" target="_top">泡妞学网</a>| 
 			<a href="http://puake.taobao.com" target="_top" title="专业约会指导店铺">专业约会指导店铺</a>
 			<a href="http://399906796.qzone.qq.com" title="泡妞学网QQ空间">泡妞学网QQ空间</a>
@@ -163,10 +169,10 @@
 			<a href="http://hi.baidu.com/paoniupx/home" title="泡妞学网百度站">泡妞学网百度站</a>
 			<a href="http://xiaohualang.blog.hexun.com/" title="泡妞学网和讯站">泡妞学网和讯站</a>				
 		</p>
-		<p>
+		<p class="text-center">
 			版权所有 备案号：<a href="http://www.miibeian.gov.cn/" target="_top">粤ICP备08028333号</a><br />
 		</p>
-		<p>培训城市:深圳&nbsp;广州&nbsp;上海&nbsp;北京   全国统一服务QQ：399906796</p>
+		<p class="text-center">培训城市:深圳&nbsp;广州&nbsp;上海&nbsp;北京   全国统一服务QQ：399906796</p>
 		
 	</div><!-- end of footer -->
 

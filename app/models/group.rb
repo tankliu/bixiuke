@@ -2,7 +2,7 @@
 class Group < ActiveRecord::Base
   belongs_to :person
   has_many :topics
-  validates :name, :length => {:in => 1..20, :message => "小组字数长度在1到20之间"}
+  validates :name, :length => {:in => 1..20, :message => "班级字数长度在1到20之间"}
   validates :description, :length => {:in => 1..100000, :message => "描述字数在1到10万之间"}
   
   Paperclip.interpolates :avatar_date do |avatar, style|

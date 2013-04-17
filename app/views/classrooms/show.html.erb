@@ -98,9 +98,12 @@
 	
 </script>
 <% if notice %>
-	<div id="notice"><%= notice %></div>
+	<div class="alert">
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	  <%= notice %>
+	</div>
 <% end %>
-<div class="box">
+<div class="row">
 	<div class="classroom_index">
 		<div id="classroom_top">
 			<div id="classroom_photo">
@@ -156,8 +159,8 @@
 		
 	</div>
 	<hr />
-	<h2>查询聊天记录</h2>
-  <div id="content">
+	<h4>查询聊天记录</h4>
+  <div class="span8">
 		<%= paginate @discussions %>
   	<%= render @discussions %>
 		<%= paginate @discussions %>

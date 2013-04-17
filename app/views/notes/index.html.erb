@@ -3,61 +3,68 @@
 <% content_for :description,"你还在不知道怎么和女孩说话吗?你还在寻找追女孩子的技巧吗?也许你还在收集追女孩子的短信,一切都在这里.包括追女生技巧.追女秘籍,追女孩子的甜言蜜语." %>
 
 
-<% unless is_member? %>
-	<div id="header_gaoguang">
-		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
-	</div>
-<% end %>
-<div class="box">
-	<div id="categories">
-		<ul>
-			<li <%="class=selected" if @path == nil  %>><%= link_to "所有阶段", notes_path %></li>
+
+<div class="row ie6-row">
+	<div class="span3">
+		<ul class="nav nav-tabs nav-stacked">
+			<li <%="class=active" if @path == nil  %>><%= link_to  notes_path do %>所有阶段<i class="icon-chevron-right pull-right"></i><% end %></li>
 			<% @categories.each do |category| %>
-			<li class="arrow"></li>			
-			<li <%="class=selected" if @path == category.path  %>>
+			<li <%="class=active" if @path == category.path  %>>
 				<%= link_to category_notes_path(:path => category.path) do %>
-					<%=  category.name %>(<%= category.notes.size %>)
+					<%=  category.name %>(<%= category.notes.size %>)<i class="icon-chevron-right pull-right"></i>
 				<% end %>
-				
+			</li>
 			<% end %>
 		</ul>
 
 	</div>
 	
 	
-	<div id="content">
+	<div class="span9">
 		
 		<% if notice %>
-			<div id="notice"><%= notice %></div>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %>
+			</div>
 		<% end %>
-		<% if is_member? %>
-			<h2>创建惯例(+3积分)</h2>
-			<%= render 'form'  %>
-		<% end %>
-		<h2>最新惯例</h2>
+		<div class="row">
+			<div class="span9">
+				<%= form_tag :note_search, :class => "form-search" do |f| %>
+			    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
+		  		<button type="submit" class="btn btn-primary">搜索惯例</button>
+				<% end %>
+			</div>
+		</div>
+		
+		
+		<%= link_to "+ 提交惯例",:new_note, :class => "btn btn-success pull-right" %>
+		
+		<h4>最新惯例</h4>
 		<% unless is_member? %>
 			<div class="hint">注意:高级惯例只有网站学员可以查看.<%= link_to "点击购买成为网站学员", :guangpan %>, 学员请先<%= link_to "登录", :login %>然后可以下载.
 			</div>	
 		<% end %>
-		
-		
 		<% @notes.each do |note| %>
-			<div class="entry_person_photo">
-				<%= image_tag note.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title"><%= link_to note.title, note, :target => "_blank" %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
-			</div>
-
-			<div class="entry_content"><%= simple_format note.content %></div>
-			<div class="entry_edit_bar">
-				<div class="right_text">
-				<%= link_to "详细(#{note.comments.size})", note, :target => "_blank"  %>
-				</div>
+			<div class="media">
+			  <a class="pull-left" href="#">
+					<%= image_tag note.person.avatar.url(:thumb),:class => "media-object" %>
+			  </a>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= link_to note.title, note, :target => "_blank" %></h4>
+			    <div class="media">
+						发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
+						<br />
+						<br />
+						<%= simple_format note.content %>
+						<%= link_to "详细(#{note.comments.size})", note, :target => "_blank",:class => "pull-right"  %>
+			    </div>
+			  </div>
 			</div>
 			<hr />
+			
 		<% end %>
+		
 		<%= paginate @notes %>		
 	</div>
 	

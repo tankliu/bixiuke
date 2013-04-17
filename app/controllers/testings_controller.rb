@@ -1,8 +1,10 @@
 # -*- encoding : utf-8 -*-
 class TestingsController < ApplicationController
   # GET /testings
+
+  
   skip_before_filter :is_login?, :only => [:index, :show,:test]
-  before_filter :only_member_can_do, :except => [:index, :show, :test]
+  before_filter :only_admin_can_do, :except => [:index, :show, :test]
 
   # GET /testings.json
   def index
@@ -30,9 +32,18 @@ class TestingsController < ApplicationController
   end
   
 
+  def new
+    @testing = Testing.new
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @testing }
+    end
+  end
+  
   def show
 
     @testing = Testing.find(params[:id])
+    @latest_testings = Testing.order("created_at desc").limit(10)
     @comments = @testing.comments
     @comment = Comment.new
 
@@ -60,20 +71,17 @@ class TestingsController < ApplicationController
         @testing.options<<Option.new(:content => content)
       end
     end
-    if @testing.options.size < 2
-      redirect_to testings_path, notice: "一个错误:选项至少要填写两个" 
-    else
-      respond_to do |format|
-        if @testing.save
-          @testing.person.update_column(:score,@testing.person.score+3)
-          format.html { redirect_to testings_path, notice: '创建成功' }
-          format.json { render json: @testing, status: :created, location: @testing }
-        else
-          format.html { redirect_to testings_path, notice: @testing.errors.full_messages.size.to_s+"个错误:"+format_error(@testing.errors.full_messages.join(","))}
-          format.json { render json: @testing.errors, status: :unprocessable_entity }
-        end
-      end      
-    end
+    
+    respond_to do |format|
+      if @testing.save
+        @testing.person.update_column(:score,@testing.person.score+3)
+        format.html { redirect_to @testing, notice: '创建成功' }
+        format.json { render json: @testing, status: :created, location: @testing }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @testing.errors, status: :unprocessable_entity }
+      end
+    end      
   end
 
   # PUT /testings/1

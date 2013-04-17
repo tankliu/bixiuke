@@ -1,38 +1,25 @@
-<div id="person_photo">
-	<%= image_tag person.avatar.url(:medium) %><br />
-	<% if session[:person_id] == person.id %>
-	<%= link_to '更换头像等资料', edit_person_path(person) %>
-	<% end %>
+<div class="media">
+	 <a class="pull-left" href="#">
+		<%= image_tag person.avatar.url(:medium),:class => "media-object" %><br />
+		
+  </a>
+  <div class="media-body">
+    <div class="media">
+			<% if session[:person_id] == person.id %>
+				<%= link_to '更换头像等个人资料', edit_person_path(person) %>
+			<% end %>
+			<p>
+			  昵称:<%= person.nick_name %><br />
+			  城市:<%= person.city %><br />
+			  用户组:<%= person.role %><br />
+			  积分:<%= person.score %><br />
+			  等级:<%= person.rank %>
+			</p>
+    </div>
+  </div>
 </div>
-<div id="person_meta">
-
-	<p>
-	  <b>昵称:</b>
-	  <%= person.nick_name %>
-	</p>
-	<p>
-	  <b>城市:</b>
-	  <%= person.city %>
-	</p>
-
-	<p>
-	  <b>用户组:</b>
-	  <%= person.role %>
-	</p>
-	
-	<p>
-	  <b>积分:</b>
-	  <%= person.score %>
-	</p>
-	
-	<p>
-	  <b>等级:</b>
-	  <%= person.rank %>
-	</p>
-
-	
-	<p>
-	  <b>积分规则:</b><br>
-	  把妹新手:0-100<br>把妹学徒:101-2000<br>把妹出师:2001-5000<br>把妹高手:5001-10000<br>把妹大师:10001-30000<br>把妹达人:30001-100000
-	</p>
+<hr />
+<div class="muted">
+  积分规则:<br>
+  把妹新手:0-100<br>把妹学徒:101-2000<br>把妹出师:2001-5000<br>把妹高手:5001-10000<br>把妹大师:10001-30000<br>把妹达人:30001-100000
 </div>

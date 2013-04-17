@@ -1,17 +1,19 @@
-<div class="entry_person_photo">
-	<%= image_tag comment.person.avatar.url(:thumb) %>
-</div>
-<div class="entry_meta">发布:<%= link_to comment.person.nick_name, comment.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %>
-</div>
-<br />
-<div class="comment_content">
-	<%= simple_format comment.content %>
-</div>
-<div class="entry_edit_bar">
-	<div class="right_text">
-	<% if can_delete?(comment) %>
-		<%= link_to 'X', comment, :data => { :confirm => '确定删除' }, method: :delete %>
-	<% end %>
-	</div>
+<div class="media">
+  <a class="pull-left" href="#">
+		<%= image_tag comment.person.avatar.url(:thumb),:class => "media-object" %>
+  </a>
+  <div class="media-body">
+    <div class="media">
+			发布:<%= link_to comment.person.nick_name, comment.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %>
+			<br />
+			<%= simple_format comment.content %>
+			<% if can_delete?(comment) %>
+				<%= link_to 'X', comment, :data => { :confirm => '确定删除' }, method: :delete, :class => "pull-right"%>
+			<% end %>
+			
+    </div>
+  </div>
 </div>
 <hr />
+
+

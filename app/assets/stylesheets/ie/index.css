@@ -1,0 +1,39 @@
+/*
+*= require_tree .
+*/
+
+/*btn太宽,需要限制*/
+.ie6-btn{
+     width:50px;
+	 padding:0;
+}
+/*登录后头像掉下去了*/
+.ie6-span{
+	margin-left:300px;
+}
+/*让login这种文字和input一行的表单显示正常*/
+.controls .ie6-btn{
+	margin-left:160px;
+}
+/*nav不够宽,需限制padding*/
+.navbar-inner .nav li a{
+		padding:9px 10px;
+}
+/*row不够宽,布局右边会掉下去*/
+.ie6-row{
+	width:980px;
+}
+
+/*在testing index页面的radio占了206宽度需要限制*/
+.ie6-input{
+	width:18px;
+}
+/*改进ie下面的竖导航*/
+ul.nav-tabs{
+	border:1px solid #ddd;
+}
+.nav-tabs li,.nav-tabs li a {
+	padding-bottom:0px;
+	margin-bottom:0;
+	border-bottom:1px solid #ddd;
+}

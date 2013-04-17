@@ -1,0 +1,48 @@
+<% content_for :title,"话题搜索" %>
+<% content_for :keywords,"泡妞学问答,泡妞问题,泡妞案例分享." %>
+<% content_for :description, "话题搜索" %>
+
+<div class="row">		
+	<div class="span8">
+		<% if notice %>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %>
+			</div>
+		<% end %>
+		<div class="row">
+			<div class="span8">
+				<%= form_tag :topic_search, :class => "form-search" do |f| %>
+			    <%= text_field_tag :query,params[:query], :class => "input-medium search-query" %>
+		  		<button type="submit" class="btn btn-primary">搜索问题</button>
+				<% end %>
+			</div>
+		</div>
+		
+		<h4>问题搜索:<%= params[:query] %></h4>
+		<table id="search_results" class="table table-condensed">
+			<tbody>
+				<% @topics.each do |topic| %>
+				<tr>
+					<td class="title"><%= link_to topic.title, topic , :target => "_blank"%></td>
+					<td class="created-at"><%= time_ago_in_words(topic.created_at) %>发表</td>
+					<td class="comments-size"><%= topic.comments.size %>回应</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% unless @topics == [] %>
+			<%= paginate @topics %>		
+		<% end %>
+		
+	</div>
+	
+	
+		
+	
+	
+	<div class="span4">
+		<%= link_to "返回<<", topics_path %>
+	</div>
+
+</div>

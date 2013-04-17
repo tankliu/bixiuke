@@ -2,8 +2,8 @@
 class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
-  skip_before_filter :is_login?, :only => [:index, :show]
-  before_filter :only_member_can_do, :except => [:index, :show]
+  skip_before_filter :is_login?, :only => [:index, :show, :search]
+  before_filter :only_member_can_do, :except => [:index, :show, :search]
 
   def index
     @path = params[:path]
@@ -20,10 +20,25 @@ class ResourcesController < ApplicationController
     end
   end
 
+  def search
+    if params[:query] == "" || params[:query].is_a?(NilClass)
+      @resources = []
+      flash.now[:notice] = "请输入搜索词语"
+      render :search 
+    else 
+      @resources = Resource.where("title LIKE ?", "%"+params[:query]+"%").order("created_at desc").page(params[:page])
+      respond_to do |format|
+        format.html # search.html.erb
+        format.json { render json: @resources }
+      end
+    end
+    
+  end
   
   def show
     @resource = Resource.find(params[:id])
     @comments = @resource.comments
+    @latest_resources = Resource.order("created_at desc").limit(10)
     @comment = Comment.new
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +49,14 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   # GET /resources/new.json
 
-
+  def new
+    @resource = Resource.new
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @resource }
+    end
+  end
+  
 
   # GET /resources/1/edit
   def edit
@@ -53,10 +75,10 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.save
         @resource.person.update_column(:score,@resource.person.score+3)
-        format.html { redirect_to resources_path, notice: '创建成功' }
+        format.html { redirect_to @resource, notice: '创建成功' }
         format.json { render json: @resource, status: :created, location: @resource }
       else
-        format.html { redirect_to resources_path, notice: @resource.errors.full_messages.size.to_s+"个错误:"+format_error(@resource.errors.full_messages.join(","))} 
+        format.html { render action: "new" }
         format.json { render json: @resource.errors, status: :unprocessable_entity }
       end
     end

@@ -1,40 +1,45 @@
 
 <%= form_for(@testing) do |f| %>
   <% if @testing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @testing.errors.count.to_s+"个错误" %> :</h2>
-      <ul>
-      <% @testing.errors.full_messages.each do |msg| %>
-        <li><%= format_error(msg) %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <h4><%= @testing.errors.count.to_s+"个错误" %> :</h4>
+	      <ul>
+	      <% @testing.errors.full_messages.each do |msg| %>
+	        <li><%= format_error(msg) %></li>
+	      <% end %>
+	      </ul>
+			</div>
+	  <% end %>
 
   <div class="field">
-    <%= f.label :title, "标题(1到50字)" %><br />
-    <%= f.text_field :title, :size => 101 %>
+    <%= f.label :title, "标题(1到50字)" %>
+    <%= f.text_field :title,  :class => "input-xxlarge" %>
   </div>
   
   <div class="field">
-    <%= f.label :content, "描述" %><br />
-    <%= f.text_area :content, :size => "73x4" %>
+    <%= f.label :content, "描述" %>
+    <%= f.text_area :content, :size => "73x4", :class => "input-xxlarge"%>
   </div>
 	<fieldset>
-	  <legend>(有几个选项就填写几个,最多四个)</legend>
+	  <p class="help-block">(有几个选项就填写几个,最多四个)</p>
 		<% 4.times do |index| %>
 			<div class="field">
-		    <%= label_tag :options, "选项"+ApplicationHelper::IndexToLetter[index] %><br />
-		    <%= text_field_tag 'options[]',  @testing.options[index].nil? ? "" : @testing.options[index].content, :size => 95 %>
+		    <%= label_tag :options, "选项"+ApplicationHelper::IndexToLetter[index] %>
+		    <%= text_field_tag 'options[]',  @testing.options[index].nil? ? "" : @testing.options[index].content, :class => "input-xxlarge" %>
 		  </div>
 		<% end %>
 	</fieldset>
  
 	<!-- answer -->
   <div class="field">
-    <%= f.label :answer, "答案(大写:A,B,C,D中一个)" %><br />
-    <%= f.text_field :answer, :size => "10" %>
+    <%= f.label :answer, "答案(大写:A,B,C,D中一个)" %>
+    <%= f.text_field :answer,  :class => "input-mini"%>
   </div>
 
-  <div class="actions"> <%= f.submit "提交" %> </div> 
+  <div class="actions"> 
+		<%= f.submit "提交", :class => "btn btn-primary ie6-btn" %> 
+		<%= link_to '取消', testings_path, :class => "btn cancel" %>
+	</div> 
+	
 <% end %>

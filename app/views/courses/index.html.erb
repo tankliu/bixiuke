@@ -3,10 +3,8 @@
 <% content_for :description,"5年来,帮助上千宅男告别单身,欢迎来现场参加培训,在深圳,广州,上海,北京不定期开设搭讪约会课程,讲授搭讪技巧,约会技巧,以及酒吧夜店泡妞课程,教你展示自身价值.约会话术课程,教你追女孩子的话." %>
 
 
-
-
-
-<div class="box">
+<div class="row">
+	<div class="span12">
 	<%= link_to "了解现场培训详情=>", :xianchang %>
 	<% if is_admin? %>
 		<div class="entry_edit_bar">
@@ -76,6 +74,7 @@
 	<p class="clear"></p>
 	<br />
 	<%= paginate @courses %>
+	</div>
 
 </div>
 

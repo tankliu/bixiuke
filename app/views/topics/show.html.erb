@@ -2,42 +2,62 @@
 <% content_for :keywords,"泡妞学问答,泡妞问题,泡妞案例分享." %>
 <% content_for :description, truncate(@topic.content, :length => 300) %>
 
-<div class="box ">
-	<div id="content">
-				 
-		<div class="entry_person_photo">
-			<%= image_tag @topic.person.avatar.url(:thumb) %>
-		</div>
-		<div class="entry_title"><%=  @topic.title %></div>
-		<br /><br />
-		<div class="entry_meta">发布:<%= link_to @topic.person.nick_name, @topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发表于:<%= time_ago_in_words(@topic.created_at) %>
+<div class="row">		
+		<div class="span8">
+				<% if notice %>
+					<div class="alert">
+					  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <%= notice %>
+					</div>
+				<% end %>
+				<div class="media">
+				  <a class="pull-left" href="#">
+						<%= image_tag @topic.person.avatar.url(:thumb),:class => "media-object" %>
+				  </a>
+				  <div class="media-body">
+				    <h4 class="media-heading"><%= link_to @topic.title, @topic, :target => "_blank" %></h4>
+				    <div class="media">
+							发布:<%= link_to @topic.person.nick_name, @topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @topic.created_at.to_date.to_s %>
+							<br />
+							<br />
+							<%= simple_format @topic.content %>
+							<% if can_delete?(@topic) %>
+								<%= link_to '编辑', edit_topic_path(@topic) %>
+								<%= link_to '删除', @topic, :data => { :confirm => '确定删除' }, method: :delete %>
+							<% end %>
+							<%= render :partial => "share/bdshare" %>	
+
+				    </div>
+				  </div>
+				</div>
+				<br />
+				<h4>所有回复(回复:+1积分)</h4>
+		
+				<hr />
+
+				<% @comments.each do |comment| %>
+					<%= render comment %>
+
+				<% end %>
+
+				<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Topic", :commable_id => @topic.id } %>
+
 		</div>
 		
-		<div class="entry_content"><%= simple_format @topic.content %></div>
-		<div class="entry_edit_bar">
-			<%= render :partial => "share/bdshare" %>
-	    <div class="right_text">
-			<% if can_delete?(@topic) %>
-				<%= link_to '编辑', edit_topic_path(@topic) %>
-				<%= link_to '删除', @topic, :data => { :confirm => '确定删除' }, method: :delete %>
-			<% end %>
-			</div>
-		</div>
+		
+		
+		
+	
+	
+	<div class="span4">
+		<%= link_to "返回<<", :back %>
 		<hr />
-		<h2>所有回复(回复:+1积分)</h2>
-		<% if notice %>
-			<div id="notice"><%= notice %></div>
+		<h4>最近话题</h4>
+		<ul>
+		<% @latest_topics.each do |topic| %>
+			<li><%= link_to topic.title, topic %></li>
 		<% end %>
-		<div id="comments">
-			<% @comments.each do |comment| %>
-				<%= render comment %>
-			<% end %>
-			
-			<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Topic", :commable_id => @topic.id } %>
-		</div>
-			
+		</ul>
 	</div>
-	<div id="sidebar">
-		<%= link_to "返回问答", topics_path %>
-	</div>
+
 </div>

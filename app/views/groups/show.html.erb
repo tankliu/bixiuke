@@ -2,8 +2,8 @@
 <% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
 <% content_for :description,"泡妞学班级, 如果白天老师不在教室,如果你有约会恋爱问题,请发到泡妞学班级." %>
 
-<div class="box">
-	<div id="sidebar">
+<div class="row">
+	<div class="span4">
 		<div id="group_photo">
 			<%= image_tag @group.avatar.url(:medium) %>
 		</div>
@@ -94,14 +94,17 @@
 	</div>
 		
 	
-	<div id="content">
-		<h2>发帖(有问必答,老师每晚9点回复)</h2>		
+	<div class="span8">
+		<h4>发帖(有问必答,老师每晚9点回复)</h4>		
 		<% if notice %>
-			<div id="notice"><%= notice %></div>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %>
+			</div>
 		<% end %>
 	
 		<%= render :partial => 'topics/form' %>
-		<h2>最近回复</h2>
+		<h4>最近回复</h4>
 		
 		<% @topics.each do |topic| %>
 			<div class="entry_person_photo">

@@ -4,76 +4,73 @@
 
 <script>
 	$(document).ready(function() {
-		$('#new_testing').hide();
-		$('.create_testing_button').click(function() {
-			$('#new_testing').slideToggle();
-			var text = $(this).text() == '创建测试' ? '取消创建' : '创建测试';
-			$(this).text(text);
-		});
-	
+		// $('#new_testing').hide();
+		// $('.create_testing_button').click(function() {
+		// 	$('#new_testing').slideToggle();
+		// 	var text = $(this).text() == '创建测试' ? '取消创建' : '创建测试';
+		// 	$(this).text(text);
+		// });
+		// 	
 		$('form').on('submit', function(e) {
-			$(this).parent().find(".notice_answer").append('<div class="notice">'+"答案"+'</div>');
+			$(this).parent().find(".notice_answer").append('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+"答案:"+'</div>');
 		});
 		
 	});
 	
 </script>
 
-<% unless is_member? %>
-	<div id="header_gaoguang">
-		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
-	</div>
-<% end %>
-<div class="box">	
+
+
+<div class="row">	
 		
-	<div id="content">
+	<div class="span8">
 		<% if notice %>
-			<div id="notice"><%= notice %></div>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %><a href="jshintrc"></a>
+			</div>
 		<% end %>
-		<% if is_member? %>
-			<%= button_tag(:type => 'button', :class => "create_testing_button") do %>创建测试<% end %>
-			<%= render 'form'  %>
+		<% if is_admin? %>
+			<%= link_to "+ 创建测试",:new_testing, :class => "btn btn-danger pull-right" %>		
 		<% end %>
 		
-		<h2>最新测试</h2>
-
+		<h4>最新测试</h4>
 		<% @testings.each do |testing| %>
-			<div class="entry_person_photo">
-				<%= image_tag testing.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title"><%=  link_to testing.title, testing %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to testing.person.nick_name, testing.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= testing.created_at.to_date.to_s %>
-			</div>
-
-			<div class="entry_content"><%= simple_format testing.content %></div>
-			
-			
-			<div class="entry_content">
-				<div class="notice_answer" id="notice_answer_<%= testing.id %>"></div>
-				<%= form_tag :test, :remote => true do |f| %>
-					<% testing.options.each_with_index do |option,index| %>
-						<div class="field">
-							<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false %>		
-							<%= ApplicationHelper::IndexToLetter[index] %>.<%= label_tag "answer", option.content %>
-						</div>
-						<div class="field">
-							<%= hidden_field_tag "testing_id",testing.id %>		
-						</div>
-					<% end %>
-					<div class="field">
-						<%= submit_tag "提交" %>
-					</div>	
-				<% end %>
-			</div>
-			
-			<div class="entry_edit_bar">
-				<div class="right_text">
-				<%= link_to "详细(#{testing.comments.size})", testing, :target => "_blank" %>
-				</div>
+			<div class="media">
+			  <a class="pull-left" href="#">
+					<%= image_tag testing.person.avatar.url(:thumb),:class => "media-object" %>
+			  </a>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= link_to testing.title, testing, :target => "_blank" %></h4>
+			    <div class="media">
+						发布:<%= link_to testing.person.nick_name, testing.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= testing.created_at.to_date.to_s %>
+						<br />
+						<br />
+						<%= simple_format testing.content %>
+							<div class="notice_answer" id="notice_answer_<%= testing.id %>"></div>
+							<%= form_tag :test, :remote => true do |f| %>
+								<% testing.options.each_with_index do |option,index| %>
+									<div class="field">
+										<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false, :class => "ie6-input" %>		
+										<%= ApplicationHelper::IndexToLetter[index] %>.<span class="help-inline"><%= label_tag "answer", option.content %></span>
+									</div>
+									<div class="field">
+										<%= hidden_field_tag "testing_id",testing.id %>		
+									</div>
+								<% end %>
+								<div class="field">
+									<%= submit_tag "提交", :class => "btn btn-primary ie6-btn" %>
+								</div>	
+							<% end %>
+						
+						<%= link_to "详细(#{testing.comments.size})", testing, :target => "_blank",:class => "pull-right"  %>
+			    </div>
+			  </div>
 			</div>
 			<hr />
+			
 		<% end %>
+		
 		<%= paginate @testings %>		
 	</div>
 	

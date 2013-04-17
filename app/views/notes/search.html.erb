@@ -1,0 +1,47 @@
+<% content_for :title,"惯例搜索" %>
+<% content_for :keywords,"泡妞学问答,泡妞问题,泡妞案例分享." %>
+<% content_for :description, "惯例搜索" %>
+
+<div class="row">		
+	<div class="span8">
+		<% if notice %>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %>
+			</div>
+		<% end %>
+		<div class="row">
+			<div class="span8">
+				<%= form_tag :note_search, :class => "form-search" do |f| %>
+			    <%= text_field_tag :query,params[:query], :class => "input-medium search-query" %>
+		  		<button type="submit" class="btn btn-primary">搜索惯例</button>
+				<% end %>
+			</div>
+		</div>
+		
+		<h4>惯例搜索:<%= params[:query] %></h4>
+		<table id="search_results" class="table table-condensed">
+			<tbody>
+				<% @notes.each do |note| %>
+				<tr>
+					<td class="title"><%= link_to note.title, note , :target => "_blank"%></td>
+					<td class="created-at"><%= time_ago_in_words(note.created_at) %>发表</td>
+					<td class="comments-size"><%= note.comments.size %>回应</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% unless @notes == [] %>
+			<%= paginate @notes %>		
+		<% end %>
+	</div>
+	
+	
+		
+	
+	
+	<div class="span4">
+		<%= link_to "返回<<", notes_path %>
+	</div>
+
+</div>

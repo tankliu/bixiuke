@@ -1,7 +1,7 @@
 <%= form_for(@group) do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @group.errors.count.to_s+"个错误" %>:</h2>
+      <h4><%= @group.errors.count.to_s+"个错误" %>:</h4>
 
       <ul>
       <% @group.errors.full_messages.each do |msg| %>
@@ -29,6 +29,6 @@
 
 
   <div class="actions">
-    <%= f.submit "提交" %>
+    <%= f.submit "提交", :class => "btn btn-primary ie6-btn" %>
   </div>
 <% end %>

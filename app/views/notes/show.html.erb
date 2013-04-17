@@ -2,54 +2,62 @@
 <% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
 <% content_for :description, @note.content %>
 
-<% unless is_member? %>
-	<div id="header_gaoguang">
-		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
-	</div>
-<% end %>
 
 
-<div class="box">
-	<div id="content">
-			<div class="entry_person_photo">
-				<%= image_tag @note.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title"><%= link_to @note.title, @note, :target => "_blank" %></div>
-			<br /><br />
-			<div class="entry_meta">发布:<%= link_to @note.person.nick_name, @note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to @note.category.name, category_notes_path(:path => @note.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @note.created_at.to_date.to_s %>
-			</div>
 
-			<div class="entry_content"><%= simple_format @note.content %></div>
-
-			<div class="entry_edit_bar">
-		    <%= render :partial => "share/bdshare" %>	
-				<div class="right_text">
-					<% if can_delete?(@note) %>
-						<%= link_to '编辑', edit_note_path(@note) %>
-						<%= link_to '删除', @note, :data => { :confirm => '确定删除' }, method: :delete %>
-					<% end %>
-				</div>
-			</div>
-			<hr />
-					
-				
-			<h2>所有评论</h2>
+<div class="row">
+	<div class="span8">
 			<% if notice %>
-				<div id="notice"><%= notice %></div>
+				<div class="alert">
+				  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <%= notice %>
+				</div>
 			<% end %>
-			<div id="comments">
-				<% @comments.each do |comment| %>
-					<%= render comment %>
-				<% end %>
-
-				<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Note", :commable_id => @note.id } %>
+			<div class="media">
+			  <a class="pull-left" href="#">
+					<%= image_tag @note.person.avatar.url(:thumb),:class => "media-object" %>
+			  </a>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= link_to @note.title, @note, :target => "_blank" %></h4>
+			    <div class="media">
+						发布:<%= link_to @note.person.nick_name, @note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to @note.category.name, category_notes_path(:path => @note.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @note.created_at.to_date.to_s %>
+						<br />
+						<br />
+						<%= simple_format @note.content %>
+						<% if can_delete?(@note) %>
+							<%= link_to '编辑', edit_note_path(@note) %>
+							<%= link_to '删除', @note, :data => { :confirm => '确定删除' }, method: :delete %>
+						<% end %>
+						<%= render :partial => "share/bdshare" %>	
+						
+			    </div>
+			  </div>
 			</div>
+			<br />
+			<h4>所有评论</h4>
+		
+			<hr />
+			
+			<% @comments.each do |comment| %>
+				<%= render comment %>
+			
+			<% end %>
+			
+			<%= render :partial => "comments/form", :locals => { :comment => @comment, :commable_type => "Note", :commable_id => @note.id } %>
 
 	</div>
 
-	<div id="sidebar">
-		<%= link_to "返回", :back %>
+	<div class="span4">
+		<%= link_to "返回<<", :back %>
+		<hr />
+		<h4>最近惯例</h4>
+		<ul>
+		<% @latest_notes.each do |note| %>
+			<li><%= link_to note.title, note %></li>
+		<% end %>
+		</ul>
 	</div>
+	
 	
 </div>
 

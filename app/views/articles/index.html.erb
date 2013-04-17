@@ -3,58 +3,67 @@
 <% content_for :description,"泡妞文章和泡妞视频栏目,文章里面包含了泡妞秘籍,专题里面有泡妞视频,以及泡妞电影的下载地址, 看看泡妞高手和电影明星是如何泡妞,如何搭讪的.学习搭讪的技巧和约会技巧." %>
 
 
-<% unless is_member? %>
-	<div id="header_gaoguang">
-		<a href="/guangpan"><img src="/assets/gaoguang.png" alt="专业约会指导教程" /></a>
-	</div>
-<% end %>
 
-<div class="box article_box">
-	<div id="categories">
-		<ul>
-			<li <%="class=selected" if @path == nil  %>><%= link_to "所有文章", articles_path %></li>
+
+<div class="row ie6-row">
+	<div class="span3">
+		<ul class="nav nav-tabs nav-stacked">
+			<li <%="class=active" if @path == nil  %>><%= link_to articles_path do %>所有文章<i class="icon-chevron-right pull-right"></i><% end %></li>
 			<% @categories.each do |category| %>
-			<li <%="class=selected" if @path == category.path  %>><%= link_to category.name+"(#{category.articles.size})", category_articles_path(:path => category.path) %></li>
+			<li <%="class=active" if @path == category.path  %>><%= link_to category_articles_path(:path => category.path) do %><%=category.name+"(#{category.articles.size})"%><i class="icon-chevron-right pull-right"></i><% end %></li>
 			<% end %>
 		</ul>
 	</div>
 	
-	<div id="content">		
+	<div class="span9">		
 		<% if notice %>
-			<div id="notice"><%= notice %></div>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %>
+			</div>
 		<% end %>
-
+		<div class="row">
+			<div class="span9">
+				<%= form_tag :article_search, :class => "form-search" do |f| %>
+			    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
+		  		<button type="submit" class="btn btn-primary">搜索文章</button>
+				<% end %>
+			</div>
+		</div>
+		
+		
 		<% if is_admin? %>
-			<%= render :partial => 'form' %>
+			<%= link_to "+ 发布文章",:new_article, :class => "btn btn-danger pull-right" %>
 		<% end %>
-		<h2>最近分享文章</h2>
+		
+		<h4>最近分享文章</h4>
 
 		<% @articles.each do |article| %>
-			<div class="entry_person_photo">
-				<%= image_tag article.person.avatar.url(:thumb) %>
-			</div>
-			<div class="entry_title"><%= link_to truncate(article.title,:length => 35), article,:target => "_blank" %></div>
-			<br /><br />
-			<div class="entry_meta">类别:<%= link_to article.category.name, category_articles_path(:path => article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
-			</div>
-			<br />
-			
-			<div class="entry_content">
-				<div class="article_image">
-					<%= image_tag article.picture.url(:medium) %>
-				</div>
-				<%= simple_format article.description %>
-			</div>
-			<div class="entry_edit_bar">
-				<div class="right_text">
-				<%= link_to "=>详细", article, :target => "_blank"  %>
-				</div>
+			<div class="media">
+			  <a class="pull-left" href="#">
+					<%= image_tag article.person.avatar.url(:thumb),:class => "media-object" %>
+			  </a>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= link_to truncate(article.title,:length => 35), article, :target => "_blank" %></h4>
+			    <div class="media">
+						发布:<%= link_to article.person.nick_name, article.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to article.category.name, category_articles_path(:path => article.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= article.created_at.to_date.to_s %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览:<%= article.views %>
+						<br />
+						<br />
+						<div class="article_image">
+							<%= image_tag article.picture.url(:medium) %>
+						</div>
+						<%= simple_format article.description %>
+						<%= link_to "详细(#{article.comments.size})", article, :target => "_blank",:class => "pull-right"  %>
+			    </div>
+			  </div>
 			</div>
 			<hr />
-		<% end %>
-		<%= paginate @articles %>		
 			
+		<% end %>
+		
+		<%= paginate @articles %>		
 	</div>
+
 
 	
 </div>  <!-- end of box -->

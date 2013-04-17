@@ -1,22 +1,25 @@
-<% content_for :title,"所有小组-泡妞学网" %>
-<% content_for :keywords,"泡妞小组列表,所有小组" %>
-<% content_for :description,"泡妞学网小组列表,每天推出一个小组." %>
+<% content_for :title,"所有班级-泡妞学网" %>
+<% content_for :keywords,"泡妞班级列表,所有班级" %>
+<% content_for :description,"泡妞学网班级列表,每天推出一个班级." %>
 
 
 	<% if notice %>
-		<div id="notice"><%= notice %></div>
-	<% end %>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <%= notice %>
+			</div>
+		<% end %>
 	<% if is_admin? %> 			
 		<%= link_to '创建组', new_classroom_path %>
 	<% end %>
 
-<div class="box">
-	<h1>所有小组</h1>
+<div class="row">
+	<h1>所有班级</h1>
 	<div id="classrooms">		
 		<% @classrooms.each do |classroom| %>
 			<%= link_to image_tag(classroom.avatar.url(:medium), :class => "image_right_bottom"), classroom %>					
 			
-			<h2 class= "index_organization_title"><%= link_to classroom.name, classroom %></h2>
+			<h4 class= "index_organization_title"><%= link_to classroom.name, classroom %></h4>
 			<div class="index_organization_description"><%= truncate(classroom.description, :length => 55) %></div><br />
 			创建时间:<%= classroom.created_at.to_date.to_s %>
 			<span class="space">创建者:<%= link_to classroom.person.nick_name, :root %></span>

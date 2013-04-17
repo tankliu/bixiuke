@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Person < ActiveRecord::Base
   has_secure_password  #TODO: this method alse validates confirmation and can not be overrided
+  include ActiveModel::SecurePassword::InstanceMethodsOnActivation
   attr_protected :role,:dead
   paginates_per 30
   
@@ -16,6 +17,7 @@ class Person < ActiveRecord::Base
   has_many :comments
   has_many :groups
   has_many :testings
+    
   
   Paperclip.interpolates :avatar_date do |avatar, style|
     avatar.instance.avatar_updated_at.to_date.to_s[0,7]
@@ -42,10 +44,10 @@ class Person < ActiveRecord::Base
   # validate :file_dimensions, :unless => "errors.any? or avatar.original_filename.blank?"
 
   # validates_presence_of :password, :on => :create  
-  validates :email, :presence => {:message => "请填写email"},
-                  :format => { :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :message => "email格式不对,请检查", :allow_blank => true},
-                  :uniqueness => {:message => "此email已经使用，请使用别的email注册。", :allow_blank => true},
-                  :length => {:in => 3..100, :message => "email长度必须大于3，小于100", :allow_blank => true}       
+  validates :email, :presence => {:message => "请填写邮箱"},
+                  :format => { :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :message => "邮箱格式不对,请检查", :allow_blank => true},
+                  :uniqueness => {:message => "此邮箱已经使用，请使用别的邮箱注册。", :allow_blank => true},
+                  :length => {:in => 3..100, :message => "邮箱长度必须大于3，小于100", :allow_blank => true}       
                    
                    #TODO因为用uniq,也可以写出:unique => true ,既然每次验证都要查询数据库, 最好添加index给name
                    
@@ -93,4 +95,6 @@ class Person < ActiveRecord::Base
   def default_url_by_role
     self.role != "非学员" ? "/system/:class/:attachment/default/:style.png" : "/system/:class/:attachment/default/fei-:style.png"
   end
+  
+  
 end

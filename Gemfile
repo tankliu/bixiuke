@@ -14,7 +14,7 @@ gem 'passenger'
 gem 'kaminari'
 gem "paperclip", "~> 3.0"
 
-
+h
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -29,7 +29,7 @@ group :assets do
   
 end
 
-gem 'libv8', '~> 3.11.8'
+# gem 'libv8', '~> 3.11.8'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
