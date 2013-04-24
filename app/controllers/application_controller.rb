@@ -31,8 +31,9 @@ class ApplicationController < ActionController::Base
   
   def subdomain_filter  
     subdomain_name = request.subdomains.first.to_s  
-    # 把所有的paoniuxue.com转到www.paoniuxue.com
-    if subdomain_name.blank?  # 对于开发模式以及线下的产品模式不需要转,否则机器没法工作
+    # 把所有的puake.com转到www.puake.com
+    if subdomain_name.blank?  
+      # 对于开发模式以及线下的产品模式不需要转,否则机器没法工作
       unless request.url.to_s.include?("local")
         redirect_to request.url.to_s.sub("//","//www.")
         return false
@@ -42,24 +43,27 @@ class ApplicationController < ActionController::Base
     end
 
     
-    if request.url.include?("guangpan")
-      redirect_to request.url.to_s.sub("guangpan","")
+    if request.url.include?("guangpan") || request.url.include?("guangpan.html")
+      redirect_to :root
       return false
     end
-  
 
     # if request.url.include?("courses")
     #    redirect_to request.url.to_s.sub("courses","xianchang")
     #    return false
     #  end
     
-
+    
     if request.url.include?("category/")
       redirect_to request.url.to_s.sub("category/","")
       return false 
     end
     
-  
+    if request.url.include?("paoniuxue")
+      redirect_to request.url.to_s.sub("paoniuxue","puake")
+      return false 
+    end
+      
   end
   
     
