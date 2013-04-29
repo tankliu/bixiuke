@@ -10,6 +10,7 @@ V8::Application.routes.draw do
   match 'zhinanzhen' => 'pages#zhinanzhen'
   match 'zhidao'  => "pages#zhidao"
   match 'xianchang'  => "pages#xianchang"
+  match 'xianchang/page(/:page)'  => "pages#xianchang"
   match 'wangpan'  => "pages#wangpan"
   match 'xingxiang'  => "pages#xingxiang"
   

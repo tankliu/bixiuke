@@ -2,7 +2,7 @@
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
-  skip_before_filter :is_login?
+  skip_before_filter :is_login?,:only => []
   before_filter :only_member_can_do
 
   # POST /comments

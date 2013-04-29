@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to courses_url, :notice => '创建成功' }
+        format.html { redirect_to :xianchang, :notice => '创建成功' }
         format.json { render :json => @course, :status => :created, :location => @course }
       else
         format.html { render :action => "new" }
@@ -53,7 +53,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        format.html { redirect_to courses_url, :notice => '更新成功' }
+        format.html { redirect_to :xianchang, :notice => '更新成功' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

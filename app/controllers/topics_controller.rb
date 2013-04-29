@@ -2,11 +2,12 @@
 class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
-
+  
   skip_before_filter :is_login?, :only => [:index, :show, :search]
   before_filter :only_member_can_do, :except => [:index, :show, :search]
 
   def index
+      
     @group = Group.find(1)
     @topics = @group.topics.includes(:person).includes(:last_replied_person).includes(:comments).order("last_replied_at desc").page(params[:page])      
     @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").limit(12)

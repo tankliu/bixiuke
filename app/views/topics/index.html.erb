@@ -60,7 +60,7 @@
 		    <h4 class="media-heading">班级名:<%= @group.name %></h4>
 		    <div class="media">
 		      <p>
-					  创建者:<%= link_to @group.person.nick_name, @group.person.nick_name %><br />
+					  创建者:<%= link_to @group.person.nick_name, @group.person %><br />
 					  创建时间:<%= @group.created_at.to_date.to_s %>
 					</p>
 				

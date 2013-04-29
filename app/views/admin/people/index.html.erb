@@ -1,70 +1,72 @@
+<% content_for :title,"pua课程网-所有学员" %>
+<% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
+<% content_for :description,"pua课程网,所有学员,积分排行,最新加入,按城市排行." %>
+
 <div class="row">
-	<h4>pua课程网学员和老师,助教(非学员不显示)</h4>
-	<% if notice %>
+	<div class="span12">
+		<% if notice %>
 			<div class="alert">
 			  <button type="button" class="close" data-dismiss="alert">&times;</button>
 			  <%= notice %>
 			</div>
 		<% end %>
-	<!-- <div class="order_way"> -->
-		<ul class="page_nav">
-			<li <%="class=selected" if @order_way == "score" %> >
-				<%= link_to "积分排行", admin_people_path(:order_way => "score") %>
+		<!-- <div class="order_way"> -->
+		<ul class="nav nav-tabs">
+			<li class=<%="active" if @order_way == "score" %> ><%= link_to "积分排行", people_path(:order_way => "score") %>
 			</li>
-			
-			<li <%="class=selected" if @order_way == "join_time" %> >
-				<%= link_to "最新加入", admin_people_path(:order_way => "join_time") %>
+			<li class=<%="active" if @order_way == "join_time" %> ><%= link_to "按最新加入", people_path(:order_way => "join_time") %>
 			</li>
-			
-			<li <%="class=selected" if @order_way == "city" %> >
-				<%= link_to "按城市排序", admin_people_path(:order_way => "city") %>
+			<li class=<%="active" if @order_way == "city" %> ><%= link_to "按城市排序", people_path(:order_way => "city") %>
 			</li>
-			
-			<li <%="class=selected" if @order_way == "dead" %> >
-				<%= link_to "按注销排序", admin_people_path(:order_way => "dead") %>
+			<li class=<%="active" if @order_way == "dead" %> ><%= link_to "按注销排序", people_path(:order_way => "dead") %>
 			</li>
-			
+		
 		</ul>
-	<!-- </div> -->
-	<hr/>
-	<% @people.each do |person| %>
-		<div class="person_info_index">
-			<div class="person_photo_index">
-				<%= link_to image_tag(person.avatar.url(:medium)), person %>
-			</div>
-			<div class="person_info_text_index">
-	
-				<p>
-				  <b>昵称:</b>
-				  <%= link_to person.nick_name, person %>
-				</p>
-				<p>
-				  <b>城市:</b>
-				  <%= person.city %>
-				</p>
+		<% if is_admin? %>
+			<%= link_to '创建学员', new_person_path, :class => "btn btn-danger pull-right" %>
+		<% end %>
 
-				<p>
-				  <b>用户组:</b>
-				  <%= person.role %>
-				</p>
-				<p>
-				  <b>积分:</b>
-				  <%= person.score %>
-				</p>
-				<p>
-				  <b>注销:</b>
-				  <%= person.dead %>
-				</p>
-				<% if is_admin? %>
-					<%= link_to '编辑', edit_person_path(person) %>	<%= link_to '删除', person, :data => { :confirm => '确定删除' }, method: :delete %>	
-				<% end %>
+		<!-- </div>
+		<hr/> -->
+		<div class="row">
+		<% @people.each do |person| %>
+					<div class="span4" style="margin-bottom:20px;border-bottom: 1px dashed #bbb;">
+						<div class="media">
+							<%= link_to image_tag(person.avatar.url(:medium), :class => "media-object"), person, :class => "pull-left"%> 
+						  <div class="media-body">
+						    <div class="media">
+									<% if is_admin? %>
+										<%= link_to "编辑",edit_person_path(person) %><br />
+									<% end %>
+									<p>
+									  <b>昵称:</b>
+									  <%= link_to person.nick_name, person %>
+									</p>
+						      <p>
+									  <b>城市:</b>
+									  <%= person.city %>
+									</p>
 
-			</div>
-		</div>		
-	<% end %>
+									<p>
+									  <b>用户组:</b>
+									  <%= person.role %>
+									</p>
+									<p>
+									  <b>email:</b>
+									  <%= person.email %>
+									</p>
+									<p>
+									  <b>注销:</b>
+									  <%= person.dead %>
+									</p>
+						    </div>
+						  </div>
+						</div>
+				</div>
+		<% end %>
 	
-	<hr />
-	<% if is_admin? %>
-		<%= link_to '创建学员', new_person_path %>
-	<% end %>
+		</div>
+	
+	
+	</div>
 </div>

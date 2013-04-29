@@ -47,7 +47,7 @@
 				<div class="span6 offset2">
 					<%= form_tag :login, :class => "form-inline" do |f| %>
 
-					    <%= label_tag :email, "账号" %>
+					    <%= label_tag :email, "邮箱" %>
 					    <%= text_field_tag :email,nil, :class => "input-medium" %>
 					    <%= label_tag :password, "密码" %>
 					    <%= password_field_tag :password,nil,:class => "input-medium" %>
@@ -167,16 +167,15 @@
 			<a href="http://blog.sina.com.cn/paoshop" title="专业泡妞培训_新浪博客">pua课程网新浪站</a>
 			<a href="http://paoxun.blog.sohu.com/" title="pua课程网搜狐站">pua课程网搜狐站</a>
 			<a href="http://hi.baidu.com/paoniupx/home" title="pua课程网百度站">pua课程网百度站</a>
-			<a href="http://xiaohualang.blog.hexun.com/" title="pua课程网和讯站">pua课程网和讯站</a>				
+			<a href="http://hao.360.cn/" target="_blank" >360安全网址导航</a>
+			<a href="http://yasuo.360.cn" target="_blank" >360压缩软件</a>
 		</p>
 		<p class="text-center">
-			版权所有 备案号：<a href="http://www.miibeian.gov.cn/" target="_top">粤ICP备08028333号</a><br />
+			版权所有 备案号：<a href="http://www.miibeian.gov.cn/" target="_top">粤ICP备13011305号-2</a><br />
 		</p>
 		<p class="text-center">培训城市:深圳&nbsp;广州&nbsp;上海&nbsp;北京   全国统一服务QQ：399906796</p>
 		
 	</div><!-- end of footer -->
-
-	
 
 	
 	<% if [TopicsController, NotesController, ResourcesController, TestingsController, ArticlesController].include?(controller.class) and action_name=="show" %>
