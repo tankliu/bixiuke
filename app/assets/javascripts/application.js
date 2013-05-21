@@ -21,5 +21,3 @@ setTimeout(function () {
  $(".alert").not("[id]").fadeOut();
 }, 5 * 1000);
 
-
-k
