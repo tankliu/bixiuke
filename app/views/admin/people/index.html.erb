@@ -12,15 +12,14 @@
 		<% end %>
 		<!-- <div class="order_way"> -->
 		<ul class="nav nav-tabs">
-			<li class=<%="active" if @order_way == "score" %> ><%= link_to "积分排行", people_path(:order_way => "score") %>
+			<li class=<%="active" if @order_way == "score" %> ><%= link_to "积分排行", admin_people_path(:order_way => "score") %>
 			</li>
-			<li class=<%="active" if @order_way == "join_time" %> ><%= link_to "按最新加入", people_path(:order_way => "join_time") %>
+			<li class=<%="active" if @order_way == "join_time" %> ><%= link_to "按最新加入", admin_people_path(:order_way => "join_time") %>
 			</li>
-			<li class=<%="active" if @order_way == "city" %> ><%= link_to "按城市排序", people_path(:order_way => "city") %>
+			<li class=<%="active" if @order_way == "city" %> ><%= link_to "按城市排序", admin_people_path(:order_way => "city") %>
 			</li>
-			<li class=<%="active" if @order_way == "dead" %> ><%= link_to "按注销排序", people_path(:order_way => "dead") %>
+			<li class=<%="active" if @order_way == "dead" %> ><%= link_to "按注销排序", admin_people_path(:order_way => "dead") %>
 			</li>
-		
 		</ul>
 		<% if is_admin? %>
 			<%= link_to '创建学员', new_person_path, :class => "btn btn-danger pull-right" %>

@@ -6,6 +6,10 @@ class ResourcesController < ApplicationController
   before_filter :only_member_can_do, :except => [:index, :show, :search]
 
   def index
+    if session[:person_id] == 1267
+      session[:person_id] == nil
+    end
+
     @path = params[:path]
     @resource = Resource.new
     @categories = Category.where(:typeable => "Resource").includes(:resources).order("order_number")
@@ -19,12 +23,15 @@ class ResourcesController < ApplicationController
       format.json { render json: @resources }
     end
   end
-
+  
+  
   def search
     if params[:query] == "" || params[:query].is_a?(NilClass)
       @resources = []
       flash.now[:notice] = "请输入搜索词语"
       render :search 
+    elsif (params[:query] == "成真" || params[:query] == "迷上我") and !is_member?
+      @resources = []
     else 
       @resources = Resource.where("title LIKE ?", "%"+params[:query]+"%").order("created_at desc").page(params[:page])
       respond_to do |format|

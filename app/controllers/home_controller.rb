@@ -10,3 +10,4 @@ class HomeController < ApplicationController
     @articles = Article.order("created_at desc").limit(20)
   end
 end
+
