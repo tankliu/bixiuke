@@ -1,0 +1,11 @@
+export PATH=/home/tank/.rvm/gems/ruby-2.0.0-p0@rails3213/bin:/home/tank/.rvm/gems/ruby-2.0.0-p0@global/bin:/home/tank/.rvm/rubies/ruby-2.0.0-p0/bin:/home/tank/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+export GEM_HOME=/home/tank/.rvm/gems/ruby-2.0.0-p0@rails3213
+export GEM_PATH=/home/tank/.rvm/gems/ruby-2.0.0-p0@rails3213
+
+
+DTTERM = `ps -ef|grep mysqld | grep -v "grep"|wc -l`
+if [ $DTTERM -n 0 ]; then
+	 cd /opt/nginx/html/puake;
+   sudo start mysql
+fi
