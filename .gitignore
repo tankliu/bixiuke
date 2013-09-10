@@ -8,6 +8,8 @@ dbbackup/
 color/     
 db/seeds.rb        
 config/database.yml
+v8_development.sql
+v8_production.sql
    
 v8.tmproj    
 v8.sublime-project  
