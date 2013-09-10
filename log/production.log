@@ -1,0 +1,1478 @@
+Compiled jquery.js  (46ms)  (pid 3206)
+Compiled jquery_ujs.js  (0ms)  (pid 3206)
+Compiled maxlength.js  (0ms)  (pid 3206)
+Compiled application.js  (165ms)  (pid 3206)
+Compiled application.css  (4ms)  (pid 3206)
+Compiled jquery.js  (2ms)  (pid 3206)
+Compiled jquery_ujs.js  (3ms)  (pid 3206)
+Compiled maxlength.js  (0ms)  (pid 3206)
+Compiled application.js  (129ms)  (pid 3206)
+Compiled application.css  (0ms)  (pid 3206)
+Compiled jquery.js  (70ms)  (pid 3515)
+Compiled jquery_ujs.js  (0ms)  (pid 3515)
+Compiled maxlength.js  (0ms)  (pid 3515)
+Compiled application.js  (104ms)  (pid 3515)
+Compiled application.css  (0ms)  (pid 3515)
+Compiled jquery.js  (28ms)  (pid 3515)
+Compiled jquery_ujs.js  (4ms)  (pid 3515)
+Compiled maxlength.js  (0ms)  (pid 3515)
+Compiled application.js  (112ms)  (pid 3515)
+Compiled application.css  (0ms)  (pid 3515)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-04 22:53:34 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (39.4ms)
+  Rendered discussions/_discussion.html.erb (176.6ms)
+  Rendered home/index.html.erb within layouts/application (573.9ms)
+  Rendered error/500.html within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 686ms (Views: 8.8ms | ActiveRecord: 110.1ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 22:56:25 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.3ms)
+  Rendered discussions/_discussion.html.erb (35.2ms)
+  Rendered home/index.html.erb within layouts/application (149.2ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 208ms (Views: 4.6ms | ActiveRecord: 9.2ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 22:58:23 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.6ms)
+  Rendered discussions/_discussion.html.erb (33.9ms)
+  Rendered home/index.html.erb within layouts/application (142.3ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 153ms (Views: 4.8ms | ActiveRecord: 5.6ms)
+Compiled jquery.js  (41ms)  (pid 5020)
+Compiled jquery_ujs.js  (0ms)  (pid 5020)
+Compiled maxlength.js  (0ms)  (pid 5020)
+Compiled application.js  (82ms)  (pid 5020)
+Compiled application.css  (0ms)  (pid 5020)
+Compiled jquery.js  (2ms)  (pid 5020)
+Compiled jquery_ujs.js  (0ms)  (pid 5020)
+Compiled maxlength.js  (0ms)  (pid 5020)
+Compiled application.js  (22ms)  (pid 5020)
+Compiled application.css  (0ms)  (pid 5020)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-04 22:59:41 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (13.8ms)
+  Rendered discussions/_discussion.html.erb (110.9ms)
+  Rendered home/index.html.erb within layouts/application (418.4ms)
+  Rendered error/500.html within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 527ms (Views: 8.7ms | ActiveRecord: 44.9ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:03:45 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.2ms)
+  Rendered discussions/_discussion.html.erb (36.3ms)
+  Rendered home/index.html.erb within layouts/application (134.5ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 194ms (Views: 4.8ms | ActiveRecord: 5.2ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:03:49 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.4ms)
+  Rendered discussions/_discussion.html.erb (37.5ms)
+  Rendered home/index.html.erb within layouts/application (137.2ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 144ms (Views: 4.0ms | ActiveRecord: 5.1ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:03:52 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (3.2ms)
+  Rendered discussions/_discussion.html.erb (34.7ms)
+  Rendered home/index.html.erb within layouts/application (196.4ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 204ms (Views: 4.5ms | ActiveRecord: 6.4ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:03:55 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.4ms)
+  Rendered discussions/_discussion.html.erb (34.9ms)
+  Rendered home/index.html.erb within layouts/application (134.8ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 141ms (Views: 4.1ms | ActiveRecord: 5.6ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:04:37 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.4ms)
+  Rendered discussions/_discussion.html.erb (33.5ms)
+  Rendered home/index.html.erb within layouts/application (202.5ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 209ms (Views: 4.1ms | ActiveRecord: 5.5ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:05:57 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.4ms)
+  Rendered discussions/_discussion.html.erb (40.8ms)
+  Rendered home/index.html.erb within layouts/application (220.0ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 227ms (Views: 4.2ms | ActiveRecord: 5.3ms)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:06:12 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (6.7ms)
+  Rendered discussions/_discussion.html.erb (108.1ms)
+  Rendered home/index.html.erb within layouts/application (345.2ms)
+  Rendered error/500.html within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 451ms (Views: 8.1ms | ActiveRecord: 13.7ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:06:55 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.5ms)
+  Rendered discussions/_discussion.html.erb (35.7ms)
+  Rendered home/index.html.erb within layouts/application (141.9ms)
+  Rendered error/500.html within layouts/application (0.1ms)
+Completed 500 Internal Server Error in 201ms (Views: 5.1ms | ActiveRecord: 5.1ms)
+Started GET "/people" for 127.0.0.1 at 2013-01-04 23:07:03 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (318.2ms)
+Completed 200 OK in 326ms (Views: 321.4ms | ActiveRecord: 2.5ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:07:05 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (72.6ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 81ms (Views: 3.7ms | ActiveRecord: 1.1ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:07:06 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (211.7ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 277ms (Views: 4.9ms | ActiveRecord: 117.8ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:07:09 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (4.2ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 10ms (Views: 3.5ms | ActiveRecord: 1.0ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:07:11 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (35.3ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 43ms (Views: 3.7ms | ActiveRecord: 3.3ms)
+Started GET "/notes" for 127.0.0.1 at 2013-01-04 23:07:12 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/_form.html.erb (4.6ms)
+  Rendered notes/index.html.erb within layouts/application (267.7ms)
+Completed 200 OK in 284ms (Views: 225.3ms | ActiveRecord: 48.5ms)
+Started GET "/resources" for 127.0.0.1 at 2013-01-04 23:07:14 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/_form.html.erb (3.5ms)
+  Rendered resources/index.html.erb within layouts/application (262.5ms)
+Completed 200 OK in 270ms (Views: 254.0ms | ActiveRecord: 14.8ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-04 23:07:16 +0800
+Processing by TestingsController#index as HTML
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 9ms (Views: 6.0ms | ActiveRecord: 1.7ms)
+Started GET "/articles" for 127.0.0.1 at 2013-01-04 23:07:18 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/_form.html.erb (5.8ms)
+  Rendered articles/index.html.erb within layouts/application (752.2ms)
+Completed 200 OK in 832ms (Views: 205.4ms | ActiveRecord: 552.5ms)
+Started GET "/xingxiang" for 127.0.0.1 at 2013-01-04 23:07:21 +0800
+Processing by PagesController#xingxiang as HTML
+  Rendered pages/xingxiang.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.3ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-04 23:07:22 +0800
+Processing by TestingsController#index as HTML
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 6ms (Views: 3.7ms | ActiveRecord: 1.5ms)
+Started GET "/notes" for 127.0.0.1 at 2013-01-04 23:07:26 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/_form.html.erb (2.9ms)
+  Rendered notes/index.html.erb within layouts/application (107.9ms)
+Completed 200 OK in 114ms (Views: 97.5ms | ActiveRecord: 14.8ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:07:28 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (40.5ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 50ms (Views: 3.8ms | ActiveRecord: 4.0ms)
+Started GET "/people" for 127.0.0.1 at 2013-01-04 23:07:31 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (166.0ms)
+Completed 200 OK in 171ms (Views: 167.4ms | ActiveRecord: 2.3ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:07:32 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (5.3ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 12ms (Views: 4.3ms | ActiveRecord: 1.2ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:07:36 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (4.2ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 10ms (Views: 3.8ms | ActiveRecord: 0.9ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:07:37 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (5.5ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 12ms (Views: 3.9ms | ActiveRecord: 1.3ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:07:40 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (34.6ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 44ms (Views: 4.4ms | ActiveRecord: 3.4ms)
+Started GET "/resources" for 127.0.0.1 at 2013-01-04 23:07:42 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/_form.html.erb (2.8ms)
+  Rendered resources/index.html.erb within layouts/application (283.0ms)
+Completed 200 OK in 288ms (Views: 250.7ms | ActiveRecord: 36.3ms)
+Started GET "/notes" for 127.0.0.1 at 2013-01-04 23:07:43 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/_form.html.erb (2.6ms)
+  Rendered notes/index.html.erb within layouts/application (109.1ms)
+Completed 200 OK in 116ms (Views: 101.7ms | ActiveRecord: 13.0ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-04 23:07:44 +0800
+Processing by TestingsController#index as HTML
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 7ms (Views: 4.4ms | ActiveRecord: 1.9ms)
+Started GET "/people" for 127.0.0.1 at 2013-01-04 23:08:41 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (223.9ms)
+Completed 200 OK in 228ms (Views: 225.1ms | ActiveRecord: 2.2ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:08:43 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (4.3ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 10ms (Views: 3.6ms | ActiveRecord: 0.9ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:09:14 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (2.2ms)
+  Rendered discussions/_discussion.html.erb (35.0ms)
+  Rendered home/index.html.erb within layouts/application (202.5ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 210ms (Views: 4.0ms | ActiveRecord: 14.6ms)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:10:03 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 256ms (Views: 141.1ms | ActiveRecord: 112.7ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:10:21 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (83.9ms)
+  Rendered error/500.html within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 95ms (Views: 5.7ms | ActiveRecord: 2.9ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:10:23 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (100.6ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 159ms (Views: 4.5ms | ActiveRecord: 5.9ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:10:26 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (5.6ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 13ms (Views: 4.8ms | ActiveRecord: 1.2ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:10:28 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (36.3ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 45ms (Views: 4.0ms | ActiveRecord: 3.5ms)
+Started GET "/notes" for 127.0.0.1 at 2013-01-04 23:10:32 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/_form.html.erb (4.9ms)
+  Rendered notes/index.html.erb within layouts/application (300.6ms)
+Completed 200 OK in 312ms (Views: 290.9ms | ActiveRecord: 16.3ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:10:35 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (60.2ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 69ms (Views: 5.6ms | ActiveRecord: 55.0ms)
+Started GET "/people" for 127.0.0.1 at 2013-01-04 23:10:37 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (115.0ms)
+Completed 200 OK in 122ms (Views: 118.2ms | ActiveRecord: 2.1ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:10:38 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (38.8ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 50ms (Views: 4.1ms | ActiveRecord: 3.5ms)
+Started GET "/resources" for 127.0.0.1 at 2013-01-04 23:10:40 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/_form.html.erb (4.2ms)
+  Rendered resources/index.html.erb within layouts/application (271.0ms)
+Completed 200 OK in 286ms (Views: 260.5ms | ActiveRecord: 16.4ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-04 23:10:42 +0800
+Processing by TestingsController#index as HTML
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 10ms (Views: 6.3ms | ActiveRecord: 1.6ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-04 23:11:29 +0800
+Processing by TestingsController#index as HTML
+  Rendered error/500.html within layouts/application (0.1ms)
+Completed 500 Internal Server Error in 10ms (Views: 4.3ms | ActiveRecord: 1.8ms)
+Started GET "/articles" for 127.0.0.1 at 2013-01-04 23:11:34 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/_form.html.erb (6.1ms)
+  Rendered articles/index.html.erb within layouts/application (284.3ms)
+Completed 200 OK in 362ms (Views: 197.0ms | ActiveRecord: 93.4ms)
+Started GET "/xingxiang" for 127.0.0.1 at 2013-01-04 23:11:36 +0800
+Processing by PagesController#xingxiang as HTML
+  Rendered pages/xingxiang.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.4ms)
+Started GET "/people" for 127.0.0.1 at 2013-01-04 23:11:39 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (173.0ms)
+Completed 200 OK in 178ms (Views: 172.7ms | ActiveRecord: 4.0ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:11:40 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (4.3ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 10ms (Views: 3.7ms | ActiveRecord: 1.1ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:11:49 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.4ms)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:12:53 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (6.3ms)
+  Rendered home/index.html.erb within layouts/application (126.9ms)
+Completed 200 OK in 233ms (Views: 163.6ms | ActiveRecord: 67.3ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:13:38 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (3.0ms)
+  Rendered home/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.6ms)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:13:53 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (6.5ms)
+  Rendered discussions/_discussion.html.erb (125.3ms)
+  Rendered home/index.html.erb within layouts/application (641.0ms)
+Completed 200 OK in 747ms (Views: 658.4ms | ActiveRecord: 85.8ms)
+Started GET "/people" for 127.0.0.1 at 2013-01-04 23:13:57 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (206.6ms)
+Completed 200 OK in 217ms (Views: 212.7ms | ActiveRecord: 2.5ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:13:59 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (31.5ms)
+Completed 200 OK in 39ms (Views: 36.1ms | ActiveRecord: 1.4ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:14:00 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/_form.html.erb (3.2ms)
+  Rendered topics/index.html.erb within layouts/application (255.2ms)
+Completed 200 OK in 389ms (Views: 247.7ms | ActiveRecord: 19.6ms)
+Started GET "/notes" for 127.0.0.1 at 2013-01-04 23:14:01 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/_form.html.erb (4.3ms)
+  Rendered notes/index.html.erb within layouts/application (182.9ms)
+Completed 200 OK in 197ms (Views: 179.8ms | ActiveRecord: 14.4ms)
+Started GET "/resources" for 127.0.0.1 at 2013-01-04 23:14:02 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/_form.html.erb (3.7ms)
+  Rendered resources/index.html.erb within layouts/application (218.3ms)
+Completed 200 OK in 226ms (Views: 206.7ms | ActiveRecord: 17.6ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-04 23:14:03 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/_form.html.erb (7.1ms)
+  Rendered testings/index.html.erb within layouts/application (95.2ms)
+Completed 200 OK in 188ms (Views: 111.5ms | ActiveRecord: 12.2ms)
+Started GET "/articles" for 127.0.0.1 at 2013-01-04 23:14:04 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/_form.html.erb (4.8ms)
+  Rendered articles/index.html.erb within layouts/application (451.3ms)
+Completed 200 OK in 458ms (Views: 274.3ms | ActiveRecord: 182.8ms)
+Started GET "/xingxiang" for 127.0.0.1 at 2013-01-04 23:14:06 +0800
+Processing by PagesController#xingxiang as HTML
+  Rendered pages/xingxiang.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.4ms)
+Started GET "/people" for 127.0.0.1 at 2013-01-04 23:14:08 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (175.0ms)
+Completed 200 OK in 180ms (Views: 176.8ms | ActiveRecord: 2.9ms)
+Connecting to database specified by database.yml
+Started GET "/people" for 127.0.0.1 at 2013-01-04 23:25:13 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (232.1ms)
+Completed 200 OK in 340ms (Views: 332.0ms | ActiveRecord: 5.1ms)
+Started GET "/" for 127.0.0.1 at 2013-01-04 23:25:17 +0800
+Processing by HomeController#index as HTML
+  Rendered people/_person_info.erb (3.1ms)
+  Rendered discussions/_discussion.html.erb (131.5ms)
+  Rendered home/index.html.erb within layouts/application (568.7ms)
+Completed 200 OK in 582ms (Views: 536.5ms | ActiveRecord: 44.5ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-04 23:25:19 +0800
+Processing by CoursesController#index as HTML
+  Rendered courses/index.html.erb within layouts/application (31.8ms)
+Completed 200 OK in 39ms (Views: 36.7ms | ActiveRecord: 1.4ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:25:20 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/_form.html.erb (3.0ms)
+  Rendered topics/index.html.erb within layouts/application (226.5ms)
+Completed 200 OK in 414ms (Views: 217.5ms | ActiveRecord: 113.5ms)
+Started GET "/notes" for 127.0.0.1 at 2013-01-04 23:25:22 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/_form.html.erb (4.6ms)
+  Rendered notes/index.html.erb within layouts/application (181.1ms)
+Completed 200 OK in 190ms (Views: 174.9ms | ActiveRecord: 13.1ms)
+Started GET "/resources" for 127.0.0.1 at 2013-01-04 23:25:23 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/_form.html.erb (3.9ms)
+  Rendered resources/index.html.erb within layouts/application (226.9ms)
+Completed 200 OK in 236ms (Views: 217.3ms | ActiveRecord: 17.5ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-04 23:25:24 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/_form.html.erb (7.0ms)
+  Rendered testings/index.html.erb within layouts/application (98.6ms)
+Completed 200 OK in 145ms (Views: 130.9ms | ActiveRecord: 13.1ms)
+Started GET "/articles" for 127.0.0.1 at 2013-01-04 23:25:25 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/_form.html.erb (4.8ms)
+  Rendered articles/index.html.erb within layouts/application (456.1ms)
+Completed 200 OK in 463ms (Views: 294.4ms | ActiveRecord: 167.6ms)
+Started GET "/xingxiang" for 127.0.0.1 at 2013-01-04 23:25:27 +0800
+Processing by PagesController#xingxiang as HTML
+  Rendered pages/xingxiang.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.4ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:25:29 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/_form.html.erb (1.4ms)
+  Rendered topics/index.html.erb within layouts/application (203.4ms)
+Completed 200 OK in 213ms (Views: 191.7ms | ActiveRecord: 18.9ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-04 23:25:30 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/_form.html.erb (2.4ms)
+  Rendered testings/index.html.erb within layouts/application (78.7ms)
+Completed 200 OK in 84ms (Views: 70.9ms | ActiveRecord: 12.2ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:25:31 +0800
+Processing by TopicsController#index as HTML
+Started GET "/topics" for 127.0.0.1 at 2013-01-04 23:25:31 +0800
+  Rendered topics/_form.html.erb (1.5ms)
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (273.1ms)
+Completed 200 OK in 283ms (Views: 247.5ms | ActiveRecord: 33.1ms)
+  Rendered topics/_form.html.erb (4.2ms)
+  Rendered topics/index.html.erb within layouts/application (432.7ms)
+Completed 200 OK in 715ms (Views: 521.3ms | ActiveRecord: 29.6ms)
+Started GET "/topics/296" for 127.0.0.1 at 2013-01-04 23:25:35 +0800
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"296"}
+  Rendered share/_bdshare.html.erb (0.6ms)
+  Rendered comments/_comment.html.erb (6.5ms)
+  Rendered comments/_comment.html.erb (4.4ms)
+  Rendered comments/_form.html.erb (2.6ms)
+  Rendered topics/show.html.erb within layouts/application (47.0ms)
+Completed 200 OK in 59ms (Views: 50.0ms | ActiveRecord: 4.8ms)
+Compiled jquery.js  (12ms)  (pid 2817)
+Compiled jquery_ujs.js  (0ms)  (pid 2817)
+Compiled maxlength.js  (0ms)  (pid 2817)
+Compiled application.js  (161ms)  (pid 2817)
+Compiled application.css  (0ms)  (pid 2817)
+Compiled jquery.js  (2ms)  (pid 2817)
+Compiled jquery_ujs.js  (0ms)  (pid 2817)
+Compiled maxlength.js  (0ms)  (pid 2817)
+Compiled application.js  (28ms)  (pid 2817)
+Compiled application.css  (0ms)  (pid 2817)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-23 14:31:31 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (806.8ms)
+Completed 200 OK in 926ms (Views: 430.1ms | ActiveRecord: 493.7ms)
+Started GET "/zhinanzhen" for 127.0.0.1 at 2013-01-23 14:31:34 +0800
+Processing by PagesController#zhinanzhen as HTML
+  Rendered pages/zhinanzhen.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+Started GET "/courses" for 127.0.0.1 at 2013-01-23 14:31:36 +0800
+Processing by CoursesController#index as HTML
+Redirected to http://localhost/xianchang
+Filter chain halted as :subdomain_filter rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+Started GET "/xianchang" for 127.0.0.1 at 2013-01-23 14:31:36 +0800
+Processing by PagesController#xianchang as HTML
+  Rendered pages/xianchang.html.erb within layouts/application (253.9ms)
+Completed 200 OK in 309ms (Views: 292.6ms | ActiveRecord: 15.1ms)
+Started GET "/baodao" for 127.0.0.1 at 2013-01-23 14:31:37 +0800
+Processing by PagesController#baodao as HTML
+  Rendered pages/baodao.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+Started GET "/baodao" for 127.0.0.1 at 2013-01-23 14:31:38 +0800
+Processing by PagesController#baodao as HTML
+  Rendered pages/baodao.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+Started GET "/topics" for 127.0.0.1 at 2013-01-23 14:31:39 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/_form.html.erb (2.9ms)
+  Rendered topics/index.html.erb within layouts/application (458.4ms)
+Completed 200 OK in 578ms (Views: 338.7ms | ActiveRecord: 127.0ms)
+Started GET "/people" for 127.0.0.1 at 2013-01-23 14:31:40 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (83.2ms)
+Completed 200 OK in 89ms (Views: 86.3ms | ActiveRecord: 1.9ms)
+Started GET "/notes" for 127.0.0.1 at 2013-01-23 14:31:41 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/index.html.erb within layouts/application (237.6ms)
+Completed 200 OK in 244ms (Views: 228.3ms | ActiveRecord: 14.6ms)
+Started GET "/resources" for 127.0.0.1 at 2013-01-23 14:31:42 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (298.3ms)
+Completed 200 OK in 305ms (Views: 283.8ms | ActiveRecord: 20.1ms)
+Started GET "/testings" for 127.0.0.1 at 2013-01-23 14:31:42 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/index.html.erb within layouts/application (193.9ms)
+Completed 200 OK in 202ms (Views: 155.0ms | ActiveRecord: 44.7ms)
+Started GET "/articles" for 127.0.0.1 at 2013-01-23 14:31:43 +0800
+Processing by ArticlesController#index as HTML
+Started GET "/xingxiang" for 127.0.0.1 at 2013-01-23 14:31:44 +0800
+Processing by PagesController#xingxiang as HTML
+  Rendered pages/xingxiang.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 304ms (Views: 302.5ms | ActiveRecord: 0.0ms)
+  Rendered articles/index.html.erb within layouts/application (1047.9ms)
+Completed 200 OK in 1055ms (Views: 492.4ms | ActiveRecord: 561.1ms)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:34:10 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (322.4ms)
+  Rendered error/500.html within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 463ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:   <title><%= yield(:title) %></title>
+    6: 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:   <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:   <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 
+    10:   <%= javascript_include_tag "application"%>
+    11: 	<%= csrf_meta_tags %>
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___1475449147391344937_2159944600'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:34:16 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (82.9ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 88ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:   <title><%= yield(:title) %></title>
+    6: 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:   <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:   <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 
+    10:   <%= javascript_include_tag "application"%>
+    11: 	<%= csrf_meta_tags %>
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___1475449147391344937_2159944600'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:34:59 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (155.3ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 160ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:   <title><%= yield(:title) %></title>
+    6: 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:   <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:   <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 
+    10:   <%= javascript_include_tag "application"%>
+    11: 	<%= csrf_meta_tags %>
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___1475449147391344937_2159944600'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:35:50 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (148.6ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 155ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:   <title><%= yield(:title) %></title>
+    6: 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:   <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:   <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 
+    10:   <%= javascript_include_tag "application"%>
+    11: 	<%= csrf_meta_tags %>
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___1475449147391344937_2159944600'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:36:14 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (96.2ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 101ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:   <title><%= yield(:title) %></title>
+    6: 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:   <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:   <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 
+    10:   <%= javascript_include_tag "application"%>
+    11: 	<%= csrf_meta_tags %>
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___1475449147391344937_2159944600'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:37:01 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (287.0ms)
+  Rendered error/500.html within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 371ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:   <title><%= yield(:title) %></title>
+    6: 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:   <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:   <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 
+    10:   <%= javascript_include_tag "application"%>
+    11: 	<%= csrf_meta_tags %>
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__4081098748555365040_2162182520'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Compiled jquery.js  (2ms)  (pid 5348)
+Compiled jquery_ujs.js  (0ms)  (pid 5348)
+Compiled maxlength.js  (0ms)  (pid 5348)
+Compiled application.js  (73ms)  (pid 5348)
+Compiled application.css  (3ms)  (pid 5348)
+Compiled jquery.js  (3ms)  (pid 5348)
+Compiled jquery_ujs.js  (0ms)  (pid 5348)
+Compiled maxlength.js  (0ms)  (pid 5348)
+Compiled application.js  (39ms)  (pid 5348)
+Compiled application.css  (0ms)  (pid 5348)
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:38:10 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (160.1ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 171ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:   <title><%= yield(:title) %></title>
+    6: 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:   <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:   <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 
+    10:   <%= javascript_include_tag "application"%>
+    11: 	<%= csrf_meta_tags %>
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__4081098748555365040_2162182520'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:38:13 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (85.2ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 143ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:   <title><%= yield(:title) %></title>
+    6: 	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:   <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:   <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 
+    10:   <%= javascript_include_tag "application"%>
+    11: 	<%= csrf_meta_tags %>
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__4081098748555365040_2162182520'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-01-23 17:38:18 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (380.5ms)
+Completed 200 OK in 489ms (Views: 454.9ms | ActiveRecord: 32.8ms)
+Compiled jquery.js  (3ms)  (pid 6329)
+Compiled jquery_ujs.js  (0ms)  (pid 6329)
+Compiled maxlength.js  (0ms)  (pid 6329)
+Compiled application.js  (90ms)  (pid 6329)
+Compiled application.css  (0ms)  (pid 6329)
+Compiled jquery.js  (3ms)  (pid 6329)
+Compiled jquery_ujs.js  (0ms)  (pid 6329)
+Compiled maxlength.js  (0ms)  (pid 6329)
+Compiled application.js  (36ms)  (pid 6329)
+Compiled application.css  (0ms)  (pid 6329)
+Connecting to database specified by database.yml
+Started GET "/testings" for 127.0.0.1 at 2013-02-16 21:01:30 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/index.html.erb within layouts/application (790.6ms)
+Completed 200 OK in 835ms (Views: 690.9ms | ActiveRecord: 131.9ms)
+Started POST "/login" for 127.0.0.1 at 2013-02-16 21:01:50 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K/j4asYwlXfrwpYvv1tpmQslHBirgf/GBqTCi5pSm7c=", "email"=>"399906796@qq.com", "password"=>"[FILTERED]", "commit"=>"登录"}
+Redirected to http://localhost/classes/1
+Completed 302 Found in 166ms (ActiveRecord: 5.2ms)
+Started GET "/classes/1" for 127.0.0.1 at 2013-02-16 21:01:50 +0800
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered topics/_form.html.erb (6.2ms)
+  Rendered groups/show.html.erb within layouts/application (1090.7ms)
+Completed 200 OK in 1134ms (Views: 497.2ms | ActiveRecord: 617.9ms)
+Started GET "/testings" for 127.0.0.1 at 2013-02-16 21:01:54 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/_form.html.erb (3.6ms)
+  Rendered testings/index.html.erb within layouts/application (106.3ms)
+Completed 200 OK in 115ms (Views: 97.7ms | ActiveRecord: 16.7ms)
+Started POST "/test" for 127.0.0.1 at 2013-02-16 21:01:58 +0800
+Processing by TestingsController#test as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K/j4asYwlXfrwpYvv1tpmQslHBirgf/GBqTCi5pSm7c=", "testing_id"=>"50", "answer"=>"B", "commit"=>"提交"}
+  Rendered testings/test.js.erb (0.6ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+Started POST "/test" for 127.0.0.1 at 2013-02-16 21:02:05 +0800
+Processing by TestingsController#test as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K/j4asYwlXfrwpYvv1tpmQslHBirgf/GBqTCi5pSm7c=", "testing_id"=>"49", "answer"=>"B", "commit"=>"提交"}
+  Rendered testings/test.js.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.4ms)
+Started GET "/testings" for 127.0.0.1 at 2013-02-16 21:04:30 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/_form.html.erb (9.2ms)
+  Rendered testings/index.html.erb within layouts/application (114.8ms)
+Completed 200 OK in 125ms (Views: 107.2ms | ActiveRecord: 16.6ms)
+Started GET "/" for 127.0.0.1 at 2013-03-01 10:21:10 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (842.9ms)
+Completed 200 OK in 935ms (Views: 319.2ms | ActiveRecord: 607.3ms)
+Started GET "/" for 127.0.0.1 at 2013-03-01 10:21:15 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (100.7ms)
+Completed 200 OK in 105ms (Views: 84.6ms | ActiveRecord: 19.4ms)
+Compiled jquery.js  (5ms)  (pid 78353)
+Compiled jquery_ujs.js  (0ms)  (pid 78353)
+Compiled maxlength.js  (0ms)  (pid 78353)
+Compiled application.js  (181ms)  (pid 78353)
+Compiled application.css  (0ms)  (pid 78353)
+Compiled jquery.js  (5ms)  (pid 78353)
+Compiled jquery_ujs.js  (0ms)  (pid 78353)
+Compiled maxlength.js  (0ms)  (pid 78353)
+Compiled application.js  (34ms)  (pid 78353)
+Compiled application.css  (0ms)  (pid 78353)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-03-31 15:41:44 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1102.7ms)
+Completed 200 OK in 1226ms (Views: 382.2ms | ActiveRecord: 841.8ms)
+Started GET "/zhinanzhen" for 127.0.0.1 at 2013-03-31 15:41:48 +0800
+Processing by PagesController#zhinanzhen as HTML
+  Rendered pages/zhinanzhen.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 35ms (Views: 34.1ms | ActiveRecord: 0.5ms)
+Started GET "/xianchang" for 127.0.0.1 at 2013-03-31 15:41:49 +0800
+Processing by PagesController#xianchang as HTML
+  Rendered pages/xianchang.html.erb within layouts/application (325.7ms)
+Completed 200 OK in 353ms (Views: 321.1ms | ActiveRecord: 30.5ms)
+Started GET "/baodao" for 127.0.0.1 at 2013-03-31 15:41:51 +0800
+Processing by PagesController#baodao as HTML
+  Rendered pages/baodao.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.4ms)
+Started GET "/people" for 127.0.0.1 at 2013-03-31 15:41:52 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (179.3ms)
+Completed 200 OK in 191ms (Views: 146.7ms | ActiveRecord: 41.8ms)
+Compiled jquery.js  (5ms)  (pid 50605)
+Compiled jquery_ujs.js  (1ms)  (pid 50605)
+Compiled maxlength.js  (0ms)  (pid 50605)
+Compiled bootstrap.js  (1ms)  (pid 50605)
+Compiled application.js  (338ms)  (pid 50605)
+Compiled bootstrap.css  (0ms)  (pid 50605)
+Compiled application.css  (34ms)  (pid 50605)
+Compiled jquery.js  (6ms)  (pid 50605)
+Compiled jquery_ujs.js  (0ms)  (pid 50605)
+Compiled maxlength.js  (0ms)  (pid 50605)
+Compiled bootstrap.js  (1ms)  (pid 50605)
+Compiled application.js  (53ms)  (pid 50605)
+Compiled bootstrap.css  (5ms)  (pid 50605)
+Compiled application.css  (30ms)  (pid 50605)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:12:05 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (973.5ms)
+Completed 200 OK in 1004ms (Views: 356.3ms | ActiveRecord: 646.0ms)
+Started GET "/" for 192.168.1.3 at 2013-04-10 20:13:35 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (74.3ms)
+Completed 200 OK in 193ms (Views: 143.7ms | ActiveRecord: 48.2ms)
+Started GET "/topics" for 192.168.1.3 at 2013-04-10 20:23:59 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (594.2ms)
+Completed 200 OK in 742ms (Views: 468.6ms | ActiveRecord: 155.7ms)
+Started GET "/topics/new" for 192.168.1.3 at 2013-04-10 20:24:25 +0800
+Processing by TopicsController#new as HTML
+  Rendered topics/_form.html.erb (4.1ms)
+  Rendered topics/new.erb within layouts/application (5.6ms)
+Completed 200 OK in 17ms (Views: 12.3ms | ActiveRecord: 0.6ms)
+Compiled jquery.js  (5ms)  (pid 51613)
+Compiled jquery_ujs.js  (0ms)  (pid 51613)
+Compiled maxlength.js  (0ms)  (pid 51613)
+Compiled bootstrap.js  (2ms)  (pid 51613)
+Compiled application.js  (247ms)  (pid 51613)
+Compiled bootstrap.css  (0ms)  (pid 51613)
+Compiled application.css  (29ms)  (pid 51613)
+Compiled jquery.js  (4ms)  (pid 51613)
+Compiled jquery_ujs.js  (0ms)  (pid 51613)
+Compiled maxlength.js  (0ms)  (pid 51613)
+Compiled bootstrap.js  (1ms)  (pid 51613)
+Compiled application.js  (164ms)  (pid 51613)
+Compiled bootstrap.css  (0ms)  (pid 51613)
+Compiled application.css  (6ms)  (pid 51613)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:39:57 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (85.5ms)
+Completed 200 OK in 89ms (Views: 82.2ms | ActiveRecord: 6.6ms)
+Compiled jquery.js  (6ms)  (pid 51792)
+Compiled jquery_ujs.js  (0ms)  (pid 51792)
+Compiled maxlength.js  (0ms)  (pid 51792)
+Compiled bootstrap.js  (1ms)  (pid 51792)
+Compiled application.js  (672ms)  (pid 51792)
+Compiled bootstrap.css  (5ms)  (pid 51792)
+Compiled ie/bootstrap-ie6.css  (1ms)  (pid 51792)
+Compiled ie/ie.css  (0ms)  (pid 51792)
+Compiled ie/index.css  (147ms)  (pid 51792)
+Compiled application.css  (219ms)  (pid 51792)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:41:49 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (448.4ms)
+Completed 200 OK in 453ms (Views: 401.5ms | ActiveRecord: 50.8ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:41:54 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (96.6ms)
+Completed 200 OK in 101ms (Views: 91.0ms | ActiveRecord: 9.0ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:01 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (153.2ms)
+Completed 200 OK in 157ms (Views: 94.7ms | ActiveRecord: 61.8ms)
+Compiled jquery.js  (5ms)  (pid 51792)
+Compiled jquery_ujs.js  (3ms)  (pid 51792)
+Compiled maxlength.js  (0ms)  (pid 51792)
+Compiled bootstrap.js  (1ms)  (pid 51792)
+Compiled application.js  (62ms)  (pid 51792)
+Compiled bootstrap.css  (0ms)  (pid 51792)
+Compiled ie/bootstrap-ie6.css  (0ms)  (pid 51792)
+Compiled ie/ie.css  (0ms)  (pid 51792)
+Compiled ie/index.css  (185ms)  (pid 51792)
+Compiled application.css  (211ms)  (pid 51792)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:16 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (312.8ms)
+Completed 200 OK in 317ms (Views: 194.2ms | ActiveRecord: 122.1ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:20 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 106ms (Views: 96.3ms | ActiveRecord: 9.3ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:22 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (108.4ms)
+Completed 200 OK in 112ms (Views: 99.6ms | ActiveRecord: 11.9ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:24 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (99.1ms)
+Completed 200 OK in 107ms (Views: 97.4ms | ActiveRecord: 8.9ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:25 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (227.6ms)
+Completed 200 OK in 232ms (Views: 216.8ms | ActiveRecord: 15.0ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:26 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (203.4ms)
+Completed 200 OK in 209ms (Views: 159.9ms | ActiveRecord: 48.8ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:26 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (94.9ms)
+Completed 200 OK in 101ms (Views: 90.9ms | ActiveRecord: 9.4ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:47 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (208.6ms)
+Completed 200 OK in 259ms (Views: 246.7ms | ActiveRecord: 12.1ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:51 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (106.9ms)
+Completed 200 OK in 111ms (Views: 92.7ms | ActiveRecord: 17.5ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:42:53 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (92.6ms)
+Completed 200 OK in 97ms (Views: 84.9ms | ActiveRecord: 11.4ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:43:25 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (82.2ms)
+Completed 200 OK in 86ms (Views: 79.0ms | ActiveRecord: 6.3ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:44:40 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (180.7ms)
+Completed 200 OK in 186ms (Views: 179.1ms | ActiveRecord: 6.5ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:44:46 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (85.4ms)
+Completed 200 OK in 89ms (Views: 82.2ms | ActiveRecord: 6.3ms)
+Compiled jquery.js  (15ms)  (pid 52139)
+Compiled jquery_ujs.js  (0ms)  (pid 52139)
+Compiled maxlength.js  (0ms)  (pid 52139)
+Compiled bootstrap.js  (1ms)  (pid 52139)
+Compiled application.js  (246ms)  (pid 52139)
+Compiled bootstrap.css  (0ms)  (pid 52139)
+Compiled application.css  (10ms)  (pid 52139)
+Compiled ie/bootstrap-ie6.css  (1ms)  (pid 52139)
+Compiled ie/ie.css  (0ms)  (pid 52139)
+Compiled ie/index.css  (22ms)  (pid 52139)
+Compiled jquery.js  (302ms)  (pid 52139)
+Compiled jquery_ujs.js  (1ms)  (pid 52139)
+Compiled maxlength.js  (0ms)  (pid 52139)
+Compiled bootstrap.js  (1ms)  (pid 52139)
+Compiled application.js  (418ms)  (pid 52139)
+Compiled bootstrap.css  (0ms)  (pid 52139)
+Compiled application.css  (8ms)  (pid 52139)
+Compiled ie/bootstrap-ie6.css  (0ms)  (pid 52139)
+Compiled ie/ie.css  (0ms)  (pid 52139)
+Compiled ie/index.css  (30ms)  (pid 52139)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:51:23 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (87.1ms)
+Completed 200 OK in 91ms (Views: 78.4ms | ActiveRecord: 12.1ms)
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:51:32 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (158.0ms)
+Completed 200 OK in 162ms (Views: 152.4ms | ActiveRecord: 8.8ms)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-04-10 20:52:17 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (396.4ms)
+Completed 200 OK in 429ms (Views: 408.5ms | ActiveRecord: 18.5ms)
+Started GET "/" for 192.168.1.3 at 2013-04-10 20:54:08 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (83.7ms)
+Completed 200 OK in 295ms (Views: 239.2ms | ActiveRecord: 55.1ms)
+Started GET "/topics" for 192.168.1.3 at 2013-04-10 21:02:48 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (1281.0ms)
+Completed 200 OK in 1894ms (Views: 1201.4ms | ActiveRecord: 343.5ms)
+Started GET "/topics" for 192.168.1.3 at 2013-04-10 21:22:24 +0800
+Processing by TopicsController#index as */*
+  Rendered topics/index.html.erb within layouts/application (320.1ms)
+Completed 200 OK in 331ms (Views: 312.3ms | ActiveRecord: 15.2ms)
+Started GET "/topics" for 192.168.1.3 at 2013-04-10 21:23:06 +0800
+Processing by TopicsController#index as */*
+  Rendered topics/index.html.erb within layouts/application (179.2ms)
+Completed 200 OK in 190ms (Views: 172.3ms | ActiveRecord: 14.7ms)
+Started GET "/topics" for 192.168.1.3 at 2013-04-10 21:23:08 +0800
+Processing by TopicsController#index as */*
+  Rendered topics/index.html.erb within layouts/application (265.9ms)
+Completed 200 OK in 277ms (Views: 259.0ms | ActiveRecord: 13.7ms)
+Compiled jquery.js  (15ms)  (pid 53547)
+Compiled jquery_ujs.js  (0ms)  (pid 53547)
+Compiled maxlength.js  (0ms)  (pid 53547)
+Compiled bootstrap.js  (1ms)  (pid 53547)
+Compiled application.js  (169ms)  (pid 53547)
+Compiled bootstrap.css  (48ms)  (pid 53547)
+Compiled application.css  (172ms)  (pid 53547)
+Compiled ie/bootstrap-ie6.css  (0ms)  (pid 53547)
+Compiled ie/ie.css  (0ms)  (pid 53547)
+Compiled ie/index.css  (726ms)  (pid 53547)
+Compiled jquery.js  (116ms)  (pid 53547)
+Compiled jquery_ujs.js  (0ms)  (pid 53547)
+Compiled maxlength.js  (0ms)  (pid 53547)
+Compiled bootstrap.js  (2ms)  (pid 53547)
+Compiled application.js  (206ms)  (pid 53547)
+Compiled bootstrap.css  (6ms)  (pid 53547)
+Compiled application.css  (14ms)  (pid 53547)
+Compiled ie/bootstrap-ie6.css  (7ms)  (pid 53547)
+Compiled ie/ie.css  (0ms)  (pid 53547)
+Compiled ie/index.css  (672ms)  (pid 53547)
+Started GET "/topics" for 192.168.1.3 at 2013-04-10 21:24:47 +0800
+Processing by TopicsController#index as */*
+  Rendered topics/index.html.erb within layouts/application (4218.8ms)
+Completed 200 OK in 4736ms (Views: 4130.8ms | ActiveRecord: 476.3ms)
+Started GET "/notes" for 192.168.1.3 at 2013-04-10 21:27:35 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/index.html.erb within layouts/application (480.7ms)
+Completed 200 OK in 527ms (Views: 457.3ms | ActiveRecord: 33.2ms)
+Started GET "/resources" for 192.168.1.3 at 2013-04-10 21:27:44 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (386.1ms)
+Completed 200 OK in 403ms (Views: 370.0ms | ActiveRecord: 31.2ms)
+Started GET "/resources" for 192.168.1.3 at 2013-04-10 21:27:53 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (307.2ms)
+Completed 200 OK in 315ms (Views: 292.3ms | ActiveRecord: 21.4ms)
+Started GET "/articles" for 192.168.1.3 at 2013-04-10 21:27:57 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (1580.7ms)
+Completed 200 OK in 1611ms (Views: 854.6ms | ActiveRecord: 734.6ms)
+Started GET "/testings" for 192.168.1.3 at 2013-04-10 21:28:14 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/index.html.erb within layouts/application (564.1ms)
+Completed 200 OK in 615ms (Views: 268.1ms | ActiveRecord: 345.5ms)
+Started GET "/testings/new" for 192.168.1.3 at 2013-04-10 21:29:41 +0800
+Processing by TestingsController#new as HTML
+  Rendered testings/_form.html.erb (34.0ms)
+  Rendered testings/new.html.erb within layouts/application (35.6ms)
+Completed 200 OK in 45ms (Views: 42.9ms | ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2013-04-22 17:49:40 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (3207.2ms)
+Completed 200 OK in 4379ms (Views: 3266.3ms | ActiveRecord: 673.0ms)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-08-01 23:36:22 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (1249.6ms)
+  Rendered error/500.html within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 1497ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:     <title><%= yield(:title) %></title>
+    6:   	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:     <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:     <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 		<!--[if lte IE 6]>
+    10: 		<%= stylesheet_link_tag "ie/index", :media => "all" %>
+    11:     <![endif]-->
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___253486167938154763_2176917280'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-08-02 00:20:21 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (706.1ms)
+  Rendered error/500.html within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 968ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:     <title><%= yield(:title) %></title>
+    6:   	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:     <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:     <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 		<!--[if lte IE 6]>
+    10: 		<%= stylesheet_link_tag "ie/index", :media => "all" %>
+    11:     <![endif]-->
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___2477839605300660530_2175018180'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Compiled jquery.js  (58ms)  (pid 55660)
+Compiled jquery_ujs.js  (0ms)  (pid 55660)
+Compiled maxlength.js  (0ms)  (pid 55660)
+Compiled bootstrap.js  (1ms)  (pid 55660)
+Compiled application.js  (102ms)  (pid 55660)
+Compiled bootstrap.css  (0ms)  (pid 55660)
+Compiled application.css  (7ms)  (pid 55660)
+Compiled ie/bootstrap-ie6.css  (0ms)  (pid 55660)
+Compiled ie/ie.css  (0ms)  (pid 55660)
+Compiled ie/index.css  (47ms)  (pid 55660)
+Compiled jquery.js  (4ms)  (pid 55660)
+Compiled jquery_ujs.js  (0ms)  (pid 55660)
+Compiled maxlength.js  (0ms)  (pid 55660)
+Compiled bootstrap.js  (1ms)  (pid 55660)
+Compiled application.js  (27ms)  (pid 55660)
+Compiled bootstrap.css  (0ms)  (pid 55660)
+Compiled application.css  (7ms)  (pid 55660)
+Compiled ie/bootstrap-ie6.css  (0ms)  (pid 55660)
+Compiled ie/ie.css  (0ms)  (pid 55660)
+Compiled ie/index.css  (9ms)  (pid 55660)
+Started GET "/" for 127.0.0.1 at 2013-08-02 00:23:17 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (160.5ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 166ms
+
+ActionView::Template::Error (application.css isn't precompiled):
+    5:     <title><%= yield(:title) %></title>
+    6:   	<meta name = "keywords" content = "<%= yield(:keywords) %>" /> 
+    7:     <meta name = "description" content = "<%= yield(:description) %>" /> 
+    8:     <%= stylesheet_link_tag "application", :media => "all" %>
+    9: 		<!--[if lte IE 6]>
+    10: 		<%= stylesheet_link_tag "ie/index", :media => "all" %>
+    11:     <![endif]-->
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___2477839605300660530_2175018180'
+  app/controllers/application_controller.rb:29:in `render_error'
+
+
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-08-02 00:23:52 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (400.5ms)
+  Rendered error/500.html within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 621ms (Views: 82.1ms | ActiveRecord: 41.4ms)
+Started GET "/" for 127.0.0.1 at 2013-08-02 00:23:56 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (184.6ms)
+  Rendered error/500.html within layouts/application (0.1ms)
+Completed 500 Internal Server Error in 198ms (Views: 8.9ms | ActiveRecord: 16.6ms)
+Started GET "/people" for 127.0.0.1 at 2013-08-02 00:23:58 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (390.0ms)
+Completed 200 OK in 400ms (Views: 377.7ms | ActiveRecord: 21.0ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 00:24:00 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (240.5ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 252ms (Views: 7.6ms | ActiveRecord: 17.2ms)
+Started GET "/resources" for 127.0.0.1 at 2013-08-02 00:24:02 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (282.4ms)
+Completed 200 OK in 295ms (Views: 286.9ms | ActiveRecord: 6.6ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 00:24:05 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (156.8ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 167ms (Views: 6.7ms | ActiveRecord: 15.2ms)
+Started GET "/people" for 127.0.0.1 at 2013-08-02 00:25:03 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (429.1ms)
+Completed 200 OK in 438ms (Views: 418.5ms | ActiveRecord: 18.6ms)
+Started GET "/resources" for 127.0.0.1 at 2013-08-02 00:25:04 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (295.5ms)
+Completed 200 OK in 304ms (Views: 296.2ms | ActiveRecord: 6.9ms)
+Started GET "/notes" for 127.0.0.1 at 2013-08-02 00:25:07 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/index.html.erb within layouts/application (328.5ms)
+Completed 200 OK in 365ms (Views: 339.5ms | ActiveRecord: 24.1ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 00:25:09 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (162.2ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 173ms (Views: 6.7ms | ActiveRecord: 14.2ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 09:51:44 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (268.6ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 281ms (Views: 8.0ms | ActiveRecord: 31.0ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 09:51:47 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (1707.8ms)
+Completed 200 OK in 1836ms (Views: 1024.3ms | ActiveRecord: 807.2ms)
+Started GET "/notes" for 127.0.0.1 at 2013-08-02 09:51:49 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/index.html.erb within layouts/application (585.7ms)
+Completed 200 OK in 596ms (Views: 523.5ms | ActiveRecord: 71.6ms)
+Started GET "/resources" for 127.0.0.1 at 2013-08-02 09:51:49 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (405.9ms)
+Completed 200 OK in 429ms (Views: 415.3ms | ActiveRecord: 9.4ms)
+Connecting to database specified by database.yml
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 10:12:03 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (474.9ms)
+  Rendered error/500.html within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 1417ms (Views: 100.3ms | ActiveRecord: 34.4ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 10:13:47 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (161.7ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 172ms (Views: 6.7ms | ActiveRecord: 14.4ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 10:13:49 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (264.6ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 277ms (Views: 6.8ms | ActiveRecord: 32.5ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 10:17:20 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (163.1ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 174ms (Views: 6.9ms | ActiveRecord: 17.2ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 10:17:22 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (245.4ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 257ms (Views: 6.5ms | ActiveRecord: 14.3ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 10:20:55 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (160.6ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 174ms (Views: 8.1ms | ActiveRecord: 13.8ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 10:20:58 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (260.3ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 274ms (Views: 8.8ms | ActiveRecord: 31.0ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 10:21:00 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (240.9ms)
+  Rendered error/500.html within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 253ms (Views: 8.3ms | ActiveRecord: 14.6ms)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-08-02 14:41:52 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (441.2ms)
+Completed 500 Internal Server Error in 693ms
+
+ActionView::Template::Error (Mysql2::Error: Table 'v8_production.events' doesn't exist: SHOW FULL FIELDS FROM `events`):
+    131: 		
+    132: 		<h4>最近发布的培训聚会:</h4>
+    133: 		<ul>
+    134: 			<% @events.each do |event| %>
+    135: 				<li><%= link_to event.name, event %><br /></li>
+    136: 			<% end %>				
+    137: 		</ul>
+  app/views/topics/index.html.erb:134:in `_app_views_topics_index_html_erb__4472119679715539459_2179290920'
+  app/controllers/topics_controller.rb:21:in `index'
+
+
+Started GET "/" for 127.0.0.1 at 2013-08-02 14:43:19 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (375.7ms)
+Completed 500 Internal Server Error in 380ms
+
+ActionView::Template::Error (Mysql2::Error: Table 'v8_production.events' doesn't exist: SHOW FULL FIELDS FROM `events`):
+    131: 		
+    132: 		<h4>最近发布的培训聚会:</h4>
+    133: 		<ul>
+    134: 			<% @events.each do |event| %>
+    135: 				<li><%= link_to event.name, event %><br /></li>
+    136: 			<% end %>				
+    137: 		</ul>
+  app/views/topics/index.html.erb:134:in `_app_views_topics_index_html_erb__4472119679715539459_2179290920'
+  app/controllers/topics_controller.rb:21:in `index'
+
+
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-08-02 14:43:32 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (421.0ms)
+Completed 500 Internal Server Error in 573ms
+
+ActionView::Template::Error (Mysql2::Error: Table 'v8_production.events' doesn't exist: SHOW FULL FIELDS FROM `events`):
+    131: 		
+    132: 		<h4>最近发布的培训聚会:</h4>
+    133: 		<ul>
+    134: 			<% @events.each do |event| %>
+    135: 				<li><%= link_to event.name, event %><br /></li>
+    136: 			<% end %>				
+    137: 		</ul>
+  app/views/topics/index.html.erb:134:in `_app_views_topics_index_html_erb__4518171527483590729_2175072220'
+  app/controllers/topics_controller.rb:21:in `index'
+
+
+Started GET "/" for 127.0.0.1 at 2013-08-02 14:44:55 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (236.8ms)
+Completed 200 OK in 255ms (Views: 226.2ms | ActiveRecord: 26.1ms)
+Started GET "/people" for 127.0.0.1 at 2013-08-02 14:44:58 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (425.0ms)
+Completed 200 OK in 470ms (Views: 436.2ms | ActiveRecord: 32.8ms)
+Started GET "/resources" for 127.0.0.1 at 2013-08-02 14:45:00 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (297.2ms)
+Completed 200 OK in 308ms (Views: 296.2ms | ActiveRecord: 10.1ms)
+Started GET "/notes" for 127.0.0.1 at 2013-08-02 14:45:02 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/index.html.erb within layouts/application (268.1ms)
+Completed 200 OK in 315ms (Views: 288.2ms | ActiveRecord: 24.1ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:45:04 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (419.6ms)
+Completed 200 OK in 442ms (Views: 348.4ms | ActiveRecord: 92.3ms)
+Started GET "/events" for 127.0.0.1 at 2013-08-02 14:45:05 +0800
+Processing by EventsController#index as HTML
+  Rendered events/index.html.erb within layouts/application (282.5ms)
+Completed 200 OK in 370ms (Views: 128.6ms | ActiveRecord: 239.9ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:45:07 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (345.9ms)
+Completed 200 OK in 361ms (Views: 288.2ms | ActiveRecord: 71.8ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 14:45:23 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (174.5ms)
+Completed 200 OK in 186ms (Views: 164.7ms | ActiveRecord: 17.9ms)
+Started GET "/events" for 127.0.0.1 at 2013-08-02 14:45:24 +0800
+Processing by EventsController#index as HTML
+  Rendered events/index.html.erb within layouts/application (39.2ms)
+Completed 200 OK in 53ms (Views: 43.6ms | ActiveRecord: 8.5ms)
+Started GET "/testings" for 127.0.0.1 at 2013-08-02 14:45:26 +0800
+Processing by TestingsController#index as HTML
+  Rendered testings/index.html.erb within layouts/application (183.3ms)
+Completed 200 OK in 217ms (Views: 192.2ms | ActiveRecord: 22.7ms)
+Started GET "/vip" for 127.0.0.1 at 2013-08-02 14:45:27 +0800
+Processing by PagesController#vip as HTML
+  Rendered pages/vip.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 15ms (Views: 13.5ms | ActiveRecord: 0.4ms)
+Started GET "/notes" for 127.0.0.1 at 2013-08-02 14:45:28 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/index.html.erb within layouts/application (135.5ms)
+Completed 200 OK in 144ms (Views: 114.7ms | ActiveRecord: 28.2ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:45:30 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (393.2ms)
+Completed 200 OK in 404ms (Views: 330.2ms | ActiveRecord: 72.5ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:49:50 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (495.0ms)
+Completed 200 OK in 507ms (Views: 434.0ms | ActiveRecord: 70.1ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:51:06 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (365.5ms)
+Completed 200 OK in 375ms (Views: 313.5ms | ActiveRecord: 60.8ms)
+Compiled jquery.js  (5ms)  (pid 46990)
+Compiled jquery_ujs.js  (0ms)  (pid 46990)
+Compiled maxlength.js  (0ms)  (pid 46990)
+Compiled bootstrap.js  (1ms)  (pid 46990)
+Compiled application.js  (134ms)  (pid 46990)
+Started GET "/notes" for 127.0.0.1 at 2013-08-02 14:52:20 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/index.html.erb within layouts/application (283.6ms)
+Completed 200 OK in 298ms (Views: 257.0ms | ActiveRecord: 39.5ms)
+Compiled bootstrap.css  (1ms)  (pid 46990)
+Compiled application.css  (8ms)  (pid 46990)
+Compiled ie/bootstrap-ie6.css  (1ms)  (pid 46990)
+Compiled ie/ie.css  (0ms)  (pid 46990)
+Compiled ie/index.css  (45ms)  (pid 46990)
+Started GET "/resources" for 127.0.0.1 at 2013-08-02 14:52:31 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (461.0ms)
+Completed 200 OK in 474ms (Views: 461.7ms | ActiveRecord: 10.6ms)
+Started GET "/people" for 127.0.0.1 at 2013-08-02 14:52:34 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (736.1ms)
+Completed 200 OK in 756ms (Views: 712.5ms | ActiveRecord: 42.9ms)
+Compiled jquery.js  (8ms)  (pid 46990)
+Compiled jquery_ujs.js  (0ms)  (pid 46990)
+Compiled maxlength.js  (0ms)  (pid 46990)
+Compiled bootstrap.js  (3ms)  (pid 46990)
+Compiled application.js  (104ms)  (pid 46990)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 14:52:36 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (232.9ms)
+Completed 200 OK in 255ms (Views: 225.9ms | ActiveRecord: 25.3ms)
+Compiled bootstrap.css  (1ms)  (pid 46990)
+Compiled application.css  (9ms)  (pid 46990)
+Compiled ie/bootstrap-ie6.css  (0ms)  (pid 46990)
+Compiled ie/ie.css  (0ms)  (pid 46990)
+Compiled ie/index.css  (9ms)  (pid 46990)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:52:43 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (508.6ms)
+Completed 200 OK in 520ms (Views: 424.8ms | ActiveRecord: 94.3ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:52:45 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (503.4ms)
+Completed 200 OK in 512ms (Views: 409.8ms | ActiveRecord: 101.1ms)
+Started GET "/events" for 127.0.0.1 at 2013-08-02 14:52:47 +0800
+Processing by EventsController#index as HTML
+  Rendered events/index.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 43ms (Views: 37.5ms | ActiveRecord: 4.7ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:52:49 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (414.2ms)
+Completed 200 OK in 429ms (Views: 346.0ms | ActiveRecord: 77.1ms)
+Connecting to database specified by database.yml
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:53:00 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (568.3ms)
+Completed 200 OK in 620ms (Views: 514.4ms | ActiveRecord: 76.6ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:53:04 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (304.1ms)
+Completed 200 OK in 314ms (Views: 255.0ms | ActiveRecord: 57.6ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:53:06 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (356.4ms)
+Completed 200 OK in 365ms (Views: 304.4ms | ActiveRecord: 59.6ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:53:07 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (403.1ms)
+Completed 200 OK in 414ms (Views: 341.8ms | ActiveRecord: 70.6ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:53:13 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (356.1ms)
+Completed 200 OK in 365ms (Views: 303.4ms | ActiveRecord: 60.1ms)
+Started GET "/events" for 127.0.0.1 at 2013-08-02 14:54:05 +0800
+Processing by EventsController#index as HTML
+  Rendered events/index.html.erb within layouts/application (181.1ms)
+Completed 200 OK in 192ms (Views: 180.0ms | ActiveRecord: 10.9ms)
+Started GET "/people" for 127.0.0.1 at 2013-08-02 14:54:08 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (451.9ms)
+Completed 200 OK in 470ms (Views: 437.5ms | ActiveRecord: 31.6ms)
+Started GET "/categories" for 127.0.0.1 at 2013-08-02 14:55:06 +0800
+Processing by CategoriesController#index as HTML
+Redirected to 
+Completed 500 Internal Server Error in 7ms
+
+ActionController::RedirectBackError (No HTTP_REFERER was set in the request to this action, so redirect_to :back could not be called successfully. If this is a test, make sure to specify request.env["HTTP_REFERER"].):
+  app/controllers/application_controller.rb:99:in `only_admin_can_do'
+
+
+Started GET "/categories" for 127.0.0.1 at 2013-08-02 14:55:08 +0800
+Processing by CategoriesController#index as HTML
+Redirected to 
+Completed 500 Internal Server Error in 2ms
+
+ActionController::RedirectBackError (No HTTP_REFERER was set in the request to this action, so redirect_to :back could not be called successfully. If this is a test, make sure to specify request.env["HTTP_REFERER"].):
+  app/controllers/application_controller.rb:99:in `only_admin_can_do'
+
+
+Started GET "/categories" for 127.0.0.1 at 2013-08-02 14:55:16 +0800
+Processing by CategoriesController#index as HTML
+Redirected to 
+Completed 500 Internal Server Error in 4ms
+
+ActionController::RedirectBackError (No HTTP_REFERER was set in the request to this action, so redirect_to :back could not be called successfully. If this is a test, make sure to specify request.env["HTTP_REFERER"].):
+  app/controllers/application_controller.rb:99:in `only_admin_can_do'
+
+
+Started GET "/" for 127.0.0.1 at 2013-08-02 14:57:13 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (320.3ms)
+Completed 200 OK in 362ms (Views: 302.9ms | ActiveRecord: 40.3ms)
+Started DELETE "/logout" for 127.0.0.1 at 2013-08-02 14:57:15 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"9usTCDcrmZmKQ1hjqh8lSfnlDVxE4bSOtwwFfQe2K2c="}
+Redirected to http://localhost/login
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+Started GET "/login" for 127.0.0.1 at 2013-08-02 14:57:15 +0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/_login.html.erb (2.0ms)
+  Rendered sessions/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 35ms (Views: 34.6ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2013-08-02 14:57:17 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9usTCDcrmZmKQ1hjqh8lSfnlDVxE4bSOtwwFfQe2K2c=", "email"=>"399906796@qq.com", "password"=>"[FILTERED]", "commit"=>"登录"}
+Redirected to http://localhost/topics
+Completed 302 Found in 84ms (ActiveRecord: 1.1ms)
+Started GET "/topics" for 127.0.0.1 at 2013-08-02 14:57:17 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (240.1ms)
+Completed 200 OK in 252ms (Views: 229.6ms | ActiveRecord: 18.5ms)
+Started GET "/categories" for 127.0.0.1 at 2013-08-02 14:57:27 +0800
+Processing by CategoriesController#index as HTML
+  Rendered categories/index.html.erb within layouts/application (56.3ms)
+Completed 200 OK in 107ms (Views: 100.0ms | ActiveRecord: 3.5ms)
+Started GET "/notes" for 127.0.0.1 at 2013-08-02 14:58:37 +0800
+Processing by NotesController#index as HTML
+  Rendered notes/index.html.erb within layouts/application (232.5ms)
+Completed 200 OK in 246ms (Views: 216.6ms | ActiveRecord: 26.7ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:58:40 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (346.6ms)
+Completed 200 OK in 356ms (Views: 300.9ms | ActiveRecord: 53.8ms)
+Started GET "/resources" for 127.0.0.1 at 2013-08-02 14:58:41 +0800
+Processing by ResourcesController#index as HTML
+  Rendered resources/index.html.erb within layouts/application (332.4ms)
+Completed 200 OK in 346ms (Views: 334.6ms | ActiveRecord: 9.0ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:58:42 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (361.7ms)
+Completed 200 OK in 371ms (Views: 312.4ms | ActiveRecord: 57.0ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 14:59:00 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (439.4ms)
+Completed 200 OK in 455ms (Views: 392.1ms | ActiveRecord: 62.1ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 15:08:55 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (400.1ms)
+Completed 200 OK in 410ms (Views: 348.8ms | ActiveRecord: 59.6ms)
+Connecting to database specified by database.yml
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 15:09:16 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (567.7ms)
+Completed 200 OK in 627ms (Views: 518.7ms | ActiveRecord: 76.6ms)
+Started GET "/articles" for 127.0.0.1 at 2013-08-02 15:09:20 +0800
+Processing by ArticlesController#index as HTML
+  Rendered articles/index.html.erb within layouts/application (319.9ms)
+Completed 200 OK in 329ms (Views: 271.1ms | ActiveRecord: 56.5ms)
+Compiled jquery.js  (5ms)  (pid 79668)
+Compiled jquery_ujs.js  (0ms)  (pid 79668)
+Compiled maxlength.js  (0ms)  (pid 79668)
+Compiled bootstrap.js  (1ms)  (pid 79668)
+Compiled application.js  (129ms)  (pid 79668)
+Compiled bootstrap.css  (0ms)  (pid 79668)
+Compiled application.css  (11ms)  (pid 79668)
+Compiled jquery.js  (5ms)  (pid 79668)
+Compiled jquery_ujs.js  (0ms)  (pid 79668)
+Compiled maxlength.js  (0ms)  (pid 79668)
+Compiled bootstrap.js  (3ms)  (pid 79668)
+Compiled application.js  (38ms)  (pid 79668)
+Compiled bootstrap.css  (1ms)  (pid 79668)
+Compiled application.css  (9ms)  (pid 79668)
+Connecting to database specified by database.yml
+Started GET "/" for 127.0.0.1 at 2013-08-04 23:36:07 +0800
+Processing by TopicsController#index as HTML
+  Rendered topics/index.html.erb within layouts/application (718.9ms)
+Completed 200 OK in 973ms (Views: 691.9ms | ActiveRecord: 84.8ms)
+Started GET "/people" for 127.0.0.1 at 2013-08-04 23:38:06 +0800
+Processing by PeopleController#index as HTML
+  Rendered people/index.html.erb within layouts/application (434.5ms)
+Completed 200 OK in 465ms (Views: 405.0ms | ActiveRecord: 58.2ms)

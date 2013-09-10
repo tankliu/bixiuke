@@ -1,13 +1,12 @@
 *.[oa]
 *~
-log/
-vendor/
-tmp/
-public/ 
+# log/*
+# vendor/*
+# tmp/*
+public/* 
 app/assets/images
 app/views/pages
 dbbackup/
-color/     
 db/seeds.rb        
 config/database.yml
 v8_development.sql
