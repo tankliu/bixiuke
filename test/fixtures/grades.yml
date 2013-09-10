@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person: xueyuan
+  score: 10
+
+two:
+  person: youke
+  score: 20

@@ -1,0 +1,42 @@
+<!-- <div class="row">
+			
+			<% unless session[:person_id] %>
+				<div class="span6 offset2">
+					<%= form_tag :login, :class => "form-inline" do |f| %>
+
+					    <%= label_tag :email, "邮箱" %>
+					    <%= text_field_tag :email,nil, :class => "input-medium" %>
+					    <%= label_tag :password, "密码" %>
+					    <%= password_field_tag :password,nil,:class => "input-medium" %>
+					
+					    <%= submit_tag "登录", :class => "btn btn-primary ie6-btn" %>
+					
+				  <% end %>
+				</div>
+				<div class='span1'>
+					<%= link_to "注册", new_person_path, :class => "btn btn-success ie6-btn" %>
+				</div>
+			<% end %>
+		
+		
+		
+				<% unless session[:person_id].nil? %>	
+							<div class="span4 offset4 ie6-span">
+								<%= link_to current_person.nick_name, current_person %>&nbsp;|&nbsp;
+								<%= link_to "设置", edit_person_path(current_person) %>&nbsp;|&nbsp;
+								<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
+								<br /><br />
+								<p>
+								  <b>用户组:</b>
+								  <%= current_person.role %>
+									<b>积分:</b>
+								  <%= current_person.score %>
+									<b>等级:</b>
+								  <%= current_person.rank %>
+								</p>
+							</div>
+							<div class="span1">
+								<%= link_to image_tag(current_person.avatar.url(:thumb),:class => "user_head"), current_person %> 
+							</div>
+				<% end %>
+		</div> -->
