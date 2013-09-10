@@ -5,6 +5,7 @@ vendor/
 tmp/
 public/ 
 app/assets/images
+app/views/pages
 dbbackup/
 color/     
 db/seeds.rb        
