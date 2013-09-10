@@ -1,8 +1,8 @@
 *.[oa]
 *~
-# log/*
-# vendor/*
-# tmp/*
+log/*
+vendor/*
+tmp/*
 public/* 
 app/assets/images
 app/views/pages
