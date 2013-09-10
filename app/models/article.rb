@@ -5,7 +5,8 @@ class Article < ActiveRecord::Base
   belongs_to :category
   paginates_per 10
 
-  validates :title, :length => {:in => 1..100, :message => "标题字数长度在1到100之间"}
+  validates :title, :length => {:in => 1..100, :message => "标题字数长度在1到100之间"}    
+  # TODO 回掉before_save后再检查
   validates :description, :length => {:in => 1..100000, :message => "描述字数在1到10万之间"}
   validates :content, :length => {:in => 1..100000,:message => "文章内容字数必须在1到10万之间"}
   validates :views, :numericality => {:greater_than_or_equal_to => 0, :only_integer => true, :message => "浏览次数必须是整数"}
@@ -41,6 +42,12 @@ class Article < ActiveRecord::Base
   #   if dimensions.width >1500 or dimensions.height > 1500
   #     errors.add(:attachment,"图片长宽都不能超过1500像素")
   #   end
-  # end
+  # end           
+  
+  before_validation :add_description
+  protected
+  def add_description  
+      self.description = self.content[0,600]
+  end               
   
 end

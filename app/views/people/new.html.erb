@@ -1,6 +1,6 @@
 <div class="row">
-	<div class="span12">
-	<h4>必读:创建账户(请先购买学习<a href="/">泡妞课程</a>或者<a href="/zhinanzhen">书籍</a>,注册后通知客服开通学员,注册后没开通学员仍不能用高级功能)</h4>
+	<div class="span12">       
+	<h4>一分钟即可注册好,从此告别宅男:</h4>
 	<% if session[:person_id] and !is_admin? %>
 		<div id="notice">你已经注册,请回到<%= link_to "个人主页", Person.find(session[:person_id]) %></div>
 	<% else  %>

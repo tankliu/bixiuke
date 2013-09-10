@@ -3,7 +3,7 @@ V8::Application.routes.draw do
 
   resources :options
 
-  root :to => 'home#index' 
+  root :to => 'topics#index' 
 
   match 'guangpan' => 'pages#guangpan'
   match 'baodao' => 'pages#baodao'
@@ -13,7 +13,9 @@ V8::Application.routes.draw do
   match 'xianchang/page(/:page)'  => "pages#xianchang"
   match 'wangpan'  => "pages#wangpan"
   match 'xingxiang'  => "pages#xingxiang"
-  
+  match 'vip' => "pages#vip"
+  match 'xingxiang' => "pages#xingxiang"
+  match 'hezuo' => "pages#hezuo"
 
   #这不是注册页面, 而是说服用户去购买的页面.
   
@@ -49,18 +51,19 @@ V8::Application.routes.draw do
     resources :comments
   end
   
-  resources :courses do 
+  resources :events do 
     resources :notes
   end
   
   resources :subjects do
-    resources :courses
+    resources :events
   end
 
   resources :categories do
     resources :articles
     resources :resources
-    resources :notes
+    resources :notes  
+    resources :topics
   end
   
   resources :people do
@@ -82,7 +85,9 @@ V8::Application.routes.draw do
   
   match '/classes/:id' => 'groups#show', :as => :group, :via => :get
   match '/classes/:id/topics/page(/:page)' => 'groups#show'
-  match '/topics/page(/:page)' => 'topics#index'
+  match '/topics/page(/:page)' => 'topics#index'        
+  match '/topics/:path/page(/:page)' => 'topics#index'
+  
   
   
   match '/classes/:id'  => "groups#update", :as => :group, :via => :put
@@ -95,36 +100,27 @@ V8::Application.routes.draw do
   match '/classes/:id/edit'  => "groups#edit", :as => :edit_group, :via => :get
     
   match '/classes/:group_id/topics/:id' => 'topics#show', :as => :class_topic
-  
 
   
   
   match 'resources/:path' => "resources#index", :as => :category_resources
   match 'notes/:path' => "notes#index", :as => :category_notes
   match 'articles/:path' => "articles#index", :as => :category_articles
+  match 'topics/:path' => "topics#index", :as => :category_topics
   
   
-  match 'resources/category/:path' => "resources#index", :as => :category_resources_old
-  match 'notes/category/:path' => "notes#index", :as => :category_notes_old
-  match 'articles/category/:path' => "articles#index", :as => :category_articles_old
-  
-  
-  
-  match '/courses/page(/:page)' => 'courses#index'
+  match '/events/page(/:page)' => 'events#index' 
   
   match '/notes/page(/:page)' => 'notes#index'
   match '/notes/:path/page(/:page)' => 'notes#index'
-  match '/notes/category/:path/page(/:page)' => 'notes#index'
   
   
   match '/articles/page(/:page)' => 'articles#index'
   match '/articles/:path/page(/:page)' => 'articles#index'
-  match '/articles/category/:path/page(/:page)' => 'articles#index'
   
   
   match '/resources/page(/:page)' => 'resources#index'
   match '/resources/:path/page(/:page)' => 'resources#index'
-  match '/resources/category/:path/page(/:page)' => 'resources#index'
   
   
   match '/testings/page(/:page)' => 'testings#index'
@@ -198,7 +194,7 @@ V8::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  # root :to => 'Topics#index'
   
   # See how all your routes lay out with "rake routes"
 

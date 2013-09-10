@@ -9,7 +9,6 @@
 		<!--[if lte IE 6]>
 		<%= stylesheet_link_tag "ie/index", :media => "all" %>
     <![endif]-->
-		
     <%= javascript_include_tag "application"%>
   	<%= csrf_meta_tags %>
   	<% if Rails.env == "production" %>
@@ -22,8 +21,7 @@
   		<% end %>
   	<%# else %>
   		<%#= javascript_include_tag "http://localhost:9292/faye.js"%>
-  	<% end %>
-
+  	<% end %>            
   </head> 
 <!-- 产品模式下拒绝右键和复制 -->
 <% if Rails.env == "production" and controller.class == PagesController %>
@@ -33,118 +31,114 @@
 <% end %>
 <!-- 清理一个人的session -->
 <%# session[:person_id] = nil if session[:person_id] == 739 %>
-	
+	<div id="head">
+			<div id="guanggao">
+				<div class="container">
+					客服QQ:399906796&nbsp;&nbsp;&nbsp;&nbsp;<a href="/vip">加入vip成为学员</a>
+						学员可加vip QQ群,获得邮箱私密珍藏音频视频课程58套,老师专业详细指导咨询,无限制下载网站资源
+						<span class="pull-right ie6-pull-right">
+						<a href="/baodao">媒体报道</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="/hezuo">合作推广</a>
+						</span>  
+				</div>
+			</div>
+			<div id="logo">                    
+				<div class="container">
+					<div class="row">
+								<% unless session[:person_id] %>
+									<div class="span7 offset4 ie6-login">
+										<%= form_tag :login, :class => "form-inline" do |f| %>
+                        <%= label_tag :email, "邮箱:" %>
+										    <%= text_field_tag :email,nil, :class => "input-medium" %>                      <%= label_tag :password, "密码:" %>
+										    <%= password_field_tag :password,nil,:class => "input-medium"%>
+										    <%= submit_tag "登录", :class => "btn btn-success ie6-btn" %>
+
+									  <% end %>
+									</div>
+									<div class='span1'>
+										<%= link_to "注册", new_person_path, :class => "btn btn-success ie6-btn" %>
+									</div>
+								<% end %>
+
+									<% unless session[:person_id].nil? %>	
+												<div class="span4 offset7 ie6-login">
+													<%= link_to current_person.nick_name, current_person %>&nbsp;|&nbsp;
+													<%= link_to "设置", edit_person_path(current_person) %>&nbsp;|&nbsp;
+													<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
+													<br />
+													<p>
+													  <b>用户组:</b>
+													  <%= current_person.role %>
+														<b>积分:</b>
+													  <%= current_person.score %>
+														<b>等级:</b>
+													  <%= current_person.rank %>
+													</p>
+												</div>
+												<div class="span1">
+													<%= link_to image_tag(current_person.avatar.url(:thumb),:class => "user_head"), current_person %> 
+												</div>
+									<% end %>
+							</div> 
+				</div>
+			</div>
+			<div id="nav">
+				<div class="container">
+				<ul>
+					<li <%="class=active" if controller.class == TopicsController %> >
+	  				<a href="/topics" target="_top">情感咨询</a>
+	  			</li>
+
+					<li <%="class=active" if controller.class == PeopleController and action_name == "index" %> >
+						<a href="/people" target="_top">所有学员</a>
+					</li>
+
+					<!-- <li <%#="class=active" if controller.class == PagesController and action_name == "xingxiang" %> >
+											<a href="/xingxiang" target="_top">形象设计</a>
+										</li> -->
+
+					<li <%="class=active" if controller.class == ResourcesController %> >
+	  				<a href="/resources" target="_top">资源下载</a>
+	  			</li>    
+
+
+					<li <%="class=active" if controller.class == NotesController %> >
+						<a href="/notes" target="_top">惯例库</a>
+					</li>
+
+					<li <%="class=active" if controller.class == ArticlesController %> >
+	  				<a href="/articles" target="_top">原创转帖</a>
+	  			</li>  
+
+					<li <%="class=active" if controller.class == EventsController %> >
+						<a href="/events" target="_top">培训聚会</a>
+					</li>
+					
+					<li <%="class=active" if controller.class == TestingsController %> >
+						<a href="/testings" target="_top">情商测试</a>
+					</li> 
+					
+					<li <%="class=active" if controller.class == PagesController and action_name == "zhinanzhen" %> >
+						<a href="/zhinanzhen" target="_top">指男针</a>
+					</li>
+					
+					
+					<li <%="class=active" if controller.class == PagesController and action_name == "vip" %> >
+						<a href="/vip" target="_top">vip成为学员</a>
+					</li>
+			
+					
+
+					<!-- <li <%#="class=active" if controller.class == PagesController and action_name == "zhinanzhen" %> > -->
+						<!-- <a href="/zhinanzhen" target="_top">指男针</a> -->
+					<!-- </li> -->
+				</ul>
+				</div>
+			</div>
+		
+	</div>
 	
 	<div class="container">
-		<div id="guanggao">
-				欢迎来到pua课程网,最近有"三陪"现场实战培训.咨询QQ：399906796,也可联系此QQ购买pua课程,然后加入群和网站,成为网站学员,交流指导,阅读下载更高级资料!
-		</div>
-		<div class="row">
-			<div class="span3">
-				<img src= "/assets/logo.png", alt = "pua课程网" />
-			</div>
-			<% unless session[:person_id] %>
-				<div class="span6 offset2">
-					<%= form_tag :login, :class => "form-inline" do |f| %>
-
-					    <%= label_tag :email, "邮箱" %>
-					    <%= text_field_tag :email,nil, :class => "input-medium" %>
-					    <%= label_tag :password, "密码" %>
-					    <%= password_field_tag :password,nil,:class => "input-medium" %>
-					
-					    <%= submit_tag "登录", :class => "btn btn-primary ie6-btn" %>
-					
-				  <% end %>
-				</div>
-				<div class='span1'>
-					<%= link_to "注册", new_person_path, :class => "btn btn-success ie6-btn" %>
-				</div>
-			<% end %>
-		
-		
-		
-				<% unless session[:person_id].nil? %>	
-							<div class="span4 offset4 ie6-span">
-								<%= link_to current_person.nick_name, current_person %>&nbsp;|&nbsp;
-								<%= link_to "设置", edit_person_path(current_person) %>&nbsp;|&nbsp;
-								<%= link_to "退出", :logout, :data => { :confirm => '确定退出?' }, method: :delete %>
-								<br /><br />
-								<p>
-								  <b>用户组:</b>
-								  <%= current_person.role %>
-									<b>积分:</b>
-								  <%= current_person.score %>
-									<b>等级:</b>
-								  <%= current_person.rank %>
-								</p>
-							</div>
-							<div class="span1">
-								<%= link_to image_tag(current_person.avatar.url(:thumb),:class => "user_head"), current_person %> 
-							</div>
-				<% end %>
-		</div>
-		<div class="navbar navbar-inverse">
-			<div class="navbar-inner">
-			<ul class="nav">
-				<li <%="class=active" if controller.class == HomeController and action_name == "index" %> >
-					<a href="/" target="_top">泡妞秘籍</a>
-				</li>
-				<li class="divider-vertical"></li>
-				
-				
-				<li <%="class=active" if controller.class == PagesController and action_name == "zhinanzhen" %> >
-					<a href="/zhinanzhen" target="_top">指男针</a>
-				</li>
-				<li class="divider-vertical"></li>
-				
-				<li <%="class=active" if controller.class == PagesController and action_name == "xianchang" %> >
-					<a href="/xianchang" target="_top">现场培训</a>
-				</li>
-				<li class="divider-vertical"></li>
-				
-				<li <%="class=active" if controller.class == PagesController and action_name == "baodao" %> >
-					<a href="/baodao" target="_top">媒体报道</a>
-				</li>
-				<li class="divider-vertical"></li>
-				
-				<li <%="class=active" if controller.class == PeopleController and action_name == "index" %> >
-					<a href="/people" target="_top">所有学员</a>
-				</li>
-				<li class="divider-vertical"></li>
-				
-				<li <%="class=active" if controller.class == TopicsController %> >
-  				<a href="/topics" target="_top">情感求助</a>
-  			</li>
-				<li class="divider-vertical"></li>
-
-				<li <%="class=active" if controller.class == NotesController %> >
-					<a href="/notes" target="_top">惯例库</a>
-				</li>
-				<li class="divider-vertical"></li>
-										
-  			<li <%="class=active" if controller.class == ResourcesController %> >
-  				<a href="/resources" target="_top">资源下载</a>
-  			</li>    
-				<li class="divider-vertical"></li>		    			
-
-						
-  			<li <%="class=active" if controller.class == ArticlesController %> >
-  				<a href="/articles" target="_top">约会文章</a>
-  			</li>  
-				<li class="divider-vertical"></li>
-
-
-				<li <%="class=active" if controller.class == TestingsController %> >
-					<a href="/testings" target="_top">情商测试</a>
-				</li>
-		
-			
-			</ul> 
-			</div>
-		</div>		
-		
-
-
 		<%= yield %>
 		<% unless is_member? %>
 				<div class="kfqq">
@@ -153,22 +147,11 @@
 		<% end %>
 	</div> <!-- end of main-container -->
 
-	
-		
-	
 	<hr />
 	<div class="container">
 		<p class="text-center">	
 			Copyright(C)2007-2012 <a href="http://www.puake.com/" target="_top">pua课程网</a>| 
 			<a href="http://item.taobao.com/item.htm?id=17963666470" target="_top" title="专业约会指导店铺">专业约会指导店铺</a>
-			<a href="http://399906796.qzone.qq.com" title="pua课程网QQ空间">pua课程网QQ空间</a>
-			<a href="http://xiaohualang.blog.hexun.com/" title="pua课程网和讯站">pua课程网和讯站</a>
-			<a href="http://site.douban.com/119876/" title="专业搭讪约会培训的小站">专业搭讪约会培训的小站</a>
-			<a href="http://blog.sina.com.cn/paoshop" title="专业泡妞培训_新浪博客">pua课程网新浪站</a>
-			<a href="http://paoxun.blog.sohu.com/" title="pua课程网搜狐站">pua课程网搜狐站</a>
-			<a href="http://hi.baidu.com/paoniupx/home" title="pua课程网百度站">pua课程网百度站</a>
-			<a href="http://hao.360.cn/" target="_blank" >360安全网址导航</a>
-			<a href="http://yasuo.360.cn" target="_blank" >360压缩软件</a>
 		</p>
 		<p class="text-center">
 			版权所有 备案号：<a href="http://www.miibeian.gov.cn/" target="_top">粤ICP备13011305号-2</a><br />

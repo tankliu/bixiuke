@@ -1,6 +1,6 @@
-<% content_for :title,"泡妞学班级" %>
-<% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
-<% content_for :description,"泡妞学班级, 如果白天老师不在教室,如果你有约会恋爱问题,请发到泡妞学班级." %>
+<% content_for :title,"pua课程网-1个月提高你的情商" %>
+<% content_for :keywords,"泡妞话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
+<% content_for :description,"pua课程网,致力于提高你的情商,情感求助,有问必答,通过在此网站的学习,1个月后,情商翻倍!" %>
 
 
 <div class="row ie6-row">
@@ -12,20 +12,26 @@
 			  <%= notice %>
 			</div>
 		<% end %>
-		<div class="row">
-			<div class="span8">
-				<%= form_tag :topic_search, :class => "form-search" do |f| %>
-			    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
-		  		<button type="submit" class="btn btn-primary">搜索问题</button>
-				<% end %>
-			</div>
-		</div>
 		
-		<%= link_to "+ 提问",:new_topic, :class => "btn btn-success pull-right" %>
+		<%= link_to "+ 提问",:new_topic, :class => "btn btn-success pull-left" %>
+	           
 		
-		<h4>最近学员提问</h4>
-		
-		
+		<%= form_tag :topic_search, :class => "form-search pull-right" do |f| %>
+	    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
+  		<button type="submit" class="btn btn-primary">搜索问题</button>
+		<% end %>       
+		<br />
+		<br />
+		<br />
+ 		<ul class="ie6-label clearfix" > 
+			<li class="label label-info"><%= link_to "所有节点", topics_path %></li>
+			<% @categories.each do |c| %>
+				<li class="label label-info">
+					<%= link_to c.name, category_topics_path(:path => c.path) %>
+				</li>
+			<% end %>         
+		</ul>            
+	
 		<div id="topics">
 			<% @topics.each do |topic| %>
 				<div class="media">
@@ -33,76 +39,89 @@
 						<%= image_tag topic.person.avatar.url(:thumb),:class => "media-object" %>
 				  </a>
 				  <div class="media-body">
-				    <h4 class="media-heading"><%= link_to truncate(topic.title,:length => 34), topic, :target => "_blank" %><span class="pull-right badge"><%= topic.comments.size %></span></h4>
+				    <p class="media-heading"><%= link_to truncate(topic.title,:length => 30), topic, :target => "_blank" %>   <span class="pull-right badge badge-info"><%= topic.comments.size %></span>
+							<% if topic.assets.size != 0 %>
+								<span>
+									<% topic.assets[0,2].each do |asset|  %>
+		              	<%= link_to(image_tag(asset.image.url(:thumb), :class => "pull-right",:style => "margin-right:5px;"),topic)  %>   
+									<% end %>
+								</span>
+							<% end %>     
+						</p>
 				    <div class="media">
-							<p class="help-block"><%= link_to topic.person.nick_name, topic.person %>&nbsp;&nbsp;<%= time_ago_in_words(topic.created_at) %>发布&nbsp;&nbsp;•&nbsp;&nbsp;
+							<p class="help-block"><%= link_to topic.person.nick_name, topic.person %>(<%= link_to topic.person.city, people_path(:city =>topic.person.city ) %>)&nbsp;&nbsp;•&nbsp;&nbsp;
 							<% if topic.comments.size > 0 %>
-								最后由&nbsp;<%= link_to topic.last_replied_person.nick_name,topic.last_replied_person %>&nbsp;于<%= time_ago_in_words(topic.last_replied_at) %>回复
-							<% end %>
+								最后由&nbsp;<%= link_to topic.last_replied_person.nick_name,topic.last_replied_person %>&nbsp;于<%= time_ago_in_words(topic.last_replied_at) %>回复 
+								
+							<% else %>
+								    <%= time_ago_in_words(topic.created_at) %>发布
+							<% end %>  
+						
 							</p>
 				    </div>
 				  </div>
 				</div>
 				<hr />
-			
+			                   
 			<% end %>
-		</div>					
+		</div>			 
+		<div class="ie6-pagination"> 	
 		<%= paginate @topics %>		
+		</div>
 	</div>
 	
 	
 	<div class="span4">
 		<div class="media">
-		  <a class="pull-left" href="#">
+	 	  <a class="pull-left" href="#">
 				<%= image_tag @group.avatar.url(:medium), :class => "media-object" %>
 		  </a>
 		  <div class="media-body">
 		    <h4 class="media-heading">班级名:<%= @group.name %></h4>
 		    <div class="media">
 		      <p>
-					  创建者:<%= link_to @group.person.nick_name, @group.person %><br />
-					  创建时间:<%= @group.created_at.to_date.to_s %>
+					  老师:<%= link_to @group.person.nick_name, @group.person %><br />
+						助教1:
+						助教2:
 					</p>
-				
+			
 					<% if can_delete?(@group) %>
 						<%= link_to '编辑', edit_group_path(@group) %> 
 					<% end %>
 		    </div>
 		  </div>
+		</div>      
+		<!-- 加上id是为了避免自动关闭       -->
+		<div id="alert" class="alert">
+		  <%= simple_format @group.description %>
 		</div>
-		<hr />
+				
+		<hr />              
 		
-		<h4>积分前10名:</h4>
-		<div class="row">
+		<h4>积分前12名:</h4>
+		<div class="row">  			
 		<% @people.each do |person| %>
-				<div class="span1">				
-					<%= link_to image_tag(person.avatar.url(:thumb)), person %> <br />
-					<%= link_to person.nick_name, person %>
+			<div class="span1 people-row ie6-row-people">
+				<div class="media">
+					<div class="person-avatar">
+						<%= link_to image_tag(person.avatar.url(:thumb), :class => "media-object"), person%>
+					</div> 
+				  <div class="media-body">
+				    <div class="media">  
+								<small>
+							 		<%= link_to person.nick_name, person %>
+								</small>     
+				    </div>
+				  </div>
 				</div>
-		<% end %>
-		</div>
+			</div>
+		<% end %>  
+		</div>		
+	
 		
 		<%= link_to ">>所有学员", people_path %>
 		
 		
-		<hr />
-	
-		<h4>最近发布惯例:</h4>
-		<ul>
-			<% @notes.each do |note| %>
-				<li><%= link_to note.title, note %><br /></li>
-			<% end %>				
-		</ul>
-		<%= link_to ">>所有惯例", notes_path %>
-		<hr />
-		
-		<h4>最近发布测试:</h4>
-		<ul>
-			<% @testings.each do |testing| %>
-				<li><%= link_to testing.title, testing %><br /></li>
-			<% end %>				
-		</ul>
-		<%= link_to ">>所有测试", testings_path %>
 		<hr />
 		
 		<h4>最近发布资源:</h4>
@@ -114,6 +133,17 @@
 		<%= link_to ">>所有资源", resources_path %>
 		<hr />
 		
+	
+		<h4>最近发布惯例:</h4>
+		<ul>
+			<% @notes.each do |note| %>
+				<li><%= link_to note.title, note %><br /></li>
+			<% end %>				
+		</ul>
+		<%= link_to ">>所有惯例", notes_path %>
+		<hr />
+		
+	
 		<h4>最近发布文章:</h4>
 		<ul>
 			<% @articles.each do |article| %>
@@ -121,6 +151,18 @@
 			<% end %>				
 		</ul>
 		<%= link_to ">>所有文章", articles_path %>
+		
+		<hr />
+		
+		<h4>最近发布的培训聚会:</h4>
+		<ul>
+			<% @events.each do |event| %>
+				<li><%= link_to event.name, event %><br /></li>
+			<% end %>				
+		</ul>
+		<%= link_to ">>所有活动", events_path %>
+		
+		
 	</div>
 
 </div>

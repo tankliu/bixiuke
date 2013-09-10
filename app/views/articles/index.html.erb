@@ -3,18 +3,8 @@
 <% content_for :description,"泡妞文章和泡妞视频栏目,文章里面包含了泡妞秘籍,专题里面有泡妞视频,以及泡妞电影的下载地址, 看看泡妞高手和电影明星是如何泡妞,如何搭讪的.学习搭讪的技巧和约会技巧." %>
 
 
-
-
 <div class="row ie6-row">
-	<div class="span3">
-		<ul class="nav nav-tabs nav-stacked">
-			<li <%="class=active" if @path == nil  %>><%= link_to articles_path do %>所有文章<i class="icon-chevron-right pull-right"></i><% end %></li>
-			<% @categories.each do |category| %>
-			<li <%="class=active" if @path == category.path  %>><%= link_to category_articles_path(:path => category.path) do %><%=category.name+"(#{category.articles.size})"%><i class="icon-chevron-right pull-right"></i><% end %></li>
-			<% end %>
-		</ul>
-	</div>
-	
+
 	<div class="span9">		
 		<% if notice %>
 			<div class="alert">
@@ -22,19 +12,15 @@
 			  <%= notice %>
 			</div>
 		<% end %>
-		<div class="row">
-			<div class="span9">
-				<%= form_tag :article_search, :class => "form-search" do |f| %>
-			    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
-		  		<button type="submit" class="btn btn-primary">搜索文章</button>
-				<% end %>
-			</div>
-		</div>
-		
-		
-		<% if is_admin? %>
-			<%= link_to "+ 发布文章",:new_article, :class => "btn btn-danger pull-right" %>
+
+		<%= link_to "+ 发布文章",:new_article, :class => "btn btn-success pull-left " %>
+		<%= form_tag :article_search, :class => "form-search pull-right" do |f| %>
+	    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
+  		<button type="submit" class="btn btn-primary">搜索文章</button>
 		<% end %>
+
+		<br />
+		<br />
 		
 		<h4>最近分享文章</h4>
 
@@ -50,10 +36,11 @@
 						<br />
 						<br />
 						<div class="article_image">
-							<%= image_tag article.picture.url(:medium) %>
+							<%= image_tag article.picture.url(:medium) unless article.picture.url(:medium) == "/pictures/medium/missing.png" %>
 						</div>
 						<%= simple_format article.description %>
-						<%= link_to "详细(#{article.comments.size})", article, :target => "_blank",:class => "pull-right"  %>
+						
+						<%= link_to "详细(#{article.comments.size})", article, :target => "_blank",:class => "pull-left"  %>
 			    </div>
 			  </div>
 			</div>
@@ -62,9 +49,22 @@
 		<% end %>
 		
 		<%= paginate @articles %>		
+		<div class="clearfix"></div>
+		
 	</div>
-
-
+	
+	<div class="span3">
+		<ul class="nav nav-tabs nav-stacked">
+			<li <%="class=active" if @path == nil  %>><%= link_to articles_path do %><i class="icon-chevron-right pull-right"></i>所有文章<% end %></li>
+			<% @categories.each do |category| %>
+			<li <%="class=active" if @path == category.path  %>><%= link_to category_articles_path(:path => category.path) do %>
+				<i class="icon-chevron-right pull-right"></i>
+				<%=category.name+"(#{category.articles.size})"%><% end %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	
 	
 </div>  <!-- end of box -->
 

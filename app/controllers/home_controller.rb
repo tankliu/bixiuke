@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# -*- ening : utf-8 -*-
 class HomeController < ApplicationController
   
   skip_before_filter :is_login?

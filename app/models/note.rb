@@ -9,8 +9,7 @@ class Note < ActiveRecord::Base
 
   
   def remove_hint_span
-    self.content = self.content.gsub(/<span\sclass=\'usage_pinglun\'>/,"")
-    self.content = self.content.gsub(/<\/span>/,"")
+    self.content = self.content.gsub(/<span\sclass=\'usage_pinglun\'>/,"").gsub(/<\/span>/,"")
   end
   
   before_save :add_color_to_tag, :change_url

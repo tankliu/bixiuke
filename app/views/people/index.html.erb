@@ -2,7 +2,7 @@
 <% content_for :keywords,"话术,惯例库,追女孩子的技巧,追女孩子的短信,追女孩子的话,追女孩子的方法,追女生,追女生技巧" %>
 <% content_for :description,"pua课程网,所有学员,积分排行,最新加入,按城市排行." %>
 
-<div class="row">
+<div class="row ie6-row">
 	<div class="span12">
 		<% if notice %>
 			<div class="alert">
@@ -16,58 +16,62 @@
 			</li>
 			<li class=<%="active" if @order_way == "join_time" %> ><%= link_to "按最新加入", people_path(:order_way => "join_time") %>
 			</li>
-			<li class=<%="active" if @order_way == "city" %> ><%= link_to "按城市排序", people_path(:order_way => "city") %>
-			</li>
 		</ul>
-		<% if is_admin? %>
-			<%= link_to '创建学员', new_person_path, :class => "btn btn-danger pull-right" %>
-		<% end %>
+		
+		<!-- <%# if is_admin? %>
+			<%#= link_to '创建学员', new_person_path, :class => "btn btn-danger pull-left" %>
+			<br />
+		<%# end %>                                  
+ -->   
 
 		<!-- </div>
 		<div class="span4">
 		</div>
-K		<hr/> -->
-		<%= paginate @people %>
-		<div class="row">
-		<% @people.each do |person| %>
-					<div class="span4" style="margin-bottom:20px;border-bottom: 1px dashed #bbb;">
-						<div class="media">
-							<%= link_to image_tag(person.avatar.url(:medium), :class => "media-object"), person, :class => "pull-left"%> 
-						  <div class="media-body">
-						    <div class="media">
-									<% if is_admin? %>
-										<%= link_to "编辑",edit_person_path(person) %><br />
-									<% end %>
-									<p>
-									  <b>昵称:</b>
-									  <%= link_to person.nick_name, person %>
-									</p>
-						      <p>
-									  <b>城市:</b>
-									  <%= person.city %>
-									</p>
-
-									<p>
-									  <b>用户组:</b>
-									  <%= person.role %>
-									</p>
-									<p>
-									  <b>积分:</b>
-									  <%= person.score %>
-									</p>
-									<p>
-									  <b>等级:</b>
-									  <%= person.rank %>
-									</p>
-						    </div>
-						  </div>
-						</div>
-				</div>
-		<% end %>
-	
-		</div>
-	
-		<%= paginate @people %>
-	
+ 		<hr/> -->
+		<%= paginate @people %>  
 	</div>
-</div>
+
+
+ 	<div class="span10">
+		<div class="row">
+			<% @people.each do |person| %>
+		 	 <div class="span2 people-row ie6-row-people">
+					<div class="media">
+						<% if is_admin? %>
+							<%= link_to "编辑",edit_person_path(person) %><br />
+						<% end %>
+						<div class="person-avatar pull-left"><%= link_to image_tag(person.avatar.url(:thumb), :class => "media-object"), person %> 
+						</div>
+				
+					  <div class="media-body">
+					    <div class="media ie6-media">      
+									<small>
+									 	<%= link_to person.nick_name, person %>
+										<br />
+									  <%= person.city %>
+									</small>
+ 					    </div>
+					  </div>
+					</div>
+				</div>       
+			<% end %>   				
+		</div>      
+		<%= paginate @people %>
+	
+	</div>           
+
+	<div class="span2">
+		<h4>按城市人数排序</h4>
+		<ul>
+			<% @cities.each do |city| %>
+				<li>
+					<%= link_to city.city, people_path(:city => city.city,:order_way => "city") %>
+					(<%=city.count %>)
+				</li>
+			<% end %>
+		
+		</ul>
+	</div>  
+
+
+</div>   

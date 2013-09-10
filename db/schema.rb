@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227145353) do
+ActiveRecord::Schema.define(:version => 20130823081123) do
 
   create_table "articles", :force => true do |t|
     t.integer  "person_id"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(:version => 20121227145353) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.integer  "topic_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "asset_type"
   end
 
   create_table "categories", :force => true do |t|
@@ -66,7 +77,18 @@ ActiveRecord::Schema.define(:version => 20121227145353) do
 
   add_index "comments", ["person_id"], :name => "index_comments_on_user_id"
 
-  create_table "courses", :force => true do |t|
+  create_table "discussions", :force => true do |t|
+    t.text     "content"
+    t.integer  "person_id"
+    t.integer  "classroom_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "discussions", ["classroom_id"], :name => "index_topics_on_group_id"
+  add_index "discussions", ["person_id"], :name => "index_topics_on_user_id"
+
+  create_table "events", :force => true do |t|
     t.string   "name"
     t.datetime "start_at"
     t.datetime "end_at"
@@ -85,18 +107,14 @@ ActiveRecord::Schema.define(:version => 20121227145353) do
     t.string   "category"
   end
 
-  add_index "courses", ["person_id"], :name => "index_courses_on_user_id"
+  add_index "events", ["person_id"], :name => "index_courses_on_user_id"
 
-  create_table "discussions", :force => true do |t|
-    t.text     "content"
-    t.integer  "person_id"
-    t.integer  "classroom_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table "grades", :force => true do |t|
+    t.integer "score"
+    t.integer "person_id"
   end
 
-  add_index "discussions", ["classroom_id"], :name => "index_topics_on_group_id"
-  add_index "discussions", ["person_id"], :name => "index_topics_on_user_id"
+  add_index "grades", ["person_id"], :name => "index_grades_on_person_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -192,6 +210,8 @@ ActiveRecord::Schema.define(:version => 20121227145353) do
     t.integer  "group_id"
     t.string   "last_replied_by"
     t.datetime "last_replied_at"
+    t.integer  "category_id"
+    t.string   "url"
   end
 
 end

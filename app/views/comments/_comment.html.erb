@@ -2,11 +2,11 @@
   <a class="pull-left" href="#">
 		<%= image_tag comment.person.avatar.url(:thumb),:class => "media-object" %>
   </a>
-  <div class="media-body">
-    <div class="media">
-			发布:<%= link_to comment.person.nick_name, comment.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %>
-			<br />
-			<%= simple_format comment.content %>
+  <div class="media-body">   
+	   <p class="media-heading">发布:<%= link_to comment.person.nick_name, comment.person %>(<%= link_to comment.person.city, people_path(:city => comment.person.city)%>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %>      
+		 </p>
+    <div class="media">  
+ 			<%= simple_format comment.content %>
 			<% if can_delete?(comment) %>
 				<%= link_to 'X', comment, :data => { :confirm => '确定删除' }, method: :delete, :class => "pull-right"%>
 			<% end %>
@@ -14,6 +14,7 @@
     </div>
   </div>
 </div>
-<hr />
+<hr />                                  
+<br />
 
 

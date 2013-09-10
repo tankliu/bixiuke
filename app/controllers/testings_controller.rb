@@ -3,33 +3,67 @@ class TestingsController < ApplicationController
   # GET /testings
 
   
-  skip_before_filter :is_login?, :only => [:index, :show,:test]
+  skip_before_filter :is_login?, :only => [:index, :show]
   before_filter :only_admin_can_do, :except => [:index, :show, :test]
 
   # GET /testings.json
   def index
-    @testing = Testing.new
-    @testings = Testing.includes(:person).order("created_at desc").page(params[:page])     
+    #用sql的rand函数来生成随机排序
+    @testings = Testing.includes(:person).order("RAND()").limit(10)
+    @grades = Grade.order("score desc").limit(100)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @testings }
     end
+    
   end
 
   def test
-    @testing = Testing.find(params[:testing_id])      
-    if params[:answer] == @testing.answer.upcase
-      @notice_text = "第"+@testing.id.to_s+"题:"+"恭喜你!答对了!你具有成为把妹达人的潜力!"
+    if params[:answer]
+      results = params[:answer]
+      keys = results.keys.map{|k| k.to_i}
+      @testings = Testing.find(keys)
+      score = 0 
+      @testings.each do |testing| 
+        if results[testing.id.to_s] == testing.answer.upcase
+          score += 10 
+        end
+      end
+      if is_login?       
+        if current_person.grade 
+          if current_person.grade.score < score
+            current_person.grade.update_attributes!(:score => score)   
+          end
+        else
+          grade  = Grade.new(:person => current_person, :score => score)
+          grade.save!
+        end
+      end       
+      notice_text = "你这次测试的分数是#{score}分"
     else
-      @notice_text = "第"+@testing.id.to_s+"题:"+"答错了!再接再厉!你需要继续学习!"
+      notice_text = "你还没选择答案,请选择答案后提交"
     end
-    @rand_num = rand(1000)
     respond_to do |format|
-      format.html{ redirect_to :back}
-      format.json
-      format.js {}
+      format.html { redirect_to testings_path, notice: notice_text }
     end
+
   end
+  
+  
+  # def test
+  #   @testing = Testing.find(params[:testing_id])      
+  #   if params[:answer] == @testing.answer.upcase
+  #     @notice_text = "第"+@testing.id.to_s+"题:"+"恭喜你!答对了!你具有成为把妹达人的潜力!"
+  #   else
+  #     @notice_text = "第"+@testing.id.to_s+"题:"+"答错了!再接再厉!你需要继续学习!"
+  #   end
+  #   @rand_num = rand(1000)
+  #   respond_to do |format|
+  #     format.html{ redirect_to :back}
+  #     format.json
+  #     format.js {}
+  #   end
+  # end
   
 
   def new

@@ -4,18 +4,25 @@ class TopicsController < ApplicationController
   # GET /topics.json
   
   skip_before_filter :is_login?, :only => [:index, :show, :search]
-  before_filter :only_member_can_do, :except => [:index, :show, :search]
+  # before_filter :only_member_can_do, :except => [:index, :show, :search]
 
-  def index
+  def index                         
+    @categories = Category.where(:typeable => "Topic").order("order_number")
     @group = Group.find(1)
-    @topics = @group.topics.includes(:person).includes(:last_replied_person).includes(:comments).order("last_replied_at desc").page(params[:page])      
+    if params[:path]
+      @topics = Category.where("typeable = ? and path=?", "Topic", params[:path])[0].topics.includes(:person).includes(:last_replied_person).includes(:assets).includes(:comments).order("last_replied_at desc").page(params[:page])  
+    else
+      @topics =Topic.includes(:person).includes(:last_replied_person).includes(:comments).order("last_replied_at desc").page(params[:page]) 
+    end                                          
     @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").limit(12)
 
     @notes = Note.order("created_at desc").limit(10)
-    @testings = Testing.order("created_at desc").limit(10)
+    # @testings = Testing.order("created_at desc").limit(10)
+    
     @resources = Resource.order("created_at desc").limit(10)
     @articles = Article.order("created_at desc").limit(10)
-     
+    @events = Event.order("created_at desc").limit(10)         
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
@@ -50,8 +57,9 @@ class TopicsController < ApplicationController
   end
 
   
-  def new
-    @topic = Topic.new
+  def new             
+    @topic = Topic.new   
+    5.times { @topic.assets.build }
     @topic.group = Group.find(1)
     respond_to do |format|
       format.html # show.html.erb
@@ -62,10 +70,11 @@ class TopicsController < ApplicationController
   # GET /topics/1/edit
   def edit
     if is_admin?
-      @topic = Topic.find(params[:id])
+      @topic = Topic.find(params[:id])  
     else
       @topic = current_person.topics.find(params[:id])
-    end
+    end                                      
+    (5 - @topic.assets.length).times { @topic.assets.build }
     @group = @topic.group
   end
 

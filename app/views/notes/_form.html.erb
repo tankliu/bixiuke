@@ -26,7 +26,7 @@
     <%= f.label :content, "内容(10到500字)" %>
     <%= f.text_area :content, :size  => "82x10", :class => "input-xxlarge", :value => @note.new_record? ? "" : @note.remove_hint_span %>
   </div>
-	<div class="help-block">换行后,添加@标记,后面可以写适合场合等(请看下面已创建的惯例).</div>
+	<div class="help-block">换行后,添加@标记,后面可以写适合场合等(请看已创建的惯例).</div>
   <div class="actions">
     <%= f.submit "提交", :class => "btn btn-primary ie6-btn" %>
 		<%= link_to '取消', topics_path, :class => "btn cancel" %>

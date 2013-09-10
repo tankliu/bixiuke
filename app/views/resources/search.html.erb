@@ -25,9 +25,12 @@
 			<tbody>
 				<% @resources.each do |resource| %>
 				<tr>
+					<td class="resource-avatar"><%= image_tag resource.category.avatar.url(:thumb) %></td>
+					
 					<td class="title"><%= link_to resource.title, resource , :target => "_blank"%></td>
-					<td class="created-at"><%= time_ago_in_words(resource.created_at) %>发表</td>
-					<td class="comments-size"><%= resource.comments.size %>回应</td>
+					
+					<td class="created-at"><%= resource.created_at.to_date.to_s %></td>
+					<td class="nick_name"><%= link_to resource.person.nick_name, resource.person %></td>
 				</tr>
 				<% end %>
 			</tbody>
@@ -37,8 +40,6 @@
 		<% end %>
 	</div>
 	
-	
-		
 	
 	
 	<div class="span4">

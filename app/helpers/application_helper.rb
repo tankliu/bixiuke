@@ -14,9 +14,6 @@ module ApplicationHelper
       Category.where(:typeable => "Note").order("order_number").collect{|category| [category.name, category.id]}     
   end
   
-  
-
-  
   def can_delete?(obj)
     obj.person.id == session[:person_id] or is_admin? 
   end

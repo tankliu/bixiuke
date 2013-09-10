@@ -10,7 +10,9 @@ class PeopleController < ApplicationController
     @order_way = params[:order_way] || "score"
     @people = Person.order("score desc").page(params[:page]) if @order_way == "score"
     @people = Person.order("created_at desc").page(params[:page]) if @order_way == "join_time"
-    @people = Person.order("city desc").page(params[:page]) if @order_way == "city"
+    #用offset是因为第一条是总数
+    @cities = Person.select("city, count(city) as count").group(:city).order("count desc").limit(60).offset(1)
+    @people = Person.where("city=?",params[:city]).page(params[:page]) if params[:city]
     
     respond_to do |format|
       format.html # index.html.erb
@@ -18,16 +20,19 @@ class PeopleController < ApplicationController
     end
   end
 
+
   # GET /people/1
   # GET /people/1.json
   
   def show
     # @subject = Subject.new
     @person = Person.find(params[:id])
-    @latest_discussions = @person.discussions.order("created_at desc").limit(10)
+    # @latest_discussions = @person.discussions.order("created_at desc").limit(10)
     @latest_topics = @person.topics.order("created_at desc").limit(10)
     @latest_notes = @person.notes.order("created_at desc").limit(10)
-    @latest_resources = @person.resources.order("created_at desc").limit(10)
+    @latest_resources = @person.resources.order("created_at desc").limit(10)     
+    @latest_articles = @person.articles.order("created_at desc").limit(10)
+    
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,6 +48,7 @@ class PeopleController < ApplicationController
     else
       @person = Person.new
     end
+
         
     respond_to do |format|
       format.html # new.html.erb

@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require maxlength
+//= require maxlength       
 //= require_tree .
 
 $(".alert").alert();
@@ -20,4 +20,6 @@ $(".alert").alert();
 setTimeout(function () {
  $(".alert").not("[id]").fadeOut();
 }, 5 * 1000);
+                       
 
+                                                              

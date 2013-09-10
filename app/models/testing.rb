@@ -2,7 +2,6 @@
 class Testing < ActiveRecord::Base
   belongs_to :person
   has_many :options, :dependent => :destroy
-  paginates_per 10
   
   has_many :comments, :as => :commable
   validates :title, :length => {:in => 1..100, :message => "标题字数在1到50之间"}  

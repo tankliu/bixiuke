@@ -12,6 +12,6 @@ class Comment < ActiveRecord::Base
       url                     = match_data[1]  #匹配里面的url
       self.content            = self.content.gsub(match_data[0], "<a href='#{url.include?("http") ? url : "http://"+url}' target='_blank'>#{url}</a>")
     end
-  end
+  end  
 
 end

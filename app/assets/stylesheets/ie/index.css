@@ -1,6 +1,28 @@
 /*
 *= require_tree .
-*/
+*/               
+/*解决最上面的广告一行最右边的链接掉下来的问题*/
+.ie6-pull-right{
+	position:absolute;right:0px;
+}              
+
+/*解决people index页面的学员名字显示问题       */
+.ie6-media{
+	width:68px;      
+	height:50px;        
+	overflow:hidden;
+}                    
+
+/*解决ie6下面resource index的标签问题*/
+.ie6-label li{	
+    float:left; 
+	margin-left:5px;  
+	margin-bottom:5px;
+}     
+.ie6-label li a:hover{
+	color:#fff;
+	text-decoration:underline;
+}
 
 /*btn太宽,需要限制*/
 .ie6-btn{
@@ -8,8 +30,9 @@
 	 padding:0;
 }
 /*登录后头像掉下去了*/
-.ie6-span{
-	margin-left:300px;
+.ie6-login{
+	margin-left:180px;     
+	margin-top:0;
 }
 /*让login这种文字和input一行的表单显示正常*/
 .controls .ie6-btn{
@@ -22,6 +45,11 @@
 /*row不够宽,布局右边会掉下去*/
 .ie6-row{
 	width:980px;
+}      
+/*解决ie6下面topic index 右边的people对齐问题*/
+.ie6-row-people{
+	margin-left:10px;          
+	margin-right:2px;
 }
 
 /*在testing index页面的radio占了206宽度需要限制*/
@@ -32,7 +60,7 @@
 ul.nav-tabs{
 	border:1px solid #ddd;
 }
-.nav-tabs li,.nav-tabs li a {
+.nav-tabs li {
 	padding-bottom:0px;
 	margin-bottom:0;
 	border-bottom:1px solid #ddd;

@@ -2,7 +2,7 @@
 <% content_for :keywords,"情感测试,性爱测试" %>
 <% content_for :description,"pua课程网,测试你的情商,测试你性商,泡妞学测试" %>
 
-<script>
+<!-- <script>
 	$(document).ready(function() {
 		$('form').on('submit', function(e) {
 			$(this).parent().find(".notice_answer").append('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+"答案:"+'</div>');
@@ -11,10 +11,7 @@
 	
 
 </script>
-
-
-
-
+              -->
 
 <div class="row">
 	<div class="span8">
@@ -46,8 +43,9 @@
 								<%= hidden_field_tag "testing_id",@testing.id %>		
 							</div>
 						<% end %>
-						<div class="field">
-							<%= submit_tag "提交", :class => "btn btn-primary" %>
+						<div class="field">             
+							 <!-- 为了不让别人看到答案 -->
+							<%#= submit_tag "提交", :class => "btn btn-primary" %>
 						</div>	
 					<% end %>
 				

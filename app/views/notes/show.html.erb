@@ -22,8 +22,12 @@
 			    <div class="media">
 						发布:<%= link_to @note.person.nick_name, @note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to @note.category.name, category_notes_path(:path => @note.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @note.created_at.to_date.to_s %>
 						<br />
-						<br />
-						<%= simple_format @note.content %>
+						<br /> 
+						<% if !is_member? and (35..37).include?(@note.category_id)%>
+							抱歉,你不能查看vip栏目,请联系qq:399906796, <%= link_to "开通vip学员", "/vip" %>
+						<% else %>
+						 <%= simple_format @note.content %>
+						<% end %>
 						<% if can_delete?(@note) %>
 							<%= link_to '编辑', edit_note_path(@note) %>
 							<%= link_to '删除', @note, :data => { :confirm => '确定删除' }, method: :delete %>

@@ -3,10 +3,10 @@ class Person < ActiveRecord::Base
   has_secure_password  #TODO: this method alse validates confirmation and can not be overrided
   include ActiveModel::SecurePassword::InstanceMethodsOnActivation
   attr_protected :role,:dead
-  paginates_per 30
+  paginates_per 100
   
   #考虑下, 删除用户不一定非得删除用户的数据.可以这样:删除等于注销用户, 不允许用户登录而已．但是用户的资源仍然在， 除非用户自己一个一个删除．类似豆瓣
-  has_many :courses
+  has_many :events
   has_many :topics
   has_many :notes
   has_many :articles
@@ -17,14 +17,14 @@ class Person < ActiveRecord::Base
   has_many :comments
   has_many :groups
   has_many :testings
+  has_one :grade
     
-  
   Paperclip.interpolates :avatar_date do |avatar, style|
     avatar.instance.avatar_updated_at.to_date.to_s[0,7]
   end
   
   #TODO:,图片如何加水印
-  
+
   has_attached_file :avatar,   
           :default_url =>  :default_url_by_role,
           :styles => {:medium => '100x100',:thumb => "50x50"},
@@ -55,8 +55,9 @@ class Person < ActiveRecord::Base
                        :length => {:in => 6..16, :message => "密码长度必须大于6，小于16", :allow_blank => true},
                        :confirmation  => {:message => "两次输入密码必须相同", :allow_blank => true}
   
-  validates :nick_name, :presence => {:message => "请填写昵称"},
-                        :length => {:in => 1..10, :message => "昵称长度必须大于2，小于10", :allow_blank => true},
+  validates :nick_name, :presence => {:message => "请填写昵称"}, 
+                        #暂时放到100长度为了导入数据
+                        :length => {:in => 1..100, :message => "昵称长度必须大于2，小于10", :allow_blank => true},
                         :exclusion => {:in => %w(admin 管理员), :message => "不能用这些昵称", :allow_blank => true}
   
   validates :city, :presence => {:message => "请选择你所在的城市名称"},
@@ -95,6 +96,5 @@ class Person < ActiveRecord::Base
   def default_url_by_role
     self.role != "非学员" ? "/system/:class/:attachment/default/:style.png" : "/system/:class/:attachment/default/fei-:style.png"
   end
-  
   
 end

@@ -22,7 +22,7 @@ class ChangeUserToPerson < ActiveRecord::Migration
     rename_column :articles,  :person_id, :user_id
     rename_column :classrooms,  :person_id, :user_id
     rename_column :comments,  :person_id, :user_id
-    rename_column :courses,  :person_id, :user_id
+    rename_column :events,  :person_id, :user_id
     rename_column :discussions,  :person_id, :user_id
     rename_column :groups,  :person_id, :user_id
     rename_column :notes,  :person_id, :user_id

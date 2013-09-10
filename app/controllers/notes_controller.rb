@@ -9,32 +9,14 @@ class NotesController < ApplicationController
     @note = Note.new
     @path = params[:path]
     @categories = Category.where(:typeable => "Note").includes(:notes).order("order_number")
-    if is_member? 
-      if params[:path]
-        @notes = Category.where("typeable=? and path=?","Note",params[:path])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
-      else
-  	    @notes = Note.includes(:person).order("created_at desc").page(params[:page])      
-      end
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @notes }
-      end
+    if params[:path]
+      @notes = Category.where("typeable=? and path=?","Note",params[:path])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
     else
-      if params[:path]
-        case 
-        when ["fangjian","asd","sex"].include?(params[:path])
-          redirect_to :guangpan, notice:"高级惯例只有学员才可以浏览" and return
-        else
-          @notes = Category.where("typeable=? and path=?","Note",params[:path])[0].notes.includes(:person).order("created_at desc").page(params[:page])      
-        end
-      else
-        categories_range = 29..34
-        @notes = Note.where(:category_id => categories_range).order("created_at desc").page(params[:page])
-      end
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @notes }
-      end
+	    @notes = Note.includes(:person).order("created_at desc").page(params[:page])      
+    end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @notes }
     end
     
   end
@@ -67,11 +49,11 @@ class NotesController < ApplicationController
     @latest_notes = Note.order("created_at desc").limit(10)
     @comments = @note.comments
     @comment = Comment.new
-    unless is_member?
-      if (35..37).include?(@note.category_id)
-        redirect_to :guangpan, notice: "高级惯例只有学员可浏览" and return
-      end
-    end
+    # unless is_member?
+    #    if (35..37).include?(@note.category_id)
+    #      redirect_to :guangpan, notice: "高级惯例只有学员可浏览" and return
+    #    end
+    #  end  
     
     @categories = Category.where(:typeable => "Note").order("order_number")
     

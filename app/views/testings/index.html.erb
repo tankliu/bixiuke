@@ -3,7 +3,7 @@
 <% content_for :description,"测试你的情商,测试你性商,泡妞学测试" %>
 
 <script>
-	$(document).ready(function() {
+	// $(document).ready(function() {
 		// $('#new_testing').hide();
 		// $('.create_testing_button').click(function() {
 		// 	$('#new_testing').slideToggle();
@@ -11,11 +11,11 @@
 		// 	$(this).text(text);
 		// });
 		// 	
-		$('form').on('submit', function(e) {
-			$(this).parent().find(".notice_answer").append('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+"答案:"+'</div>');
-		});
-		
-	});
+		// $('form').on('submit', function(e) {
+		// 		$(this).parent().find(".notice_answer").append('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>'+"答案:"+'</div>');
+		// 	});
+		// 	
+		// });
 	
 </script>
 
@@ -23,18 +23,23 @@
 
 <div class="row">	
 		
-	<div class="span8">
+	<div class="span9">
 		<% if notice %>
 			<div class="alert">
 			  <button type="button" class="close" data-dismiss="alert">&times;</button>
-			  <%= notice %><a href="jshintrc"></a>
+			  <span class="testing-score"><%= notice %></span>
 			</div>
 		<% end %>
 		<% if is_admin? %>
-			<%= link_to "+ 创建测试",:new_testing, :class => "btn btn-danger pull-right" %>		
+			<%= link_to "+ 创建测试",:new_testing, :class => "btn btn-danger pull-left" %>		
+			<br />
+			<br />
 		<% end %>
+		<%= link_to "重新测试","/testings", :class => "btn btn-success pull-right" %>		
 		
-		<h4>最新测试</h4>
+		<h4>测试--挑战你的情商多少分?<small><b>(点击右边重新测试可重新随机生成10题,每题10分)</b></small></h4>
+		<%= form_tag :test do |f| %>
+		
 		<% @testings.each do |testing| %>
 			<div class="media">
 			  <a class="pull-left" href="#">
@@ -48,30 +53,35 @@
 						<br />
 						<%= simple_format testing.content %>
 							<div class="notice_answer" id="notice_answer_<%= testing.id %>"></div>
-							<%= form_tag :test, :remote => true do |f| %>
 								<% testing.options.each_with_index do |option,index| %>
 									<div class="field">
-										<%= radio_button_tag "answer",ApplicationHelper::IndexToLetter[index], false, :class => "ie6-input" %>		
+										<%= radio_button_tag "answer[#{testing.id}]",ApplicationHelper::IndexToLetter[index],false, :class => "ie6-input" %>		
 										<%= ApplicationHelper::IndexToLetter[index] %>.<span class="help-inline"><%= label_tag "answer", option.content %></span>
 									</div>
-									<div class="field">
-										<%= hidden_field_tag "testing_id",testing.id %>		
-									</div>
+								
 								<% end %>
-								<div class="field">
-									<%= submit_tag "提交", :class => "btn btn-primary ie6-btn" %>
-								</div>	
-							<% end %>
 						
-						<%= link_to "详细(#{testing.comments.size})", testing, :target => "_blank",:class => "pull-right"  %>
 			    </div>
 			  </div>
 			</div>
 			<hr />
 			
+			<% end %>
+		
+			<div class="field">
+				<%= submit_tag "提交", :class => "btn btn-primary ie6-btn" %>
+			</div>	
 		<% end %>
 		
-		<%= paginate @testings %>		
+	</div>
+	
+	<div class="span3">
+		<h4>分数排行榜</h4>
+		<ul>
+		<% @grades.each do |grade| %>
+			<li><%= link_to grade.person.nick_name, grade.person %>(<%= grade.score %>)</li>
+		<% end %>
+		</ul>
 	</div>
 	
 </div>

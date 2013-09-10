@@ -111,7 +111,7 @@
 			</div>
 			<div id="classroom_des">
 				<div class="zhibo_dayi">
-					最近的"<%= @this_week_online_course.name %>"时间是<%= @this_week_online_course.start_at.strftime("%m-%d(周%w) %H:%M") %>,欢迎前来参加<br />	
+					最近的"<%= @this_week_online_event.name %>"时间是<%= @this_week_online_event.start_at.strftime("%m-%d(周%w) %H:%M") %>,欢迎前来参加<br />	
 				</div>
 				<div class="dengji"><%= button_tag(:type => 'button') do %>点击提前登记<% end %></div>
 				
@@ -144,18 +144,18 @@
 	<div class="latest_message_4 classroom_latest_message">
 		<p><b>接下来时间表:</b></p>
 		<ul>
-			<% @upcoming_online_courses.each do |course| %>
-			<li><%= course.name %>(<%= course.start_at.strftime("%m-%d %H:%M") %>)</li>
+			<% @upcoming_online_events.each do |event| %>
+			<li><%= event.name %>(<%= event.start_at.strftime("%m-%d %H:%M") %>)</li>
 			<% end %>
 		</ul>
 		<p><b>往期:</b></p>
 		<ul>
-				<% @latest_online_courses.each do |course| %>
-				<li><%= course.name %>(<%= course.start_at.strftime("%m-%d %H:%M") %>)</li>
+				<% @latest_online_events.each do |event| %>
+				<li><%= event.name %>(<%= event.start_at.strftime("%m-%d %H:%M") %>)</li>
 				<% end %>
 		</ul>
 		<br />
-		...<%= link_to "查看所有", courses_path %>
+		...<%= link_to "查看所有", events_path %>
 		
 	</div>
 	<hr />

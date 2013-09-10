@@ -17,22 +17,34 @@
 				  <div class="media-body">
 				    <h4 class="media-heading"><%= link_to @topic.title, @topic, :target => "_blank" %></h4>
 				    <div class="media">
-							发布:<%= link_to @topic.person.nick_name, @topic.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @topic.created_at.to_date.to_s %>
+							发布:<%= link_to @topic.person.nick_name, @topic.person %>(<%= link_to @topic.person.city, people_path(:city => @topic.person.city)%>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @topic.created_at.to_date.to_s %>
 							<br />
 							<br />
-							<%= simple_format @topic.content %>
+							<%= simple_format @topic.content %>  
+						  <% unless @topic.assets.size == 0  %>           
+								<% if session[:person_id] %>
+									<% @topic.attachments.each do |asset| %>
+			              <%= image_tag(asset.image.url(:medium))  %>
+									<% end %>
+								<% else %>     
+									<% @topic.attachments.each do |asset| %>   
+			              <%= image_tag(asset.image.url(:thumb)) %>
+									<% end %>  
+									<h5>注册后查看大图</h5>   
+				       	<% end %>
+							<% end %> 
+							<div class="clearfix"></div>
+							<br />
 							<% if can_delete?(@topic) %>
 								<%= link_to '编辑', edit_topic_path(@topic) %>
 								<%= link_to '删除', @topic, :data => { :confirm => '确定删除' }, method: :delete %>
 							<% end %>
 							<%= render :partial => "share/bdshare" %>	
-
 				    </div>
 				  </div>
 				</div>
 				<br />
 				<h4>所有回复(回复:+1积分)</h4>
-		
 				<hr />
 
 				<% @comments.each do |comment| %>
@@ -44,11 +56,6 @@
 
 		</div>
 		
-		
-		
-		
-	
-	
 	<div class="span4">
 		<%= link_to "返回<<", :back %>
 		<hr />

@@ -5,19 +5,7 @@
 
 
 <div class="row ie6-row">
-	<div class="span3">
-		<ul class="nav nav-tabs nav-stacked">
-			<li <%="class=active" if @path == nil  %>><%= link_to  notes_path do %>所有阶段<i class="icon-chevron-right pull-right"></i><% end %></li>
-			<% @categories.each do |category| %>
-			<li <%="class=active" if @path == category.path  %>>
-				<%= link_to category_notes_path(:path => category.path) do %>
-					<%=  category.name %>(<%= category.notes.size %>)<i class="icon-chevron-right pull-right"></i>
-				<% end %>
-			</li>
-			<% end %>
-		</ul>
-
-	</div>
+	
 	
 	
 	<div class="span9">
@@ -27,24 +15,19 @@
 			  <button type="button" class="close" data-dismiss="alert">&times;</button>
 			  <%= notice %>
 			</div>
+		<% end %>  
+		<%= link_to "+ 提交惯例",:new_note, :class => "btn btn-success pull-left" %>
+
+		<%= form_tag :note_search, :class => "form-search pull-right" do |f| %>
+	    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
+  		<button type="submit" class="btn btn-primary">搜索惯例</button>
 		<% end %>
-		<div class="row">
-			<div class="span9">
-				<%= form_tag :note_search, :class => "form-search" do |f| %>
-			    <%= text_field_tag :query,nil, :class => "input-medium search-query" %>
-		  		<button type="submit" class="btn btn-primary">搜索惯例</button>
-				<% end %>
-			</div>
-		</div>
-		
-		
-		<%= link_to "+ 提交惯例",:new_note, :class => "btn btn-success pull-right" %>
+		<br />
+		<br />
 		
 		<h4>最新惯例</h4>
-		<% unless is_member? %>
-			<div class="hint">注意:高级惯例只有网站学员可以查看.<%= link_to "点击购买成为网站学员", :guangpan %>, 学员请先<%= link_to "登录", :login %>然后可以下载.
-			</div>	
-		<% end %>
+
+		
 		<% @notes.each do |note| %>
 			<div class="media">
 			  <a class="pull-left" href="#">
@@ -55,9 +38,13 @@
 			    <div class="media">
 						发布:<%= link_to note.person.nick_name, note.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阶段:<%= link_to note.category.name, category_notes_path(:path => note.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= note.created_at.to_date.to_s %>
 						<br />
-						<br />
-						<%= simple_format note.content %>
-						<%= link_to "详细(#{note.comments.size})", note, :target => "_blank",:class => "pull-right"  %>
+						<br /> 
+						<% if !is_member?  and (35..37).include?(note.category_id)%>
+							抱歉,你不能查看vip栏目,请联系qq:399906796, <%= link_to "开通vip学员", "/vip" %>
+						<% else %>
+						 <%= simple_format note.content %>
+						<% end %>
+						<%= link_to "评论(#{note.comments.size})", note, :target => "_blank",:class => "pull-right"  %>
 			    </div>
 			  </div>
 			</div>
@@ -66,7 +53,22 @@
 		<% end %>
 		
 		<%= paginate @notes %>		
+
 	</div>
 	
+	<div class="span3"> 
+		
+		<ul class="nav nav-tabs nav-stacked">
+			<li <%="class=active" if @path == nil  %>><%= link_to  notes_path do %><i class="icon-chevron-right pull-right"></i>所有阶段<% end %></li>
+			<% @categories.each do |category| %>
+			<li <%="class=active" if @path == category.path  %>>
+				<%= link_to category_notes_path(:path => category.path) do %>
+					<i class="icon-chevron-right pull-right"></i> <%=  category.name %>(<%= category.notes.size %>)   
+				<% end %>
+			</li>
+			<% end %>
+		</ul>
+
+	</div>
 </div>
 

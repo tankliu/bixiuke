@@ -25,20 +25,22 @@
     <%= f.text_area :content, :size => "82x15", :class => "input-xxlarge"%>
   </div>
 
-  <div class="field">
-    <%= f.label :description, "描述(1到10万字)" %>
-    <%= f.text_area :description, :size => "82x5", :class => "input-xxlarge" %>
-  </div>
+<!--   <div class="field">
+    <%#= f.label :description, "描述(1到10万字)" %>
+    <%#= f.text_area :description, :size => "82x5", :class => "input-xxlarge" %>
+  </div>    -->
 
   <div class="field">
-    <%= f.label :picture, "图片(添加一张图片)" %>
+    <%= f.label :picture, "图片(可添加一张文章主题图)" %>
     <%= f.file_field :picture  %>
   </div>
 
-  <!-- TODO:当你点击选择附件时，回调记录content里面的焦点。当完成选择的时候，自动在那个焦点地方生成<picture> -->
+  <!-- TODO:当你点击选择附件时，回调记录content里面的焦点。当完成选择的时候，自动在那个焦点地方生成<picture> -->   
+	<br />
+	
   <div class="actions">
     <%= f.submit "提交", :class => "btn btn-primary ie6-btn" %>
-		<%= link_to '取消', topics_path, :class => "btn cancel" %>
+		<%= link_to '取消', articles_path, :class => "btn cancel" %>
 
   </div>
 

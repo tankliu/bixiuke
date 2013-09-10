@@ -72,6 +72,33 @@
 
 <br />
 
-<%= link_to '创建名言类别', new_category_path(:typeable => "Note") %>
+<%= link_to '创建惯例类别', new_category_path(:typeable => "Note") %>
+  
+<hr /> 
+
+
+
+<h4>话题分类</h4>
+
+<table>
+<% @topic_categories.each do |category| %>
+  <tr>
+		<td><%= image_tag category.avatar.url(:thumb) %></td>
+    <td><%= category.name %></td>
+    <td><%= category.path %></td>
+
+    <td><%= category.order_number %></td>
+
+    <td><%= link_to '编辑', edit_category_path(category) %></td>
+    <td><%= link_to '删除', category, :data => { :confirm => '确定删除' }, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '创建话题类别', new_category_path(:typeable => "Topic") %>
+
+
 
 

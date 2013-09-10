@@ -10,10 +10,10 @@ gem 'fastthread', :git => "git://github.com/zoltankiss/fastthread.git"
 gem 'sqlite3'
 gem 'mysql2'
 #部署需要passenger gem
-gem 'passenger'
-gem 'kaminari'
+gem 'passenger', '4.0.5'
+gem 'kaminari'
 gem "paperclip", "~> 3.0"
-gem 'faraday'
+gem 'faraday'      
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -35,7 +35,7 @@ gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 # gem 'private_pub'
-#faye需要thin服务器
+#faye需要thin服务器 
 gem 'faye'
 gem 'thin'
 gem 'hashie'

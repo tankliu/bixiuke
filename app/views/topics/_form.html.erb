@@ -1,4 +1,13 @@
-<%= form_for(@topic) do |f| %>
+<script>
+	$(document).ready(function() {
+		$('.newPaperclipFiles').hide();
+	 	$('.add_image').click(function() {
+				$('.newPaperclipFiles').slideToggle();
+		 });   
+	});               
+</script>
+		
+	<%= form_for(@topic, :html => { :multipart => true }) do |f| %>
 	<% if @topic.errors.any? %>
 			<div class="alert">
 			  <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -20,15 +29,40 @@
     <%= f.label :content, "详细内容(至少100字,最多1000字,便于分析)" %>
     <%= f.text_area :content, :size => "72x11", :class => "input-xxlarge" %>
   </div>
+                    
+ 	<%= link_to "图片附件(最多5张)","#",:class => "add_image"%> <small>每张图不能超过500kb</small>
+	<div class="newPaperclipFiles">
+			<% if is_member? %>
+	        <%= f.fields_for :assets do |asset| %>    
+	           <% if asset.object.new_record? %>      
+	 							 <br /> 
+	              <%= asset.file_field :image, :accept => "image/gif, image/jpeg,image/png" %> 
+						 	<% else asset.object.new_record? %> 
+								
+						 		<%= image_tag(asset.object.image.url(:thumb) ) %>  
+		          	<%= asset.check_box :_destroy  %> <small>勾选删除</small>                  
+							<% end %>     
+								
+	       <% end %>
+			<% else %>
+			<div class="alert">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				只有学员才可以添加图片
+			</div>
+			<% end %>
+  </div>     
+
+
+
   <div class="field">
     <%= f.hidden_field :group_id, :value => @topic.group.id  %>
   </div>
 
 
-  <div class="actions">
+  <div class="actions">           
+		<br />
     <%= f.submit "提交", :class => "btn btn-primary ie6-btn" %>
 		<%= link_to '取消', topics_path, :class => "btn cancel" %>
-
   </div>
 <% end %>
 

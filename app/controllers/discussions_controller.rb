@@ -11,9 +11,9 @@ class DiscussionsController < ApplicationController
     @classroom = Classroom.find(1)
     @discussions = @classroom.discussions.order("created_at desc").page(params[:page])
     @discussion = Discussion.new
-    @upcoming_online_courses = Course.where("start_at > ? and online = ?", Time.now, "yes").limit(5).order("start_at")
-    @this_week_online_course = @upcoming_online_courses.first
-    @latest_online_courses = Course.where("start_at <= ? and online = ?", Time.now, "yes").limit(15).order("start_at desc")
+    @upcoming_online_events = Event.where("start_at > ? and online = ?", Time.now, "yes").limit(5).order("start_at")
+    @this_week_online_event = @upcoming_online_events.first
+    @latest_online_events = Event.where("start_at <= ? and online = ?", Time.now, "yes").limit(15).order("start_at desc")
 
     # @people = Person.where(["role = ? or role = ? or role =? or role = ?", "学员", "老师", "助教", "admin"]).order("score desc").page(params[:page])
     respond_to do |format|

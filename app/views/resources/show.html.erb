@@ -22,13 +22,16 @@
 		    <div class="media">
 					发布:<%= link_to @resource.person.nick_name, @resource.person %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类别:<%= link_to @resource.category.name, category_resources_path(:path => @resource.category.path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间:<%= @resource.created_at.to_date.to_s %>
 					<br />
-					<br />
+					<br />     
 					<p>下载链接:</p>
-					<% if (@resource.category.id == 16 || @resource.category.id == 21) and !is_member? %>
-							视频和音频只有学员才可以下载, <%= link_to "成为学员", "/" %>, 是学员的请<%= link_to "登录", :login  %>
-					<% else %>
-						<%= link_to word_wrap(@resource.download_link), @resource.download_link %></p>
-					<% end %>
+					<p>     
+						 <% if !is_member? and [16,21].include?(@resource.category_id) %>
+							<h5>抱歉,你不能下载vip资源,请联系qq:399906796, <%= link_to "开通vip学员", "/vip" %></h5>
+						 <% else %>
+						  <%= link_to word_wrap(@resource.download_link), @resource.download_link %>
+						 <% end %>
+					</p>
+						
 					
 					<% if can_delete?(@resource) %>
 						<%= link_to '编辑', edit_resource_path(@resource) %>

@@ -51,7 +51,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     cookiejar (0.3.0)
-    daemon_controller (1.1.2)
+    daemon_controller (1.1.5)
     daemons (1.1.9)
     em-http-request (1.0.3)
       addressable (>= 2.2.3)
@@ -120,9 +120,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
-    passenger (3.0.19)
-      daemon_controller (>= 1.0.0)
-      fastthread (>= 1.0.1)
+    passenger (4.0.5)
+      daemon_controller (>= 1.1.0)
       rack
       rake (>= 0.8.1)
     polyglot (0.3.3)
@@ -203,7 +202,7 @@ DEPENDENCIES
   kaminari
   mysql2
   paperclip (~> 3.0)
-  passenger
+  passenger (= 4.0.5)
   rails (= 3.2.13)
   rb-fsevent
   sass-rails (~> 3.2.3)

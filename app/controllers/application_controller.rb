@@ -48,22 +48,20 @@ class ApplicationController < ActionController::Base
       return false
     end
 
-    # if request.url.include?("courses")
-    #    redirect_to request.url.to_s.sub("courses","xianchang")
+   if request.url.include?("jiaocheng.")
+      redirect_to request.url.to_s.sub("jiaocheng.","")
+      return false
+    end  
+    # if request.url.include?("events")
+    #    redirect_to request.url.to_s.sub("events","xianchang")
     #    return false
     #  end
     
     
-    if request.url.include?("category/")
-      redirect_to request.url.to_s.sub("category/","")
-      return false 
-    end
-    
-    if request.url.include?("paoniuxue")
-      redirect_to request.url.to_s.sub("paoniuxue","puake")
-      return false 
-    end
-      
+    # if request.url.include?("category/")
+    #   redirect_to request.url.to_s.sub("category/","")
+    #   return false 
+    # end
   end
   
     
@@ -77,7 +75,7 @@ class ApplicationController < ActionController::Base
    if session[:person_id]
      return true
    else
-     redirect_to :login, :notice => "如果是学员,请先登录才能进行此操作."
+     redirect_to :login, :notice => "先登录才能进行操作"
    end
   end
   
@@ -101,15 +99,14 @@ class ApplicationController < ActionController::Base
   
   def only_admin_can_do
     unless is_admin?
-      flash[:notice] = "你没有权限进行操作"
-      redirect_to :root
+      flash[:notice] = "你没有此权限"  
+      redirect_to :back
     end
   end
 
-  
   def only_member_can_do
     unless is_member?
-      redirect_to "/", :notice => "非学员不能进行此操作,请联系客服QQ:399906796购买课程后(仅35)开通学员."
+      redirect_to :back, :notice => "非学员不能进行此操作,请联系客服QQ:399906796开通学员."
     end
   end
   
